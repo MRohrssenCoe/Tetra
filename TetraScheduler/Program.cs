@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,10 @@ namespace TetraScheduler
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            /// setting up a project directory
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string specificFolder = Path.Combine(folder, "TetraScheduler");
+            Directory.CreateDirectory(specificFolder);
             Application.Run(new Form1());
         }
     }
