@@ -40,7 +40,7 @@ namespace TetraScheduler
             }
 
             // remove this later - debugging only
-            Debug.WriteLine("Username: " + textBox1.Text + "\tPassword: " + textBox2.Text);
+            Debug.WriteLine("Username : " + textBox1.Text + "\tPassword : " + textBox2.Text);
         }
 
         private void validate_Credentials(String username, String password)
