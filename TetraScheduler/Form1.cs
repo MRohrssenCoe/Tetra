@@ -34,13 +34,26 @@ namespace TetraScheduler
             }
 
             else {
-                // validate username/password from database here - show error if incorrect, otherwise load appropriate dashboard
-                // todo: password validation function + file setup
+                // TODO: validate username/password from database here - show error if incorrect, otherwise load appropriate dashboard
+                Form2 f2 = new Form2(username);
+                f2.Show();
             }
 
             // remove this later - debugging only
             Debug.WriteLine("Username: " + textBox1.Text + "\tPassword: " + textBox2.Text);
+        }
 
+        private void validate_Credentials(String username, String password)
+        {
+            // read in file or access database
+            // look for match in username/password pair
+            // return information - True/False for validity? or information about being admin/consultant based on file info? like 0 - Invalid, 1 - Admin, 2 - Consultant, etc?
+        }
+
+        private string encrypt_Password(string password)
+        {
+            // password encryption - if we have time
+            return password;
         }
     }
 }
