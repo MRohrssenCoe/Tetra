@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,34 @@ namespace TetraScheduler
 {
     public partial class Form1 : Form
     {
-        
+        String passwordFileString = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+            "TetraScheduler/SchedulerPasswords.txt"
+            );
+        string[] tokens;
+        string[] users;
+        string[] pswds;
         public Form1()
         {
+            String usersPasswords = File.ReadAllText(passwordFileString);
+            Debug.WriteLine(usersPasswords);
+            tokens = usersPasswords.Split(',');
+            bool flipflop = true;
+            foreach (String token in tokens)
+            {
+                Debug.WriteLine(token);
+                //tryign to sort users and passwords into separate arrays
+                if (flipflop)
+                {
+                    //users.Append(token);
+                } else
+                {
+                    //pswds.Append(token);
+                }
+                flipflop = !flipflop;
+            }
+            Debug.WriteLine(users);
+            Debug.WriteLine(pswds);
             InitializeComponent();
         }
 
@@ -35,6 +61,7 @@ namespace TetraScheduler
 
             else {
                 // TODO: validate username/password from database here - show error if incorrect, otherwise load appropriate dashboard
+                
                 Form2 f2 = new Form2(username);
                 f2.Show();
             }

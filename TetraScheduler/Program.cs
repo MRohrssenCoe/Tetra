@@ -1,9 +1,5 @@
 using System;
 using System.IO;
-using System.Text.Encodings;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TetraScheduler
