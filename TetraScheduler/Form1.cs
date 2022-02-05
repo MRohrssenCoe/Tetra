@@ -55,7 +55,7 @@ namespace TetraScheduler
             else {
                 // TODO: validate username/password from database here - show error if incorrect, otherwise load appropriate dashboard
                 
-                Form2 f2 = new Form2(username);
+                Form2 f2 = new Form2();
                 f2.Show();
             }
 
