@@ -38,7 +38,7 @@ namespace TetraScheduler
                 {
                     //pswds.Append(token);
                 }
-                flipflop = !flipflop;
+                flipflop = !flipflop; // can't you iterate by 2s in c#?
             }
             Debug.WriteLine(users);
             Debug.WriteLine(pswds);
@@ -62,8 +62,10 @@ namespace TetraScheduler
             else {
                 // TODO: validate username/password from database here - show error if incorrect, otherwise load appropriate dashboard
                 
-                Form2 f2 = new Form2();
+                ScheduleForm f2 = new ScheduleForm();
                 f2.Show();
+                //Form3 f3 = new Form3();
+                //f3.Show();
             }
 
             // remove this later - debugging only
