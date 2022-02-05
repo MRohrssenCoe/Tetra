@@ -19,29 +19,22 @@ namespace TetraScheduler
             "TetraScheduler/SchedulerPasswords.txt"
             );
         string[] tokens;
-        string[] users;
-        string[] pswds;
+        struct UsernamePassword
+        {
+            public string username;
+            public string password;
+        }
+        List<UsernamePassword> accountDetails;
         public Form1()
         {
             String usersPasswords = File.ReadAllText(passwordFileString);
             Debug.WriteLine(usersPasswords);
             tokens = usersPasswords.Split(',');
-            bool flipflop = true;
-            foreach (String token in tokens)
-            {
-                Debug.WriteLine(token);
-                //tryign to sort users and passwords into separate arrays
-                if (flipflop)
-                {
-                    //users.Append(token);
-                } else
-                {
-                    //pswds.Append(token);
-                }
-                flipflop = !flipflop;
+            for (int i = 0; i < tokens.Length; i += 2) {
+                UsernamePassword usernamePassword = new UsernamePassword();
+                usernamePassword.username = tokens[i];
+                usernamePassword.password = tokens[i + 1];
             }
-            Debug.WriteLine(users);
-            Debug.WriteLine(pswds);
             InitializeComponent();
         }
 
