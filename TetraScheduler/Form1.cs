@@ -65,12 +65,9 @@ namespace TetraScheduler
             }
         }
 
+        //Returns a validation code for credentials. 0 is a consultant account, 1 is an admin account, and 2 is the default admin account
         private int validate_Credentials(String username, String password)
         {
-            // read in file or access database
-            // look for match in username/password pair
-            // return information - True/False for validity? or information about being admin/consultant based on file info? like 0 - Invalid, 1 - Admin, 2 - Consultant, etc?
-            //load usernames and passwords while looking for match.
             String usersPasswords = File.ReadAllText(passwordFileString);
             Debug.WriteLine(usersPasswords);
             tokens = usersPasswords.Split(',');
@@ -99,7 +96,6 @@ namespace TetraScheduler
             }
             return -1;
         }
-
 
         private string encrypt_Password(string password)
         {

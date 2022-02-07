@@ -6,4 +6,9 @@
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="TetraSchedulerDB.mdf" />
+    <None Remove="TetraSchedulerDB_log.ldf" />
+  </ItemGroup>
+
 </Project>
