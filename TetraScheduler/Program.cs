@@ -29,7 +29,7 @@ namespace TetraScheduler
                 fs.Close();
             }
             
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }
