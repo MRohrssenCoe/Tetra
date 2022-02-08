@@ -24,5 +24,12 @@ namespace TetraScheduler
             user.LastName = ln;
             users.Add(user);
         }
+        public void RemoveUser(string fn, string ln)
+        {
+            User user = new User();
+            user.FirstName = fn;
+            user.LastName = ln;
+            users.Remove(user);
+        }
     }
 }
