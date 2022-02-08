@@ -1,7 +1,7 @@
 ﻿
 namespace TetraScheduler
 {
-    partial class Form2
+    partial class ScheduleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,278 +31,296 @@ namespace TetraScheduler
         {
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.listBox7 = new System.Windows.Forms.ListBox();
-            this.listBox6 = new System.Windows.Forms.ListBox();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.sat_listbox = new System.Windows.Forms.ListBox();
+            this.fri_listbox = new System.Windows.Forms.ListBox();
+            this.wed_listbox = new System.Windows.Forms.ListBox();
+            this.thurs_listbox = new System.Windows.Forms.ListBox();
+            this.tues_listbox = new System.Windows.Forms.ListBox();
+            this.mon_listbox = new System.Windows.Forms.ListBox();
+            this.sun_listbox = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.sun_hour_label = new System.Windows.Forms.Label();
+            this.mon_hour_label = new System.Windows.Forms.Label();
+            this.tues_hour_label = new System.Windows.Forms.Label();
+            this.thurs_hour_label = new System.Windows.Forms.Label();
+            this.fri_hour_label = new System.Windows.Forms.Label();
+            this.sat_hour_label = new System.Windows.Forms.Label();
+            this.wed_hour_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(353, 424);
+            this.button1.Location = new System.Drawing.Point(586, 552);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 23);
+            this.button1.Size = new System.Drawing.Size(97, 32);
             this.button1.TabIndex = 0;
             this.button1.Text = "Export as CSV";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.listBox7);
-            this.panel1.Controls.Add(this.listBox6);
-            this.panel1.Controls.Add(this.listBox5);
-            this.panel1.Controls.Add(this.listBox4);
-            this.panel1.Controls.Add(this.listBox3);
-            this.panel1.Controls.Add(this.listBox2);
-            this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Location = new System.Drawing.Point(12, 58);
+            this.panel1.Controls.Add(this.sat_listbox);
+            this.panel1.Controls.Add(this.fri_listbox);
+            this.panel1.Controls.Add(this.wed_listbox);
+            this.panel1.Controls.Add(this.thurs_listbox);
+            this.panel1.Controls.Add(this.tues_listbox);
+            this.panel1.Controls.Add(this.mon_listbox);
+            this.panel1.Controls.Add(this.sun_listbox);
+            this.panel1.Location = new System.Drawing.Point(12, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 360);
+            this.panel1.Size = new System.Drawing.Size(1257, 461);
             this.panel1.TabIndex = 1;
             // 
-            // listBox7
+            // sat_listbox
             // 
-            this.listBox7.FormattingEnabled = true;
-            this.listBox7.ItemHeight = 15;
-            this.listBox7.Items.AddRange(new object[] {
+            this.sat_listbox.FormattingEnabled = true;
+            this.sat_listbox.ItemHeight = 15;
+            this.sat_listbox.Items.AddRange(new object[] {
             "No Shifts"});
-            this.listBox7.Location = new System.Drawing.Point(669, 3);
-            this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(105, 349);
-            this.listBox7.TabIndex = 6;
+            this.sat_listbox.Location = new System.Drawing.Point(1074, 3);
+            this.sat_listbox.Name = "sat_listbox";
+            this.sat_listbox.Size = new System.Drawing.Size(170, 454);
+            this.sat_listbox.TabIndex = 6;
             // 
-            // listBox6
+            // fri_listbox
             // 
-            this.listBox6.FormattingEnabled = true;
-            this.listBox6.ItemHeight = 15;
-            this.listBox6.Items.AddRange(new object[] {
+            this.fri_listbox.FormattingEnabled = true;
+            this.fri_listbox.ItemHeight = 15;
+            this.fri_listbox.Items.AddRange(new object[] {
             "No Shifts"});
-            this.listBox6.Location = new System.Drawing.Point(558, 3);
-            this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(105, 349);
-            this.listBox6.TabIndex = 5;
-            this.listBox6.SelectedIndexChanged += new System.EventHandler(this.listBox6_SelectedIndexChanged);
+            this.fri_listbox.Location = new System.Drawing.Point(897, 3);
+            this.fri_listbox.Name = "fri_listbox";
+            this.fri_listbox.Size = new System.Drawing.Size(170, 454);
+            this.fri_listbox.TabIndex = 5;
             // 
-            // listBox5
+            // wed_listbox
             // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.ItemHeight = 15;
-            this.listBox5.Items.AddRange(new object[] {
+            this.wed_listbox.FormattingEnabled = true;
+            this.wed_listbox.ItemHeight = 15;
+            this.wed_listbox.Items.AddRange(new object[] {
             "No Shifts"});
-            this.listBox5.Location = new System.Drawing.Point(336, 3);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(105, 349);
-            this.listBox5.TabIndex = 4;
+            this.wed_listbox.Location = new System.Drawing.Point(543, 3);
+            this.wed_listbox.Name = "wed_listbox";
+            this.wed_listbox.Size = new System.Drawing.Size(170, 454);
+            this.wed_listbox.TabIndex = 4;
             // 
-            // listBox4
+            // thurs_listbox
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 15;
-            this.listBox4.Items.AddRange(new object[] {
+            this.thurs_listbox.FormattingEnabled = true;
+            this.thurs_listbox.ItemHeight = 15;
+            this.thurs_listbox.Items.AddRange(new object[] {
             "No Shifts"});
-            this.listBox4.Location = new System.Drawing.Point(447, 3);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(105, 349);
-            this.listBox4.TabIndex = 3;
-            this.listBox4.SelectedIndexChanged += new System.EventHandler(this.listBox4_SelectedIndexChanged);
+            this.thurs_listbox.Location = new System.Drawing.Point(720, 3);
+            this.thurs_listbox.Name = "thurs_listbox";
+            this.thurs_listbox.Size = new System.Drawing.Size(170, 454);
+            this.thurs_listbox.TabIndex = 3;
             // 
-            // listBox3
+            // tues_listbox
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 15;
-            this.listBox3.Items.AddRange(new object[] {
+            this.tues_listbox.FormattingEnabled = true;
+            this.tues_listbox.ItemHeight = 15;
+            this.tues_listbox.Items.AddRange(new object[] {
             "No Shifts"});
-            this.listBox3.Location = new System.Drawing.Point(225, 3);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(105, 349);
-            this.listBox3.TabIndex = 2;
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
+            this.tues_listbox.Location = new System.Drawing.Point(366, 3);
+            this.tues_listbox.Name = "tues_listbox";
+            this.tues_listbox.Size = new System.Drawing.Size(170, 454);
+            this.tues_listbox.TabIndex = 2;
             // 
-            // listBox2
+            // mon_listbox
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Items.AddRange(new object[] {
+            this.mon_listbox.FormattingEnabled = true;
+            this.mon_listbox.ItemHeight = 15;
+            this.mon_listbox.Items.AddRange(new object[] {
             "No Shifts"});
-            this.listBox2.Location = new System.Drawing.Point(114, 3);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(105, 349);
-            this.listBox2.TabIndex = 1;
+            this.mon_listbox.Location = new System.Drawing.Point(189, 3);
+            this.mon_listbox.Name = "mon_listbox";
+            this.mon_listbox.Size = new System.Drawing.Size(170, 454);
+            this.mon_listbox.TabIndex = 1;
             // 
-            // listBox1
+            // sun_listbox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Items.AddRange(new object[] {
-            "No Shifts"});
-            this.listBox1.Location = new System.Drawing.Point(4, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(105, 349);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.sun_listbox.ColumnWidth = 10;
+            this.sun_listbox.FormattingEnabled = true;
+            this.sun_listbox.ItemHeight = 15;
+            this.sun_listbox.Items.AddRange(new object[] {
+            "No Shifts",
+            "Test"});
+            this.sun_listbox.Location = new System.Drawing.Point(12, 3);
+            this.sun_listbox.MultiColumn = true;
+            this.sun_listbox.Name = "sun_listbox";
+            this.sun_listbox.Size = new System.Drawing.Size(170, 454);
+            this.sun_listbox.TabIndex = 0;
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(105, 23);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.Text = "Sunday";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(69, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 21);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Sunday";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // label2
             // 
-            this.textBox2.Location = new System.Drawing.Point(126, 12);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(105, 23);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Text = "Monday";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(247, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 21);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Monday";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox3
+            // label3
             // 
-            this.textBox3.Location = new System.Drawing.Point(237, 13);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(105, 23);
-            this.textBox3.TabIndex = 9;
-            this.textBox3.Text = "Tuesday";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(427, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 21);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Tuesday";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox4
+            // label4
             // 
-            this.textBox4.Location = new System.Drawing.Point(348, 12);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(105, 23);
-            this.textBox4.TabIndex = 10;
-            this.textBox4.Text = "Wednesday";
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(585, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 21);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Wednesday";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox5
+            // label5
             // 
-            this.textBox5.Location = new System.Drawing.Point(459, 13);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(105, 23);
-            this.textBox5.TabIndex = 11;
-            this.textBox5.Text = "Thursday";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(768, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(80, 21);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Thursday";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox6
+            // label6
             // 
-            this.textBox6.Location = new System.Drawing.Point(570, 13);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(105, 23);
-            this.textBox6.TabIndex = 12;
-            this.textBox6.Text = "Friday";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(954, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 21);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Friday";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox7
+            // label7
             // 
-            this.textBox7.Location = new System.Drawing.Point(681, 13);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(105, 23);
-            this.textBox7.TabIndex = 13;
-            this.textBox7.Text = "Saturday";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(1119, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 21);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Saturday";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox8
+            // sun_hour_label
             // 
-            this.textBox8.Location = new System.Drawing.Point(681, 33);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(105, 23);
-            this.textBox8.TabIndex = 20;
-            this.textBox8.Text = "[hours]";
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
+            this.sun_hour_label.AutoSize = true;
+            this.sun_hour_label.Location = new System.Drawing.Point(60, 53);
+            this.sun_hour_label.Name = "sun_hour_label";
+            this.sun_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.sun_hour_label.TabIndex = 28;
+            this.sun_hour_label.Text = "Put hours here";
             // 
-            // textBox9
+            // mon_hour_label
             // 
-            this.textBox9.Location = new System.Drawing.Point(570, 33);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(105, 23);
-            this.textBox9.TabIndex = 19;
-            this.textBox9.Text = "[hours]";
-            this.textBox9.TextChanged += new System.EventHandler(this.textBox9_TextChanged);
+            this.mon_hour_label.AutoSize = true;
+            this.mon_hour_label.Location = new System.Drawing.Point(241, 53);
+            this.mon_hour_label.Name = "mon_hour_label";
+            this.mon_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.mon_hour_label.TabIndex = 29;
+            this.mon_hour_label.Text = "Put hours here";
             // 
-            // textBox10
+            // tues_hour_label
             // 
-            this.textBox10.Location = new System.Drawing.Point(459, 33);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(105, 23);
-            this.textBox10.TabIndex = 18;
-            this.textBox10.Text = "[hours]";
-            this.textBox10.TextChanged += new System.EventHandler(this.textBox10_TextChanged);
+            this.tues_hour_label.AutoSize = true;
+            this.tues_hour_label.Location = new System.Drawing.Point(421, 53);
+            this.tues_hour_label.Name = "tues_hour_label";
+            this.tues_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.tues_hour_label.TabIndex = 30;
+            this.tues_hour_label.Text = "Put hours here";
             // 
-            // textBox11
+            // thurs_hour_label
             // 
-            this.textBox11.Location = new System.Drawing.Point(237, 33);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(105, 23);
-            this.textBox11.TabIndex = 16;
-            this.textBox11.Text = "[hours]";
-            this.textBox11.TextChanged += new System.EventHandler(this.textBox11_TextChanged);
+            this.thurs_hour_label.AutoSize = true;
+            this.thurs_hour_label.Location = new System.Drawing.Point(766, 53);
+            this.thurs_hour_label.Name = "thurs_hour_label";
+            this.thurs_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.thurs_hour_label.TabIndex = 32;
+            this.thurs_hour_label.Text = "Put hours here";
             // 
-            // textBox12
+            // fri_hour_label
             // 
-            this.textBox12.Location = new System.Drawing.Point(348, 32);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(105, 23);
-            this.textBox12.TabIndex = 17;
-            this.textBox12.Text = "[hours]";
-            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
+            this.fri_hour_label.AutoSize = true;
+            this.fri_hour_label.Location = new System.Drawing.Point(940, 53);
+            this.fri_hour_label.Name = "fri_hour_label";
+            this.fri_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.fri_hour_label.TabIndex = 33;
+            this.fri_hour_label.Text = "Put hours here";
             // 
-            // textBox13
+            // sat_hour_label
             // 
-            this.textBox13.Location = new System.Drawing.Point(126, 32);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(105, 23);
-            this.textBox13.TabIndex = 15;
-            this.textBox13.Text = "[hours]";
-            this.textBox13.TextChanged += new System.EventHandler(this.textBox13_TextChanged);
+            this.sat_hour_label.AutoSize = true;
+            this.sat_hour_label.Location = new System.Drawing.Point(1116, 53);
+            this.sat_hour_label.Name = "sat_hour_label";
+            this.sat_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.sat_hour_label.TabIndex = 34;
+            this.sat_hour_label.Text = "Put hours here";
             // 
-            // textBox14
+            // wed_hour_label
             // 
-            this.textBox14.Location = new System.Drawing.Point(16, 32);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(105, 23);
-            this.textBox14.TabIndex = 14;
-            this.textBox14.Text = "[hours]";
-            this.textBox14.TextChanged += new System.EventHandler(this.textBox14_TextChanged);
+            this.wed_hour_label.AutoSize = true;
+            this.wed_hour_label.Location = new System.Drawing.Point(592, 53);
+            this.wed_hour_label.Name = "wed_hour_label";
+            this.wed_hour_label.Size = new System.Drawing.Size(84, 15);
+            this.wed_hour_label.TabIndex = 31;
+            this.wed_hour_label.Text = "Put hours here";
             // 
-            // Form2
+            // ScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.textBox14);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(1269, 651);
+            this.Controls.Add(this.sat_hour_label);
+            this.Controls.Add(this.fri_hour_label);
+            this.Controls.Add(this.thurs_hour_label);
+            this.Controls.Add(this.wed_hour_label);
+            this.Controls.Add(this.tues_hour_label);
+            this.Controls.Add(this.mon_hour_label);
+            this.Controls.Add(this.sun_hour_label);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "ScheduleForm";
+            this.Text = "Schedule";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -314,26 +332,26 @@ namespace TetraScheduler
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBox7;
-        private System.Windows.Forms.ListBox listBox6;
-        private System.Windows.Forms.ListBox listBox5;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.ListBox sat_listbox;
+        private System.Windows.Forms.ListBox fri_listbox;
+        private System.Windows.Forms.ListBox wed_listbox;
+        private System.Windows.Forms.ListBox thurs_listbox;
+        private System.Windows.Forms.ListBox tues_listbox;
+        private System.Windows.Forms.ListBox mon_listbox;
+        private System.Windows.Forms.ListBox sun_listbox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label sun_hour_label;
+        private System.Windows.Forms.Label mon_hour_label;
+        private System.Windows.Forms.Label tues_hour_label;
+        private System.Windows.Forms.Label thurs_hour_label;
+        private System.Windows.Forms.Label fri_hour_label;
+        private System.Windows.Forms.Label sat_hour_label;
+        private System.Windows.Forms.Label wed_hour_label;
     }
 }
