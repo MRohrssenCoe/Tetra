@@ -23,18 +23,12 @@ namespace TetraScheduler
         {
             public string username;
             public string password;
+            //0 for consultant, 1 for admin, 2 for default admin
+            public string accountType;
         }
-        List<UsernamePassword> accountDetails;
         public Form1()
         {
-            String usersPasswords = File.ReadAllText(passwordFileString);
-            Debug.WriteLine(usersPasswords);
-            tokens = usersPasswords.Split(',');
-            for (int i = 0; i < tokens.Length; i += 2) {
-                UsernamePassword usernamePassword = new UsernamePassword();
-                usernamePassword.username = tokens[i];
-                usernamePassword.password = tokens[i + 1];
-            }
+            
             InitializeComponent();
         }
 
@@ -48,27 +42,62 @@ namespace TetraScheduler
             String username = textBox1.Text;
             String password = textBox2.Text;
 
-            if (username.Length == 0 || password.Length == 0){
+            if (username.Length == 0 || password.Length == 0)
+            {
                 MessageBox.Show("Username/Password cannot be empty!");
             }
 
-            else {
-                // TODO: validate username/password from database here - show error if incorrect, otherwise load appropriate dashboard
-                
-                Form2 f2 = new Form2();
-                f2.Show();
+            else
+            {
+                int validatationCode = validate_Credentials(username, password);
+                //TODO: make this split into different logins
+                if (validatationCode == 0 || validatationCode == 1 || validatationCode == 2)
+                {
+                    Form2 f2 = new Form2();
+                    f2.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials!");
+                }
             }
-
-            // remove this later - debugging only
-            Debug.WriteLine("Username : " + textBox1.Text + "\tPassword : " + textBox2.Text);
         }
 
-        private void validate_Credentials(String username, String password)
+        private int validate_Credentials(String username, String password)
         {
             // read in file or access database
             // look for match in username/password pair
             // return information - True/False for validity? or information about being admin/consultant based on file info? like 0 - Invalid, 1 - Admin, 2 - Consultant, etc?
+            //load usernames and passwords while looking for match.
+            String usersPasswords = File.ReadAllText(passwordFileString);
+            Debug.WriteLine(usersPasswords);
+            tokens = usersPasswords.Split(',');
+            for (int i = 0; i < tokens.Length; i += 3)
+            {
+                UsernamePassword usernamePassword = new UsernamePassword();
+                usernamePassword.username = tokens[i];
+                usernamePassword.password = tokens[i + 1];
+                usernamePassword.accountType = tokens[i + 2];
+
+                if(usernamePassword.username == username && usernamePassword.password == password)
+                {
+                    if(usernamePassword.accountType == "0")
+                    {
+                        return 0;
+                    }
+                    if(usernamePassword.accountType == "1")
+                    {
+                        return 1;
+                    }
+                    if(usernamePassword.accountType == "2")
+                    {
+                        return 2;
+                    }
+                }
+            }
+            return -1;
         }
+
 
         private string encrypt_Password(string password)
         {
