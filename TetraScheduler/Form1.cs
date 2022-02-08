@@ -95,7 +95,6 @@ namespace TetraScheduler
             return -1;
         }
 
-
         private string encrypt_Password(string password)
         {
             // password encryption - if we have time
