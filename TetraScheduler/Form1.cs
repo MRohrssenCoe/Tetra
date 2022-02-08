@@ -53,7 +53,7 @@ namespace TetraScheduler
                 //TODO: make this split into different logins
                 if (validatationCode == 0 || validatationCode == 1 || validatationCode == 2)
                 {
-                    Form2 f2 = new Form2();
+                    ScheduleForm f2 = new ScheduleForm();
                     f2.Show();
                 }
                 else
