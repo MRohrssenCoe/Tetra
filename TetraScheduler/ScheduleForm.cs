@@ -49,7 +49,7 @@ namespace TetraScheduler
                         case "Sunday":
                             Debug.WriteLine("Sunday");
                             ListBox.ObjectCollection items = sun_listbox.Items;
-                            items.Add(String.Format("%1 - %2: %3", startTime, endTime, consultants));
+                            items.Add(String.Format("{0} - {1}: {2}", startTime, endTime, consultants));
                             sun_listbox.DataSource = items;
                             break;
                         case "Monday":
