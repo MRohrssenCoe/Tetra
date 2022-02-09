@@ -7,10 +7,11 @@ using System.Diagnostics;
 
 namespace TetraScheduler
 {
+
     public partial class ScheduleForm : Form
     {
         private enum day { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }; // enumerates days of week // change to 0-6
-        
+
         public ScheduleForm()
         {
             InitializeComponent();

@@ -25,11 +25,12 @@ namespace TetraScheduler
                 FileStream fs = File.Open(pswdFile, FileMode.Create);
                 //username, password, default admin flag
                 String tempText = "admin,password,2";
+                Schedule s = new Schedule(5, 60, 540, 1020);
                 fs.Write(System.Text.Encoding.ASCII.GetBytes(tempText), 0, tempText.Length);
                 fs.Close();
             }
             
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }
