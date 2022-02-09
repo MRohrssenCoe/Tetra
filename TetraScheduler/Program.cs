@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -31,10 +32,32 @@ namespace TetraScheduler
             }
             if(!File.Exists(scheduleFile))
             {
-                FileStream fs = File.Open(scheduleFile, FileMode.Create);
+                StringBuilder sb = new StringBuilder();
+                //FileStream fs = File.Open(scheduleFile, FileMode.Create);
                 String tempCSV = "Weekday,Start_Time,End_Time,Consultants";
-                fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
-                fs.Close();
+                sb.AppendLine(tempCSV);
+
+                // remove dummy data later
+                sb.AppendLine("Sunday, 2:00, 2:30, Bob");
+                sb.AppendLine("Monday, 1:00, 2:00, Bob");
+                sb.AppendLine("Tuesday, 3:00, 3:30, Bob");
+                sb.AppendLine("Tuesday, 3:30, 4:30, Bob");
+                sb.AppendLine("Wednesday, 2:00, 2:30, Bob");
+                sb.AppendLine("Thursday, 2:00, 3:00, Bob");
+                sb.AppendLine("Saturday, 2:00, 2:30, Bob");
+
+                File.WriteAllText(scheduleFile, sb.ToString());
+                //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
+                //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
+
+
+
+
+                // write some rows of shifts to practice with
+
+
+
+                //fs.Close();
             }
             Application.Run(new LoginForm());
         }

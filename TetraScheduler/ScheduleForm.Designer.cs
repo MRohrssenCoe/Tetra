@@ -82,8 +82,6 @@ namespace TetraScheduler
             // 
             this.sat_listbox.FormattingEnabled = true;
             this.sat_listbox.ItemHeight = 15;
-            this.sat_listbox.Items.AddRange(new object[] {
-            "No Shifts"});
             this.sat_listbox.Location = new System.Drawing.Point(1074, 3);
             this.sat_listbox.Name = "sat_listbox";
             this.sat_listbox.Size = new System.Drawing.Size(170, 454);
@@ -93,8 +91,6 @@ namespace TetraScheduler
             // 
             this.fri_listbox.FormattingEnabled = true;
             this.fri_listbox.ItemHeight = 15;
-            this.fri_listbox.Items.AddRange(new object[] {
-            "No Shifts"});
             this.fri_listbox.Location = new System.Drawing.Point(897, 3);
             this.fri_listbox.Name = "fri_listbox";
             this.fri_listbox.Size = new System.Drawing.Size(170, 454);
@@ -104,8 +100,6 @@ namespace TetraScheduler
             // 
             this.wed_listbox.FormattingEnabled = true;
             this.wed_listbox.ItemHeight = 15;
-            this.wed_listbox.Items.AddRange(new object[] {
-            "No Shifts"});
             this.wed_listbox.Location = new System.Drawing.Point(543, 3);
             this.wed_listbox.Name = "wed_listbox";
             this.wed_listbox.Size = new System.Drawing.Size(170, 454);
@@ -115,8 +109,6 @@ namespace TetraScheduler
             // 
             this.thurs_listbox.FormattingEnabled = true;
             this.thurs_listbox.ItemHeight = 15;
-            this.thurs_listbox.Items.AddRange(new object[] {
-            "No Shifts"});
             this.thurs_listbox.Location = new System.Drawing.Point(720, 3);
             this.thurs_listbox.Name = "thurs_listbox";
             this.thurs_listbox.Size = new System.Drawing.Size(170, 454);
@@ -126,8 +118,6 @@ namespace TetraScheduler
             // 
             this.tues_listbox.FormattingEnabled = true;
             this.tues_listbox.ItemHeight = 15;
-            this.tues_listbox.Items.AddRange(new object[] {
-            "No Shifts"});
             this.tues_listbox.Location = new System.Drawing.Point(366, 3);
             this.tues_listbox.Name = "tues_listbox";
             this.tues_listbox.Size = new System.Drawing.Size(170, 454);
@@ -137,8 +127,6 @@ namespace TetraScheduler
             // 
             this.mon_listbox.FormattingEnabled = true;
             this.mon_listbox.ItemHeight = 15;
-            this.mon_listbox.Items.AddRange(new object[] {
-            "No Shifts"});
             this.mon_listbox.Location = new System.Drawing.Point(189, 3);
             this.mon_listbox.Name = "mon_listbox";
             this.mon_listbox.Size = new System.Drawing.Size(170, 454);
@@ -149,9 +137,6 @@ namespace TetraScheduler
             this.sun_listbox.ColumnWidth = 10;
             this.sun_listbox.FormattingEnabled = true;
             this.sun_listbox.ItemHeight = 15;
-            this.sun_listbox.Items.AddRange(new object[] {
-            "No Shifts",
-            "Test"});
             this.sun_listbox.Location = new System.Drawing.Point(12, 3);
             this.sun_listbox.MultiColumn = true;
             this.sun_listbox.Name = "sun_listbox";
