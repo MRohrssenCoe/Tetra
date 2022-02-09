@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
+using System.IO;
 
 namespace TetraScheduler
 {
@@ -25,7 +26,9 @@ namespace TetraScheduler
             // maybe use datagridview?
 
             // stored as csv?
-            String path = "C:\\Users\\katya\\Desktop\\TestSchedule.csv";
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string specificFolder = Path.Combine(folder, "TetraScheduler");
+            string path = Path.Combine(specificFolder, "TetraSchedule.csv");
             using (TextFieldParser csvParser = new TextFieldParser(path))
             {
                 csvParser.CommentTokens = new string[] { "#" };
