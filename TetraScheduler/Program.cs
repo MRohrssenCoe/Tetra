@@ -23,6 +23,9 @@ namespace TetraScheduler
             Directory.CreateDirectory(tetraFolder);
             string pswdFile = Path.Combine(tetraFolder, "SchedulerPasswords.txt");
             string scheduleFile = Path.Combine(tetraFolder, "TetraSchedule.csv");
+
+            // on first run - creates data files
+
             if (!File.Exists(pswdFile))
             {
                 FileStream fs = File.Open(pswdFile, FileMode.Create);
@@ -50,16 +53,10 @@ namespace TetraScheduler
                 File.WriteAllText(scheduleFile, sb.ToString());
                 //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
                 //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
-
-
-
-
-                // write some rows of shifts to practice with
-
-
-
                 //fs.Close();
             }
+
+            // starts at login form
             Application.Run(new LoginForm());
         }
     }

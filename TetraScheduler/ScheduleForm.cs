@@ -11,10 +11,12 @@ namespace TetraScheduler
 
     public partial class ScheduleForm : Form
     {
-        private enum day { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }; // enumerates days of week // change to 0-6 or remove
-        private string schedPath;
+        private enum day { Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday }; // enumerates days of week - change this
 
-        private ListBox.ObjectCollection sunShifts; //todo: better collection
+        private string schedPath; // location of schedule csv file
+
+        // Lists of shifts to display
+        private ListBox.ObjectCollection sunShifts; //todo: better collections?
         private ListBox.ObjectCollection monShifts;
         private ListBox.ObjectCollection tuesShifts;
         private ListBox.ObjectCollection wedShifts;
@@ -22,6 +24,7 @@ namespace TetraScheduler
         private ListBox.ObjectCollection friShifts;
         private ListBox.ObjectCollection satShifts;
 
+        // List of list of shifts to display
         private ListBox.ObjectCollection[] shiftArray;
 
 
@@ -29,11 +32,14 @@ namespace TetraScheduler
         public ScheduleForm()
         {
             InitializeComponent();
+
+            // get appdata file location
             string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string specificFolder = Path.Combine(folder, "TetraScheduler");
             this.schedPath = Path.Combine(specificFolder, "TetraSchedule.csv");
 
-            this.sunShifts = new ListBox.ObjectCollection(sun_listbox); //todo: better collection
+            // initialize shift OCs
+            this.sunShifts = new ListBox.ObjectCollection(sun_listbox);
             this.monShifts = new ListBox.ObjectCollection(mon_listbox);
             this.tuesShifts = new ListBox.ObjectCollection(tues_listbox);
             this.wedShifts = new ListBox.ObjectCollection(wed_listbox);
@@ -47,33 +53,34 @@ namespace TetraScheduler
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            // get schedule data from file - maybe just store as csv internally the whole time??? at least in an easy to parse format
-            // import shifts and add to appropriate list boxes - make this look better
-            // maybe use datagridview?
-
-            // stored as csv?
             
+            // read in from CSV
             using (TextFieldParser csvParser = new TextFieldParser(this.schedPath))
             {
+                // set up options
                 csvParser.CommentTokens = new string[] { "#" };
                 csvParser.SetDelimiters(new string[] { "," });
-                csvParser.HasFieldsEnclosedInQuotes = true;
+                csvParser.HasFieldsEnclosedInQuotes = true; // todo: come back to this. not sure if we are writing to CSVs properly
 
+                // read column name row
                 csvParser.ReadLine();
 
+
+                //iteration through remaining rows
                 while (!csvParser.EndOfData)
                 {
                     // Read current line fields, pointer moves to the next line.
                     string[] fields = csvParser.ReadFields();
 
+                    // separate each column within the row
                     string weekDay = fields[0];
                     Debug.WriteLine(weekDay);
                     string startTime = fields[1];
                     string endTime = fields[2];
                     string consultants = fields[3];
 
-
-                    switch (weekDay) // todo: can optimize this with indexing array
+                    // different box to display for each day
+                    switch (weekDay) // todo: can optimize this with indexing shiftArray
                     {
                         case "Sunday":
                             Debug.WriteLine("Sunday");
@@ -111,6 +118,7 @@ namespace TetraScheduler
                 }
             }
 
+            // displays 'no shifts' for days without shifts
             for (int i = 0; i < 7; i++)
             {
                 if (shiftArray[i].Count == 0)
@@ -118,6 +126,8 @@ namespace TetraScheduler
                     shiftArray[i].Add("No shifts");
                 }
             }
+
+            // end of function
         }
 
         private void readFromCSV()
@@ -129,7 +139,7 @@ namespace TetraScheduler
 
         private void addShiftString(ListBox.ObjectCollection items, String startTime, String endTime, String consultants)
         {
-            // appends info about a shift to a given listbox
+            // appends info about a shift to a given listbox - maybe unnecessary
             items.Add(String.Format("{0} - {1}: {2}", startTime, endTime, consultants));
         }
     }
