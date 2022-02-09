@@ -55,8 +55,6 @@ namespace TetraScheduler
                 {
                     ScheduleForm f2 = new ScheduleForm();
                     f2.Show();
-                    Form3 f3 = new Form3();
-                    f3.Show();
                 }
                 else
                 {
