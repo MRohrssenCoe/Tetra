@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         String passwordFileString = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
@@ -26,7 +26,7 @@ namespace TetraScheduler
             //0 for consultant, 1 for admin, 2 for default admin
             public string accountType;
         }
-        public Form1()
+        public LoginForm()
         {
             
             InitializeComponent();
@@ -55,6 +55,8 @@ namespace TetraScheduler
                 {
                     ScheduleForm f2 = new ScheduleForm();
                     f2.Show();
+                    Form3 f3 = new Form3();
+                    f3.Show();
                 }
                 else
                 {
@@ -94,7 +96,6 @@ namespace TetraScheduler
             }
             return -1;
         }
-
 
         private string encrypt_Password(string password)
         {
