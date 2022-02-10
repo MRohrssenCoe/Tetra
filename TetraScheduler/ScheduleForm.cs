@@ -28,6 +28,8 @@ namespace TetraScheduler
         // List of list of shifts to display
         private ListBox.ObjectCollection[] shiftArray;
 
+        // list of labels to display the hours
+        private Label[] hourLabels;
 
 
         public ScheduleForm()
@@ -66,6 +68,7 @@ namespace TetraScheduler
                 // read column name row
                 csvParser.ReadLine();
 
+                // TODO: interpret hours from csv (first and last shift on each day?)
 
                 //iteration through remaining rows
                 while (!csvParser.EndOfData)
@@ -163,9 +166,9 @@ namespace TetraScheduler
             // display and see if it saves properly
             DialogResult result = sd.ShowDialog();
 
-            if (result == DialogResult.OK)
+            if (result == DialogResult.OK) // if user confirms saving the file
             {
-                if ((myStream = sd.OpenFile()) != null)
+                if ((myStream = sd.OpenFile()) != null) // if it lets us open the file properly
                 {
                     byte[] ourFile = File.ReadAllBytes(schedPath);
                     // TODO: add error checking here for opening our file
