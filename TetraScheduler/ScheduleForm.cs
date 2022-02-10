@@ -5,6 +5,7 @@ using System.Collections;
 using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace TetraScheduler
 {
@@ -141,6 +142,43 @@ namespace TetraScheduler
         {
             // appends info about a shift to a given listbox - maybe unnecessary
             items.Add(String.Format("{0} - {1}: {2}", startTime, endTime, consultants));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // lets user save CSV to anywhere they want
+
+            // Think we have to use streams with SaveFileDialog?
+            Stream myStream;
+
+            // dialog preferences
+            SaveFileDialog sd = new SaveFileDialog();
+            sd.Filter = "CSV (Comma delimited) |*.csv";
+            sd.FilterIndex = 0;
+            sd.AddExtension = true;
+            sd.DefaultExt = "csv";
+            sd.FileName = "Schedule.csv";
+
+            
+            // display and see if it saves properly
+            DialogResult result = sd.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if ((myStream = sd.OpenFile()) != null)
+                {
+                    byte[] ourFile = File.ReadAllBytes(schedPath);
+                    // TODO: add error checking here for opening our file
+                    myStream.Write(ourFile);
+                    myStream.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("The program was unable to save your file");
+                }
+            }
+
         }
     }
 
