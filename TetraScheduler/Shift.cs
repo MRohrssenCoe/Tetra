@@ -6,6 +6,7 @@ namespace TetraScheduler
 {
     internal class Shift
     {
+        //untested
         struct User
         {
             public string FirstName;
