@@ -10,6 +10,7 @@ namespace TetraScheduler
         List<Shift>[] shifts;
         int numDaysOpen = 5;
         int shiftLengthMinutes = 60;
+        //Times in minutes!!!
         int dayStartTime = 540;
         int dayEndTime = 1020;
         public Schedule(int nDO, int sLM, int dST, int dET)
