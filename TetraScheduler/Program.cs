@@ -44,8 +44,8 @@ namespace TetraScheduler
                 sb.AppendLine(tempCSV);
 
                 // remove dummy data later
-                sb.AppendLine("Sunday, 2:00, 2:30, Bob");
-                sb.AppendLine("Monday, 1:00, 2:00, Bob");
+                sb.AppendLine("Sunday, 2:00, 3:00, Bob");
+                sb.AppendLine("Sunday, 3:00, 4:00, Ashley");
                 sb.AppendLine("Tuesday, 3:00, 3:30, Bob");
                 sb.AppendLine("Tuesday, 3:30, 4:30, Bob");
                 sb.AppendLine("Wednesday, 2:00, 2:30, Bob");
