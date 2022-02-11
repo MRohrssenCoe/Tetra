@@ -59,7 +59,7 @@ namespace TetraScheduler
                 {
                     ScheduleForm f2 = new ScheduleForm();
                     f2.Show();
-                    new AdminMenuForm("Test").Show();
+                    new AdminMenuForm(username).Show();
                 }
                 else
                 {

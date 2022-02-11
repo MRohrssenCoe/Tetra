@@ -82,6 +82,7 @@ namespace TetraScheduler
             // sat_listbox
             // 
             this.sat_listbox.FormattingEnabled = true;
+            this.sat_listbox.HorizontalScrollbar = true;
             this.sat_listbox.ItemHeight = 15;
             this.sat_listbox.Location = new System.Drawing.Point(1074, 3);
             this.sat_listbox.Name = "sat_listbox";
@@ -91,6 +92,7 @@ namespace TetraScheduler
             // fri_listbox
             // 
             this.fri_listbox.FormattingEnabled = true;
+            this.fri_listbox.HorizontalScrollbar = true;
             this.fri_listbox.ItemHeight = 15;
             this.fri_listbox.Location = new System.Drawing.Point(897, 3);
             this.fri_listbox.Name = "fri_listbox";
@@ -100,6 +102,7 @@ namespace TetraScheduler
             // wed_listbox
             // 
             this.wed_listbox.FormattingEnabled = true;
+            this.wed_listbox.HorizontalScrollbar = true;
             this.wed_listbox.ItemHeight = 15;
             this.wed_listbox.Location = new System.Drawing.Point(543, 3);
             this.wed_listbox.Name = "wed_listbox";
@@ -109,6 +112,7 @@ namespace TetraScheduler
             // thurs_listbox
             // 
             this.thurs_listbox.FormattingEnabled = true;
+            this.thurs_listbox.HorizontalScrollbar = true;
             this.thurs_listbox.ItemHeight = 15;
             this.thurs_listbox.Location = new System.Drawing.Point(720, 3);
             this.thurs_listbox.Name = "thurs_listbox";
@@ -118,6 +122,7 @@ namespace TetraScheduler
             // tues_listbox
             // 
             this.tues_listbox.FormattingEnabled = true;
+            this.tues_listbox.HorizontalScrollbar = true;
             this.tues_listbox.ItemHeight = 15;
             this.tues_listbox.Location = new System.Drawing.Point(366, 3);
             this.tues_listbox.Name = "tues_listbox";
@@ -127,6 +132,7 @@ namespace TetraScheduler
             // mon_listbox
             // 
             this.mon_listbox.FormattingEnabled = true;
+            this.mon_listbox.HorizontalScrollbar = true;
             this.mon_listbox.ItemHeight = 15;
             this.mon_listbox.Location = new System.Drawing.Point(189, 3);
             this.mon_listbox.Name = "mon_listbox";
@@ -137,6 +143,7 @@ namespace TetraScheduler
             // 
             this.sun_listbox.ColumnWidth = 10;
             this.sun_listbox.FormattingEnabled = true;
+            this.sun_listbox.HorizontalScrollbar = true;
             this.sun_listbox.ItemHeight = 15;
             this.sun_listbox.Location = new System.Drawing.Point(12, 3);
             this.sun_listbox.MultiColumn = true;

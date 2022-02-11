@@ -83,6 +83,8 @@ namespace TetraScheduler
                     string endTime = fields[2];
                     string consultants = fields[3];
 
+
+
                     // different box to display for each day
                     switch (weekDay) // todo: can optimize this with indexing shiftArray
                     {

@@ -16,8 +16,11 @@ namespace TetraScheduler
         {
             InitializeComponent();
 
-            // set dateTime format properly
+            // fun little greeting :)
+            // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
+
+            // set dateTime format properly
             startBusy.Format = DateTimePickerFormat.Custom;
             startBusy.CustomFormat = "hh:mm tt";
             startBusy.ShowUpDown = true;
