@@ -14,6 +14,7 @@ namespace TetraScheduler
 {
     public partial class LoginForm : Form
     {
+        // password file path in %appdata% folder
         String passwordFileString = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
             "TetraScheduler/SchedulerPasswords.txt"
@@ -39,6 +40,9 @@ namespace TetraScheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // login button functionality
+
+
             String username = textBox1.Text;
             String password = textBox2.Text;
 
@@ -55,6 +59,7 @@ namespace TetraScheduler
                 {
                     ScheduleForm f2 = new ScheduleForm();
                     f2.Show();
+                    new AdminMenuForm("Test").Show();
                 }
                 else
                 {
@@ -71,7 +76,7 @@ namespace TetraScheduler
             tokens = usersPasswords.Split(',');
             for (int i = 0; i < tokens.Length; i += 3)
             {
-                UsernamePassword usernamePassword = new UsernamePassword();
+                UsernamePassword usernamePassword = new UsernamePassword(); // do we need a struct for this?
                 usernamePassword.username = tokens[i];
                 usernamePassword.password = tokens[i + 1];
                 usernamePassword.accountType = tokens[i + 2];
