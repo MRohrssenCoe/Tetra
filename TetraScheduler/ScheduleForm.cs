@@ -37,9 +37,8 @@ namespace TetraScheduler
             InitializeComponent();
 
             // get appdata file location
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string specificFolder = Path.Combine(folder, "TetraScheduler");
-            this.schedPath = Path.Combine(specificFolder, "TetraSchedule.csv");
+            string specificFolder = Constants.AppDataFolder;
+            schedPath = Path.Combine(specificFolder, "TetraSchedule.csv");
 
             // initialize shift OCs
             this.sunShifts = new ListBox.ObjectCollection(sun_listbox);

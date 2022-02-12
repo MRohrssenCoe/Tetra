@@ -55,13 +55,15 @@ namespace TetraScheduler
             {
                 int validatationCode = validate_Credentials(username, password);
                 //TODO: make this split into different logins
-                if (validatationCode == 0 || validatationCode == 1 || validatationCode == 2)
+                if(validatationCode == 0)
                 {
-                    ScheduleForm f2 = new ScheduleForm();
-                    f2.Show();
+                    new ConsultantMenuForm().Show();
+                }
+                if (validatationCode == 1 || validatationCode == 2)
+                {
                     new AdminMenuForm(username).Show();
                 }
-                else
+                if(validatationCode == -1)
                 {
                     MessageBox.Show("Invalid credentials!");
                 }
