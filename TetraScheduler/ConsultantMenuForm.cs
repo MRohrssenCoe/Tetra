@@ -70,5 +70,10 @@ namespace TetraScheduler
         {
 
         }
+
+        private void ConsultantMenuForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
