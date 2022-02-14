@@ -77,6 +77,7 @@ namespace TetraScheduler
                         {
                             //write new user and password to file
                             //UNTESTED UNTESTED
+                            // todo: change so can't re-enter same password, don't have trailing comma bc it messes up tokenizing, don't overwrite other usernames/passwords
                             string pswdFile = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
                             FileStream fs = File.Open(pswdFile, FileMode.Truncate);
                             string tempText = changePswdBox.UsernameReturn + "," + changePswdBox.PasswordReturn + "," + "1" + ",";
