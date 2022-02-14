@@ -31,6 +31,8 @@ namespace TetraScheduler
         {
             
             InitializeComponent();
+            // add our logo
+            // button for 'show password'?
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,6 +51,7 @@ namespace TetraScheduler
             if (username.Length == 0 || password.Length == 0)
             {
                 MessageBox.Show("Username/Password cannot be empty!");
+                // add more error visuals?
             }
 
             else

@@ -44,7 +44,7 @@ namespace TetraScheduler
                 }
             }
         }
-        public void AssignUser(string fn, string ln, int day, int shiftNumber)
+        public void AssignUser(string fn, string ln, int day, int shiftNumber) // todo: change fn/ln to user objects
         {
             shifts[day][shiftNumber].AddUser(fn, ln);
         }
