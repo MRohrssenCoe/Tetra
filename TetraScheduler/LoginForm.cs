@@ -55,21 +55,46 @@ namespace TetraScheduler
             {
                 int validatationCode = validate_Credentials(username, password);
                 //TODO: make this split into different logins
-                if(validatationCode == 0)
+                if (validatationCode == 0)
                 {
                     new ConsultantMenuForm().Show();
                 }
-                if (validatationCode == 1 || validatationCode == 2)
+                if (validatationCode == 1)
                 {
                     new AdminMenuForm(username).Show();
                 }
-                if(validatationCode == -1)
+                if (validatationCode == 2)
+                {
+                    bool passwordIsDefault = true;
+                    while (passwordIsDefault)
+                    {
+                        PasswordChangeBox changePswdBox = new PasswordChangeBox();
+                        changePswdBox.ShowDialog();
+                        if (changePswdBox.DialogResult == DialogResult.OK)
+                        {
+                            //write new user and password to file
+                            //UNTESTED UNTESTED
+                            string pswdFile = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
+                            FileStream fs = File.Open(pswdFile, FileMode.Truncate);
+                            string tempText = changePswdBox.UsernameReturn + "," + changePswdBox.PasswordReturn + "," + "1" + ",";
+                            fs.Write(System.Text.Encoding.ASCII.GetBytes(tempText), 0, tempText.Length);
+                            fs.Close();
+                            passwordIsDefault = false;
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Default password not changed!");
+                        }
+                    }
+                }
+                if (validatationCode == -1)
                 {
                     MessageBox.Show("Invalid credentials!");
                 }
+
             }
         }
-
         //Returns a validation code for credentials. 0 is a consultant account, 1 is an admin account, and 2 is the default admin account
         private int validate_Credentials(String username, String password)
         {
