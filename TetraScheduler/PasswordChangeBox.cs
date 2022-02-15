@@ -18,6 +18,7 @@ namespace TetraScheduler
             InitializeComponent();
             AdminUsernameBox.Text = "Username...";
             AdminPasswordBox.Text = "Password...";
+            AdminPasswordBox.PasswordChar = '\0';
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,6 +50,8 @@ namespace TetraScheduler
             {
                 AdminPasswordBox.Text = "";
             }
+            AdminPasswordBox.PasswordChar = '*';
+
         }
 
         private void AdminPasswordBox_Leave(object sender, EventArgs e)
@@ -56,6 +59,7 @@ namespace TetraScheduler
             if (AdminPasswordBox.Text == "")
             {
                 AdminPasswordBox.Text = "Password...";
+                AdminPasswordBox.PasswordChar = '\0';
             }
         }
     }

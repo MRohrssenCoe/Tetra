@@ -31,6 +31,9 @@ namespace TetraScheduler
         {
             
             InitializeComponent();
+            textBox1.Text = "Username...";
+            textBox2.Text = "Password...";
+            textBox2.PasswordChar = '\0';
             // add our logo
             // button for 'show password'?
         }
@@ -135,6 +138,40 @@ namespace TetraScheduler
         {
             // password encryption - if we have time
             return password;
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Username...")
+            {
+                textBox1.Text = "";
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if(textBox1.Text == "")
+            {
+                textBox1.Text = "Username...";
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Password...")
+            {
+                textBox2.Text = "";
+            }
+            textBox2.PasswordChar = '*';
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.PasswordChar = '\0';
+                textBox2.Text = "Password...";
+            }
         }
     }
 }
