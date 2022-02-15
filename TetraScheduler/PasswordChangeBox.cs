@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -13,8 +14,10 @@ namespace TetraScheduler
         public string UsernameReturn { get; set; }
         public string PasswordReturn { get; set; }
         public PasswordChangeBox()
-        {
+        { 
             InitializeComponent();
+            AdminUsernameBox.Text = "Username...";
+            AdminPasswordBox.Text = "Password...";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,9 +27,36 @@ namespace TetraScheduler
             this.DialogResult = DialogResult.OK;
         }
 
-        private void PasswordChangeBox_Load(object sender, EventArgs e)
+        private void AdminUsernameBox_Leave(object sender, EventArgs e)
         {
+            if (AdminUsernameBox.Text == "")
+            {
+                AdminUsernameBox.Text = "Username...";
+            }
+        }
 
+        private void AdminUsernameBox_Enter(object sender, EventArgs e)
+        {
+            if (AdminUsernameBox.Text == "Username...")
+            {
+                AdminUsernameBox.Text = "";
+            }
+        }
+
+        private void AdminPasswordBox_Enter(object sender, EventArgs e)
+        {
+            if (AdminPasswordBox.Text == "Password...")
+            {
+                AdminPasswordBox.Text = "";
+            }
+        }
+
+        private void AdminPasswordBox_Leave(object sender, EventArgs e)
+        {
+            if (AdminPasswordBox.Text == "")
+            {
+                AdminPasswordBox.Text = "Password...";
+            }
         }
     }
 }
