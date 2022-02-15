@@ -40,7 +40,7 @@ namespace TetraScheduler
 
                 // remove dummy data later
                 // maybe add default shifts for each hour and selectively read them based on open hours
-                sb.AppendLine("Sunday, 2:00, 2:30, Bob");
+                sb.AppendLine("Sunday, 2:00, 2:30, 'Bob, Alice, Jane, Katya, Will, Michael, Ashley'"); // todo: figure out how to write multiple
                 sb.AppendLine("Monday, 1:00, 2:00, Bob");
                 sb.AppendLine("Tuesday, 3:00, 3:30, Bob");
                 sb.AppendLine("Tuesday, 3:30, 4:30, Bob");

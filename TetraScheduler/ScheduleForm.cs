@@ -5,6 +5,7 @@ using System.Collections;
 using Microsoft.VisualBasic.FileIO;
 using System.Diagnostics;
 using System.IO;
+using System.Drawing;
 using System.Text;
 
 namespace TetraScheduler
@@ -38,7 +39,7 @@ namespace TetraScheduler
 
             // get appdata file location
             string specificFolder = Constants.AppDataFolder;
-            schedPath = Path.Combine(specificFolder, "TetraSchedule.csv");
+            schedPath = Path.Combine(specificFolder, Constants.scheduleFileName);
 
             // initialize shift OCs
             this.sunShifts = new ListBox.ObjectCollection(sun_listbox);
@@ -50,7 +51,6 @@ namespace TetraScheduler
             this.satShifts = new ListBox.ObjectCollection(sat_listbox);
 
             shiftArray = new ListBox.ObjectCollection[] {this.sunShifts, this.monShifts, this.tuesShifts, this.wedShifts, this.thursShifts, this.friShifts, this.satShifts};
-
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -132,6 +132,7 @@ namespace TetraScheduler
                 }
             }
 
+
             // end of function
         }
 
@@ -172,7 +173,7 @@ namespace TetraScheduler
                 if ((myStream = sd.OpenFile()) != null) // if it lets us open the file properly
                 {
                     byte[] ourFile = File.ReadAllBytes(schedPath);
-                    // TODO: add error checking here for opening our file
+                    // TODO: add error checking here for opening our file, put up error box to prevent crashing
                     myStream.Write(ourFile);
                     myStream.Close();
                 }
