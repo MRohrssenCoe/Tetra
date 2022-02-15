@@ -14,6 +14,8 @@ namespace TetraScheduler
             public string LastName;
         }
         private List<User> users;
+        public int startTime { get; set; }
+        public int endTime { get; set; }
         public Shift()
         {
             users = new List<User>();

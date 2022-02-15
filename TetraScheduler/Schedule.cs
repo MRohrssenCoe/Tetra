@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TetraScheduler
 {
-    internal class Schedule
+    public class Schedule
     {
         //untested
         List<Shift>[] shifts;
@@ -27,6 +27,8 @@ namespace TetraScheduler
                 for (int i = dayStartTime; i <= dayEndTime; i += shiftLengthMinutes)
                 {
                     Shift shift = new Shift();
+                    shift.startTime = i;
+                    shift.endTime = i + shiftLengthMinutes;
                     shifts[j].Add(shift);
                 }
             }
