@@ -76,50 +76,36 @@ namespace TetraScheduler
                     string[] fields = csvParser.ReadFields();
 
                     // separate each column within the row
-                    string weekDay = fields[0];
-                    Debug.WriteLine(weekDay);
-                    string startTime = fields[1];
-                    string endTime = fields[2];
-                    string consultants = fields[3];
+                    string timeSlot = fields[0];
+                    Debug.WriteLine(timeSlot);
+                    string Sunday = fields[1];
+                    string Monday = fields[2];
+                    string Tuesday = fields[3];
+                    string Wednesday = fields[4];
+                    string Thursday = fields[5];
+                    string Friday = fields[6];
+                    string Saturday = fields[7];
 
 
 
                     // different box to display for each day
-                    switch (weekDay) // todo: can optimize this with indexing shiftArray
-                    {
-                        case "Sunday":
-                            Debug.WriteLine("Sunday");
-                            addShiftString(sunShifts, startTime, endTime, consultants);
-                            break;
-                        case "Monday":
-                            Debug.WriteLine("Monday");
-                            addShiftString(monShifts, startTime, endTime, consultants);
-                            break;
-                        case "Tuesday":
-                            Debug.WriteLine("Tuesday");
-                            addShiftString(tuesShifts, startTime, endTime, consultants);
-                            break;
-                        case "Wednesday":
-                            Debug.WriteLine("Wednesday");
-                            addShiftString(wedShifts, startTime, endTime, consultants);
-                            break;
-                        case "Thursday":
-                            Debug.WriteLine("Tuesday");
-                            addShiftString(thursShifts, startTime, endTime, consultants);
-                            break;
-                        case "Friday":
-                            Debug.WriteLine("Friday");
-                            addShiftString(friShifts, startTime, endTime, consultants);
-                            break;
-                        case "Saturday":
-                            Debug.WriteLine("Saturday");
-                            addShiftString(satShifts, startTime, endTime, consultants);
-                            break;
-                        default:
-                            Debug.WriteLine("Invalid date");
-                            break;
 
-                    }
+
+                    Debug.WriteLine("Sunday");
+                    addShiftString(sunShifts, timeSlot, Sunday);
+                    Debug.WriteLine("Monday");
+                    addShiftString(monShifts, timeSlot, Monday);
+                    Debug.WriteLine("Tuesday");
+                    addShiftString(tuesShifts, timeSlot, Tuesday);
+                    Debug.WriteLine("Wednesday");
+                    addShiftString(wedShifts, timeSlot, Wednesday);
+                    Debug.WriteLine("Thursday");
+                    addShiftString(thursShifts, timeSlot, Thursday);
+                    Debug.WriteLine("Friday");
+                    addShiftString(friShifts, timeSlot, Friday);
+                    Debug.WriteLine("Saturday");
+                    addShiftString(satShifts, timeSlot, Saturday);
+
                 }
             }
 
@@ -143,10 +129,10 @@ namespace TetraScheduler
             // returns schedule object
         }
 
-        private void addShiftString(ListBox.ObjectCollection items, String startTime, String endTime, String consultants)
+        private void addShiftString(ListBox.ObjectCollection items, String slot, String consultants)
         {
             // appends info about a shift to a given listbox - maybe unnecessary
-            items.Add(String.Format("{0} - {1}: {2}", startTime, endTime, consultants));
+            items.Add(String.Format("{0}: {1}", slot, consultants));
         }
 
         private void button1_Click(object sender, EventArgs e)
