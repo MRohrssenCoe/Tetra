@@ -14,12 +14,18 @@ namespace TetraScheduler
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            /// setting up a project directory
 
+            // setting up a project directory
             string tetraFolder = Constants.AppDataFolder;
             Directory.CreateDirectory(tetraFolder);
+
+            //directory to store user info
+            string userInfoFolder = Path.Combine(tetraFolder, Constants.userPreferencesFolder);
+            Directory.CreateDirectory(userInfoFolder);
+
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string scheduleFile = Path.Combine(tetraFolder, Constants.scheduleFileName);
+            
 
             // on first run - creates data files
             //TODO if someone deletes the passwords file it will regenerate the default password file, which just lets anyone become the admin.
@@ -30,6 +36,7 @@ namespace TetraScheduler
                 String tempText = "admin,password,2";
                 fs.Write(System.Text.Encoding.ASCII.GetBytes(tempText), 0, tempText.Length);
                 fs.Close();
+
             }
             if (!File.Exists(scheduleFile))
             {
@@ -53,6 +60,7 @@ namespace TetraScheduler
                 //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
                 //fs.Close();
             }
+
             // starts at login form
             Application.Run(new LoginForm());
         }
