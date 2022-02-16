@@ -14,6 +14,8 @@ namespace TetraScheduler
             public string LastName;
         }
         private List<User> users;
+        public int startTime { get; set; }
+        public int endTime { get; set; }
         public Shift()
         {
             users = new List<User>();
@@ -21,10 +23,23 @@ namespace TetraScheduler
 
         public void AddUser(string fn, string ln)
         {
-            User user = new User();
-            user.FirstName = fn;
-            user.LastName = ln;
-            users.Add(user);
+            int index = -1;
+            foreach (User u in users)
+            {
+                if (u.FirstName == fn && u.LastName == ln)
+                {
+                    index = users.IndexOf(u);
+                }
+            }
+            if (index == -1)
+            {
+                User user = new User();
+                user.FirstName = fn;
+                user.LastName = ln;
+                users.Add(user);
+            } else {
+                Debug.WriteLine("User already exists in this shift: " + fn + ", " + ln);
+            }
         }
         public void RemoveUser(string fn, string ln)
         {
