@@ -54,24 +54,7 @@ namespace TetraScheduler
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(283, 417);
             this.panel1.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 215);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Password";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 145);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
+            
             // 
             // textBox2
             // 
@@ -115,7 +98,6 @@ namespace TetraScheduler
             this.pictureBox1.Size = new System.Drawing.Size(163, 41);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // LoginForm
             // 
