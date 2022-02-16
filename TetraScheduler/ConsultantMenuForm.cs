@@ -72,32 +72,36 @@ namespace TetraScheduler
         {
             // save info button
 
+            // get majors
             int numMajors = checkedListBox1.CheckedItems.Count;
 
-            if (numMajors == 0)
+            if (numMajors == 0) // none selected - have to at least select "undeclared"
             {
                 MessageBox.Show("Select at least one major!");
+                return;
             }
-            else
-            {
-                // testing grabbing majors from list - add more major options in the checkedListBox items property
-                // add minors in this category? or separate
-                string[] majors = new string[checkedListBox1.CheckedItems.Count];
-                StringBuilder majorString = new StringBuilder();
-                checkedListBox1.CheckedItems.CopyTo(majors, 0);
-                Debug.WriteLine("Majors:");
-                foreach (string major in majors)
-                {
-                    Debug.WriteLine(major);
-                    majorString.Append(major + ",");
-                }
-                if (majorString.Length > 0)
-                {
-                    majorString.Remove(majorString.Length-1,1); // strip trailing comma? maybe unnecessary
-                }
 
-                Debug.WriteLine("String rep: " + majorString.ToString());
+            // testing grabbing majors from list - add more major options in the checkedListBox items property
+            // add minors in this category? or separate
+            string[] majors = new string[checkedListBox1.CheckedItems.Count];
+            StringBuilder majorString = new StringBuilder();
+            // get list from checkboxes
+            checkedListBox1.CheckedItems.CopyTo(majors, 0);
+
+            //build string rep
+            foreach (string major in majors)
+            {
+                majorString.Append(major + ",");
             }
+
+            // strip trailing comma? maybe unnecessary
+            if (majorString.Length > 0)
+            {
+                majorString.Remove(majorString.Length-1,1); 
+            }
+
+            Debug.WriteLine("String rep: " + majorString.ToString());
+            // write this + other info to file
         }
 
         private void ConsultantMenuForm_Load(object sender, EventArgs e)
