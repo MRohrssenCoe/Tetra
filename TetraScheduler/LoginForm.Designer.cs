@@ -31,8 +31,6 @@ namespace TetraScheduler
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -83,6 +81,9 @@ namespace TetraScheduler
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(197, 27);
             this.textBox2.TabIndex = 2;
+            this.textBox2.Click += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // textBox1
             // 
@@ -91,6 +92,9 @@ namespace TetraScheduler
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(197, 27);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // button1
             // 

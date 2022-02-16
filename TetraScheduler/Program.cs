@@ -22,7 +22,7 @@ namespace TetraScheduler
             string scheduleFile = Path.Combine(tetraFolder, Constants.scheduleFileName);
 
             // on first run - creates data files
-
+            //TODO if someone deletes the passwords file it will regenerate the default password file, which just lets anyone become the admin.
             if (!File.Exists(pswdFile))
             {
                 FileStream fs = File.Open(pswdFile, FileMode.Create);

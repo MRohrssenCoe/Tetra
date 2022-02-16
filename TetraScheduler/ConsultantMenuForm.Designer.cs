@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.saveInfoButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,8 +38,8 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.button2 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -55,15 +55,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // button3
+            // saveInfoButton
             // 
-            this.button3.Location = new System.Drawing.Point(12, 398);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(97, 37);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Save Info";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.saveInfoButton.Location = new System.Drawing.Point(12, 398);
+            this.saveInfoButton.Name = "saveInfoButton";
+            this.saveInfoButton.Size = new System.Drawing.Size(97, 37);
+            this.saveInfoButton.TabIndex = 17;
+            this.saveInfoButton.Text = "Save Info";
+            this.saveInfoButton.UseVisualStyleBackColor = true;
+            this.saveInfoButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox3
             // 
@@ -138,6 +138,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Availability";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(218, 44);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 37);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Select Availability";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // listView1
             // 
             this.listView1.HideSelection = false;
@@ -148,15 +158,6 @@
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(218, 44);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 37);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "Select Availability";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // ConsultantMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -165,9 +166,10 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.saveInfoButton);
             this.Name = "ConsultantMenuForm";
             this.Text = "ConsultantMenuForm";
+            this.Load += new System.EventHandler(this.ConsultantMenuForm_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -189,5 +191,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button saveInfoButton;
     }
 }

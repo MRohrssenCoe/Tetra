@@ -10,6 +10,7 @@ namespace TetraScheduler
 {
     public partial class ConsultantMenuForm : Form
     {
+        Schedule consultantAvailability;
         public ConsultantMenuForm()
         {
             InitializeComponent();
@@ -69,6 +70,21 @@ namespace TetraScheduler
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ConsultantMenuForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SelectAvailabilityForm availForm = new SelectAvailabilityForm();
+            availForm.ShowDialog();
+            //show dialog pauses execution
+            consultantAvailability = availForm.AvailableSchedule;
+            //code here to display availability in consultant menu
+            availForm.Dispose();
         }
     }
 }

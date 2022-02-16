@@ -31,6 +31,11 @@ namespace TetraScheduler
         {
             
             InitializeComponent();
+            textBox1.Text = "Username...";
+            textBox2.Text = "Password...";
+            textBox2.PasswordChar = '\0';
+            // add our logo
+            // button for 'show password'?
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,26 +54,54 @@ namespace TetraScheduler
             if (username.Length == 0 || password.Length == 0)
             {
                 MessageBox.Show("Username/Password cannot be empty!");
+                // add more error visuals?
             }
 
             else
             {
                 int validatationCode = validate_Credentials(username, password);
-                if(validatationCode == 0)
+                //TODO: make this split into different logins
+                if (validatationCode == 0)
                 {
                     new ConsultantMenuForm().Show();
                 }
-                if (validatationCode == 1 || validatationCode == 2)
+                if (validatationCode == 1)
                 {
                     new AdminMenuForm(username).Show();
                 }
-                if(validatationCode == -1)
+                if (validatationCode == 2)
+                {
+                    bool passwordIsDefault = true;
+                    while (passwordIsDefault)
+                    {
+                        PasswordChangeBox changePswdBox = new PasswordChangeBox();
+                        changePswdBox.ShowDialog();
+                        if (changePswdBox.DialogResult == DialogResult.OK)
+                        {
+                            //write new user and password to file
+                            //UNTESTED UNTESTED
+                            // todo: change so can't re-enter same password, don't have trailing comma bc it messes up tokenizing, don't overwrite other usernames/passwords
+                            string pswdFile = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
+                            FileStream fs = File.Open(pswdFile, FileMode.Truncate);
+                            string tempText = changePswdBox.UsernameReturn + "," + changePswdBox.PasswordReturn + "," + "1" + ",";
+                            fs.Write(System.Text.Encoding.ASCII.GetBytes(tempText), 0, tempText.Length);
+                            fs.Close();
+                            passwordIsDefault = false;
+                        }
+                        else
+                        {
+
+                            MessageBox.Show("Default password not changed!");
+                        }
+                    }
+                }
+                if (validatationCode == -1)
                 {
                     MessageBox.Show("Invalid credentials!");
                 }
+
             }
         }
-
         //Returns a validation code for credentials. 0 is a consultant account, 1 is an admin account, and 2 is the default admin account
         private int validate_Credentials(String username, String password)
         {
@@ -107,9 +140,38 @@ namespace TetraScheduler
             return password;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void textBox1_Enter(object sender, EventArgs e)
         {
+            if (textBox1.Text == "Username...")
+            {
+                textBox1.Text = "";
+            }
+        }
 
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if(textBox1.Text == "")
+            {
+                textBox1.Text = "Username...";
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Password...")
+            {
+                textBox2.Text = "";
+            }
+            textBox2.PasswordChar = '*';
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.PasswordChar = '\0';
+                textBox2.Text = "Password...";
+            }
         }
     }
 }
