@@ -54,7 +54,6 @@ namespace TetraScheduler
             else
             {
                 int validatationCode = validate_Credentials(username, password);
-                //TODO: make this split into different logins
                 if(validatationCode == 0)
                 {
                     new ConsultantMenuForm().Show();
@@ -106,6 +105,11 @@ namespace TetraScheduler
         {
             // password encryption - if we have time
             return password;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
