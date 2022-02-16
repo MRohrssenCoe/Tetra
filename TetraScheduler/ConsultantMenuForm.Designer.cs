@@ -83,6 +83,11 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Accounting",
+            "Computer Science",
+            "Physics",
+            "Psychology"});
             this.checkedListBox1.Location = new System.Drawing.Point(6, 75);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.ScrollAlwaysVisible = true;
