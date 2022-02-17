@@ -79,7 +79,6 @@
             this.Controls.Add(this.AdminUsernameBox);
             this.Name = "PasswordChangeBox";
             this.Text = "PasswordChangeBox";
-            this.Load += new System.EventHandler(this.PasswordChangeBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -24,7 +24,7 @@ namespace TetraScheduler
             {
                 shifts[j] = new List<Shift>();
 
-                for (int i = dayStartTime; i <= dayEndTime; i += shiftLengthMinutes)
+                for (int i = dayStartTime; i < dayEndTime; i += shiftLengthMinutes)
                 {
                     Shift shift = new Shift();
                     shift.startTime = i;
@@ -39,7 +39,7 @@ namespace TetraScheduler
             for (int j = 0; j < numDaysOpen; j++)
             {
                 shifts[j] = new List<Shift>();
-                for (int i = dayStartTime; i <= dayEndTime; i += shiftLengthMinutes)
+                for (int i = dayStartTime; i < dayEndTime; i += shiftLengthMinutes)
                 {
                     Shift shift = new Shift();
                     shifts[j].Add(shift);
