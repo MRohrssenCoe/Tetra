@@ -14,48 +14,61 @@ namespace TetraScheduler
     {
         Schedule consultantAvailability;
         Dictionary<string, string> userInfo;
+        private string uInfoFile;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
             userInfo = new Dictionary<string, string>();
+            this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".txt");
             importUserInfo(username);
         }
 
 
         private void importUserInfo(string username){
+            // todo: check for missing info (ex: entire line deleted)
             // open file linked to username
-            string path = Path.Combine(Constants.userPreferencesFolder, username + ".txt");
-            if (!File.Exists(path)){
-                FileStream userInfo = File.Open(path, FileMode.Create);
+
+            // creates file if not there
+            if (!File.Exists(this.uInfoFile)){
+                FileStream userInfo = File.Open(this.uInfoFile, FileMode.Create);
                 userInfo.Write(Encoding.ASCII.GetBytes(String.Join("\n", Constants.userInfoLines)));
                 userInfo.Close();
             }
             else // read in info and update UI
             {
-                string[] settings = File.ReadAllLines(path);
+                string[] settings = File.ReadAllLines(this.uInfoFile);
                 foreach (string line in settings)
                 {
                     int sep = line.IndexOf("=");
                     string settingName = line.Substring(0, sep);
                     string settingPrefs = line.Substring(sep+1).Trim();
+                    // put into dictionary - maybe just learn how to use JSON instead?
                     userInfo[settingName] = settingPrefs;
                 }
-                // can probably optimize this...
 
+                // fill first name box
                 fnameTextbox.Text = userInfo["fname"];
+                // fill last name box
                 lnameTextbox.Text = userInfo["lname"];
+                // fill major checkboxes
                 string[] majors = userInfo["majors"].Split(";");
                 foreach (string major in majors)
                 {
-                    // todo: map index in listbox to each major
+                    // checks applicable boxes
+                    if (major.Length > 0)
+                    {
+                        int index = majorListbox.Items.IndexOf(major);
+                        majorListbox.SetItemChecked(index, true);
+                    }
                 }
 
-                expNumPicker.Value = userInfo["expNum"].Length == 0 ? 0 : Int32.Parse(userInfo["expNum"]);
+                // fill # of semesters of experience box
+                expNumPicker.Value = userInfo["expSem"].Length == 0 ? 0 : Int32.Parse(userInfo["expSem"]);
                 
-                // todo: parse shifts
+                // todo: box for school year
 
+                // todo: parse shifts after figuring out availability format
             }
-            // fill in spaces with appropriate info
 
         }
 
@@ -71,7 +84,7 @@ namespace TetraScheduler
         }
 
         private string majorsSelected()
-        {
+        {   // returns string representation of which majors were selected in the listbox
             int numMajors = majorListbox.CheckedItems.Count;
 
             if (numMajors == 0)
@@ -100,6 +113,17 @@ namespace TetraScheduler
             return majorString.ToString();
         }
 
+        private string fillUserInfoFile(Dictionary<string,string> values)
+        {
+            StringBuilder s = new StringBuilder();
+            foreach(KeyValuePair<string,string> pair in values) // order shouldn't matter?
+            {
+                s.AppendLine(pair.Key + "=" + pair.Value); 
+            }
+
+            return s.ToString();
+        }
+
         private void saveInfoButton_Click(object sender, EventArgs e)
         {
             // save info button
@@ -111,7 +135,17 @@ namespace TetraScheduler
             // add other info here
 
             // write dictionary to file here
+            try
+            {
+                File.WriteAllText(this.uInfoFile, fillUserInfoFile(this.userInfo));
+                MessageBox.Show("User info was saved!");
+            }
+            catch (IOException)
+            {
+                // some sort of error message here idk
+            }
         }
+
 
         private void ConsultantMenuForm_Load(object sender, EventArgs e)
         {
