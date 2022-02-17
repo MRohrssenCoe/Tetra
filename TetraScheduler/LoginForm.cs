@@ -64,7 +64,7 @@ namespace TetraScheduler
                 //TODO: make this split into different logins
                 if (validatationCode == 0)
                 {
-                    new ConsultantMenuForm().Show();
+                    new ConsultantMenuForm(username).Show();
                 }
                 if (validatationCode == 1)
                 {

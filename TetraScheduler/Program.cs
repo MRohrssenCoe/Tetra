@@ -20,8 +20,7 @@ namespace TetraScheduler
             Directory.CreateDirectory(tetraFolder);
 
             //directory to store user info
-            string userInfoFolder = Path.Combine(tetraFolder, Constants.userPreferencesFolder);
-            Directory.CreateDirectory(userInfoFolder);
+            Directory.CreateDirectory(Constants.userPreferencesFolder);
 
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string scheduleFile = Path.Combine(tetraFolder, Constants.scheduleFileName);
@@ -55,6 +54,7 @@ namespace TetraScheduler
                 sb.AppendLine("Thursday, 2:00, 3:00, Bob");
                 sb.AppendLine("Saturday, 2:00, 2:30, Bob");
 
+                
                 File.WriteAllText(scheduleFile, sb.ToString());
                 //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
                 //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
