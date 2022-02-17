@@ -8,7 +8,7 @@ namespace TetraScheduler
     {
         //untested
         List<Shift>[] shifts;
-        int numDaysOpen = 5;
+        int numDaysOpen = 7;
         int shiftLengthMinutes = 60;
         //Times in minutes!!!
         int dayStartTime = 540;

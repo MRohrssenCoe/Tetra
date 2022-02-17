@@ -15,6 +15,7 @@ namespace TetraScheduler
         public Schedule AvailableSchedule { get; set; }
         public SelectAvailabilityForm()
         {
+            AvailableSchedule = new Schedule();
             InitializeComponent();
         }
 
@@ -31,7 +32,8 @@ namespace TetraScheduler
             boxes.Add(sat_listbox);
 
             int i = 0;
-            foreach(ListBox box in boxes)
+            //pack them into availableSchedule
+            foreach (ListBox box in boxes)
             {
                 var indices = box.SelectedIndices;
                 foreach(int index in indices)
@@ -40,7 +42,7 @@ namespace TetraScheduler
                 }
                 i++;
             }
-            //pack them into availableSchedule
+            DialogResult = DialogResult.OK;
             //use SelectAvilabilityForm.availableSchedule in ConsultantMenu to display availability
         }
     }
