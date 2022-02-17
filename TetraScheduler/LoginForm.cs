@@ -43,9 +43,10 @@ namespace TetraScheduler
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void loginProcess()
         {
-            // login button functionality
+            // login button functionality - moved from onClick method so that Enter key can login too
 
 
             String username = textBox1.Text;
@@ -102,6 +103,11 @@ namespace TetraScheduler
 
             }
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loginProcess();
+        }
+
         //Returns a validation code for credentials. 0 is a consultant account, 1 is an admin account, and 2 is the default admin account
         private int validate_Credentials(String username, String password)
         {
@@ -171,6 +177,24 @@ namespace TetraScheduler
             {
                 textBox2.PasswordChar = '\0';
                 textBox2.Text = "Password...";
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // checks for enter pressed in the password box to submit login
+            if (e.KeyChar == (char)13)
+            {
+                loginProcess();
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // checks for enter pressed in the username box - move to password box?
+            if (e.KeyChar == (char)13)
+            {
+                textBox2.Focus();
             }
         }
     }
