@@ -32,12 +32,13 @@ namespace TetraScheduler
             boxes.Add(sat_listbox);
 
             int i = 0;
-            //pack them into availableSchedule
+            //loop through every box and all of the selected indices
             foreach (ListBox box in boxes)
             {
                 var indices = box.SelectedIndices;
                 foreach(int index in indices)
                 {
+                    //add selected shifts to available schedule under a dummy username
                     AvailableSchedule.AssignUser("Consultant", "Consultant", i, index);
                 }
                 i++;
