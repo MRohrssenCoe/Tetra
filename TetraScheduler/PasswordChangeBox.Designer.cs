@@ -36,32 +36,23 @@
             // 
             // AdminUsernameBox
             // 
-            this.AdminUsernameBox.Location = new System.Drawing.Point(296, 130);
-            this.AdminUsernameBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AdminUsernameBox.Location = new System.Drawing.Point(338, 173);
             this.AdminUsernameBox.Name = "AdminUsernameBox";
-            this.AdminUsernameBox.Size = new System.Drawing.Size(110, 23);
+            this.AdminUsernameBox.Size = new System.Drawing.Size(125, 27);
             this.AdminUsernameBox.TabIndex = 0;
-            this.AdminUsernameBox.Click += new System.EventHandler(this.AdminUsernameBox_Enter);
-            this.AdminUsernameBox.Enter += new System.EventHandler(this.AdminUsernameBox_Enter);
-            this.AdminUsernameBox.Leave += new System.EventHandler(this.AdminUsernameBox_Leave);
             // 
             // AdminPasswordBox
             // 
-            this.AdminPasswordBox.Location = new System.Drawing.Point(296, 188);
-            this.AdminPasswordBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AdminPasswordBox.Location = new System.Drawing.Point(338, 250);
             this.AdminPasswordBox.Name = "AdminPasswordBox";
-            this.AdminPasswordBox.Size = new System.Drawing.Size(110, 23);
+            this.AdminPasswordBox.Size = new System.Drawing.Size(125, 27);
             this.AdminPasswordBox.TabIndex = 1;
-            this.AdminPasswordBox.Click += new System.EventHandler(this.AdminPasswordBox_Enter);
-            this.AdminPasswordBox.Enter += new System.EventHandler(this.AdminPasswordBox_Enter);
-            this.AdminPasswordBox.Leave += new System.EventHandler(this.AdminPasswordBox_Leave);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(296, 250);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Location = new System.Drawing.Point(338, 333);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 22);
+            this.button1.Size = new System.Drawing.Size(125, 29);
             this.button1.TabIndex = 2;
             this.button1.Text = "Save Password";
             this.button1.UseVisualStyleBackColor = true;
@@ -70,24 +61,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(152, 87);
+            this.label1.Location = new System.Drawing.Point(225, 122);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(396, 15);
+            this.label1.Size = new System.Drawing.Size(350, 20);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Please enter a new username and password for the administrator account.";
+            this.label1.Text = "Enter new credentials for the administrator account:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // PasswordChangeBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.AdminPasswordBox);
             this.Controls.Add(this.AdminUsernameBox);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PasswordChangeBox";
             this.Text = "PasswordChangeBox";
+            this.Load += new System.EventHandler(this.PasswordChangeBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
