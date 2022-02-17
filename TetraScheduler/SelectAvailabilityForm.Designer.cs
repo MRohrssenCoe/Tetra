@@ -28,13 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sat_hour_label = new System.Windows.Forms.Label();
-            this.fri_hour_label = new System.Windows.Forms.Label();
-            this.thurs_hour_label = new System.Windows.Forms.Label();
-            this.wed_hour_label = new System.Windows.Forms.Label();
-            this.tues_hour_label = new System.Windows.Forms.Label();
-            this.mon_hour_label = new System.Windows.Forms.Label();
-            this.sun_hour_label = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,69 +46,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // sat_hour_label
-            // 
-            this.sat_hour_label.AutoSize = true;
-            this.sat_hour_label.Location = new System.Drawing.Point(1269, 100);
-            this.sat_hour_label.Name = "sat_hour_label";
-            this.sat_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.sat_hour_label.TabIndex = 50;
-            this.sat_hour_label.Text = "Put hours here";
-            // 
-            // fri_hour_label
-            // 
-            this.fri_hour_label.AutoSize = true;
-            this.fri_hour_label.Location = new System.Drawing.Point(1067, 100);
-            this.fri_hour_label.Name = "fri_hour_label";
-            this.fri_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.fri_hour_label.TabIndex = 49;
-            this.fri_hour_label.Text = "Put hours here";
-            // 
-            // thurs_hour_label
-            // 
-            this.thurs_hour_label.AutoSize = true;
-            this.thurs_hour_label.Location = new System.Drawing.Point(869, 100);
-            this.thurs_hour_label.Name = "thurs_hour_label";
-            this.thurs_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.thurs_hour_label.TabIndex = 48;
-            this.thurs_hour_label.Text = "Put hours here";
-            // 
-            // wed_hour_label
-            // 
-            this.wed_hour_label.AutoSize = true;
-            this.wed_hour_label.Location = new System.Drawing.Point(670, 100);
-            this.wed_hour_label.Name = "wed_hour_label";
-            this.wed_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.wed_hour_label.TabIndex = 47;
-            this.wed_hour_label.Text = "Put hours here";
-            // 
-            // tues_hour_label
-            // 
-            this.tues_hour_label.AutoSize = true;
-            this.tues_hour_label.Location = new System.Drawing.Point(474, 100);
-            this.tues_hour_label.Name = "tues_hour_label";
-            this.tues_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.tues_hour_label.TabIndex = 46;
-            this.tues_hour_label.Text = "Put hours here";
-            // 
-            // mon_hour_label
-            // 
-            this.mon_hour_label.AutoSize = true;
-            this.mon_hour_label.Location = new System.Drawing.Point(269, 100);
-            this.mon_hour_label.Name = "mon_hour_label";
-            this.mon_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.mon_hour_label.TabIndex = 45;
-            this.mon_hour_label.Text = "Put hours here";
-            // 
-            // sun_hour_label
-            // 
-            this.sun_hour_label.AutoSize = true;
-            this.sun_hour_label.Location = new System.Drawing.Point(62, 100);
-            this.sun_hour_label.Name = "sun_hour_label";
-            this.sun_hour_label.Size = new System.Drawing.Size(103, 20);
-            this.sun_hour_label.TabIndex = 44;
-            this.sun_hour_label.Text = "Put hours here";
             // 
             // label7
             // 
@@ -328,7 +258,7 @@
             "2PM-3PM",
             "3PM-4PM",
             "4PM-5PM"});
-            this.mon_listbox.Location = new System.Drawing.Point(216, 4);
+            this.mon_listbox.Location = new System.Drawing.Point(218, 4);
             this.mon_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mon_listbox.Name = "mon_listbox";
             this.mon_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -337,7 +267,6 @@
             // 
             // sun_listbox
             // 
-            this.sun_listbox.ColumnWidth = 10;
             this.sun_listbox.FormattingEnabled = true;
             this.sun_listbox.HorizontalScrollbar = true;
             this.sun_listbox.ItemHeight = 20;
@@ -352,7 +281,6 @@
             "4PM-5PM"});
             this.sun_listbox.Location = new System.Drawing.Point(14, 4);
             this.sun_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.sun_listbox.MultiColumn = true;
             this.sun_listbox.Name = "sun_listbox";
             this.sun_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.sun_listbox.Size = new System.Drawing.Size(194, 604);
@@ -374,13 +302,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1450, 868);
-            this.Controls.Add(this.sat_hour_label);
-            this.Controls.Add(this.fri_hour_label);
-            this.Controls.Add(this.thurs_hour_label);
-            this.Controls.Add(this.wed_hour_label);
-            this.Controls.Add(this.tues_hour_label);
-            this.Controls.Add(this.mon_hour_label);
-            this.Controls.Add(this.sun_hour_label);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -400,14 +321,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label sat_hour_label;
-        private System.Windows.Forms.Label fri_hour_label;
-        private System.Windows.Forms.Label thurs_hour_label;
-        private System.Windows.Forms.Label wed_hour_label;
-        private System.Windows.Forms.Label tues_hour_label;
-        private System.Windows.Forms.Label mon_hour_label;
-        private System.Windows.Forms.Label sun_hour_label;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
