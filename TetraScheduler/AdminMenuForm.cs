@@ -74,6 +74,12 @@ namespace TetraScheduler
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
         }
+
+        private void addAccountButton_Click(object sender, EventArgs e)
+        {
+            Form1 addForm = new Form1();
+            addForm.Show();
+        }
     }
 }
 

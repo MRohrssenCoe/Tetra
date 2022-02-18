@@ -271,6 +271,7 @@ namespace TetraScheduler
             this.addAccButton.TabIndex = 3;
             this.addAccButton.Text = "Add Account";
             this.addAccButton.UseVisualStyleBackColor = true;
+            this.addAccButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
             // label3
             // 
