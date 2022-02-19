@@ -161,5 +161,10 @@ namespace TetraScheduler
             //code here to display availability in consultant menu
             availForm.Dispose();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
