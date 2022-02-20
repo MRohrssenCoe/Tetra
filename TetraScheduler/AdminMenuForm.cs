@@ -10,7 +10,7 @@ namespace TetraScheduler
 {
     public partial class AdminMenuForm : Form
     {
-
+        Schedule busyShiftsSchedule;
         private ListBox.ObjectCollection busyShifts;
         public AdminMenuForm(String name)
         {
@@ -32,6 +32,8 @@ namespace TetraScheduler
 
             // adds collection object to listbox
             busyShifts = new ListBox.ObjectCollection(busyList);
+            //TODO check this code when we allow admin to change hours, etc.
+            busyShiftsSchedule = new Schedule();
         }
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
@@ -79,6 +81,16 @@ namespace TetraScheduler
         {
             Form1 addForm = new Form1();
             addForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SelectAvailabilityForm availForm = new SelectAvailabilityForm();
+            availForm.ShowDialog();
+            //show dialog pauses execution
+            busyShiftsSchedule = availForm.AvailableSchedule;
+            //code here to display availability in consultant menu
+            availForm.Dispose();
         }
     }
 }
