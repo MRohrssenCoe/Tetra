@@ -67,7 +67,7 @@ namespace TetraScheduler
                 
                 // todo: box for school year
 
-                // todo: parse shifts after figuring out availability format
+                // todo: GET AVAILABILITY SHIFTS HERE
             }
 
         }

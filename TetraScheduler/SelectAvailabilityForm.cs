@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace TetraScheduler
 {
@@ -45,6 +46,11 @@ namespace TetraScheduler
             }
             DialogResult = DialogResult.OK;
             //use SelectAvilabilityForm.availableSchedule in ConsultantMenu to display availability
+        }
+
+        private void SelectAvailabilityForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
