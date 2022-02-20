@@ -20,15 +20,7 @@ namespace TetraScheduler
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
 
-            // set dateTime format properly
-            startBusy.Format = DateTimePickerFormat.Custom;
-            startBusy.CustomFormat = "hh:mm tt";
-            startBusy.ShowUpDown = true;
-            startBusy.Value = DateTime.Parse("12:00 AM");
-            endBusy.Format = DateTimePickerFormat.Custom;
-            endBusy.CustomFormat = "hh:mm tt";
-            endBusy.ShowUpDown = true;
-            endBusy.Value = DateTime.Parse("12:00 AM");
+           
 
             // adds collection object to listbox
             busyShifts = new ListBox.ObjectCollection(busyList);
@@ -92,6 +84,7 @@ namespace TetraScheduler
             //code here to display availability in consultant menu
             availForm.Dispose();
         }
+
     }
 }
 

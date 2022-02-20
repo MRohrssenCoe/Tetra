@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections;
 
 namespace TetraScheduler
 {
@@ -53,6 +54,39 @@ namespace TetraScheduler
         public void RemoveUser(string fn, string ln, int day, int shiftNumber)
         {
             shifts[day][shiftNumber].RemoveUser(fn, ln);
+        }
+        override public string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(String.Format("DaysOpen={0}, DayStartTime={1}, DayEndTime={2}", this.numDaysOpen, this.dayStartTime, this.dayEndTime));
+            for (int i=0; i < this.numDaysOpen; i++)
+            {
+                foreach (Shift s in shifts[i])
+                {
+                    sb.Append(String.Format("Day={0} Start={1} End={2} Users={3}\n", i, s.startTime, s.endTime, s.UsersAsText())); // add consultant names
+                }
+            }
+            return sb.ToString();
+        }
+
+        public ArrayList getFilledShifts()
+        {
+            // untested
+            ArrayList fullShifts = new ArrayList();
+            // returns only shifts that have at least one consultant scheduled
+            for (int i = 0; i < this.numDaysOpen; i++)
+            {
+                ArrayList day = new ArrayList();
+                foreach (Shift s in shifts[i]) // can we just include a variable for the day in the shift class????
+                {
+                    if (s.UsersAsText() != "")
+                    {
+                        day.Add(s);
+                    }
+                }
+                fullShifts.Add(day);
+            }
+            return fullShifts;
         }
     }
 }

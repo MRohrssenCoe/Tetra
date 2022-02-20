@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.Collections;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -62,10 +63,10 @@ namespace TetraScheduler
                     }
                 }
 
-                // fill # of semesters of experience box
-                expNumPicker.Value = userInfo["expSem"].Length == 0 ? 0 : Int32.Parse(userInfo["expSem"]);
-                
-                // todo: box for school year
+                // fill numboxes
+                expSemPicker.Value = userInfo["expSem"].Length == 0 ? 0 : Int32.Parse(userInfo["expSem"]);
+                coeYrPicker.Value = userInfo["coeYr"].Length == 0 ? 0 : Int32.Parse(userInfo["coeYr"]);
+                weeklyHrsPicker.Value = userInfo["weeklyHrs"].Length == 0 ? 0 : Int32.Parse(userInfo["weeklyHrs"]);
 
                 // todo: GET AVAILABILITY SHIFTS HERE
             }
@@ -130,8 +131,11 @@ namespace TetraScheduler
 
             userInfo["fname"] = fnameTextbox.Text;
             userInfo["lname"] = lnameTextbox.Text;
+            userInfo["lname"] = lnameTextbox.Text;
             userInfo["majors"] = majorsSelected();
-            userInfo["expSem"] = expNumPicker.Value.ToString();
+            userInfo["expSem"] = expSemPicker.Value.ToString();
+            userInfo["coeYr"] = coeYrPicker.Value.ToString();
+            userInfo["weeklyHrs"] = weeklyHrsPicker.Value.ToString();
             // add other info here
 
             // write dictionary to file here
@@ -160,9 +164,8 @@ namespace TetraScheduler
             consultantAvailability = availForm.AvailableSchedule;
             //code here to display availability in consultant menu
             availForm.Dispose();
-
-
-
+            Debug.WriteLine(consultantAvailability.ToString());
+            ArrayList weekAvails = consultantAvailability.getFilledShifts();
         }
 
         private void label2_Click(object sender, EventArgs e)
