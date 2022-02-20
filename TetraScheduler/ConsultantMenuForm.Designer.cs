@@ -43,7 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.availabilityBox = new System.Windows.Forms.ListBox();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weeklyHrsPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coeYrPicker)).BeginInit();
@@ -216,11 +216,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.availabilityBox);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.listView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 193);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(402, 125);
+            this.groupBox2.Size = new System.Drawing.Size(402, 174);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Availability";
@@ -235,15 +235,14 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // listView1
+            // availabilityBox
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(6, 22);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(206, 97);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.availabilityBox.FormattingEnabled = true;
+            this.availabilityBox.ItemHeight = 15;
+            this.availabilityBox.Location = new System.Drawing.Point(7, 23);
+            this.availabilityBox.Name = "availabilityBox";
+            this.availabilityBox.Size = new System.Drawing.Size(205, 139);
+            this.availabilityBox.TabIndex = 22;
             // 
             // ConsultantMenuForm
             // 
@@ -278,7 +277,6 @@
         private System.Windows.Forms.TextBox fnameTextbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button availSelectButton;
         private System.Windows.Forms.Button saveInfoButton;
         private System.Windows.Forms.Button button1;
@@ -294,5 +292,6 @@
         private System.Windows.Forms.NumericUpDown weeklyHrsPicker;
         private System.Windows.Forms.NumericUpDown coeYrPicker;
         private System.Windows.Forms.NumericUpDown expSemPicker;
+        private System.Windows.Forms.ListBox availabilityBox;
     }
 }

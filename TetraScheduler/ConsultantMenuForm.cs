@@ -1,11 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
-using System.Collections;
-using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,11 +11,13 @@ namespace TetraScheduler
     public partial class ConsultantMenuForm : Form
     {
         Schedule consultantAvailability;
+        ListBox.ObjectCollection availableShifts;
         Dictionary<string, string> userInfo;
         private string uInfoFile;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
+            availableShifts = new ListBox.ObjectCollection(availabilityBox);
             userInfo = new Dictionary<string, string>();
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".txt");
             importUserInfo(username);
@@ -79,10 +78,6 @@ namespace TetraScheduler
             f2.Show();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private string majorsSelected()
         {   // returns string representation of which majors were selected in the listbox
@@ -156,16 +151,40 @@ namespace TetraScheduler
 
         }
 
+
+        private void displayArray(ArrayList[] avail)
+        {
+            availableShifts.Clear();
+
+            if (avail != null) // stop giving me null errors :(
+            {
+                for (int i = 0; i < avail.Length; i++)
+                {
+                    // map i to days of the week here later
+                    if (avail[i] != null)
+                    {
+                        foreach (string timeslot in avail[i])
+                        {
+                            availableShifts.Add(i.ToString() + ": " + timeslot);
+                        }
+                    }
+                }
+            }
+            
+        }
+
         private void button2_Click_1(object sender, EventArgs e)
         {
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             availForm.ShowDialog();
             //show dialog pauses execution
             consultantAvailability = availForm.AvailableSchedule;
+            ArrayList[] stringAvail = availForm.selectedScheduleStrings;
             //code here to display availability in consultant menu
             availForm.Dispose();
             Debug.WriteLine(consultantAvailability.ToString());
-            ArrayList weekAvails = consultantAvailability.getFilledShifts();
+
+            displayArray(stringAvail);
         }
 
         private void label2_Click(object sender, EventArgs e)

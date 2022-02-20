@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Collections;
 using System.Windows.Forms;
 using System.Diagnostics;
 
@@ -14,9 +15,11 @@ namespace TetraScheduler
         //TODO once we get around to adding settings that affect the schedule, make sure to check here and populate boxes in code
         //rather than in designer
         public Schedule AvailableSchedule { get; set; }
+        public ArrayList[] selectedScheduleStrings;
         public SelectAvailabilityForm()
         {
             AvailableSchedule = new Schedule();
+            selectedScheduleStrings = new ArrayList[7];
             InitializeComponent();
         }
 
@@ -37,16 +40,20 @@ namespace TetraScheduler
             foreach (ListBox box in boxes)
             {
                 var indices = box.SelectedIndices;
-                foreach(int index in indices)
+                ArrayList currentDayStrings = new ArrayList();
+                foreach (int index in indices)
                 {
+                    currentDayStrings.Add(box.Items[index].ToString());
                     //add selected shifts to available schedule under a dummy username
                     AvailableSchedule.AssignUser("Consultant", "Consultant", i, index);
                 }
+                selectedScheduleStrings[i] = currentDayStrings;
                 i++;
             }
             DialogResult = DialogResult.OK;
             //use SelectAvilabilityForm.availableSchedule in ConsultantMenu to display availability
         }
+
 
         private void SelectAvailabilityForm_Load(object sender, EventArgs e)
         {
