@@ -16,11 +16,22 @@ namespace TetraScheduler
         public List<User> users { get; set; }
         public int startTime { get; set; }
         public int endTime { get; set; }
+        public int day { get; set; }
         public Shift()
         {
             users = new List<User>();
         }
-
+        public bool UserAssigned(string fn, string ln)
+        {
+            foreach(User u in users)
+            {
+                if(u.FirstName == fn && u.LastName == ln)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public void AddUser(string fn, string ln)
         {
             int index = -1;
