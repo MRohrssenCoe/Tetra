@@ -36,13 +36,16 @@ namespace TetraScheduler
             }
             else // read in info and update UI
             {
+                //Deserialize from Json file
                 string uInfoJsonString = File.ReadAllText(this.uInfoFile);
                 UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
+                //Fill info
                 fnameTextbox.Text = uInfo.FirstName;
                 lnameTextbox.Text = uInfo.LastName;
                 expSemPicker.Value = uInfo.expSemesters;
                 coeYrPicker.Value = uInfo.coeYear;
                 weeklyHrsPicker.Value = uInfo.desiredWeeklyHours;
+                //Reusing code to fill majors.
                 foreach (string major in uInfo.majors)
                 {
                     // checks applicable boxes
@@ -52,6 +55,7 @@ namespace TetraScheduler
                         majorListbox.SetItemChecked(index, true);
                     }
                 }
+                //TODO: Fill availability
                 /*string[] settings = File.ReadAllLines(this.uInfoFile);
                 foreach (string line in settings)
                 {
@@ -136,7 +140,7 @@ namespace TetraScheduler
 
             return s.ToString();
             */
-            return System.Text.Json.JsonSerializer.Serialize(uInfo);
+            return JsonSerializer.Serialize(uInfo);
         }
 
         private void saveInfoButton_Click(object sender, EventArgs e)
