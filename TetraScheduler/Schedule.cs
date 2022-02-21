@@ -21,6 +21,7 @@ namespace TetraScheduler
             dayStartTime = dST;
             dayEndTime = dET;
             shifts = new List<Shift>[numDaysOpen];
+            //initializing schedule with proper number of shifts
             for (int j = 0; j < numDaysOpen; j++)
             {
                 shifts[j] = new List<Shift>();
@@ -43,6 +44,8 @@ namespace TetraScheduler
                 for (int i = dayStartTime; i < dayEndTime; i += shiftLengthMinutes)
                 {
                     Shift shift = new Shift();
+                    shift.startTime = i;
+                    shift.endTime = i + shiftLengthMinutes;
                     shifts[j].Add(shift);
                 }
             }
@@ -68,7 +71,6 @@ namespace TetraScheduler
             }
             return sb.ToString();
         }
-
         public ArrayList getFilledShifts()
         {
             // untested
