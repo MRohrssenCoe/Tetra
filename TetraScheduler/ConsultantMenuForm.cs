@@ -30,9 +30,11 @@ namespace TetraScheduler
 
             // creates file if not there
             if (!File.Exists(this.uInfoFile)){
+                UserInfo uInfo = new UserInfo();
                 FileStream userInfo = File.Open(this.uInfoFile, FileMode.Create);
-                //userInfo.Write(Encoding.ASCII.GetBytes(String.Join("\n", Constants.userInfoLines)));
-                //userInfo.Close();
+                byte[] info = new UTF8Encoding(true).GetBytes(fillUserInfoFile(uInfo));
+                userInfo.Write(info, 0, info.Length);
+                userInfo.Close();
             }
             else // read in info and update UI
             {
