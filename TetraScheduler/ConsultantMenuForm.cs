@@ -55,38 +55,6 @@ namespace TetraScheduler
                         majorListbox.SetItemChecked(index, true);
                     }
                 }
-                //TODO: Fill availability
-                /*string[] settings = File.ReadAllLines(this.uInfoFile);
-                foreach (string line in settings)
-                {
-                    int sep = line.IndexOf("=");
-                    string settingName = line.Substring(0, sep);
-                    string settingPrefs = line.Substring(sep+1).Trim();
-                    // put into dictionary - maybe just learn how to use JSON instead?
-                    userInfo[settingName] = settingPrefs;
-                }
-
-                // fill first name box
-                fnameTextbox.Text = userInfo["fname"];
-                // fill last name box
-                lnameTextbox.Text = userInfo["lname"];
-                // fill major checkboxes
-                string[] majors = userInfo["majors"].Split(";");
-                foreach (string major in majors)
-                {
-                    // checks applicable boxes
-                    if (major.Length > 0)
-                    {
-                        int index = majorListbox.Items.IndexOf(major);
-                        majorListbox.SetItemChecked(index, true);
-                    }
-                }
-
-                // fill numboxes
-                expSemPicker.Value = userInfo["expSem"].Length == 0 ? 0 : Int32.Parse(userInfo["expSem"]);
-                coeYrPicker.Value = userInfo["coeYr"].Length == 0 ? 0 : Int32.Parse(userInfo["coeYr"]);
-                weeklyHrsPicker.Value = userInfo["weeklyHrs"].Length == 0 ? 0 : Int32.Parse(userInfo["weeklyHrs"]);
-                */
                 // todo: GET AVAILABILITY SHIFTS HERE
             }
 
@@ -132,14 +100,6 @@ namespace TetraScheduler
 
         private string fillUserInfoFile(UserInfo uInfo)
         {
-            /*StringBuilder s = new StringBuilder();
-            foreach(KeyValuePair<string,string> pair in values) // order shouldn't matter?
-            {
-                s.AppendLine(pair.Key + "=" + pair.Value); 
-            }
-
-            return s.ToString();
-            */
             return JsonSerializer.Serialize(uInfo);
         }
 
