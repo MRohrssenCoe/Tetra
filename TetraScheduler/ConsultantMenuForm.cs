@@ -38,6 +38,7 @@ namespace TetraScheduler
             {
                 //Deserialize from Json file
                 string uInfoJsonString = File.ReadAllText(this.uInfoFile);
+                Debug.WriteLine(uInfoJsonString);
                 UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
                 //Fill info
                 fnameTextbox.Text = uInfo.FirstName;
