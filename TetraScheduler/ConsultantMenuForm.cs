@@ -7,6 +7,9 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
+
+//TODO we will run into issues here when we modify UserInfo, or any classes that compose UserInfo. We either need
+//to improve our Json serialization, or delete all user prefs every time we update UserInfo.
 namespace TetraScheduler
 {
     public partial class ConsultantMenuForm : Form
@@ -130,8 +133,6 @@ namespace TetraScheduler
                 // some sort of error message here idk
             }
         }
-
-
         private void ConsultantMenuForm_Load(object sender, EventArgs e)
         {
 
@@ -156,7 +157,6 @@ namespace TetraScheduler
                     }
                 }
             }
-            
         }
 
         private void button2_Click_1(object sender, EventArgs e)
