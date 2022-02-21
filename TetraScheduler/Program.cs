@@ -63,12 +63,6 @@ namespace TetraScheduler
             }
 
             // starts at login form
-            
-            //test code for serialization
-            Schedule jsonTestSchedule = new Schedule();
-            string scheduleString = JsonSerializer.Serialize(jsonTestSchedule);
-            Debug.WriteLine(scheduleString);
-            Schedule deserializeTest = JsonSerializer.Deserialize<Schedule>(scheduleString);
             Application.Run(new LoginForm());
         }
     }
