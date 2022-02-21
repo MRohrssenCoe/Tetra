@@ -19,8 +19,8 @@ namespace TetraScheduler
             InitializeComponent();
             availableShifts = new ListBox.ObjectCollection(availabilityBox);
             userInfo = new Dictionary<string, string>();
-            this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".txt");
-            importUserInfo(username);
+            this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+            //importUserInfo(username);
         }
 
 
@@ -79,22 +79,23 @@ namespace TetraScheduler
         }
 
 
-        private string majorsSelected()
+        private string[] majorsSelected()
         {   // returns string representation of which majors were selected in the listbox
             int numMajors = majorListbox.CheckedItems.Count;
 
-            if (numMajors == 0)
+            /*if (numMajors == 0)
             {
                 return "";
-            }
+            }*/
 
             string[] majors = new string[majorListbox.CheckedItems.Count];
-            StringBuilder majorString = new StringBuilder();
+            //StringBuilder majorString = new StringBuilder();
 
             // get list from checkboxes
             majorListbox.CheckedItems.CopyTo(majors, 0);
+            return majors;
 
-            //build string rep
+            /*//build string rep
             foreach (string major in majors)
             {
                 majorString.Append(major + ";");
@@ -106,37 +107,40 @@ namespace TetraScheduler
                 majorString.Remove(majorString.Length - 1, 1);
             }
 
-            return majorString.ToString();
+            return majorString.ToString();*/
         }
 
-        private string fillUserInfoFile(Dictionary<string,string> values)
+        private string fillUserInfoFile(UserInfo uInfo)
         {
-            StringBuilder s = new StringBuilder();
+            /*StringBuilder s = new StringBuilder();
             foreach(KeyValuePair<string,string> pair in values) // order shouldn't matter?
             {
                 s.AppendLine(pair.Key + "=" + pair.Value); 
             }
 
             return s.ToString();
+            */
+            return System.Text.Json.JsonSerializer.Serialize(uInfo);
         }
 
         private void saveInfoButton_Click(object sender, EventArgs e)
         {
             // save info button
+            UserInfo uInfo = new UserInfo();
+            uInfo.FirstName = fnameTextbox.Text;
+            uInfo.LastName = lnameTextbox.Text;
+            uInfo.majors = majorsSelected();
+            uInfo.expSemesters = (int)expSemPicker.Value;
+            uInfo.coeYear = (int)coeYrPicker.Value;
+            uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
 
-            userInfo["fname"] = fnameTextbox.Text;
-            userInfo["lname"] = lnameTextbox.Text;
-            userInfo["lname"] = lnameTextbox.Text;
-            userInfo["majors"] = majorsSelected();
-            userInfo["expSem"] = expSemPicker.Value.ToString();
-            userInfo["coeYr"] = coeYrPicker.Value.ToString();
-            userInfo["weeklyHrs"] = weeklyHrsPicker.Value.ToString();
             // add other info here
 
-            // write dictionary to file here
+            // write object to json here
             try
             {
-                File.WriteAllText(this.uInfoFile, fillUserInfoFile(this.userInfo));
+                Debug.WriteLine(fillUserInfoFile(uInfo));
+                File.WriteAllText(this.uInfoFile, fillUserInfoFile(uInfo));
                 MessageBox.Show("User info was saved!");
             }
             catch (IOException)

@@ -8,15 +8,15 @@ namespace TetraScheduler
     //properties must be public, including the class itself.
     public class UserInfo
     {
-        public string FirstName;
-        public string LastName;
-        public List<String> majors;
-        public int expSemesters;
-        public int coeYear;
-        public int desiredWeeklyHours;
-        public Schedule availability;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string[] majors { get; set; }
+        public int expSemesters { get; set; }
+        public int coeYear { get; set; }
+        public int desiredWeeklyHours { get; set; }
+        public Schedule availability { get; set; }
 
-        public UserInfo(string firstName, string lastName, List<string> majors,
+        public UserInfo(string firstName, string lastName, string[] majors,
             int expSemesters, int coeYear, int desiredWeeklyHours, Schedule availability)
         {
             FirstName = firstName;
@@ -31,7 +31,7 @@ namespace TetraScheduler
         {
             FirstName = "";
             LastName = "";
-            this.majors = new List<String>();
+            //TODO: fix null issue with empty majors array
             this.expSemesters = 0;
             this.coeYear = 0;
             desiredWeeklyHours = 0;
