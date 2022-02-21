@@ -5,15 +5,15 @@ using System.Text;
 
 namespace TetraScheduler
 {
-    internal class Shift
+    public class Shift
     {
         //untested
-        struct User
+        public struct User
         {
             public string FirstName;
             public string LastName;
         }
-        private List<User> users;
+        public List<User> users { get; set; }
         public int startTime { get; set; }
         public int endTime { get; set; }
         public Shift()

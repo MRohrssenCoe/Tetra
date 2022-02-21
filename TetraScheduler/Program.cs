@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -62,6 +63,12 @@ namespace TetraScheduler
             }
 
             // starts at login form
+            
+            //test code for serialization
+            Schedule jsonTestSchedule = new Schedule();
+            string scheduleString = JsonSerializer.Serialize(jsonTestSchedule);
+            Debug.WriteLine(scheduleString);
+            Schedule deserializeTest = JsonSerializer.Deserialize<Schedule>(scheduleString);
             Application.Run(new LoginForm());
         }
     }

@@ -7,13 +7,12 @@ namespace TetraScheduler
 {
     public class Schedule
     {
-        //untested
-        List<Shift>[] shifts;
-        int numDaysOpen = 7;
-        int shiftLengthMinutes = 60;
+        public List<Shift>[] shifts { get; set; }
+        public int numDaysOpen { get; set; } = 7;
+        public int shiftLengthMinutes { get; set; } = 60;
         //Times in minutes!!!
-        int dayStartTime = 540;
-        int dayEndTime = 1020;
+        public int dayStartTime { get; set; } = 540;
+        public int dayEndTime { get; set; } = 1020;
         public Schedule(int nDO, int sLM, int dST, int dET)
         {
             numDaysOpen = nDO;
