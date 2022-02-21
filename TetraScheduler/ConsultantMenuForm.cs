@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -12,15 +13,14 @@ namespace TetraScheduler
     {
         Schedule consultantAvailability;
         ListBox.ObjectCollection availableShifts;
-        Dictionary<string, string> userInfo;
         private string uInfoFile;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
             availableShifts = new ListBox.ObjectCollection(availabilityBox);
-            userInfo = new Dictionary<string, string>();
+            //userInfo = new Dictionary<string, string>();
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-            //importUserInfo(username);
+            importUserInfo(username);
         }
 
 
@@ -31,12 +31,28 @@ namespace TetraScheduler
             // creates file if not there
             if (!File.Exists(this.uInfoFile)){
                 FileStream userInfo = File.Open(this.uInfoFile, FileMode.Create);
-                userInfo.Write(Encoding.ASCII.GetBytes(String.Join("\n", Constants.userInfoLines)));
-                userInfo.Close();
+                //userInfo.Write(Encoding.ASCII.GetBytes(String.Join("\n", Constants.userInfoLines)));
+                //userInfo.Close();
             }
             else // read in info and update UI
             {
-                string[] settings = File.ReadAllLines(this.uInfoFile);
+                string uInfoJsonString = File.ReadAllText(this.uInfoFile);
+                UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
+                fnameTextbox.Text = uInfo.FirstName;
+                lnameTextbox.Text = uInfo.LastName;
+                expSemPicker.Value = uInfo.expSemesters;
+                coeYrPicker.Value = uInfo.coeYear;
+                weeklyHrsPicker.Value = uInfo.desiredWeeklyHours;
+                foreach (string major in uInfo.majors)
+                {
+                    // checks applicable boxes
+                    if (major.Length > 0)
+                    {
+                        int index = majorListbox.Items.IndexOf(major);
+                        majorListbox.SetItemChecked(index, true);
+                    }
+                }
+                /*string[] settings = File.ReadAllLines(this.uInfoFile);
                 foreach (string line in settings)
                 {
                     int sep = line.IndexOf("=");
@@ -66,7 +82,7 @@ namespace TetraScheduler
                 expSemPicker.Value = userInfo["expSem"].Length == 0 ? 0 : Int32.Parse(userInfo["expSem"]);
                 coeYrPicker.Value = userInfo["coeYr"].Length == 0 ? 0 : Int32.Parse(userInfo["coeYr"]);
                 weeklyHrsPicker.Value = userInfo["weeklyHrs"].Length == 0 ? 0 : Int32.Parse(userInfo["weeklyHrs"]);
-
+                */
                 // todo: GET AVAILABILITY SHIFTS HERE
             }
 
