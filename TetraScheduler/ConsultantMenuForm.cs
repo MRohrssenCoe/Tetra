@@ -141,7 +141,7 @@ namespace TetraScheduler
 
         }
 
-
+        // delete this when we get rid of the string display V
         private void displayArray(ArrayList[] avail)
         {
             availableShifts.Clear();
@@ -173,6 +173,14 @@ namespace TetraScheduler
                     this.availableShifts.Add(shift);
                 }
             }
+        }
+
+        private Shift[] getChosenShiftInfo()
+        {
+            Shift[] shifts = new Shift[this.availableShifts.Count];
+            this.availableShifts.CopyTo(shifts,0);
+            return shifts;
+            // todo: make this work with JSON
         }
 
         private void button2_Click_1(object sender, EventArgs e)
