@@ -61,6 +61,8 @@ namespace TetraScheduler
                         majorListbox.SetItemChecked(index, true);
                     }
                 }
+
+                
                 // todo: GET AVAILABILITY SHIFTS HERE
             }
 
@@ -160,8 +162,22 @@ namespace TetraScheduler
             }
         }
 
+        private void displayChosenShifts(Schedule s)
+        {
+            ArrayList shifts = s.getFilledShifts();
+            foreach (ArrayList dayList in shifts)
+            {
+                foreach(Shift shift in dayList)
+                {
+                    shift.RemoveUser("consultant", "consultant");
+                    this.availableShifts.Add(shift);
+                }
+            }
+        }
+
         private void button2_Click_1(object sender, EventArgs e)
         {
+            // availability selection button
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             availForm.ShowDialog();
             //show dialog pauses execution
@@ -171,7 +187,10 @@ namespace TetraScheduler
             availForm.Dispose();
             Debug.WriteLine(consultantAvailability.ToString());
 
-            displayArray(stringAvail);
+            // displays string array
+            //displayArray(stringAvail);
+
+            displayChosenShifts(consultantAvailability);
         }
 
         private void label2_Click(object sender, EventArgs e)

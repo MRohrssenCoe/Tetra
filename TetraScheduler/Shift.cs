@@ -79,5 +79,37 @@ namespace TetraScheduler
             }
             return names;
         }
+
+        public string minutesToHr(int mins, bool twelveHrFormat)
+        {
+            TimeSpan t = TimeSpan.FromMinutes(mins);
+            
+            if (twelveHrFormat)
+            {
+                String ampm = mins < (12 * 60) ? "AM" : "PM";
+
+                // if 1pm or later - subract 12 hrs
+                if (mins >= (13 * 60))
+                {
+                    mins -= (12 * 60);
+                }
+
+                // if 12am-1am - convert from 0 -> 12
+                if (mins < 60)
+                {
+                    mins += (12 * 60);
+                }
+                return TimeSpan.FromMinutes(mins).ToString(@"hh\:mm") + ampm;
+            }
+            return TimeSpan.FromMinutes(mins).ToString(@"hh\:mm");
+        }
+        override public string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            String day = Constants.daysShort[this.day]; // day abbrevs
+            String startTime = minutesToHr(this.startTime, true); // 12 hr format
+            String endTime = minutesToHr(this.endTime, true); // 12 hr format
+            return String.Format("{0}: {1} - {2}", day, startTime, endTime);
+        }
     }
 }
