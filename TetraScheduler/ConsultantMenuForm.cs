@@ -44,7 +44,7 @@ namespace TetraScheduler
                 string uInfoJsonString = File.ReadAllText(this.uInfoFile);
                 Debug.WriteLine(uInfoJsonString);
                 UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
-                //Fill info
+                //Fill UI info
                 fnameTextbox.Text = uInfo.FirstName;
                 lnameTextbox.Text = uInfo.LastName;
                 expSemPicker.Value = uInfo.expSemesters;
@@ -55,7 +55,7 @@ namespace TetraScheduler
                 //Reusing code to fill majors.
                 foreach (string major in uInfo.majors)
                 {
-                    // checks applicable boxes
+                    //Checks applicable boxes
                     if (major.Length > 0)
                     {
                         int index = majorListbox.Items.IndexOf(major);
@@ -71,7 +71,6 @@ namespace TetraScheduler
             f2.Show();
         }
 
-
         private string[] majorsSelected()
         {   // returns string representation of which majors were selected in the listbox
             int numMajors = majorListbox.CheckedItems.Count;
@@ -83,6 +82,7 @@ namespace TetraScheduler
 
         }
 
+        //extraneous method, consider removing.
         private string fillUserInfoFile(UserInfo uInfo)
         {
             return JsonSerializer.Serialize(uInfo);
@@ -90,7 +90,7 @@ namespace TetraScheduler
 
         private void saveInfoButton_Click(object sender, EventArgs e)
         {
-            // save info button
+            //Store demographic info in UserInfo object
             UserInfo uInfo = new UserInfo();
             uInfo.FirstName = fnameTextbox.Text;
             uInfo.LastName = lnameTextbox.Text;
@@ -100,7 +100,7 @@ namespace TetraScheduler
             uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
             uInfo.availability = consultantAvailability;
 
-            // write object to json here
+            //write UserInfo object to json here
             try
             {
                 Debug.WriteLine(fillUserInfoFile(uInfo));
@@ -174,15 +174,18 @@ namespace TetraScheduler
             availForm.Dispose();
         }
 
+        //Add the shifts to the object collection that availabilityView is bound to
+        //To do this we must first unbind the collection, then modify the collection, and then rebind.
         private void addAvailabilityToView(List<Shift> shifts)
         {
+            //unbind
             availabilityBox.DataSource = null;
             availableShifts.Clear();
             foreach(Shift s in shifts)
             {
                 availableShifts.Add(s);
             }
-
+            //rebind
             availabilityBox.DataSource = availableShifts;
         }
 

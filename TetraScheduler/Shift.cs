@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
+//Basic class to store all info relevant to a shift. Contains User struct which may be updated in the future to use login info rather than first name + last name depending on scale.
+//Each shift has a list of Users, a start time and end time in minutes, and a day of the week which the shift happens on. Technically, day is not necessarily needed as the main way
+//of interacting with the Shift class is through the Schedule class, where the day is defined implicitly, but it is much faster to code a lot of different functions if the day
+//is included here.
+
 namespace TetraScheduler
 {
     public class Shift
@@ -103,6 +108,7 @@ namespace TetraScheduler
             }
             return TimeSpan.FromMinutes(mins).ToString(@"hh\:mm");
         }
+        //Overrides the ToString method for use with Object collections and list views - Thanks Katya.
         override public string ToString()
         {
             StringBuilder sb = new StringBuilder();
