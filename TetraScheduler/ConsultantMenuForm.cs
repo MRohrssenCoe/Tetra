@@ -14,14 +14,13 @@ namespace TetraScheduler
 {
     public partial class ConsultantMenuForm : Form
     {
-        Schedule consultantAvailability;
+        List<Shift> consultantAvailability;
         ListBox.ObjectCollection availableShifts;
         private string uInfoFile;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
             availableShifts = new ListBox.ObjectCollection(availabilityBox);
-            //userInfo = new Dictionary<string, string>();
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
             importUserInfo(username);
         }
@@ -51,6 +50,8 @@ namespace TetraScheduler
                 expSemPicker.Value = uInfo.expSemesters;
                 coeYrPicker.Value = uInfo.coeYear;
                 weeklyHrsPicker.Value = uInfo.desiredWeeklyHours;
+                consultantAvailability = uInfo.availability;
+                addAvailabilityToView(uInfo.availability);
                 //Reusing code to fill majors.
                 foreach (string major in uInfo.majors)
                 {
@@ -61,12 +62,7 @@ namespace TetraScheduler
                         majorListbox.SetItemChecked(index, true);
                     }
                 }
-
-
-
-                // todo: GET AVAILABILITY SHIFTS HERE
             }
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -102,7 +98,7 @@ namespace TetraScheduler
             uInfo.expSemesters = (int)expSemPicker.Value;
             uInfo.coeYear = (int)coeYrPicker.Value;
             uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
-            uInfo.availability = consultantAvailability.GetShiftsForUser("Consultant", "Consultant");
+            uInfo.availability = consultantAvailability;
 
             // write object to json here
             try
@@ -169,15 +165,25 @@ namespace TetraScheduler
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             //show dialog pauses execution
             availForm.ShowDialog();
-            
-            consultantAvailability = availForm.AvailableSchedule;
-            ArrayList[] stringAvail = availForm.selectedScheduleStrings;
+            consultantAvailability = availForm.AvailableSchedule.GetShiftsForUser("Consultant", "Consultant");
+            addAvailabilityToView(consultantAvailability);
+            availabilityBox.Hide();
+            availabilityBox.Show();
+            //ArrayList[] stringAvail = availForm.selectedScheduleStrings;
             //code here to display availability in consultant menu
             availForm.Dispose();
-            Debug.WriteLine(consultantAvailability.ToString());
+        }
 
-            // displays string array
-            //displayArray(stringAvail);
+        private void addAvailabilityToView(List<Shift> shifts)
+        {
+            availabilityBox.DataSource = null;
+            availableShifts.Clear();
+            foreach(Shift s in shifts)
+            {
+                availableShifts.Add(s);
+            }
+
+            availabilityBox.DataSource = availableShifts;
         }
 
         private void label2_Click(object sender, EventArgs e)
