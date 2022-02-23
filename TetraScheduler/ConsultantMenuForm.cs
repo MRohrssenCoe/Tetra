@@ -53,13 +53,17 @@ namespace TetraScheduler
                 consultantAvailability = uInfo.availability;
                 addAvailabilityToView(uInfo.availability);
                 //Reusing code to fill majors.
-                foreach (string major in uInfo.majors)
+                //null check
+                if (uInfo.majors != null)
                 {
-                    //Checks applicable boxes
-                    if (major.Length > 0)
+                    foreach (string major in uInfo.majors)
                     {
-                        int index = majorListbox.Items.IndexOf(major);
-                        majorListbox.SetItemChecked(index, true);
+                        //Checks applicable boxes
+                        if (major.Length > 0)
+                        {
+                            int index = majorListbox.Items.IndexOf(major);
+                            majorListbox.SetItemChecked(index, true);
+                        }
                     }
                 }
             }
