@@ -20,7 +20,15 @@ namespace TetraScheduler
         {
 
         }
-
+        //Use this method to check for forbidden commas in username and password input.
+        private bool checkForForbiddenChar(string s, char c)
+        {
+            for(int i = 0; i < s.Length; i++)
+            {
+                if(s[i] == c) { return true; }
+            }
+            return false;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             // login button functionality

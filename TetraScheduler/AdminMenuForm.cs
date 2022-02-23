@@ -49,7 +49,6 @@ namespace TetraScheduler
         {
             // removes all items from busy shift list
             // TODO: test this function
-
             object[] temp = new object[busyShifts.Count]; // temp copy to avoid deleting through iteration
             busyShifts.CopyTo(temp, 0);
             foreach (Object o in temp)
