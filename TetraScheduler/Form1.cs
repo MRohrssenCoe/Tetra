@@ -40,11 +40,11 @@ namespace TetraScheduler
             }
             else
             {
-                if (radioButton1.Checked)
+                if (radioButton4.Checked)
                     Writer = username + "," + password + ",1,";
-                else if (radioButton2.Checked)
+                else if (radioButton5.Checked)
                     Writer = username + "," + password + ",2,";
-                else if (radioButton3.Checked)
+                else if (radioButton6.Checked)
                     Writer = username + "," + password + ",3,";
             }
             string tetraFolder = Constants.AppDataFolder;
@@ -65,8 +65,12 @@ namespace TetraScheduler
             if (checker)
                 MessageBox.Show("Username is already being used. Please use another name or consult an admin.");
             else
+            {
                 //Write it
-                usernameString = usernameString + Writer; 
+                usernameString = usernameString + Writer;
+                File.WriteAllText(pswdFile, usernameString);
+                this.Close();
+            }
         }
     }
 }
