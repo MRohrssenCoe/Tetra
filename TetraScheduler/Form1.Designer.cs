@@ -35,12 +35,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
-            // 
-            // checkedListBox1
-            // 
-            // 
-            // textBox1
-            // 
+
             this.textBox1.Location = new System.Drawing.Point(219, 104);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
