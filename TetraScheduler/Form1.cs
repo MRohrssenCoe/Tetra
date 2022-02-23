@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,18 +28,45 @@ namespace TetraScheduler
 
             String username = textBox1.Text;
             String password = textBox2.Text;
-            String FileWrite = "\n";
+            String Writer = "\n";
 
-            if (username.Length == 0 || password.Length == 0)
+            if (username.Length == 0)
             {
-                MessageBox.Show("Username/Password cannot be empty!");
-                // add more error visuals?
+                MessageBox.Show("Username cannot be empty!");
             }
-
+            else if (password.Length == 0)
+            {
+                MessageBox.Show("Password cannot be empty!");
+            }
             else
             {
-                FileWrite = username + "," + password + ",";
+                if (radioButton1.Checked)
+                    Writer = username + "," + password + ",1,";
+                else if (radioButton2.Checked)
+                    Writer = username + "," + password + ",2,";
+                else if (radioButton3.Checked)
+                    Writer = username + "," + password + ",3,";
             }
+            string tetraFolder = Constants.AppDataFolder;
+            string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
+            string usernameString = File.ReadAllText(pswdFile);
+            string[] token;
+            token = usernameString.Split(",");
+            int x = 0;
+            bool checker = false;
+            while (x < token.Length)
+            {
+                if (token[x].Equals(username))
+                    checker = true;
+                if (checker)
+                    break;
+                x += 3;
+            }
+            if (checker)
+                MessageBox.Show("Username is already being used. Please use another name or consult an admin.");
+            else
+                //Write it
+                usernameString = usernameString + Writer; 
         }
     }
 }
