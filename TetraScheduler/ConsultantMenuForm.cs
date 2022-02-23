@@ -145,7 +145,7 @@ namespace TetraScheduler
             {
                 foreach(Shift shift in dayList)
                 {
-                    shift.RemoveUser("consultant", "consultant");
+                    shift.RemoveUser("Consultant", "Consultant");
                     this.availableShifts.Add(shift);
                 }
             }
