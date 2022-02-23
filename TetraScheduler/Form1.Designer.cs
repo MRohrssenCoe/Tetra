@@ -38,15 +38,6 @@
             // 
             // checkedListBox1
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Admin",
-            "Consultant"});
-            this.checkedListBox1.Location = new System.Drawing.Point(219, 190);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(237, 22);
-            this.checkedListBox1.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -97,7 +88,6 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Consultant";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -118,7 +108,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.checkedListBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";

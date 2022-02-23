@@ -69,7 +69,7 @@ namespace TetraScheduler
             }
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void ViewScheduleButtonClick(object sender, EventArgs e)
         {
             ScheduleForm f2 = new ScheduleForm();
             f2.Show();
@@ -121,49 +121,7 @@ namespace TetraScheduler
 
         }
 
-        // delete this when we get rid of the string display V
-        private void displayArray(ArrayList[] avail)
-        {
-            availableShifts.Clear();
-
-            if (avail != null) // stop giving me null errors :(
-            {
-                for (int i = 0; i < avail.Length; i++)
-                {
-                    // map i to days of the week here later
-                    if (avail[i] != null)
-                    {
-                        foreach (string timeslot in avail[i])
-                        {
-                            availableShifts.Add(i.ToString() + ": " + timeslot);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void displayChosenShifts(Schedule s)
-        {
-            ArrayList shifts = s.getFilledShifts();
-            foreach (ArrayList dayList in shifts)
-            {
-                foreach(Shift shift in dayList)
-                {
-                    shift.RemoveUser("Consultant", "Consultant");
-                    this.availableShifts.Add(shift);
-                }
-            }
-        }
-
-        private Shift[] getChosenShiftInfo()
-        {
-            Shift[] shifts = new Shift[this.availableShifts.Count];
-            this.availableShifts.CopyTo(shifts,0);
-            return shifts;
-            // todo: make this work with JSON
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
+        private void SelectAvailabilityButtonClick(object sender, EventArgs e)
         {
             // availability selection button
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
@@ -191,11 +149,6 @@ namespace TetraScheduler
             }
             //rebind
             availabilityBox.DataSource = availableShifts;
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
