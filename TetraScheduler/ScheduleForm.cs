@@ -77,7 +77,6 @@ namespace TetraScheduler
 
                     // separate each column within the row
                     string timeSlot = fields[0];
-                    Debug.WriteLine(timeSlot);
                     string Sunday = fields[1];
                     string Monday = fields[2];
                     string Tuesday = fields[3];
@@ -86,11 +85,7 @@ namespace TetraScheduler
                     string Friday = fields[6];
                     string Saturday = fields[7];
 
-
-
                     // different box to display for each day
-
-
                     Debug.WriteLine("Sunday");
                     addShiftString(sunShifts, timeSlot, Sunday);
                     Debug.WriteLine("Monday");

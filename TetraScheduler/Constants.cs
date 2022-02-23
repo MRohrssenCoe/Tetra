@@ -31,5 +31,7 @@ namespace TetraScheduler
             "friday=",
             "saturday="
             };
+        public static string[] daysFull = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+        public static string[] daysShort = { "Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat" };
     }
 }

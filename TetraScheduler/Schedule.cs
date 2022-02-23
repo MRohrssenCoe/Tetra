@@ -30,6 +30,7 @@ namespace TetraScheduler
                     Shift shift = new Shift();
                     shift.startTime = i;
                     shift.endTime = i + shiftLengthMinutes;
+                    shift.day = j;
                     shifts[j].Add(shift);
                 }
             }
@@ -45,6 +46,7 @@ namespace TetraScheduler
                     Shift shift = new Shift();
                     shift.startTime = i;
                     shift.endTime = i + shiftLengthMinutes;
+                    shift.day = j;
                     shifts[j].Add(shift);
                 }
             }
@@ -88,6 +90,26 @@ namespace TetraScheduler
                 fullShifts.Add(day);
             }
             return fullShifts;
+        }
+
+        //Method to get all shifts from a schedule that a User is assigned to.
+        public List<Shift> GetShiftsForUser(string firstName, string lastName)
+        {
+            List<Shift> shiftsOut = new List<Shift>();
+
+            for (int j = 0; j < numDaysOpen; j++)
+            {
+                List<Shift> day = shifts[j];
+                foreach(Shift s in day)
+                {
+                    if (s.UserAssigned(firstName, lastName))
+                    {
+                        shiftsOut.Add(s);
+                    }
+                }
+            }
+            return shiftsOut;
+            
         }
     }
 }

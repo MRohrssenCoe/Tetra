@@ -7,18 +7,20 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 
+
+//TODO we will run into issues here when we modify UserInfo, or any classes that compose UserInfo. We either need
+//to improve our Json serialization, or delete all user prefs every time we update UserInfo.
 namespace TetraScheduler
 {
     public partial class ConsultantMenuForm : Form
     {
-        Schedule consultantAvailability;
+        List<Shift> consultantAvailability;
         ListBox.ObjectCollection availableShifts;
         private string uInfoFile;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
             availableShifts = new ListBox.ObjectCollection(availabilityBox);
-            //userInfo = new Dictionary<string, string>();
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
             importUserInfo(username);
         }
@@ -30,34 +32,37 @@ namespace TetraScheduler
 
             // creates file if not there
             if (!File.Exists(this.uInfoFile)){
+                UserInfo uInfo = new UserInfo();
                 FileStream userInfo = File.Open(this.uInfoFile, FileMode.Create);
-                //userInfo.Write(Encoding.ASCII.GetBytes(String.Join("\n", Constants.userInfoLines)));
-                //userInfo.Close();
+                byte[] info = new UTF8Encoding(true).GetBytes(fillUserInfoFile(uInfo));
+                userInfo.Write(info, 0, info.Length);
+                userInfo.Close();
             }
             else // read in info and update UI
             {
                 //Deserialize from Json file
                 string uInfoJsonString = File.ReadAllText(this.uInfoFile);
+                Debug.WriteLine(uInfoJsonString);
                 UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
-                //Fill info
+                //Fill UI info
                 fnameTextbox.Text = uInfo.FirstName;
                 lnameTextbox.Text = uInfo.LastName;
                 expSemPicker.Value = uInfo.expSemesters;
                 coeYrPicker.Value = uInfo.coeYear;
                 weeklyHrsPicker.Value = uInfo.desiredWeeklyHours;
+                consultantAvailability = uInfo.availability;
+                addAvailabilityToView(uInfo.availability);
                 //Reusing code to fill majors.
                 foreach (string major in uInfo.majors)
                 {
-                    // checks applicable boxes
+                    //Checks applicable boxes
                     if (major.Length > 0)
                     {
                         int index = majorListbox.Items.IndexOf(major);
                         majorListbox.SetItemChecked(index, true);
                     }
                 }
-                // todo: GET AVAILABILITY SHIFTS HERE
             }
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -66,38 +71,18 @@ namespace TetraScheduler
             f2.Show();
         }
 
-
         private string[] majorsSelected()
         {   // returns string representation of which majors were selected in the listbox
             int numMajors = majorListbox.CheckedItems.Count;
 
-            /*if (numMajors == 0)
-            {
-                return "";
-            }*/
-
             string[] majors = new string[majorListbox.CheckedItems.Count];
-            //StringBuilder majorString = new StringBuilder();
-
             // get list from checkboxes
             majorListbox.CheckedItems.CopyTo(majors, 0);
             return majors;
 
-            /*//build string rep
-            foreach (string major in majors)
-            {
-                majorString.Append(major + ";");
-            }
-
-            // strip trailing comma? maybe unnecessary
-            if (majorString.Length > 0)
-            {
-                majorString.Remove(majorString.Length - 1, 1);
-            }
-
-            return majorString.ToString();*/
         }
 
+        //extraneous method, consider removing.
         private string fillUserInfoFile(UserInfo uInfo)
         {
             return JsonSerializer.Serialize(uInfo);
@@ -105,7 +90,7 @@ namespace TetraScheduler
 
         private void saveInfoButton_Click(object sender, EventArgs e)
         {
-            // save info button
+            //Store demographic info in UserInfo object
             UserInfo uInfo = new UserInfo();
             uInfo.FirstName = fnameTextbox.Text;
             uInfo.LastName = lnameTextbox.Text;
@@ -113,10 +98,9 @@ namespace TetraScheduler
             uInfo.expSemesters = (int)expSemPicker.Value;
             uInfo.coeYear = (int)coeYrPicker.Value;
             uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
+            uInfo.availability = consultantAvailability;
 
-            // add other info here
-
-            // write object to json here
+            //write UserInfo object to json here
             try
             {
                 Debug.WriteLine(fillUserInfoFile(uInfo));
@@ -125,17 +109,15 @@ namespace TetraScheduler
             }
             catch (IOException)
             {
-                // some sort of error message here idk
+                MessageBox.Show("Something went wrong with saving user info!");
             }
         }
-
-
         private void ConsultantMenuForm_Load(object sender, EventArgs e)
         {
 
         }
 
-
+        // delete this when we get rid of the string display V
         private void displayArray(ArrayList[] avail)
         {
             availableShifts.Clear();
@@ -154,21 +136,57 @@ namespace TetraScheduler
                     }
                 }
             }
-            
+        }
+
+        private void displayChosenShifts(Schedule s)
+        {
+            ArrayList shifts = s.getFilledShifts();
+            foreach (ArrayList dayList in shifts)
+            {
+                foreach(Shift shift in dayList)
+                {
+                    shift.RemoveUser("Consultant", "Consultant");
+                    this.availableShifts.Add(shift);
+                }
+            }
+        }
+
+        private Shift[] getChosenShiftInfo()
+        {
+            Shift[] shifts = new Shift[this.availableShifts.Count];
+            this.availableShifts.CopyTo(shifts,0);
+            return shifts;
+            // todo: make this work with JSON
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            // availability selection button
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
-            availForm.ShowDialog();
             //show dialog pauses execution
-            consultantAvailability = availForm.AvailableSchedule;
-            ArrayList[] stringAvail = availForm.selectedScheduleStrings;
+            availForm.ShowDialog();
+            consultantAvailability = availForm.AvailableSchedule.GetShiftsForUser("Consultant", "Consultant");
+            addAvailabilityToView(consultantAvailability);
+            availabilityBox.Hide();
+            availabilityBox.Show();
+            //ArrayList[] stringAvail = availForm.selectedScheduleStrings;
             //code here to display availability in consultant menu
             availForm.Dispose();
-            Debug.WriteLine(consultantAvailability.ToString());
+        }
 
-            displayArray(stringAvail);
+        //Add the shifts to the object collection that availabilityView is bound to
+        //To do this we must first unbind the collection, then modify the collection, and then rebind.
+        private void addAvailabilityToView(List<Shift> shifts)
+        {
+            //unbind
+            availabilityBox.DataSource = null;
+            availableShifts.Clear();
+            foreach(Shift s in shifts)
+            {
+                availableShifts.Add(s);
+            }
+            //rebind
+            availabilityBox.DataSource = availableShifts;
         }
 
         private void label2_Click(object sender, EventArgs e)
