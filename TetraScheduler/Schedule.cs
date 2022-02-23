@@ -108,7 +108,6 @@ namespace TetraScheduler
                     }
                 }
             }
-
             return shiftsOut;
             
         }

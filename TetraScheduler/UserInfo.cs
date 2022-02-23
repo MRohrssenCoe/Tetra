@@ -14,10 +14,10 @@ namespace TetraScheduler
         public int expSemesters { get; set; }
         public int coeYear { get; set; }
         public int desiredWeeklyHours { get; set; }
-        public Schedule availability { get; set; }
+        public List<Shift> availability { get; set; }
 
         public UserInfo(string firstName, string lastName, string[] majors,
-            int expSemesters, int coeYear, int desiredWeeklyHours, Schedule availability)
+            int expSemesters, int coeYear, int desiredWeeklyHours, List<Shift> availability)
         {
             FirstName = firstName;
             LastName = lastName;
@@ -35,7 +35,7 @@ namespace TetraScheduler
             this.expSemesters = 0;
             this.coeYear = 0;
             desiredWeeklyHours = 0;
-            availability = new Schedule();
+            availability = new List<Shift>();
         }
     }
 }

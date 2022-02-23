@@ -62,7 +62,8 @@ namespace TetraScheduler
                     }
                 }
 
-                
+
+
                 // todo: GET AVAILABILITY SHIFTS HERE
             }
 
@@ -79,31 +80,11 @@ namespace TetraScheduler
         {   // returns string representation of which majors were selected in the listbox
             int numMajors = majorListbox.CheckedItems.Count;
 
-            /*if (numMajors == 0)
-            {
-                return "";
-            }*/
-
             string[] majors = new string[majorListbox.CheckedItems.Count];
-            //StringBuilder majorString = new StringBuilder();
-
             // get list from checkboxes
             majorListbox.CheckedItems.CopyTo(majors, 0);
             return majors;
 
-            /*//build string rep
-            foreach (string major in majors)
-            {
-                majorString.Append(major + ";");
-            }
-
-            // strip trailing comma? maybe unnecessary
-            if (majorString.Length > 0)
-            {
-                majorString.Remove(majorString.Length - 1, 1);
-            }
-
-            return majorString.ToString();*/
         }
 
         private string fillUserInfoFile(UserInfo uInfo)
@@ -121,8 +102,7 @@ namespace TetraScheduler
             uInfo.expSemesters = (int)expSemPicker.Value;
             uInfo.coeYear = (int)coeYrPicker.Value;
             uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
-
-            // add other info here
+            uInfo.availability = consultantAvailability.GetShiftsForUser("Consultant", "Consultant");
 
             // write object to json here
             try
@@ -133,7 +113,7 @@ namespace TetraScheduler
             }
             catch (IOException)
             {
-                // some sort of error message here idk
+                MessageBox.Show("Something went wrong with saving user info!");
             }
         }
         private void ConsultantMenuForm_Load(object sender, EventArgs e)
@@ -169,7 +149,7 @@ namespace TetraScheduler
             {
                 foreach(Shift shift in dayList)
                 {
-                    shift.RemoveUser("consultant", "consultant");
+                    shift.RemoveUser("Consultant", "Consultant");
                     this.availableShifts.Add(shift);
                 }
             }
@@ -187,8 +167,9 @@ namespace TetraScheduler
         {
             // availability selection button
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
-            availForm.ShowDialog();
             //show dialog pauses execution
+            availForm.ShowDialog();
+            
             consultantAvailability = availForm.AvailableSchedule;
             ArrayList[] stringAvail = availForm.selectedScheduleStrings;
             //code here to display availability in consultant menu
@@ -197,8 +178,6 @@ namespace TetraScheduler
 
             // displays string array
             //displayArray(stringAvail);
-
-            displayChosenShifts(consultantAvailability);
         }
 
         private void label2_Click(object sender, EventArgs e)
