@@ -41,7 +41,6 @@ namespace TetraScheduler
             if (!File.Exists(scheduleFile))
             {
                 StringBuilder sb = new StringBuilder();
-                //FileStream fs = File.Open(scheduleFile, FileMode.Create);
                 String tempCSV = "Weekday,Start_Time,End_Time,Consultants";
                 sb.AppendLine(tempCSV);
 
@@ -57,10 +56,11 @@ namespace TetraScheduler
 
                 
                 File.WriteAllText(scheduleFile, sb.ToString());
-                //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
-                //fs.Write(System.Text.Encoding.ASCII.GetBytes(tempCSV), 0, tempCSV.Length);
-                //fs.Close();
+
             }
+
+            Schedule s = new Schedule();
+            s.AssignUser("Michael", "Rohrssen", 0, 0); 
 
             // starts at login form
             Application.Run(new LoginForm());

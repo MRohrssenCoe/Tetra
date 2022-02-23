@@ -7,11 +7,11 @@ namespace TetraScheduler
 {
     public class Shift
     {
-        //untested
         public struct User
         {
-            public string FirstName;
-            public string LastName;
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            
         }
         public List<User> users { get; set; }
         public int startTime { get; set; }
