@@ -39,6 +39,7 @@ namespace TetraScheduler
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.viewAdminButton = new System.Windows.Forms.Button();
@@ -47,7 +48,7 @@ namespace TetraScheduler
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -160,6 +161,16 @@ namespace TetraScheduler
             this.panel3.Size = new System.Drawing.Size(330, 256);
             this.panel3.TabIndex = 13;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(92, 197);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(146, 29);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Select Busy Shifts";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // lastGenLabel
             // 
             this.lastGenLabel.AutoSize = true;
@@ -242,21 +253,22 @@ namespace TetraScheduler
             this.welcomeLabel.Text = "Welcome, [name]!";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(92, 197);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 29);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Select Busy Shifts";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button2.Location = new System.Drawing.Point(374, 452);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(171, 43);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "Logout";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(563, 513);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.lastGenLabel);
             this.Controls.Add(this.label4);
@@ -300,5 +312,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
