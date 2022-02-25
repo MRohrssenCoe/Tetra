@@ -111,5 +111,21 @@ namespace TetraScheduler
             return shiftsOut;
             
         }
+
+        public List<Shift> toLinearArray()
+        {
+            // 1d array of our shifts - UNTESTED
+            List<Shift> newArray = new List<Shift>();
+
+            foreach(List<Shift> day in shifts)
+            {
+                foreach(Shift s in day)
+                {
+                    newArray.Add(s);
+                }
+            }
+
+            return newArray;
+        }
     }
 }
