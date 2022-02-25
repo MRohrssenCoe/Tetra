@@ -71,13 +71,46 @@ namespace TetraScheduler
                 x += 3;
             }
             if (checker)
-                MessageBox.Show("Username is already being used. Please use another name or consult an admin.");
+                MessageBox.Show("Username is currently in use. Please use another or consult an administrator.");
             else
             {
                 //Write it
                 usernameString = usernameString + Writer;
                 File.WriteAllText(pswdFile, usernameString);
                 this.Close();
+            }
+        }
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Username...")
+            {
+                textBox1.Text = "";
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Username...";
+            }
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "Password...")
+            {
+                textBox2.Text = "";
+            }
+            textBox2.PasswordChar = '*';
+        }
+
+        private void textBox2_Leave(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                textBox2.PasswordChar = '\0';
+                textBox2.Text = "Password...";
             }
         }
     }

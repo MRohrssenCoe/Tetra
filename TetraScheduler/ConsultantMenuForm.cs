@@ -150,5 +150,10 @@ namespace TetraScheduler
             //rebind
             availabilityBox.DataSource = availableShifts;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

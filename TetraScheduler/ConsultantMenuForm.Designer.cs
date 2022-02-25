@@ -44,6 +44,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.availabilityBox = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weeklyHrsPicker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coeYrPicker)).BeginInit();
@@ -53,7 +54,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(362, 527);
+            this.button1.Location = new System.Drawing.Point(131, 529);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(111, 53);
@@ -278,11 +279,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.SelectAvailabilityButtonClick);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(346, 529);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(120, 41);
+            this.button4.TabIndex = 21;
+            this.button4.Text = "Logout";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // ConsultantMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 600);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button1);
@@ -327,5 +339,6 @@
         private System.Windows.Forms.NumericUpDown coeYrPicker;
         private System.Windows.Forms.NumericUpDown expSemPicker;
         private System.Windows.Forms.ListBox availabilityBox;
+        private System.Windows.Forms.Button button4;
     }
 }
