@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 
+
+//TODO update to add constructer that uses an array of start and end times
 namespace TetraScheduler
 {
     public class Schedule
@@ -35,6 +37,30 @@ namespace TetraScheduler
                 }
             }
         }
+        public Schedule(int[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
+        {
+            numDaysOpen = daysOpen.Length;
+            shiftLengthMinutes = shiftLength;
+            shifts = new List<Shift>[numDaysOpen];
+            //create a list of shifts for each day.
+            //count how far into the daysOpen array we are so that we can use the coreesponding starting and ending times
+            int counter = 0;
+            foreach(int dayNum in daysOpen)
+            {
+                //set the days start time according to the inputted array
+                int curTimeCount = startTimes[counter];
+                while (curTimeCount < endTimes[counter])
+                {
+                    Shift s = new Shift();
+                    s.startTime = curTimeCount;
+                    s.endTime = curTimeCount + shiftLengthMinutes;
+                    s.day = daysOpen[counter];
+                    shifts[counter].Add(s);
+                    curTimeCount += shiftLengthMinutes;
+                }
+                counter++;
+            }
+        }
         public Schedule()
         {
             shifts = new List<Shift>[numDaysOpen];
@@ -51,6 +77,7 @@ namespace TetraScheduler
                 }
             }
         }
+
         public void AssignUser(string fn, string ln, int day, int shiftNumber) // todo: change fn/ln to user objects
         {
             shifts[day][shiftNumber].AddUser(fn, ln);
