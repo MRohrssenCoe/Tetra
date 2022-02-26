@@ -51,7 +51,7 @@ namespace TetraScheduler
                 if (radioButton4.Checked)
                     Writer = username + "," + password + ",1,";
                 else if (radioButton5.Checked)
-                    Writer = username + "," + password + ",2,";
+                    Writer = username + "," + password + ",0,";
                 else if (radioButton6.Checked)
                     Writer = username + "," + password + ",3,";
             }
