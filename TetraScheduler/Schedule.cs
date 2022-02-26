@@ -37,8 +37,15 @@ namespace TetraScheduler
                 }
             }
         }
+        //Constructor that has more flexibility to allow for different starting and ending times, and specific days being open.
         public Schedule(int[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
         {
+            //make sure all arrays are the same length. If they aren't, we will have index OOB exceptions galore.
+            if(daysOpen.Length != startTimes.Length || daysOpen.Length != endTimes.Length)
+            {
+                //throw error
+                throw new ArgumentException("daysOpen[], startTimes[], and endTimes[] must all be equal in length!");
+            }
             numDaysOpen = daysOpen.Length;
             shiftLengthMinutes = shiftLength;
             shifts = new List<Shift>[numDaysOpen];
@@ -47,6 +54,7 @@ namespace TetraScheduler
             int counter = 0;
             foreach(int dayNum in daysOpen)
             {
+                shifts[counter] = new List<Shift>();
                 //set the days start time according to the inputted array
                 int curTimeCount = startTimes[counter];
                 while (curTimeCount < endTimes[counter])

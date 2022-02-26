@@ -14,7 +14,7 @@ namespace TetraScheduler
         static void Main()
         {
 
-            testingAlgo();
+            //testingAlgo();
 
 
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
@@ -64,8 +64,19 @@ namespace TetraScheduler
 
             }
 
-            Schedule s = new Schedule();
-            s.AssignUser("Michael", "Rohrssen", 0, 0); 
+            int[] daysOpen = new int[3];
+            daysOpen[0] = 1;
+            daysOpen[1] = 2;
+            daysOpen[2] = 3;
+            int[] startTimes = new int[3];
+            startTimes[0] = 540;
+            startTimes[1] = 540;
+            startTimes[2] = 540;
+            int[] endTimes = new int[3];
+            endTimes[0] = 1020;
+            endTimes[1] = 1020;
+            endTimes[2] = 1020;
+            Schedule newConstructorTest = new Schedule(daysOpen, 60, startTimes, endTimes);
 
             // starts at login form
             Application.Run(new LoginForm());
