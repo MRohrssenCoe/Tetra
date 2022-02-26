@@ -51,6 +51,7 @@ namespace TetraScheduler
 
             String username = textBox1.Text;
             String password = textBox2.Text;
+            bool successfulLogin = false;
 
             if (username.Length == 0 || password.Length == 0)
             {
@@ -60,17 +61,19 @@ namespace TetraScheduler
 
             else
             {
-                int validatationCode = validate_Credentials(username, password);
+                int validationCode = validate_Credentials(username, password);
                 //TODO: make this split into different logins
-                if (validatationCode == 0)
+                if (validationCode == 0)
                 {
                     new ConsultantMenuForm(username).Show();
+                    successfulLogin = true;
                 }
-                if (validatationCode == 1)
+                if (validationCode == 1)
                 {
                     new AdminMenuForm(username).Show();
+                    successfulLogin = true;
                 }
-                if (validatationCode == 2)
+                if (validationCode == 2)
                 {
                     bool passwordIsDefault = true;
                     while (passwordIsDefault)
@@ -80,7 +83,7 @@ namespace TetraScheduler
                         if (changePswdBox.DialogResult == DialogResult.OK)
                         {
                             //write new user and password to file
-                            //UNTESTED UNTESTED
+                            //overwrites entire file!!!
                             string pswdFile = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
                             FileStream fs = File.Open(pswdFile, FileMode.Truncate);
                             string tempText = changePswdBox.UsernameReturn + "," + changePswdBox.PasswordReturn + "," + "1";
@@ -95,11 +98,20 @@ namespace TetraScheduler
                         }
                     }
                 }
-                if (validatationCode == -1)
+                if (validationCode == 3)
+                {
+                    // add case for combo admin + consultant here
+                }
+                if (validationCode == -1)
                 {
                     MessageBox.Show("Invalid credentials!");
                 }
+            }
 
+            if (successfulLogin)
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
             }
         }
         private void button1_Click(object sender, EventArgs e)

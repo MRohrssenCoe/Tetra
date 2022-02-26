@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace TetraScheduler
 {
@@ -12,6 +13,10 @@ namespace TetraScheduler
         [STAThread]
         static void Main()
         {
+
+            testingAlgo();
+
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -64,6 +69,18 @@ namespace TetraScheduler
 
             // starts at login form
             Application.Run(new LoginForm());
+
+            
+        }
+
+
+        static void testingAlgo()
+        {
+            // make some users
+            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+            ScheduleMaker sm = new ScheduleMaker(users);
+            sm.generateSchedule();
+            // uhhhhhh idk how to write tests...
         }
     }
 }

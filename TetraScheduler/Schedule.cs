@@ -138,5 +138,53 @@ namespace TetraScheduler
             return shiftsOut;
             
         }
+
+        public List<Shift> toLinearArray()
+        {
+            // 1d array of our shifts - UNTESTED
+            List<Shift> newArray = new List<Shift>();
+
+            foreach(List<Shift> day in shifts)
+            {
+                foreach(Shift s in day)
+                {
+                    newArray.Add(s);
+                }
+            }
+
+            return newArray;
+        }
+
+        public List<Shift> matchAvailabilities(List<Shift> otherShifts)
+        {
+            // gets shifts from our list corresponding to shifts at same time in otherShifts list - ASSUMES IN ORDER, UNTESTED
+            List<Shift> newArray = new List<Shift>();
+            int theirIndex = 0;
+            Shift currentTheirs;
+
+            // fuck double for loops idc about efficiency
+            List<Shift> ourArray = toLinearArray();
+            int ourIndex = 0;
+            Shift currentOurs;
+
+            // compare each shift to each other - probably faster ways to do this
+            while (theirIndex < otherShifts.Count && ourIndex < ourArray.Count)
+            {
+                currentTheirs = otherShifts[theirIndex];
+                currentOurs = ourArray[ourIndex];
+
+                // relevant comparisons
+                if (currentOurs.day == currentTheirs.day && currentOurs.startTime == currentTheirs.startTime && currentOurs.endTime == currentTheirs.endTime)
+                {
+                    newArray.Add(currentOurs);
+                    // move to find their next shift
+                    theirIndex++;
+                }
+                // check against our next shift
+                ourIndex++;
+            }
+            
+            return newArray;
+        }
     }
 }

@@ -41,25 +41,32 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(250, 139);
+            this.textBox1.Location = new System.Drawing.Point(36, 89);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 27);
+            this.textBox1.Size = new System.Drawing.Size(237, 23);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Username...";
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(250, 195);
+            this.textBox2.Location = new System.Drawing.Point(36, 131);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(270, 27);
+            this.textBox2.Size = new System.Drawing.Size(237, 23);
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "Password...";
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(333, 359);
+            this.button1.Location = new System.Drawing.Point(108, 254);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
+            this.button1.Size = new System.Drawing.Size(82, 22);
             this.button1.TabIndex = 3;
             this.button1.Text = "Next";
             this.button1.UseVisualStyleBackColor = true;
@@ -101,9 +108,10 @@
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(250, 228);
+            this.radioButton4.Location = new System.Drawing.Point(36, 156);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(74, 24);
+            this.radioButton4.Size = new System.Drawing.Size(61, 19);
             this.radioButton4.TabIndex = 4;
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Admin";
@@ -112,9 +120,10 @@
             // radioButton5
             // 
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(250, 258);
+            this.radioButton5.Location = new System.Drawing.Point(36, 179);
+            this.radioButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(100, 24);
+            this.radioButton5.Size = new System.Drawing.Size(83, 19);
             this.radioButton5.TabIndex = 5;
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Consultant";
@@ -123,9 +132,10 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(250, 288);
+            this.radioButton6.Location = new System.Drawing.Point(36, 201);
+            this.radioButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(177, 24);
+            this.radioButton6.Size = new System.Drawing.Size(145, 19);
             this.radioButton6.TabIndex = 6;
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Admin and Consultant";
@@ -133,15 +143,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(308, 298);
             this.Controls.Add(this.radioButton6);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

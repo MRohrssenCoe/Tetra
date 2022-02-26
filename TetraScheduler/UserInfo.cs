@@ -37,5 +37,10 @@ namespace TetraScheduler
             desiredWeeklyHours = 0;
             availability = new List<Shift>();
         }
+
+        public override string ToString()
+        {
+            return "FirstName= " + FirstName + " LastName= " + LastName; // expand on this later
+        }
     }
 }
