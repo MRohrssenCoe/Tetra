@@ -80,7 +80,7 @@ namespace TetraScheduler
             List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
             ScheduleMaker sm = new ScheduleMaker(users);
             sm.generateSchedule();
-            // uhhhhhh idk how to write tests... test ScheduleMaker here though idk
+            // uhhhhhh idk how to write tests...
         }
     }
 }

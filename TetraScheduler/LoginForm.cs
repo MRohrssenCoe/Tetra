@@ -51,6 +51,7 @@ namespace TetraScheduler
 
             String username = textBox1.Text;
             String password = textBox2.Text;
+            bool successfulLogin = false;
 
             if (username.Length == 0 || password.Length == 0)
             {
@@ -65,10 +66,12 @@ namespace TetraScheduler
                 if (validationCode == 0)
                 {
                     new ConsultantMenuForm(username).Show();
+                    successfulLogin = true;
                 }
                 if (validationCode == 1)
                 {
                     new AdminMenuForm(username).Show();
+                    successfulLogin = true;
                 }
                 if (validationCode == 2)
                 {
@@ -103,7 +106,12 @@ namespace TetraScheduler
                 {
                     MessageBox.Show("Invalid credentials!");
                 }
+            }
 
+            if (successfulLogin)
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
             }
         }
         private void button1_Click(object sender, EventArgs e)
