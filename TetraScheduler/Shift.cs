@@ -117,5 +117,10 @@ namespace TetraScheduler
             String endTime = minutesToHr(this.endTime, true); // 12 hr format
             return String.Format("{0}: {1} - {2}", day, startTime, endTime);
         }
+        public override bool Equals(object obj)
+        {
+            Shift other = (Shift)obj;
+            return this.day == other.day && this.startTime == other.startTime && this.endTime == other.endTime;
+        }
     }
 }

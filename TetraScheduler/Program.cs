@@ -13,10 +13,9 @@ namespace TetraScheduler
         [STAThread]
         static void Main()
         {
-
-
-            Schedule s = new Schedule();
-            var l = s.getAdjacentShifts(s.shifts[0][7]);
+            
+            Testing t = new Testing();
+            List<Shift> mine = t.generateRandomAvailability(10);
             //testingAlgo();
 
 

@@ -60,5 +60,20 @@ namespace TetraScheduler
             return consultants;
         }
 
+        public List<Shift> generateRandomAvailability(int numShiftsAvailable)
+        {
+            var rand = new Random();
+            List<Shift> output = new List<Shift>();
+            for (int i = 0;i < numShiftsAvailable; i++)
+            {
+                Shift s = new Shift();
+                s.day = rand.Next(0, 6);
+                s.startTime = rand.Next(9, 17) * 60;
+                s.endTime = s.startTime + 60;
+                output.Add(s);
+            }
+            return output;
+        }
+
     }
 }
