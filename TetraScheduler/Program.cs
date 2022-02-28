@@ -14,6 +14,9 @@ namespace TetraScheduler
         static void Main()
         {
 
+
+            Schedule s = new Schedule();
+            var l = s.getAdjacentShifts(s.shifts[0][7]);
             //testingAlgo();
 
 
