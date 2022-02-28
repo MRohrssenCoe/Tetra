@@ -20,7 +20,7 @@ namespace TetraScheduler
         }
 
 
-        public void generateSchedule()
+        public Schedule generateSchedule()
         {
 
             // check that we have a list of consultants, admin preferences, etc. requirements
@@ -63,6 +63,7 @@ namespace TetraScheduler
 
             Debug.WriteLine("Final Schedule: ");
             Debug.WriteLine(JsonSerializer.Serialize(s));
+            return s;
         }
 
 
