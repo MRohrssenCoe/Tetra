@@ -10,6 +10,7 @@ namespace TetraScheduler
     class ScheduleMaker
     {
         public List<UserInfo> users { get; set; }
+        public int maxConseqShifts { get; set; }
 
         // variable for admin preferences here
 
@@ -55,6 +56,7 @@ namespace TetraScheduler
                     // decrement their needed times
                     requestedMinutes -= (firstShift.endTime - firstShift.startTime);
 
+                    
                     // here we would check for adjacent shifts in their availabilities after checking for that preference
                 }
             }
