@@ -20,7 +20,11 @@ namespace TetraScheduler
         // generate 60 consultants
         // 
 
-
+        public AdminOptions generateAdminOptions()
+        {
+            AdminOptions options = new AdminOptions();
+            return options;
+        }
 
         public List<UserInfo> generateConsultants(int numConsultants)
         {
@@ -31,11 +35,13 @@ namespace TetraScheduler
                 UserInfo c = new UserInfo();
                 c.FirstName = i.ToString();
                 c.LastName = i.ToString();
+                // assign them a random set of shifts, majors, school year, etc.
             }
+
+            
 
             return consultants;
         }
-
 
     }
 }
