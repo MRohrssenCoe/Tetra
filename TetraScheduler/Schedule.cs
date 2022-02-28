@@ -37,7 +37,7 @@ namespace TetraScheduler
                 }
             }
         }
-        //Constructor that has more flexibility to allow for different starting and ending times, and specific days being open.
+        //Constructor that has more flexibility to allow for different starting and ending times, and specific days being open. 
         public Schedule(int[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
         {
             //make sure all arrays are the same length. If they aren't, we will have index OOB exceptions galore.
@@ -193,6 +193,29 @@ namespace TetraScheduler
             }
             
             return newArray;
+        }
+        public List<Shift> getAdjacentShifts(Shift s)
+        {
+            List<Shift> adjacents = new List<Shift> ();
+            foreach(List<Shift> ls in shifts)
+            {
+                foreach(Shift z in ls)
+                {
+                    if (z.day == s.day && z.startTime == s.startTime && z.endTime == s.endTime)
+                    {
+                        int index = ls.IndexOf(z);
+                        if(index - 1 >= 0)
+                        {
+                            adjacents.Add(ls[index-1]);
+                        }
+                        if(index + 1 < ls.Count)
+                        {
+                            adjacents.Add(ls[index+1]);
+                        }
+                    }
+                }
+            }   
+            return adjacents;
         }
     }
 }
