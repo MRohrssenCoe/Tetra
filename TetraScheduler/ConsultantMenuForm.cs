@@ -17,7 +17,6 @@ namespace TetraScheduler
         List<Shift> consultantAvailability;
         ListBox.ObjectCollection availableShifts;
         private string uInfoFile;
-        public LoginForm login { set; get; }
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();

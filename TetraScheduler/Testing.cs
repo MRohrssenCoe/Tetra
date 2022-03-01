@@ -32,7 +32,7 @@ namespace TetraScheduler
             Schedule s;
             if (this.aOptions != null && this.consultants != null){
 
-                ScheduleMaker sm = new ScheduleMaker(this.consultants, this.aOptions);
+                ScheduleMaker sm = new ScheduleMaker(this.consultants);
                 s = sm.generateSchedule();
                 return s;
             }

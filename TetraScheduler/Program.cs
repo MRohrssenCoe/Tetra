@@ -91,7 +91,7 @@ namespace TetraScheduler
         {
             // make some users
             List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
-            ScheduleMaker sm = new ScheduleMaker(users, new AdminOptions());
+            ScheduleMaker sm = new ScheduleMaker(users);
             sm.generateSchedule();
             // uhhhhhh idk how to write tests...
         }

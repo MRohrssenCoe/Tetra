@@ -80,7 +80,7 @@ namespace TetraScheduler
             string names = "";
             foreach(User u in users)
             {
-                names += u.FirstName + " " + u.LastName + "; ";
+                names += u.FirstName + "," + u.LastName + ",";
             }
             return names;
         }
@@ -117,22 +117,10 @@ namespace TetraScheduler
             String endTime = minutesToHr(this.endTime, true); // 12 hr format
             return String.Format("{0}: {1} - {2}", day, startTime, endTime);
         }
-        /*public override bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             Shift other = (Shift)obj;
             return this.day == other.day && this.startTime == other.startTime && this.endTime == other.endTime;
-        }*/
-
-        public int numMajors(string[] majors)
-        {
-            // returns number of consultants with those majors already in the shift
-            int count = 0;
-            foreach(User user in this.users)
-            {
-                // need a way to access majors... userinfo objects?
-            }
-
-            return count;
         }
     }
 }
