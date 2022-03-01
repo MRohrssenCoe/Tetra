@@ -40,32 +40,18 @@ namespace TetraScheduler
             sf.Show();
         }
 
-        private void addBusy_Click(object sender, EventArgs e)
-        {
-            // uses info from startBusy and endBusy timepickers to add a busy shift to list of busy shifts
-        }
-
-        private void removeAllBusy_Click(object sender, EventArgs e)
-        {
-            // removes all items from busy shift list
-            // TODO: test this function
-            object[] temp = new object[busyShifts.Count]; // temp copy to avoid deleting through iteration
-            busyShifts.CopyTo(temp, 0);
-            foreach (Object o in temp)
-            {
-                busyShifts.Remove(o); 
-            }
-        }
-
-        private void removeSelectBusy_Click(object sender, EventArgs e)
-        {
-            // removes item(s?) that are selected in the listbox from busy shift list
-        }
 
         private void genScheduleButton_Click(object sender, EventArgs e)
         {
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
+
+            AdminOptions AO = new AdminOptions(); // REPLACE WITH READ FROM FILE
+            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+
+            ScheduleMaker sm = new ScheduleMaker(users, AO);
+            Schedule s = sm.generateSchedule();
+
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)

@@ -27,6 +27,8 @@ namespace TetraScheduler
             //0 for consultant, 1 for admin, 2 for default admin
             public string accountType;
         }
+
+
         public LoginForm()
         {
             
@@ -208,5 +210,6 @@ namespace TetraScheduler
                 textBox2.Focus();
             }
         }
+
     }
 }
