@@ -92,6 +92,12 @@ namespace TetraScheduler
                 this.Close();
             }
         }
+
+        private void removeAccButton_Click(object sender, EventArgs e)
+        {
+            RemoveAccount remove = new RemoveAccount();
+            remove.Show();
+        }
     }
 }
 
