@@ -100,7 +100,8 @@ namespace TetraScheduler
                 }
                 if (validationCode == 3)
                 {
-                    // add case for combo admin + consultant here
+                    new Form2(username).Show();
+                    successfulLogin = true;
                 }
                 if (validationCode == -1)
                 {
@@ -142,9 +143,13 @@ namespace TetraScheduler
                     {
                         return 1;
                     }
-                    if(usernamePassword.accountType == "2")
+                    if (usernamePassword.accountType == "2")
                     {
                         return 2;
+                    }
+                    if (usernamePassword.accountType == "3")
+                    {
+                        return 3;
                     }
                 }
             }
