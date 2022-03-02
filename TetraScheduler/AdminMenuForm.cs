@@ -66,6 +66,9 @@ namespace TetraScheduler
         {
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
+            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+            ScheduleMaker sm = new ScheduleMaker(users);
+            sm.generateSchedule();
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)
