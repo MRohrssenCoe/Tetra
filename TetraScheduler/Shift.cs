@@ -16,7 +16,7 @@ namespace TetraScheduler
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
-            
+
         }
         public List<User> users { get; set; }
         public int startTime { get; set; }
@@ -28,9 +28,9 @@ namespace TetraScheduler
         }
         public bool UserAssigned(string fn, string ln)
         {
-            foreach(User u in users)
+            foreach (User u in users)
             {
-                if(u.FirstName == fn && u.LastName == ln)
+                if (u.FirstName == fn && u.LastName == ln)
                 {
                     return true;
                 }
@@ -53,24 +53,27 @@ namespace TetraScheduler
                 user.FirstName = fn;
                 user.LastName = ln;
                 users.Add(user);
-            } else {
+            }
+            else
+            {
                 Debug.WriteLine("User already exists in this shift: " + fn + ", " + ln);
             }
         }
         public void RemoveUser(string fn, string ln)
         {
             int index = -1;
-            foreach(User user in users)
+            foreach (User user in users)
             {
-                if(user.FirstName == fn && user.LastName == ln)
+                if (user.FirstName == fn && user.LastName == ln)
                 {
                     index = users.IndexOf(user);
                 }
             }
-            if(index == -1)
+            if (index == -1)
             {
                 Debug.WriteLine("No such shift found: " + fn + " " + ln);
-            } else
+            }
+            else
             {
                 users.RemoveAt(index);
             }
@@ -78,7 +81,7 @@ namespace TetraScheduler
         public string UsersAsText()
         {
             string names = "";
-            foreach(User u in users)
+            foreach (User u in users)
             {
                 names += u.FirstName + "," + u.LastName + ",";
             }
@@ -88,7 +91,7 @@ namespace TetraScheduler
         public string minutesToHr(int mins, bool twelveHrFormat)
         {
             TimeSpan t = TimeSpan.FromMinutes(mins);
-            
+
             if (twelveHrFormat)
             {
                 String ampm = mins < (12 * 60) ? "AM" : "PM";
@@ -122,5 +125,21 @@ namespace TetraScheduler
             Shift other = (Shift)obj;
             return this.day == other.day && this.startTime == other.startTime && this.endTime == other.endTime;
         }
+
+        public static bool operator <(Shift self, Shift other)
+        {
+            int minuteCountSelf = (self.day * 1440) + self.startTime;
+            int minuteCountOther = (other.day * 1440) + other.startTime;
+
+            return minuteCountSelf < minuteCountOther;
+        }
+        public static bool operator >(Shift self, Shift other)
+        {
+            int minuteCountSelf = (self.day * 1440) + self.startTime;
+            int minuteCountOther = (other.day * 1440) + other.startTime;
+
+            return minuteCountSelf > minuteCountOther;
+        }
+
     }
 }

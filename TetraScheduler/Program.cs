@@ -16,6 +16,15 @@ namespace TetraScheduler
             
             Testing t = new Testing();
             List<Shift> mine = t.generateRandomAvailability(10);
+
+            Shift a = new Shift();
+            a.day = 1;
+            a.startTime = 540;
+            Shift b = new Shift();
+            b.day = 0;
+            b.startTime = 600;
+
+            Debug.WriteLine(a > b);
             //testingAlgo();
 
 
