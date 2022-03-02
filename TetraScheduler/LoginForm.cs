@@ -143,9 +143,13 @@ namespace TetraScheduler
                     {
                         return 1;
                     }
-                    if(usernamePassword.accountType == "2")
+                    if (usernamePassword.accountType == "2")
                     {
                         return 2;
+                    }
+                    if (usernamePassword.accountType == "3")
+                    {
+                        return 3;
                     }
                 }
             }

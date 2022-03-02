@@ -22,7 +22,7 @@ namespace TetraScheduler
             this.name = name;
             // fun little greeting :)
             // change to get their name from the accounts file later
-            textBox2.Text = "Welcome, " + name + "!";
+            label1.Text = "Welcome, " + name + ". Which menus would you like to access as a consultant and admin?";
         }
 
             private void Form2_Load(object sender, EventArgs e)
