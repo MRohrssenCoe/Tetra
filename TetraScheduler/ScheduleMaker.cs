@@ -4,6 +4,7 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
+using System.Linq;
 
 namespace TetraScheduler
 {
@@ -35,7 +36,7 @@ namespace TetraScheduler
             foreach(UserInfo c in users)
             {
                 // gets list of shifts from our schedule that we could possibly schedule c in
-                List<Shift> availabilities = s.matchAvailabilities(c.availability);
+                List<Shift> availabilities = s.matchAvailabilities(sortShiftsConseq(c.availability));
 
                 // sort availabilities based on best fit
                 sortAvailableShifts(c, availabilities);
@@ -71,6 +72,11 @@ namespace TetraScheduler
         {
             // sorts users from fewest -> most availability times
             this.users.Sort((UserInfo u1, UserInfo u2) => u1.availability.Count.CompareTo(u2.availability.Count));
+        }
+
+        private List<Shift> sortShiftsConseq(List<Shift> s)
+        {
+            return s.OrderBy(x => x.day).ThenBy(x => x.startTime).ThenBy(x => x.endTime).ToList();
         }
 
         private void sortAvailableShifts(UserInfo c, List<Shift> availabilities)
