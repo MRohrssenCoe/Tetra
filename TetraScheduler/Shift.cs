@@ -121,6 +121,7 @@ namespace TetraScheduler
             return String.Format("{0}: {1} - {2}", day, startTime, endTime);
         }
 
+        //This overload only compares the time that the shifts start at, because that's the only thing that makes sense to compare
         public static bool operator <(Shift self, Shift other)
         {
             int minuteCountSelf = (self.day * 1440) + self.startTime;
@@ -128,6 +129,7 @@ namespace TetraScheduler
 
             return minuteCountSelf < minuteCountOther;
         }
+        //This overload only compares the time that the shifts start at, because that's the only thing that makes sense to compare
         public static bool operator >(Shift self, Shift other)
         {
             int minuteCountSelf = (self.day * 1440) + self.startTime;
@@ -135,6 +137,14 @@ namespace TetraScheduler
 
             return minuteCountSelf > minuteCountOther;
         }
-
+        //Technically, this is a bad overload, but it will make reading our algorithms WAY easier, so I think it's fine.
+        public static bool operator ==(Shift self, Shift other)
+        {
+            return self.day == other.day && self.startTime == other.startTime && self.endTime == other.endTime;
+        }
+        public static bool operator !=(Shift self, Shift other)
+        {
+            return !(self == other);
+        }
     }
 }
