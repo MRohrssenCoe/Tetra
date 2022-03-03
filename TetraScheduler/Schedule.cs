@@ -165,7 +165,7 @@ namespace TetraScheduler
 
         public List<Shift> matchAvailabilities(List<Shift> otherShifts)
         {
-            // gets shifts from our list corresponding to shifts at same time in otherShifts list - ASSUMES IN ORDER, UNTESTED
+            // gets shifts from our list corresponding to shifts at same time in otherShifts list - ASSUMES IN ORDER
             List<Shift> newArray = new List<Shift>();
             int theirIndex = 0;
             Shift currentTheirs;
@@ -186,7 +186,10 @@ namespace TetraScheduler
                 {
                     newArray.Add(currentOurs);
                     // move to find their next shift
-                    theirIndex++;
+                    while (theirIndex < otherShifts.Count && otherShifts[theirIndex] == currentTheirs)  // this while loop is just here to prevent code breaking for randomly generated same shifts, remove it if we can fix random generation
+                    {
+                        theirIndex++;
+                    }
                 }
                 // check against our next shift
                 ourIndex++;
