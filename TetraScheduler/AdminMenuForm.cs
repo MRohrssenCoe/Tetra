@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace TetraScheduler
 {
@@ -66,9 +67,13 @@ namespace TetraScheduler
         {
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
-            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+            //List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+
+            Testing testing = new Testing();
+            List<UserInfo> users = testing.generateConsultants(50);
+            Debug.WriteLine(users);
             ScheduleMaker sm = new ScheduleMaker(users);
-            sm.generateSchedule();
+            Debug.WriteLine(sm.generateSchedule());
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)

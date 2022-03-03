@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace TetraScheduler
 {
@@ -48,13 +49,17 @@ namespace TetraScheduler
         public List<UserInfo> generateConsultants(int numConsultants)
         {
             List<UserInfo> consultants = new List<UserInfo>();
+            var rand = new Random();
 
             for (int i = 0; i < numConsultants; i++)
             {
                 UserInfo c = new UserInfo();
                 c.FirstName = i.ToString();
                 c.LastName = i.ToString();
+                c.availability = generateRandomAvailability(rand.Next(10, 30));
+                c.desiredWeeklyHours = rand.Next(3, 7);
                 // assign them a random set of shifts, majors, school year, etc.
+                consultants.Add(c);
             }
 
             return consultants;
