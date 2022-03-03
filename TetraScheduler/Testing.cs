@@ -68,7 +68,6 @@ namespace TetraScheduler
         public List<Shift> generateRandomAvailability(int numShiftsAvailable)
         {
             var rand = new Random();
-            Debug.WriteLine(numShiftsAvailable);
             List<Shift> output = new List<Shift>();
             //for(int i = 0; i < numShiftsAvailable; i++)
             while (output.Count < numShiftsAvailable)  // could potentially run forever if we're unlucky...
@@ -77,17 +76,20 @@ namespace TetraScheduler
                 s.day = rand.Next(0, 7);
                 s.startTime = rand.Next(9, 17) * 60;
                 s.endTime = s.startTime + 60;
-                
+
+                bool dupe = false;
                 foreach(Shift sh in output)
                 {
                     if (sh == s)
                     {
-                        Debug.WriteLine("sameGen");
+                        dupe = true;
                         break;
                     }
                 }
-                Debug.WriteLine("still generating");
-                output.Add(s);
+                if (!dupe)
+                {
+                    output.Add(s);
+                }
             }
             return output;
         }

@@ -176,6 +176,7 @@ namespace TetraScheduler
             Shift currentOurs;
 
             // compare each shift to each other - probably faster ways to do this
+
             while (theirIndex < otherShifts.Count && ourIndex < ourArray.Count)
             {
                 currentTheirs = otherShifts[theirIndex];
@@ -186,10 +187,7 @@ namespace TetraScheduler
                 {
                     newArray.Add(currentOurs);
                     // move to find their next shift
-                    while (theirIndex < otherShifts.Count && otherShifts[theirIndex] == currentTheirs)  // this while loop is just here to prevent code breaking for randomly generated same shifts, remove it if we can fix random generation
-                    {
-                        theirIndex++;
-                    }
+                    theirIndex++;
                 }
                 // check against our next shift
                 ourIndex++;
