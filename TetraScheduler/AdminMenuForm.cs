@@ -73,6 +73,7 @@ namespace TetraScheduler
             List<UserInfo> users = testing.generateConsultants(50);
             Debug.WriteLine(users);
             ScheduleMaker sm = new ScheduleMaker(users);
+
             Debug.WriteLine(sm.generateSchedule());
         }
 

@@ -13,11 +13,14 @@ namespace TetraScheduler
         public List<UserInfo> users { get; set; }
         public int maxConseqShifts { get; set; }
 
+        public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
+
         // variable for admin preferences here
 
         public ScheduleMaker(List<UserInfo> users)
         {
             this.users = users; // change this later - for testing
+            this.s = null;
         }
 
 
@@ -26,7 +29,10 @@ namespace TetraScheduler
 
             // check that we have a list of consultants, admin preferences, etc. requirements
 
-            Schedule s = new Schedule();
+            if (this.s == null)
+            {
+                this.s = new Schedule();
+            }
 
             // sort users according to our priorities - fewest availabilities first
             sortUsers();

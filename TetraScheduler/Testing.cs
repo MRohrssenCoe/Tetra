@@ -57,7 +57,7 @@ namespace TetraScheduler
                 c.FirstName = i.ToString();
                 c.LastName = i.ToString();
                 c.availability = generateRandomAvailability(rand.Next(10, 30));
-                c.desiredWeeklyHours = rand.Next(3, 7);
+                c.desiredWeeklyHours = rand.Next(3,7);
                 // assign them a random set of shifts, majors, school year, etc.
                 consultants.Add(c);
             }
@@ -90,6 +90,22 @@ namespace TetraScheduler
                 {
                     output.Add(s);
                 }
+            }
+            return output;
+        }
+
+        public List<Shift> generateAvail2(int numShiftsAvailable)
+        {
+            var rand = new Random();
+            Schedule s = new Schedule(); // dummy schedule to get shifts from, change to copy from another schedule?
+            List<Shift> options = s.toLinearArray();
+            List<Shift> output = new List<Shift>();
+            
+            while (output.Count < numShiftsAvailable && options.Count > 0) 
+            {
+                int index = rand.Next(0, options.Count);
+                output.Add(options[index]);
+                options.RemoveAt(index);
             }
             return output;
         }
