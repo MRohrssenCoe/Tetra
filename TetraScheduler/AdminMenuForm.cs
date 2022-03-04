@@ -25,16 +25,29 @@ namespace TetraScheduler
             comboBox1.DataSource = new ComboItem[]
             {
                 new ComboItem{ ID = 0, Name = "Sunday"},
-                new ComboItem{ ID = 0, Name = "Monday"},
-                new ComboItem{ ID = 0, Name = "Tuesday"},
-                new ComboItem{ ID = 0, Name = "Wednesday"},
-                new ComboItem{ ID = 0, Name = "Thursday"},
-                new ComboItem{ ID = 0, Name = "Friday"},
-                new ComboItem{ ID = 0, Name = "Saturday" }
+                new ComboItem{ ID = 1, Name = "Monday"},
+                new ComboItem{ ID = 2, Name = "Tuesday"},
+                new ComboItem{ ID = 3, Name = "Wednesday"},
+                new ComboItem{ ID = 4, Name = "Thursday"},
+                new ComboItem{ ID = 5, Name = "Friday"},
+                new ComboItem{ ID = 6, Name = "Saturday" }
             };
             comboBox1.DisplayMember = "Name";
             comboBox1.ValueMember = "ID";
+            comboBox2.DataSource = new ComboItem[]
+            {
+                new ComboItem{ ID = 0, Name = "Sunday"},
+                new ComboItem{ ID = 1, Name = "Monday"},
+                new ComboItem{ ID = 2, Name = "Tuesday"},
+                new ComboItem{ ID = 3, Name = "Wednesday"},
+                new ComboItem{ ID = 4, Name = "Thursday"},
+                new ComboItem{ ID = 5, Name = "Friday"},
+                new ComboItem{ ID = 6, Name = "Saturday" }
+            };
+            comboBox2.DisplayMember = "ID";
+            comboBox2.ValueMember = "ID";
         }
+        
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
         {
@@ -138,8 +151,21 @@ namespace TetraScheduler
             ao.MixYear = mixYearsCheck.Checked;
             ao.MixMajors = mixMajorCheck.Checked;
             ao.MixExperience = mixSemestersCheck.Checked;
+            ao.BusyShifts = busyShiftsList;
+            ao.OpenTime = ((int)openHourUpDown.Value * 60) + (int)OpenMinuteUpDown.Value;
+            ao.CloseTime = ((int)closeHourUpDown.Value * 60) + (int)CloseMinuteUpDown.Value;
+            ao.daysOpen = getDaysOpen(comboBox1.SelectedItem, comboBox2.SelectedItem);
+
 
         }
+
+        private int[] getDaysOpen(object selectedItem1, object selectedItem2)
+        {
+            int[] days = new int[1];
+            ComboItem open = (selectedItem1;
+            throw new NotImplementedException();
+        }
+
         public class ComboItem
         {
             public int ID { get; set; }
@@ -147,4 +173,3 @@ namespace TetraScheduler
         }
     }
 }
-
