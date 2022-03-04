@@ -79,7 +79,7 @@ namespace TetraScheduler
 
         private void addAccountButton_Click(object sender, EventArgs e)
         {
-            Form1 addForm = new Form1();
+            AddAcountForm addForm = new AddAcountForm();
             addForm.Show();
         }
 

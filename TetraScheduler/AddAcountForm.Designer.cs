@@ -1,6 +1,6 @@
 ﻿namespace TetraScheduler
 {
-    partial class Form1
+    partial class AddAcountForm
     {
         /// <summary>
         /// Required designer variable.

@@ -8,15 +8,15 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-    public partial class Form2 : Form
+    public partial class MenuPickerForm : Form
     {
         private string name;
-        public Form2()
+        public MenuPickerForm()
         {
             InitializeComponent();
         }
 
-        public Form2(String name)
+        public MenuPickerForm(String name)
         {
             InitializeComponent();
             this.name = name;
