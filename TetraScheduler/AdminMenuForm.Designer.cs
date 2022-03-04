@@ -34,7 +34,7 @@ namespace TetraScheduler
             this.viewConsultButton = new System.Windows.Forms.Button();
             this.mixMajorCheck = new System.Windows.Forms.CheckBox();
             this.mixYearsCheck = new System.Windows.Forms.CheckBox();
-            this.busyList = new System.Windows.Forms.ListBox();
+            this.busyListBox = new System.Windows.Forms.ListBox();
             this.busyLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -109,15 +109,15 @@ namespace TetraScheduler
             this.mixYearsCheck.Text = "Mix of school years";
             this.mixYearsCheck.UseVisualStyleBackColor = true;
             // 
-            // busyList
+            // busyListBox
             // 
-            this.busyList.FormattingEnabled = true;
-            this.busyList.ItemHeight = 20;
-            this.busyList.Location = new System.Drawing.Point(29, 37);
-            this.busyList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.busyList.Name = "busyList";
-            this.busyList.Size = new System.Drawing.Size(276, 144);
-            this.busyList.TabIndex = 5;
+            this.busyListBox.FormattingEnabled = true;
+            this.busyListBox.ItemHeight = 20;
+            this.busyListBox.Location = new System.Drawing.Point(29, 37);
+            this.busyListBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.busyListBox.Name = "busyListBox";
+            this.busyListBox.Size = new System.Drawing.Size(276, 144);
+            this.busyListBox.TabIndex = 5;
             // 
             // busyLabel
             // 
@@ -153,7 +153,7 @@ namespace TetraScheduler
             // panel3
             // 
             this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.busyList);
+            this.panel3.Controls.Add(this.busyListBox);
             this.panel3.Controls.Add(this.busyLabel);
             this.panel3.Location = new System.Drawing.Point(3, 4);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -299,7 +299,7 @@ namespace TetraScheduler
         private System.Windows.Forms.Button viewConsultButton;
         private System.Windows.Forms.CheckBox mixMajorCheck;
         private System.Windows.Forms.CheckBox mixYearsCheck;
-        private System.Windows.Forms.ListBox busyList;
+        private System.Windows.Forms.ListBox busyListBox;
         private System.Windows.Forms.Label busyLabel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;

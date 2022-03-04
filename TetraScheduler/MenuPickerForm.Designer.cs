@@ -1,6 +1,6 @@
 ﻿namespace TetraScheduler
 {
-    partial class Form2
+    partial class MenuPickerForm
     {
         /// <summary>
         /// Required designer variable.

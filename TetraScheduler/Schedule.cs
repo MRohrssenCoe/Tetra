@@ -165,24 +165,35 @@ namespace TetraScheduler
 
         public List<Shift> matchAvailabilities(List<Shift> otherShifts)
         {
-            // gets shifts from our list corresponding to shifts at same time in otherShifts list - ASSUMES IN ORDER, UNTESTED
+            // gets shifts from our list corresponding to shifts at same time in otherShifts list - ASSUMES IN ORDER
             List<Shift> newArray = new List<Shift>();
             int theirIndex = 0;
             Shift currentTheirs;
 
-            // fuck double for loops idc about efficiency
             List<Shift> ourArray = toLinearArray();
             int ourIndex = 0;
             Shift currentOurs;
 
             // compare each shift to each other - probably faster ways to do this
+
             while (theirIndex < otherShifts.Count && ourIndex < ourArray.Count)
             {
+
                 currentTheirs = otherShifts[theirIndex];
+
                 currentOurs = ourArray[ourIndex];
 
-                // relevant comparisons
-                if (currentOurs.day == currentTheirs.day && currentOurs.startTime == currentTheirs.startTime && currentOurs.endTime == currentTheirs.endTime)
+                while (currentTheirs < currentOurs) // if they pick shifts outside of our time range this should skip those shifts
+                {
+                    theirIndex++;
+                    if (theirIndex >= otherShifts.Count)
+                    {
+                        break;
+                    }
+                    currentTheirs = otherShifts[theirIndex];  
+                }
+
+                if (currentOurs == currentTheirs)
                 {
                     newArray.Add(currentOurs);
                     // move to find their next shift

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-    public partial class Form1 : Form
+    public partial class AddAcountForm : Form
     {
-        public Form1()
+        public AddAcountForm()
         {
             InitializeComponent();
         }

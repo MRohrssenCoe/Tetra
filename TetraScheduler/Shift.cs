@@ -137,14 +137,5 @@ namespace TetraScheduler
 
             return minuteCountSelf > minuteCountOther;
         }
-        //Technically, this is a bad overload, but it will make reading our algorithms WAY easier, so I think it's fine.
-        public static bool operator ==(Shift self, Shift other)
-        {
-            return self.day == other.day && self.startTime == other.startTime && self.endTime == other.endTime;
-        }
-        public static bool operator !=(Shift self, Shift other)
-        {
-            return !(self == other);
-        }
     }
 }

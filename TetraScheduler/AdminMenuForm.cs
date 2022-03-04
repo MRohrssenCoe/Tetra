@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace TetraScheduler
 {
     public partial class AdminMenuForm : Form
     {
-        Schedule busyShiftsSchedule;
-        private ListBox.ObjectCollection busyShifts;
+        List<Shift> busyShiftsList = new List<Shift>();
+        private ListBox.ObjectCollection busyShiftsCollection;
         public AdminMenuForm(String name)
         {
             InitializeComponent();
@@ -20,12 +17,11 @@ namespace TetraScheduler
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
 
-           
+
 
             // adds collection object to listbox
-            busyShifts = new ListBox.ObjectCollection(busyList);
+            busyShiftsCollection = new ListBox.ObjectCollection(busyListBox);
             //TODO check this code when we allow admin to change hours, etc.
-            busyShiftsSchedule = new Schedule();
         }
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
@@ -49,11 +45,11 @@ namespace TetraScheduler
         {
             // removes all items from busy shift list
             // TODO: test this function
-            object[] temp = new object[busyShifts.Count]; // temp copy to avoid deleting through iteration
-            busyShifts.CopyTo(temp, 0);
+            object[] temp = new object[busyShiftsCollection.Count]; // temp copy to avoid deleting through iteration
+            busyShiftsCollection.CopyTo(temp, 0);
             foreach (Object o in temp)
             {
-                busyShifts.Remove(o); 
+                busyShiftsCollection.Remove(o);
             }
         }
 
@@ -66,14 +62,19 @@ namespace TetraScheduler
         {
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
-            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+            //List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+
+            Testing testing = new Testing();
+            List<UserInfo> users = testing.generateConsultants(50);
+            Debug.WriteLine(users);
             ScheduleMaker sm = new ScheduleMaker(users);
-            sm.generateSchedule();
+
+            Debug.WriteLine(sm.generateSchedule());
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)
         {
-            Form1 addForm = new Form1();
+            AddAcountForm addForm = new AddAcountForm();
             addForm.Show();
         }
 
@@ -82,11 +83,22 @@ namespace TetraScheduler
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             availForm.ShowDialog();
             //show dialog pauses execution
-            busyShiftsSchedule = availForm.AvailableSchedule;
+            List<Shift> temp = new List<Shift>();
+            temp = availForm.AvailableSchedule.GetShiftsForUser("Consultant", "Consultant");
             //code here to display availability in consultant menu
+            addBusyShiftsToView(temp);
             availForm.Dispose();
         }
-
+        private void addBusyShiftsToView(List<Shift> shifts)
+        {
+            busyListBox.DataSource = null;
+            busyShiftsList.Clear();
+            foreach(Shift s in shifts)
+            {
+                busyShiftsList.Add(s);
+            }
+            busyListBox.DataSource=busyShiftsList;
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log Out Confirmation", MessageBoxButtons.YesNo);

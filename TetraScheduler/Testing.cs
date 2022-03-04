@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 
 namespace TetraScheduler
 {
@@ -48,13 +49,17 @@ namespace TetraScheduler
         public List<UserInfo> generateConsultants(int numConsultants)
         {
             List<UserInfo> consultants = new List<UserInfo>();
+            var rand = new Random();
 
             for (int i = 0; i < numConsultants; i++)
             {
                 UserInfo c = new UserInfo();
                 c.FirstName = i.ToString();
                 c.LastName = i.ToString();
+                c.availability = generateRandomAvailability(rand.Next(10, 30));
+                c.desiredWeeklyHours = rand.Next(3,7);
                 // assign them a random set of shifts, majors, school year, etc.
+                consultants.Add(c);
             }
 
             return consultants;
@@ -64,13 +69,43 @@ namespace TetraScheduler
         {
             var rand = new Random();
             List<Shift> output = new List<Shift>();
-            for (int i = 0;i < numShiftsAvailable; i++)
+            //for(int i = 0; i < numShiftsAvailable; i++)
+            while (output.Count < numShiftsAvailable)  // could potentially run forever if we're unlucky...
             {
                 Shift s = new Shift();
-                s.day = rand.Next(0, 6);
+                s.day = rand.Next(0, 7);
                 s.startTime = rand.Next(9, 17) * 60;
                 s.endTime = s.startTime + 60;
-                output.Add(s);
+
+                bool dupe = false;
+                foreach(Shift sh in output)
+                {
+                    if (sh == s)
+                    {
+                        dupe = true;
+                        break;
+                    }
+                }
+                if (!dupe)
+                {
+                    output.Add(s);
+                }
+            }
+            return output;
+        }
+
+        public List<Shift> generateAvail2(int numShiftsAvailable)
+        {
+            var rand = new Random();
+            Schedule s = new Schedule(); // dummy schedule to get shifts from, change to copy from another schedule?
+            List<Shift> options = s.toLinearArray();
+            List<Shift> output = new List<Shift>();
+            
+            while (output.Count < numShiftsAvailable && options.Count > 0) 
+            {
+                int index = rand.Next(0, options.Count);
+                output.Add(options[index]);
+                options.RemoveAt(index);
             }
             return output;
         }

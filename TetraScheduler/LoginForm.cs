@@ -100,7 +100,7 @@ namespace TetraScheduler
                 }
                 if (validationCode == 3)
                 {
-                    new Form2(username).Show();
+                    new MenuPickerForm(username).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == -1)
