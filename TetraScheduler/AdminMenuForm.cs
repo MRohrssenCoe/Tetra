@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -10,20 +13,26 @@ namespace TetraScheduler
     {
         List<Shift> busyShiftsList = new List<Shift>();
         private ListBox.ObjectCollection busyShiftsCollection;
-        private string adminName;
+        private string adminInfoFile;
         public AdminMenuForm(String name)
         {
             InitializeComponent();
-            adminName = name;
             // fun little greeting :)
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
-
             // adds collection object to listbox
             busyShiftsCollection = new ListBox.ObjectCollection(busyListBox);
             //TODO check this code when we allow admin to change hours, etc.
+            adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, name + ".json");
+            if (!File.Exists(this.adminInfoFile))
+            {
+                AdminOptions adminOptions = new AdminOptions();
+                FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
+                byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
+                adminOptionsStream.Write(info, 0, info.Length);
+                adminOptionsStream.Close();
+            }
 
-           
         }
         
 
