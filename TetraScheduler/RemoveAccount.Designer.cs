@@ -71,6 +71,7 @@
             this.Controls.Add(this.label1);
             this.Name = "RemoveAccount";
             this.Text = "RemoveAccount";
+            this.Load += new System.EventHandler(this.RemoveAccount_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
