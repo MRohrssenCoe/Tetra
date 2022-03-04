@@ -162,7 +162,7 @@ namespace TetraScheduler
         private int[] getDaysOpen(object selectedItem1, object selectedItem2)
         {
             int[] days = new int[1];
-            ComboItem open = (selectedItem1;
+            ComboItem open = (ComboItem)selectedItem1;
             throw new NotImplementedException();
         }
 
