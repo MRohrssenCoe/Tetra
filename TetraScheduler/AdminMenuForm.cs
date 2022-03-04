@@ -22,30 +22,7 @@ namespace TetraScheduler
             busyShiftsCollection = new ListBox.ObjectCollection(busyListBox);
             //TODO check this code when we allow admin to change hours, etc.
 
-            comboBox1.DataSource = new ComboItem[]
-            {
-                new ComboItem{ ID = 0, Name = "Sunday"},
-                new ComboItem{ ID = 1, Name = "Monday"},
-                new ComboItem{ ID = 2, Name = "Tuesday"},
-                new ComboItem{ ID = 3, Name = "Wednesday"},
-                new ComboItem{ ID = 4, Name = "Thursday"},
-                new ComboItem{ ID = 5, Name = "Friday"},
-                new ComboItem{ ID = 6, Name = "Saturday" }
-            };
-            comboBox1.DisplayMember = "Name";
-            comboBox1.ValueMember = "ID";
-            comboBox2.DataSource = new ComboItem[]
-            {
-                new ComboItem{ ID = 0, Name = "Sunday"},
-                new ComboItem{ ID = 1, Name = "Monday"},
-                new ComboItem{ ID = 2, Name = "Tuesday"},
-                new ComboItem{ ID = 3, Name = "Wednesday"},
-                new ComboItem{ ID = 4, Name = "Thursday"},
-                new ComboItem{ ID = 5, Name = "Friday"},
-                new ComboItem{ ID = 6, Name = "Saturday" }
-            };
-            comboBox2.DisplayMember = "ID";
-            comboBox2.ValueMember = "ID";
+           
         }
         
 
@@ -59,28 +36,6 @@ namespace TetraScheduler
             // loads schedule form
             ScheduleForm sf = new ScheduleForm();
             sf.Show();
-        }
-
-        private void addBusy_Click(object sender, EventArgs e)
-        {
-            // uses info from startBusy and endBusy timepickers to add a busy shift to list of busy shifts
-        }
-
-        private void removeAllBusy_Click(object sender, EventArgs e)
-        {
-            // removes all items from busy shift list
-            // TODO: test this function
-            object[] temp = new object[busyShiftsCollection.Count]; // temp copy to avoid deleting through iteration
-            busyShiftsCollection.CopyTo(temp, 0);
-            foreach (Object o in temp)
-            {
-                busyShiftsCollection.Remove(o);
-            }
-        }
-
-        private void removeSelectBusy_Click(object sender, EventArgs e)
-        {
-            // removes item(s?) that are selected in the listbox from busy shift list
         }
 
         private void genScheduleButton_Click(object sender, EventArgs e)
@@ -103,7 +58,7 @@ namespace TetraScheduler
             addForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void selectBusyShiftsClick(object sender, EventArgs e)
         {
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             availForm.ShowDialog();
@@ -154,22 +109,102 @@ namespace TetraScheduler
             ao.BusyShifts = busyShiftsList;
             ao.OpenTime = ((int)openHourUpDown.Value * 60) + (int)OpenMinuteUpDown.Value;
             ao.CloseTime = ((int)closeHourUpDown.Value * 60) + (int)CloseMinuteUpDown.Value;
-            ao.daysOpen = getDaysOpen(comboBox1.SelectedItem, comboBox2.SelectedItem);
+            ao.daysOpen = getDaysOpen();
+            ao.DesiredConsecutiveShifts = (int)ConsecutiveShiftsBox.Value;
+            ao.MaxConsultantsPerShift = (int)consultantsPerShiftBox.Value;
+            ao.MaxConsultantsPerBusyShift = (int)busyConsultantsPerShiftBox.Value;
+            
 
-
+            //serialize data
         }
 
-        private int[] getDaysOpen(object selectedItem1, object selectedItem2)
+        //This is quite possibly the most dogshit method I have ever written
+        private int[] getDaysOpen()
         {
-            int[] days = new int[1];
-            ComboItem open = (ComboItem)selectedItem1;
-            throw new NotImplementedException();
+            List<CheckBox> dayCheckboxList = new List<CheckBox>();
+            dayCheckboxList.Add(sundayCheck);
+            dayCheckboxList.Add(mondayCheck);
+            dayCheckboxList.Add(tuesdayCheck);
+            dayCheckboxList.Add(wednesdayCheck);
+            dayCheckboxList.Add(thursdayCheck);
+            dayCheckboxList.Add(fridayCheck);
+            dayCheckboxList.Add(saturdayCheck);
+            //clone constructor so taht we can remove things from this list
+            List<CheckBox> removalCheckboxList = new List<CheckBox>(dayCheckboxList);
+            int i = 0;
+            foreach(CheckBox check in dayCheckboxList)
+            {
+                if (check.Checked)
+                {
+                    i++;
+                } else
+                {
+                    //remove unchecked items from this list so that we have the correct items and a proper amount of items for the array
+                    removalCheckboxList.Remove(check);
+                }
+            }
+            int[] days = new int[i];
+            i = 0;
+            foreach(CheckBox check in removalCheckboxList)
+            {
+                days[i] = dayFromBox(check);
+                i++;
+            }
+            return days;
+        }
+
+        private int dayFromBox(CheckBox check)
+        {
+            if(check == sundayCheck)
+            {
+                return 0;
+            }
+            if(check == mondayCheck)
+            {
+                return 1;
+            }
+            if(check == tuesdayCheck)
+            {
+                return 2;
+            } 
+            if(check == wednesdayCheck)
+            {
+                return 3;
+            }
+            if(check == thursdayCheck)
+            {
+                return 4;
+            }
+            if(check == fridayCheck)
+            {
+                return 5;
+            }
+            if(check == saturdayCheck)
+            {
+                return 6;
+            }
+            return -1;
         }
 
         public class ComboItem
         {
             public int ID { get; set; }
             public string Name { get; set; }
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewSchedButton_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

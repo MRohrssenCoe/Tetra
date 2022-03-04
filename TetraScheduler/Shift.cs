@@ -139,7 +139,7 @@ namespace TetraScheduler
         }
         public static bool operator ==(Shift self, Shift other)
         {
-            if(self == null || other == null)
+            if(self is null || other is null)
             {
                 if(self == null && other == null) { return true; }
                 return false;
