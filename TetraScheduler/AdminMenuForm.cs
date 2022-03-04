@@ -10,10 +10,11 @@ namespace TetraScheduler
     {
         List<Shift> busyShiftsList = new List<Shift>();
         private ListBox.ObjectCollection busyShiftsCollection;
+        private string adminName;
         public AdminMenuForm(String name)
         {
             InitializeComponent();
-
+            adminName = name;
             // fun little greeting :)
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
