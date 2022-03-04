@@ -12,12 +12,12 @@ namespace TetraScheduler
     public class AdminOptions
     {
         public List<Shift> BusyShifts { get; set; }
-        public string ExportPath { get; set; }
         public int DesiredConsecutiveShifts { get; set; }
         public int MaxConsultantsPerShift { get; set; }
         public int MaxConsultantsPerBusyShift { get; set; }
         public int OpenTime { get; set; }
         public int CloseTime { get; set; }
+        public int[] daysOpen { get; set; }
         public bool MixMajors { get; set; }
         public bool MixExperience { get; set; }
         public bool MixYear { get; set; }

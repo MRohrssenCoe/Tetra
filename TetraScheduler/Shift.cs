@@ -137,5 +137,18 @@ namespace TetraScheduler
 
             return minuteCountSelf > minuteCountOther;
         }
+        public static bool operator ==(Shift self, Shift other)
+        {
+            if(self == null || other == null)
+            {
+                if(self == null && other == null) { return true; }
+                return false;
+            }
+            return self.day == other.day && self.startTime == other.startTime && self.endTime == other.endTime;
+        }
+        public static bool operator !=(Shift self, Shift other)
+        {
+            return !(self == other);
+        }
     }
 }

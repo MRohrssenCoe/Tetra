@@ -5,6 +5,7 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
+    
     public partial class AdminMenuForm : Form
     {
         List<Shift> busyShiftsList = new List<Shift>();
@@ -17,12 +18,36 @@ namespace TetraScheduler
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
 
-
-
             // adds collection object to listbox
             busyShiftsCollection = new ListBox.ObjectCollection(busyListBox);
             //TODO check this code when we allow admin to change hours, etc.
+
+            comboBox1.DataSource = new ComboItem[]
+            {
+                new ComboItem{ ID = 0, Name = "Sunday"},
+                new ComboItem{ ID = 1, Name = "Monday"},
+                new ComboItem{ ID = 2, Name = "Tuesday"},
+                new ComboItem{ ID = 3, Name = "Wednesday"},
+                new ComboItem{ ID = 4, Name = "Thursday"},
+                new ComboItem{ ID = 5, Name = "Friday"},
+                new ComboItem{ ID = 6, Name = "Saturday" }
+            };
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "ID";
+            comboBox2.DataSource = new ComboItem[]
+            {
+                new ComboItem{ ID = 0, Name = "Sunday"},
+                new ComboItem{ ID = 1, Name = "Monday"},
+                new ComboItem{ ID = 2, Name = "Tuesday"},
+                new ComboItem{ ID = 3, Name = "Wednesday"},
+                new ComboItem{ ID = 4, Name = "Thursday"},
+                new ComboItem{ ID = 5, Name = "Friday"},
+                new ComboItem{ ID = 6, Name = "Saturday" }
+            };
+            comboBox2.DisplayMember = "ID";
+            comboBox2.ValueMember = "ID";
         }
+        
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
         {
@@ -113,6 +138,38 @@ namespace TetraScheduler
             RemoveAccount remove = new RemoveAccount();
             remove.Show();
         }
+
+        private void mixMajorCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AdminOptions ao = new AdminOptions();
+
+            ao.MixYear = mixYearsCheck.Checked;
+            ao.MixMajors = mixMajorCheck.Checked;
+            ao.MixExperience = mixSemestersCheck.Checked;
+            ao.BusyShifts = busyShiftsList;
+            ao.OpenTime = ((int)openHourUpDown.Value * 60) + (int)OpenMinuteUpDown.Value;
+            ao.CloseTime = ((int)closeHourUpDown.Value * 60) + (int)CloseMinuteUpDown.Value;
+            ao.daysOpen = getDaysOpen(comboBox1.SelectedItem, comboBox2.SelectedItem);
+
+
+        }
+
+        private int[] getDaysOpen(object selectedItem1, object selectedItem2)
+        {
+            int[] days = new int[1];
+            ComboItem open = (ComboItem)selectedItem1;
+            throw new NotImplementedException();
+        }
+
+        public class ComboItem
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
+        }
     }
 }
-
