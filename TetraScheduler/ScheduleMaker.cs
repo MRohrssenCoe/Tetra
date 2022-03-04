@@ -20,8 +20,6 @@ namespace TetraScheduler
             this.users = users; // change this later - for testing
             this.s = null;
         }
-
-
         public Schedule generateSchedule()
         {
 
@@ -68,19 +66,15 @@ namespace TetraScheduler
             Debug.WriteLine(JsonSerializer.Serialize(s));
             return s;
         }
-
-
         private void sortUsers()
         {
             // sorts users from fewest -> most availability times
             this.users.Sort((UserInfo u1, UserInfo u2) => u1.availability.Count.CompareTo(u2.availability.Count));
         }
-
         private List<Shift> sortShiftsConseq(List<Shift> s)
         {
             return s.OrderBy(x => x.day).ThenBy(x => x.startTime).ToList();
         }
-
         private void sortAvailableShifts(UserInfo c, List<Shift> availabilities)
         {
             // ignore admin preferences + user major/yr/etc for now - just sort by shifts without many users shift
@@ -88,7 +82,6 @@ namespace TetraScheduler
                 s1.users.Count.CompareTo(s2.users.Count)
             );
         }
-
         public static List<UserInfo> usersFromDir(string folderPath)
         {
             // convert user info files to user objects?
@@ -105,7 +98,6 @@ namespace TetraScheduler
 
             return u;
         }
-
         //This method will return a list of shifts that are adjacent to startingShift from the passed in list of shifts.
         //Make sure to check if value returned is -1 before using. -1 means adjacent shift not found.
         public static int getNextAdjAvailabilityIndex(List<Shift> availIn, Shift startingShift)
