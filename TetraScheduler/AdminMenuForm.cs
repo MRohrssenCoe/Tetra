@@ -5,11 +5,7 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-    public class ComboItem
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
+    
     public partial class AdminMenuForm : Form
     {
         List<Shift> busyShiftsList = new List<Shift>();
@@ -36,7 +32,8 @@ namespace TetraScheduler
                 new ComboItem{ ID = 0, Name = "Friday"},
                 new ComboItem{ ID = 0, Name = "Saturday" }
             };
-
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "ID";
         }
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
@@ -142,6 +139,11 @@ namespace TetraScheduler
             ao.MixMajors = mixMajorCheck.Checked;
             ao.MixExperience = mixSemestersCheck.Checked;
 
+        }
+        public class ComboItem
+        {
+            public int ID { get; set; }
+            public string Name { get; set; }
         }
     }
 }

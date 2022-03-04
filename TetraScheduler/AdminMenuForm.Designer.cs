@@ -287,6 +287,7 @@ namespace TetraScheduler
             // 
             // comboBox1
             // 
+            this.comboBox1.AllowDrop = true;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(385, 123);
             this.comboBox1.Name = "comboBox1";
