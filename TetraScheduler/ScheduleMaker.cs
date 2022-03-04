@@ -62,7 +62,9 @@ namespace TetraScheduler
                     availabilities.Remove(firstShift);
                     // decrement their needed times
                     requestedMinutes -= (firstShift.endTime - firstShift.startTime);
+
                     // here we would check for adjacent shifts in their availabilities after checking for that preference
+                    
                 }
             }
 
