@@ -5,6 +5,11 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
+    public class ComboItem
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
     public partial class AdminMenuForm : Form
     {
         List<Shift> busyShiftsList = new List<Shift>();
@@ -17,11 +22,21 @@ namespace TetraScheduler
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
 
-
-
             // adds collection object to listbox
             busyShiftsCollection = new ListBox.ObjectCollection(busyListBox);
             //TODO check this code when we allow admin to change hours, etc.
+
+            comboBox1.DataSource = new ComboItem[]
+            {
+                new ComboItem{ ID = 0, Name = "Sunday"},
+                new ComboItem{ ID = 0, Name = "Monday"},
+                new ComboItem{ ID = 0, Name = "Tuesday"},
+                new ComboItem{ ID = 0, Name = "Wednesday"},
+                new ComboItem{ ID = 0, Name = "Thursday"},
+                new ComboItem{ ID = 0, Name = "Friday"},
+                new ComboItem{ ID = 0, Name = "Saturday" }
+            };
+
         }
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
@@ -112,6 +127,21 @@ namespace TetraScheduler
         {
             RemoveAccount remove = new RemoveAccount();
             remove.Show();
+        }
+
+        private void mixMajorCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AdminOptions ao = new AdminOptions();
+
+            ao.MixYear = mixYearsCheck.Checked;
+            ao.MixMajors = mixMajorCheck.Checked;
+            ao.MixExperience = mixSemestersCheck.Checked;
+
         }
     }
 }
