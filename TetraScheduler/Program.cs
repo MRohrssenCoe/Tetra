@@ -30,6 +30,8 @@ namespace TetraScheduler
             //directory to store user info
             Directory.CreateDirectory(Constants.userPreferencesFolder);
 
+            //Set up admin prefs directory
+            Directory.CreateDirectory(Constants.adminPreferencesFolder);
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string scheduleFile = Path.Combine(tetraFolder, Constants.scheduleFileName);
             

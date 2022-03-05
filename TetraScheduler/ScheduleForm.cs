@@ -29,9 +29,6 @@ namespace TetraScheduler
         // List of list of shifts to display
         private ListBox.ObjectCollection[] shiftArray;
 
-        // list of labels to display the hours
-        private Label[] hourLabels;
-
 
         public ScheduleForm()
         {

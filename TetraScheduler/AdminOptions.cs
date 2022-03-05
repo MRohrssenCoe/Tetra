@@ -17,6 +17,7 @@ namespace TetraScheduler
         public int MaxConsultantsPerBusyShift { get; set; }
         public int OpenTime { get; set; }
         public int CloseTime { get; set; }
+        public int ShiftLengthMinutes { get; set; }
         public int[] daysOpen { get; set; }
         public bool MixMajors { get; set; }
         public bool MixExperience { get; set; }

@@ -10,7 +10,11 @@ using System.Text;
 
 namespace TetraScheduler
 {
+#pragma warning disable CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
+#pragma warning disable CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
     public class Shift
+#pragma warning restore CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
+#pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
     {
         public struct User
         {
