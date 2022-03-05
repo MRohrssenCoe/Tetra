@@ -78,6 +78,14 @@ namespace TetraScheduler
                     }
                 }
                 //handle open time after changing to time pickers lol
+                int openHour = (int)(ao.OpenTime - (ao.OpenTime % 60)) / 60;
+                int openMinute = (int)(ao.OpenTime % 60);
+                DateTime openDT = new DateTime(1969, 1, 1, openHour, openMinute, 0);
+                dateTimePicker1.Value = openDT;
+                int closeHour = (int)(ao.CloseTime - (ao.CloseTime % 60)) / 60;
+                int closeMinute = (int)(ao.CloseTime % 60);
+                DateTime closeDT = new DateTime(1969, 1, 1, closeHour, closeMinute, 0);
+                dateTimePicker2.Value = closeDT;
             }
         }
 
@@ -162,8 +170,8 @@ namespace TetraScheduler
             ao.MixMajors = mixMajorCheck.Checked;
             ao.MixExperience = mixSemestersCheck.Checked;
             ao.BusyShifts = busyShiftsList;
-            ao.OpenTime = ((int)openHourUpDown.Value * 60) + (int)OpenMinuteUpDown.Value;
-            ao.CloseTime = ((int)closeHourUpDown.Value * 60) + (int)CloseMinuteUpDown.Value;
+            ao.OpenTime = (dateTimePicker1.Value.Hour * 60) + (dateTimePicker1.Value.Minute);
+            ao.CloseTime = (dateTimePicker2.Value.Hour * 60) + (dateTimePicker2.Value.Minute);
             ao.daysOpen = getDaysOpen();
             ao.DesiredConsecutiveShifts = (int)ConsecutiveShiftsBox.Value;
             ao.MaxConsultantsPerShift = (int)consultantsPerShiftBox.Value;
@@ -263,6 +271,11 @@ namespace TetraScheduler
         }
 
         private void viewSchedButton_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
