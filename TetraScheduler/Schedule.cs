@@ -12,7 +12,7 @@ namespace TetraScheduler
         public List<Shift>[] shifts { get; set; }
         public int numDaysOpen { get; set; } = 7;
         public int shiftLengthMinutes { get; set; } = 60;
-        //Times in minutes!!!
+        //Times are in minutes, starting with 0 at 12 AM. 9 AM = 540, 10 AM = 600, etc.
         public int dayStartTime { get; set; } = 540;
         public int dayEndTime { get; set; } = 1020;
         public Schedule(int nDO, int sLM, int dST, int dET)
@@ -86,13 +86,43 @@ namespace TetraScheduler
             }
         }
 
+        //Assign a user to a shift. Day = which index in shifts the desired shift is in. shiftNumber = how many shifts have come before
+        //that shift, starting at 0. 
         public void AssignUser(string fn, string ln, int day, int shiftNumber) // todo: change fn/ln to user objects
         {
             shifts[day][shiftNumber].AddUser(fn, ln);
         }
+        //Assign a user to a shift based on the day and starting time of the shift
+        public void AssignUser(string fn, string ln, int day, int hour, int minute)
+        {
+            int tempStartTime = minute + (hour * 60);
+            foreach(Shift s in shifts[day])
+            {
+                if(s.startTime == tempStartTime)
+                {
+                    s.AddUser(fn, ln);
+                }
+            }
+
+        }
+        //Remove a user to a shift. Day = which index in shifts the desired shift is in. shiftNumber = how many shifts have come before
+        //that shift, starting at 0. 
         public void RemoveUser(string fn, string ln, int day, int shiftNumber)
         {
             shifts[day][shiftNumber].RemoveUser(fn, ln);
+        }
+        //Remove a user from a shift starting at a specific time on a specific day.
+        public void RemoveUser(string fn, string ln, int day, int hour, int minute)
+        {
+            int tempStartTime = minute + (hour * 60);
+            foreach (Shift s in shifts[day])
+            {
+                if (s.startTime == tempStartTime)
+                {
+                    s.RemoveUser(fn, ln);
+                }
+            }
+
         }
         override public string ToString()
         {
