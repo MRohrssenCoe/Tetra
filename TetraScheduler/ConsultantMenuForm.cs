@@ -47,9 +47,9 @@ namespace TetraScheduler
                 //Fill UI info
                 fnameTextbox.Text = uInfo.FirstName;
                 lnameTextbox.Text = uInfo.LastName;
-                expSemPicker.Value = uInfo.expSemesters;
-                coeYrPicker.Value = uInfo.coeYear;
-                weeklyHrsPicker.Value = uInfo.desiredWeeklyHours;
+                semExpUpDn.Value = uInfo.expSemesters;
+                coeYrUpDn.Value = uInfo.coeYear;
+                desiredWeeklyHrsUpDn.Value = uInfo.desiredWeeklyHours;
                 consultantAvailability = uInfo.availability;
                 addAvailabilityToView(uInfo.availability);
                 //Reusing code to fill majors.
@@ -99,9 +99,9 @@ namespace TetraScheduler
             uInfo.FirstName = fnameTextbox.Text;
             uInfo.LastName = lnameTextbox.Text;
             uInfo.majors = majorsSelected();
-            uInfo.expSemesters = (int)expSemPicker.Value;
-            uInfo.coeYear = (int)coeYrPicker.Value;
-            uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
+            uInfo.expSemesters = (int)semExpUpDn.Value;
+            uInfo.coeYear = (int)coeYrUpDn.Value;
+            uInfo.desiredWeeklyHours = (int)desiredWeeklyHrsUpDn.Value;
             uInfo.availability = consultantAvailability;
 
             //write UserInfo object to json here

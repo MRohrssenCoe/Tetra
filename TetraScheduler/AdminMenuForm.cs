@@ -27,9 +27,11 @@ namespace TetraScheduler
             importAdminInfo(name);
 
         }
-
+        //Same thing as consultant menu. Load info from Json, fill boxes.
         private void importAdminInfo(string name)
         {
+            //Generate defualt file to avoid crashing lol
+            //remembered to actually close the file this time so we don't crash randomly
             if (!File.Exists(this.adminInfoFile))
             {
                 AdminOptions adminOptions = new AdminOptions();
@@ -45,10 +47,10 @@ namespace TetraScheduler
                 mixMajorCheck.Checked = ao.MixMajors;
                 mixSemestersCheck.Checked = ao.MixExperience;
                 mixYearsCheck.Checked = ao.MixYear;
-                ConsecutiveShiftsBox.Value = ao.DesiredConsecutiveShifts;
-                consultantsPerShiftBox.Value = ao.MaxConsultantsPerShift;
-                busyConsultantsPerShiftBox.Value = ao.MaxConsultantsPerBusyShift;
-                shiftLengthUpDown.Value = ao.ShiftLengthMinutes;
+                consecutiveShiftsUpDn.Value = ao.DesiredConsecutiveShifts;
+                consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
+                busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
+                shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
                 foreach(int d in ao.daysOpen)
                 {
                     switch (d)
@@ -82,11 +84,11 @@ namespace TetraScheduler
                 int openHour = (int)(ao.OpenTime - (ao.OpenTime % 60)) / 60;
                 int openMinute = (int)(ao.OpenTime % 60);
                 DateTime openDT = new DateTime(1969, 1, 1, openHour, openMinute, 0);
-                dateTimePicker1.Value = openDT;
+                openTimePicker.Value = openDT;
                 int closeHour = (int)(ao.CloseTime - (ao.CloseTime % 60)) / 60;
                 int closeMinute = (int)(ao.CloseTime % 60);
                 DateTime closeDT = new DateTime(1969, 1, 1, closeHour, closeMinute, 0);
-                dateTimePicker2.Value = closeDT;
+                closeTimePicker.Value = closeDT;
             }
         }
 
@@ -143,14 +145,6 @@ namespace TetraScheduler
             }
             busyListBox.DataSource = busyShiftsList;
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log Out Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
 
         private void removeAccButton_Click(object sender, EventArgs e)
         {
@@ -158,14 +152,10 @@ namespace TetraScheduler
             remove.Show();
         }
 
-        private void mixMajorCheck_CheckedChanged(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if(dateTimePicker1.Value.TimeOfDay > dateTimePicker2.Value.TimeOfDay)
+            //I know that this seems backwards, but this is what works. I'm very confused about it too.
+            if(openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
             {
                 var Result = MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -176,13 +166,13 @@ namespace TetraScheduler
             ao.MixMajors = mixMajorCheck.Checked;
             ao.MixExperience = mixSemestersCheck.Checked;
             ao.BusyShifts = busyShiftsList;
-            ao.OpenTime = (dateTimePicker1.Value.Hour * 60) + (dateTimePicker1.Value.Minute);
-            ao.CloseTime = (dateTimePicker2.Value.Hour * 60) + (dateTimePicker2.Value.Minute);
+            ao.OpenTime = (openTimePicker.Value.Hour * 60) + (openTimePicker.Value.Minute);
+            ao.CloseTime = (closeTimePicker.Value.Hour * 60) + (closeTimePicker.Value.Minute);
             ao.daysOpen = getDaysOpen();
-            ao.DesiredConsecutiveShifts = (int)ConsecutiveShiftsBox.Value;
-            ao.MaxConsultantsPerShift = (int)consultantsPerShiftBox.Value;
-            ao.MaxConsultantsPerBusyShift = (int)busyConsultantsPerShiftBox.Value;
-            ao.ShiftLengthMinutes = (int)shiftLengthUpDown.Value;
+            ao.DesiredConsecutiveShifts = (int)consecutiveShiftsUpDn.Value;
+            ao.MaxConsultantsPerShift = (int)consultantsNeededUpDn.Value;
+            ao.MaxConsultantsPerBusyShift = (int)busyConsultantsUpDn.Value;
+            ao.ShiftLengthMinutes = (int)shiftLengthUpDn.Value;
             //serialize data
             FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
             byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(ao));
@@ -259,30 +249,13 @@ namespace TetraScheduler
             return -1;
         }
 
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void viewSchedButton_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mondayCheck_CheckedChanged(object sender, EventArgs e)
-        {
-
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log Out Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -35,22 +35,22 @@ namespace TetraScheduler
             this.button3 = new System.Windows.Forms.Button();
             this.busyLabel = new System.Windows.Forms.Label();
             this.busyListBox = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.selectBusyShiftsButton = new System.Windows.Forms.Button();
             this.mixYearsCheck = new System.Windows.Forms.CheckBox();
             this.mixMajorCheck = new System.Windows.Forms.CheckBox();
             this.mixSemestersCheck = new System.Windows.Forms.CheckBox();
-            this.ConsecutiveShiftsBox = new System.Windows.Forms.NumericUpDown();
+            this.consecutiveShiftsUpDn = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.shiftLengthUpDown = new System.Windows.Forms.NumericUpDown();
-            this.busyConsultantsPerShiftBox = new System.Windows.Forms.NumericUpDown();
+            this.shiftLengthUpDn = new System.Windows.Forms.NumericUpDown();
+            this.busyConsultantsUpDn = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.consultantsPerShiftBox = new System.Windows.Forms.NumericUpDown();
+            this.consultantsNeededUpDn = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
@@ -66,13 +66,13 @@ namespace TetraScheduler
             this.fridayCheck = new System.Windows.Forms.CheckBox();
             this.saturdayCheck = new System.Windows.Forms.CheckBox();
             this.tuesdayCheck = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.ConsecutiveShiftsBox)).BeginInit();
+            this.openTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.closeTimePicker = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsPerShiftBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.consultantsPerShiftBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsUpDn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
             this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +116,7 @@ namespace TetraScheduler
             this.button3.TabIndex = 14;
             this.button3.Text = "Save Admin Info";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.save_Click);
             // 
             // busyLabel
             // 
@@ -137,15 +137,15 @@ namespace TetraScheduler
             this.busyListBox.Size = new System.Drawing.Size(276, 144);
             this.busyListBox.TabIndex = 18;
             // 
-            // button1
+            // selectBusyShiftsButton
             // 
-            this.button1.Location = new System.Drawing.Point(92, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(146, 29);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Select Busy Shifts";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.selectBusyShiftsClick);
+            this.selectBusyShiftsButton.Location = new System.Drawing.Point(92, 186);
+            this.selectBusyShiftsButton.Name = "selectBusyShiftsButton";
+            this.selectBusyShiftsButton.Size = new System.Drawing.Size(146, 29);
+            this.selectBusyShiftsButton.TabIndex = 20;
+            this.selectBusyShiftsButton.Text = "Select Busy Shifts";
+            this.selectBusyShiftsButton.UseVisualStyleBackColor = true;
+            this.selectBusyShiftsButton.Click += new System.EventHandler(this.selectBusyShiftsClick);
             // 
             // mixYearsCheck
             // 
@@ -180,28 +180,28 @@ namespace TetraScheduler
             this.mixSemestersCheck.Text = "Mix of semesters of experience";
             this.mixSemestersCheck.UseVisualStyleBackColor = true;
             // 
-            // ConsecutiveShiftsBox
+            // consecutiveShiftsUpDn
             // 
-            this.ConsecutiveShiftsBox.Location = new System.Drawing.Point(275, 311);
-            this.ConsecutiveShiftsBox.Name = "ConsecutiveShiftsBox";
-            this.ConsecutiveShiftsBox.Size = new System.Drawing.Size(42, 27);
-            this.ConsecutiveShiftsBox.TabIndex = 24;
+            this.consecutiveShiftsUpDn.Location = new System.Drawing.Point(275, 311);
+            this.consecutiveShiftsUpDn.Name = "consecutiveShiftsUpDn";
+            this.consecutiveShiftsUpDn.Size = new System.Drawing.Size(42, 27);
+            this.consecutiveShiftsUpDn.TabIndex = 24;
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.shiftLengthUpDown);
-            this.panel1.Controls.Add(this.busyConsultantsPerShiftBox);
+            this.panel1.Controls.Add(this.shiftLengthUpDn);
+            this.panel1.Controls.Add(this.busyConsultantsUpDn);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.ConsecutiveShiftsBox);
-            this.panel1.Controls.Add(this.consultantsPerShiftBox);
+            this.panel1.Controls.Add(this.consecutiveShiftsUpDn);
+            this.panel1.Controls.Add(this.consultantsNeededUpDn);
             this.panel1.Controls.Add(this.mixSemestersCheck);
             this.panel1.Controls.Add(this.mixMajorCheck);
             this.panel1.Controls.Add(this.mixYearsCheck);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.selectBusyShiftsButton);
             this.panel1.Controls.Add(this.busyListBox);
             this.panel1.Controls.Add(this.busyLabel);
             this.panel1.Controls.Add(this.button3);
@@ -221,24 +221,24 @@ namespace TetraScheduler
             this.label8.TabIndex = 57;
             this.label8.Text = "Shift length in Minutes";
             // 
-            // shiftLengthUpDown
+            // shiftLengthUpDn
             // 
-            this.shiftLengthUpDown.Location = new System.Drawing.Point(275, 413);
-            this.shiftLengthUpDown.Name = "shiftLengthUpDown";
-            this.shiftLengthUpDown.Size = new System.Drawing.Size(42, 27);
-            this.shiftLengthUpDown.TabIndex = 56;
-            this.shiftLengthUpDown.Value = new decimal(new int[] {
+            this.shiftLengthUpDn.Location = new System.Drawing.Point(275, 413);
+            this.shiftLengthUpDn.Name = "shiftLengthUpDn";
+            this.shiftLengthUpDn.Size = new System.Drawing.Size(42, 27);
+            this.shiftLengthUpDn.TabIndex = 56;
+            this.shiftLengthUpDn.Value = new decimal(new int[] {
             60,
             0,
             0,
             0});
             // 
-            // busyConsultantsPerShiftBox
+            // busyConsultantsUpDn
             // 
-            this.busyConsultantsPerShiftBox.Location = new System.Drawing.Point(275, 380);
-            this.busyConsultantsPerShiftBox.Name = "busyConsultantsPerShiftBox";
-            this.busyConsultantsPerShiftBox.Size = new System.Drawing.Size(42, 27);
-            this.busyConsultantsPerShiftBox.TabIndex = 53;
+            this.busyConsultantsUpDn.Location = new System.Drawing.Point(275, 380);
+            this.busyConsultantsUpDn.Name = "busyConsultantsUpDn";
+            this.busyConsultantsUpDn.Size = new System.Drawing.Size(42, 27);
+            this.busyConsultantsUpDn.TabIndex = 53;
             // 
             // label5
             // 
@@ -267,12 +267,12 @@ namespace TetraScheduler
             this.label1.TabIndex = 25;
             this.label1.Text = "Schedule for consecutive shifts?";
             // 
-            // consultantsPerShiftBox
+            // consultantsNeededUpDn
             // 
-            this.consultantsPerShiftBox.Location = new System.Drawing.Point(275, 344);
-            this.consultantsPerShiftBox.Name = "consultantsPerShiftBox";
-            this.consultantsPerShiftBox.Size = new System.Drawing.Size(42, 27);
-            this.consultantsPerShiftBox.TabIndex = 52;
+            this.consultantsNeededUpDn.Location = new System.Drawing.Point(275, 344);
+            this.consultantsNeededUpDn.Name = "consultantsNeededUpDn";
+            this.consultantsNeededUpDn.Size = new System.Drawing.Size(42, 27);
+            this.consultantsNeededUpDn.TabIndex = 52;
             // 
             // label6
             // 
@@ -292,14 +292,15 @@ namespace TetraScheduler
             this.label7.TabIndex = 37;
             this.label7.Text = "Close Time";
             // 
-            // button2
+            // logoutButton
             // 
-            this.button2.Location = new System.Drawing.Point(578, 452);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 43);
-            this.button2.TabIndex = 44;
-            this.button2.Text = "Logout";
-            this.button2.UseVisualStyleBackColor = true;
+            this.logoutButton.Location = new System.Drawing.Point(578, 452);
+            this.logoutButton.Name = "logoutButton";
+            this.logoutButton.Size = new System.Drawing.Size(171, 43);
+            this.logoutButton.TabIndex = 44;
+            this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logout_Click);
             // 
             // lastGenLabel
             // 
@@ -384,7 +385,6 @@ namespace TetraScheduler
             this.viewSchedButton.Text = "View Current Schedule";
             this.viewSchedButton.UseVisualStyleBackColor = true;
             this.viewSchedButton.Click += new System.EventHandler(this.viewSchedButton_Click);
-            this.viewSchedButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.viewSchedButton_MouseClick);
             // 
             // sundayCheck
             // 
@@ -407,7 +407,6 @@ namespace TetraScheduler
             this.mondayCheck.TabIndex = 46;
             this.mondayCheck.Text = "Monday";
             this.mondayCheck.UseVisualStyleBackColor = true;
-            this.mondayCheck.CheckedChanged += new System.EventHandler(this.mondayCheck_CheckedChanged);
             // 
             // wednesdayCheck
             // 
@@ -420,7 +419,6 @@ namespace TetraScheduler
             this.wednesdayCheck.TabIndex = 47;
             this.wednesdayCheck.Text = "Wednesday";
             this.wednesdayCheck.UseVisualStyleBackColor = true;
-            this.wednesdayCheck.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
             // thursdayCheck
             // 
@@ -455,7 +453,6 @@ namespace TetraScheduler
             this.saturdayCheck.TabIndex = 50;
             this.saturdayCheck.Text = "Saturday";
             this.saturdayCheck.UseVisualStyleBackColor = true;
-            this.saturdayCheck.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
             // 
             // tuesdayCheck
             // 
@@ -469,35 +466,35 @@ namespace TetraScheduler
             this.tuesdayCheck.Text = "Tuesday";
             this.tuesdayCheck.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // openTimePicker
             // 
-            this.dateTimePicker1.CustomFormat = "HH:mm";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(380, 326);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(104, 27);
-            this.dateTimePicker1.TabIndex = 52;
-            this.dateTimePicker1.Value = new System.DateTime(1969, 1, 2, 9, 0, 0, 0);
+            this.openTimePicker.CustomFormat = "HH:mm";
+            this.openTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.openTimePicker.Location = new System.Drawing.Point(380, 326);
+            this.openTimePicker.Name = "openTimePicker";
+            this.openTimePicker.ShowUpDown = true;
+            this.openTimePicker.Size = new System.Drawing.Size(104, 27);
+            this.openTimePicker.TabIndex = 52;
+            this.openTimePicker.Value = new System.DateTime(1969, 1, 2, 9, 0, 0, 0);
             // 
-            // dateTimePicker2
+            // closeTimePicker
             // 
-            this.dateTimePicker2.CustomFormat = "HH:mm";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(380, 379);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(104, 27);
-            this.dateTimePicker2.TabIndex = 53;
-            this.dateTimePicker2.Value = new System.DateTime(1969, 1, 1, 17, 0, 0, 0);
+            this.closeTimePicker.CustomFormat = "HH:mm";
+            this.closeTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.closeTimePicker.Location = new System.Drawing.Point(380, 379);
+            this.closeTimePicker.Name = "closeTimePicker";
+            this.closeTimePicker.ShowUpDown = true;
+            this.closeTimePicker.Size = new System.Drawing.Size(104, 27);
+            this.closeTimePicker.TabIndex = 53;
+            this.closeTimePicker.Value = new System.DateTime(1969, 1, 1, 17, 0, 0, 0);
             // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 658);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.closeTimePicker);
+            this.Controls.Add(this.openTimePicker);
             this.Controls.Add(this.tuesdayCheck);
             this.Controls.Add(this.saturdayCheck);
             this.Controls.Add(this.fridayCheck);
@@ -505,7 +502,7 @@ namespace TetraScheduler
             this.Controls.Add(this.wednesdayCheck);
             this.Controls.Add(this.mondayCheck);
             this.Controls.Add(this.sundayCheck);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.lastGenLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel10);
@@ -519,12 +516,12 @@ namespace TetraScheduler
             this.Name = "AdminMenuForm";
             this.Text = "Admin Menu";
             this.Load += new System.EventHandler(this.AdminMenuForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ConsecutiveShiftsBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsPerShiftBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.consultantsPerShiftBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsUpDn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).EndInit();
             this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -538,16 +535,16 @@ namespace TetraScheduler
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label busyLabel;
         private System.Windows.Forms.ListBox busyListBox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button selectBusyShiftsButton;
         private System.Windows.Forms.CheckBox mixYearsCheck;
         private System.Windows.Forms.CheckBox mixMajorCheck;
         private System.Windows.Forms.CheckBox mixSemestersCheck;
-        private System.Windows.Forms.NumericUpDown ConsecutiveShiftsBox;
+        private System.Windows.Forms.NumericUpDown consecutiveShiftsUpDn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Label lastGenLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel10;
@@ -563,13 +560,13 @@ namespace TetraScheduler
         private System.Windows.Forms.CheckBox fridayCheck;
         private System.Windows.Forms.CheckBox saturdayCheck;
         private System.Windows.Forms.CheckBox tuesdayCheck;
-        private System.Windows.Forms.NumericUpDown consultantsPerShiftBox;
-        private System.Windows.Forms.NumericUpDown busyConsultantsPerShiftBox;
+        private System.Windows.Forms.NumericUpDown consultantsNeededUpDn;
+        private System.Windows.Forms.NumericUpDown busyConsultantsUpDn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker openTimePicker;
+        private System.Windows.Forms.DateTimePicker closeTimePicker;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown shiftLengthUpDown;
+        private System.Windows.Forms.NumericUpDown shiftLengthUpDn;
     }
 }
