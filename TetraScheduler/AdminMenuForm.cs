@@ -123,9 +123,13 @@ namespace TetraScheduler
             ao.DesiredConsecutiveShifts = (int)ConsecutiveShiftsBox.Value;
             ao.MaxConsultantsPerShift = (int)consultantsPerShiftBox.Value;
             ao.MaxConsultantsPerBusyShift = (int)busyConsultantsPerShiftBox.Value;
-            
+
 
             //serialize data
+            FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
+            byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(ao));
+            adminOptionsStream.Write(info, 0, info.Length);
+            adminOptionsStream.Close();
         }
 
         //This is quite possibly the most dogshit method I have ever written
