@@ -114,5 +114,55 @@ namespace TetraScheduler
             }
             return indexofNext;
         }
+
+        //write it to a csv
+        public static int ScheduleToCSV(Schedule s)
+        {
+            List<List<string>> ourCSV = new List<List<string>>();
+            // get min start time
+            int minStart = 540;
+            int maxClose = 1020;
+            int shiftLength = s.shiftLengthMinutes;
+            List<Shift>[] shifts = s.shifts;
+
+            //print first row headers
+            string[] headers = { "Time", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            ourCSV.Add(new List<string>(headers));
+            // start iterating over 7 shift lists - PROBLEM, no indicating which days are full in the Schedule class
+            
+            for (int i = minStart; i < maxClose; i += shiftLength) // loops numShifts times
+            {
+                List<string> csvRow = new List<string>(); // current row
+                string rowLabel = Shift.minutesToHr(i, true) + "-" + Shift.minutesToHr(i + 60, true);
+                csvRow.Add(rowLabel);
+                foreach (List<Shift> day in shifts)  // loops 7 times
+                {
+                    int j = 0;
+                    bool found = false;
+                    // can optimize this by storing index of last found shift but idk... 
+                    while (j < day.Count && !found) // loops max numShifts times... we love O(n2) runtimes lol
+                    {
+                        if (day[j].startTime == i)
+                        {
+                            found = true;
+                            csvRow.Add(day[j].UsersAsText());
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        csvRow.Add("");
+                    }
+                }
+                ourCSV.Add(csvRow); // add row to full list
+            }
+
+            File.WriteAllLines(Path.Combine(Constants.AppDataFolder,"TestCSV.csv"), ourCSV.Select(x => string.Join(",", x)));
+            return 0;
+        }
     }
 }

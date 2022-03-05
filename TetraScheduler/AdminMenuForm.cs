@@ -93,8 +93,9 @@ namespace TetraScheduler
             List<UserInfo> users = testing.generateConsultants(50);
             Debug.WriteLine(users);
             ScheduleMaker sm = new ScheduleMaker(users);
-
-            Debug.WriteLine(sm.generateSchedule());
+            Schedule s = sm.generateSchedule();
+            ScheduleMaker.ScheduleToCSV(s);
+            Debug.WriteLine(s);
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)
