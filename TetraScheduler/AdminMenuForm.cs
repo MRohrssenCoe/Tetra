@@ -48,6 +48,7 @@ namespace TetraScheduler
                 ConsecutiveShiftsBox.Value = ao.DesiredConsecutiveShifts;
                 consultantsPerShiftBox.Value = ao.MaxConsultantsPerShift;
                 busyConsultantsPerShiftBox.Value = ao.MaxConsultantsPerBusyShift;
+                shiftLengthUpDown.Value = ao.ShiftLengthMinutes;
                 foreach(int d in ao.daysOpen)
                 {
                     switch (d)
@@ -164,8 +165,13 @@ namespace TetraScheduler
 
         private void button3_Click(object sender, EventArgs e)
         {
+            if(dateTimePicker1.Value.TimeOfDay > dateTimePicker2.Value.TimeOfDay)
+            {
+                var Result = MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             AdminOptions ao = new AdminOptions();
-
             ao.MixYear = mixYearsCheck.Checked;
             ao.MixMajors = mixMajorCheck.Checked;
             ao.MixExperience = mixSemestersCheck.Checked;
@@ -176,8 +182,7 @@ namespace TetraScheduler
             ao.DesiredConsecutiveShifts = (int)ConsecutiveShiftsBox.Value;
             ao.MaxConsultantsPerShift = (int)consultantsPerShiftBox.Value;
             ao.MaxConsultantsPerBusyShift = (int)busyConsultantsPerShiftBox.Value;
-
-
+            ao.ShiftLengthMinutes = (int)shiftLengthUpDown.Value;
             //serialize data
             FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
             byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(ao));
@@ -254,11 +259,6 @@ namespace TetraScheduler
             return -1;
         }
 
-        public class ComboItem
-        {
-            public int ID { get; set; }
-            public string Name { get; set; }
-        }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
@@ -276,6 +276,11 @@ namespace TetraScheduler
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mondayCheck_CheckedChanged(object sender, EventArgs e)
         {
 
         }

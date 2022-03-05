@@ -66,11 +66,14 @@ namespace TetraScheduler
             this.tuesdayCheck = new System.Windows.Forms.CheckBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.shiftLengthUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ConsecutiveShiftsBox)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsPerShiftBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsPerShiftBox)).BeginInit();
             this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -187,6 +190,8 @@ namespace TetraScheduler
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.shiftLengthUpDown);
             this.panel1.Controls.Add(this.busyConsultantsPerShiftBox);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
@@ -371,16 +376,21 @@ namespace TetraScheduler
             // mondayCheck
             // 
             this.mondayCheck.AutoSize = true;
+            this.mondayCheck.Checked = true;
+            this.mondayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mondayCheck.Location = new System.Drawing.Point(377, 117);
             this.mondayCheck.Name = "mondayCheck";
             this.mondayCheck.Size = new System.Drawing.Size(85, 24);
             this.mondayCheck.TabIndex = 46;
             this.mondayCheck.Text = "Monday";
             this.mondayCheck.UseVisualStyleBackColor = true;
+            this.mondayCheck.CheckedChanged += new System.EventHandler(this.mondayCheck_CheckedChanged);
             // 
             // wednesdayCheck
             // 
             this.wednesdayCheck.AutoSize = true;
+            this.wednesdayCheck.Checked = true;
+            this.wednesdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.wednesdayCheck.Location = new System.Drawing.Point(377, 177);
             this.wednesdayCheck.Name = "wednesdayCheck";
             this.wednesdayCheck.Size = new System.Drawing.Size(107, 24);
@@ -392,6 +402,8 @@ namespace TetraScheduler
             // thursdayCheck
             // 
             this.thursdayCheck.AutoSize = true;
+            this.thursdayCheck.Checked = true;
+            this.thursdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.thursdayCheck.Location = new System.Drawing.Point(377, 207);
             this.thursdayCheck.Name = "thursdayCheck";
             this.thursdayCheck.Size = new System.Drawing.Size(90, 24);
@@ -402,6 +414,8 @@ namespace TetraScheduler
             // fridayCheck
             // 
             this.fridayCheck.AutoSize = true;
+            this.fridayCheck.Checked = true;
+            this.fridayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.fridayCheck.Location = new System.Drawing.Point(377, 237);
             this.fridayCheck.Name = "fridayCheck";
             this.fridayCheck.Size = new System.Drawing.Size(71, 24);
@@ -423,6 +437,8 @@ namespace TetraScheduler
             // tuesdayCheck
             // 
             this.tuesdayCheck.AutoSize = true;
+            this.tuesdayCheck.Checked = true;
+            this.tuesdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tuesdayCheck.Location = new System.Drawing.Point(377, 147);
             this.tuesdayCheck.Name = "tuesdayCheck";
             this.tuesdayCheck.Size = new System.Drawing.Size(85, 24);
@@ -451,6 +467,27 @@ namespace TetraScheduler
             this.dateTimePicker2.Size = new System.Drawing.Size(104, 27);
             this.dateTimePicker2.TabIndex = 53;
             this.dateTimePicker2.Value = new System.DateTime(1969, 1, 1, 17, 0, 0, 0);
+            // 
+            // shiftLengthUpDown
+            // 
+            this.shiftLengthUpDown.Location = new System.Drawing.Point(275, 413);
+            this.shiftLengthUpDown.Name = "shiftLengthUpDown";
+            this.shiftLengthUpDown.Size = new System.Drawing.Size(42, 27);
+            this.shiftLengthUpDown.TabIndex = 56;
+            this.shiftLengthUpDown.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(30, 415);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(157, 20);
+            this.label8.TabIndex = 57;
+            this.label8.Text = "Shift length in Minutes";
             // 
             // AdminMenuForm
             // 
@@ -486,6 +523,7 @@ namespace TetraScheduler
             ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsPerShiftBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsPerShiftBox)).EndInit();
             this.panel10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -529,5 +567,7 @@ namespace TetraScheduler
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.NumericUpDown shiftLengthUpDown;
     }
 }
