@@ -41,6 +41,8 @@ namespace TetraScheduler
             this.mixSemestersCheck = new System.Windows.Forms.CheckBox();
             this.ConsecutiveShiftsBox = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.shiftLengthUpDown = new System.Windows.Forms.NumericUpDown();
             this.busyConsultantsPerShiftBox = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,14 +68,12 @@ namespace TetraScheduler
             this.tuesdayCheck = new System.Windows.Forms.CheckBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.shiftLengthUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ConsecutiveShiftsBox)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsPerShiftBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsPerShiftBox)).BeginInit();
             this.panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -212,6 +212,27 @@ namespace TetraScheduler
             this.panel1.Size = new System.Drawing.Size(346, 558);
             this.panel1.TabIndex = 12;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(30, 415);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(157, 20);
+            this.label8.TabIndex = 57;
+            this.label8.Text = "Shift length in Minutes";
+            // 
+            // shiftLengthUpDown
+            // 
+            this.shiftLengthUpDown.Location = new System.Drawing.Point(275, 413);
+            this.shiftLengthUpDown.Name = "shiftLengthUpDown";
+            this.shiftLengthUpDown.Size = new System.Drawing.Size(42, 27);
+            this.shiftLengthUpDown.TabIndex = 56;
+            this.shiftLengthUpDown.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
             // busyConsultantsPerShiftBox
             // 
             this.busyConsultantsPerShiftBox.Location = new System.Drawing.Point(275, 380);
@@ -330,6 +351,7 @@ namespace TetraScheduler
             this.removeAccButton.TabIndex = 4;
             this.removeAccButton.Text = "Remove Account";
             this.removeAccButton.UseVisualStyleBackColor = true;
+            this.removeAccButton.Click += new System.EventHandler(this.removeAccButton_Click);
             // 
             // addAccButton
             // 
@@ -340,6 +362,7 @@ namespace TetraScheduler
             this.addAccButton.TabIndex = 3;
             this.addAccButton.Text = "Add Account";
             this.addAccButton.UseVisualStyleBackColor = true;
+            this.addAccButton.Click += new System.EventHandler(this.addAccountButton_Click);
             // 
             // viewConsultButton
             // 
@@ -468,27 +491,6 @@ namespace TetraScheduler
             this.dateTimePicker2.TabIndex = 53;
             this.dateTimePicker2.Value = new System.DateTime(1969, 1, 1, 17, 0, 0, 0);
             // 
-            // shiftLengthUpDown
-            // 
-            this.shiftLengthUpDown.Location = new System.Drawing.Point(275, 413);
-            this.shiftLengthUpDown.Name = "shiftLengthUpDown";
-            this.shiftLengthUpDown.Size = new System.Drawing.Size(42, 27);
-            this.shiftLengthUpDown.TabIndex = 56;
-            this.shiftLengthUpDown.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 415);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(157, 20);
-            this.label8.TabIndex = 57;
-            this.label8.Text = "Shift length in Minutes";
-            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -520,10 +522,10 @@ namespace TetraScheduler
             ((System.ComponentModel.ISupportInitialize)(this.ConsecutiveShiftsBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsPerShiftBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsPerShiftBox)).EndInit();
             this.panel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
