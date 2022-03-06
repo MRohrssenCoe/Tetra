@@ -14,6 +14,7 @@ namespace TetraScheduler
         List<Shift> busyShiftsList = new List<Shift>();
         private ListBox.ObjectCollection busyShiftsCollection;
         private string adminInfoFile;
+        AdminOptions storedOptions;
         public AdminMenuForm(String name)
         {
             InitializeComponent();
@@ -39,10 +40,12 @@ namespace TetraScheduler
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
                 adminOptionsStream.Write(info, 0, info.Length);
                 adminOptionsStream.Close();
+                storedOptions = adminOptions;
             } else
             {
                 string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
                 AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
+                storedOptions = ao;
                 addBusyShiftsToView(ao.BusyShifts);
                 mixMajorCheck.Checked = ao.MixMajors;
                 mixSemestersCheck.Checked = ao.MixExperience;
@@ -114,6 +117,7 @@ namespace TetraScheduler
             List<UserInfo> users = testing.generateConsultants(50);
             Debug.WriteLine(users);
             ScheduleMaker sm = new ScheduleMaker(users);
+            sm.ao = this.storedOptions;
             Schedule s = sm.generateSchedule();
             ScheduleMaker.ScheduleToCSV(s);
             Debug.WriteLine(s);

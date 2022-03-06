@@ -13,6 +13,8 @@ namespace TetraScheduler
 
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
 
+        public AdminOptions ao { get; set; }
+
         // variable for admin preferences here
 
         public ScheduleMaker(List<UserInfo> users)
@@ -54,13 +56,59 @@ namespace TetraScheduler
                 {
                     // schedule at best fit shift
                     Shift firstShift = availabilities[0];
+
+                    if (firstShift.UserAssigned(c.FirstName, c.LastName)) // this should only happen when scheduling adjacencies since it doesn't update avails
+                    {
+                        availabilities.Remove(firstShift);
+                        continue;
+                    }
+
                     firstShift.AddUser(c.FirstName, c.LastName);
                     availabilities.Remove(firstShift);
                     // decrement their needed times
                     requestedMinutes -= (firstShift.endTime - firstShift.startTime);
 
-                    // here we would check for adjacent shifts in their availabilities after checking for that preference
-                    
+                    /* adjacent shift portion of the code! */
+                    List<Shift> adjacencyQueue = new List<Shift>(); // stores adj shifts - not really a queue but whatever
+                    int maxConseqShifts = ao.DesiredConsecutiveShifts -1;
+
+                    adjacencyQueue.AddRange(s.getAdjacentShifts(firstShift));
+
+                    while (maxConseqShifts > 0 && requestedMinutes > 0 && adjacencyQueue.Count > 0)
+                    {
+                        sortAvailableShifts(c, adjacencyQueue);
+                        Shift nextShift = adjacencyQueue[0];
+
+                        if (nextShift.users.Count >= ao.MaxConsultantsPerShift) // don't overschedule if no good adjacencies
+                        {
+                            break;
+                        }
+
+                        if (nextShift.UserAssigned(c.FirstName, c.LastName))  // skip extra added shifts
+                        {
+                            adjacencyQueue.Remove(nextShift);
+                        }
+                        else
+                        {
+                            nextShift.AddUser(c.FirstName, c.LastName);
+                            adjacencyQueue.Remove(nextShift);
+                            requestedMinutes -= (nextShift.endTime - nextShift.startTime);
+                            maxConseqShifts--;
+                            adjacencyQueue.AddRange(s.getAdjacentShifts(nextShift));
+                        }
+                    }
+
+                    // remove remaining adjacencies from options
+                    if (adjacencyQueue.Count > 0)
+                    {
+                        foreach (Shift shift in adjacencyQueue)
+                        {
+                            if (availabilities.Contains(shift))
+                            {
+                                availabilities.Remove(shift);
+                            }
+                        }
+                    }
                 }
             }
 
@@ -79,7 +127,7 @@ namespace TetraScheduler
         }
         private void sortAvailableShifts(UserInfo c, List<Shift> availabilities)
         {
-            // ignore admin preferences + user major/yr/etc for now - just sort by shifts without many users shift
+            // mix majors/etc in here later
             availabilities.Sort((Shift s1, Shift s2) =>
                 s1.users.Count.CompareTo(s2.users.Count)
             );
