@@ -113,11 +113,17 @@ namespace TetraScheduler
             // uses info from busy schedule list and from checkboxes
             //List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
 
+            // saves admin options
+            this.saveOptions();
+
+            // generate random users - remove later
             Testing testing = new Testing();
             List<UserInfo> users = testing.generateConsultants(50);
             Debug.WriteLine(users);
-            ScheduleMaker sm = new ScheduleMaker(users);
-            sm.ao = this.storedOptions;
+
+            // initialize schedulemaker
+            ScheduleMaker sm = new ScheduleMaker(users, storedOptions);
+
             Schedule s = sm.generateSchedule();
             ScheduleMaker.ScheduleToCSV(s);
             Debug.WriteLine(s);
@@ -157,10 +163,11 @@ namespace TetraScheduler
             remove.Show();
         }
 
-        private void save_Click(object sender, EventArgs e)
+
+        private void saveOptions()
         {
             //I know that this seems backwards, but this is what works. I'm very confused about it too.
-            if(openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
+            if (openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
             {
                 var Result = MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -183,6 +190,11 @@ namespace TetraScheduler
             byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(ao));
             adminOptionsStream.Write(info, 0, info.Length);
             adminOptionsStream.Close();
+            this.storedOptions = ao;
+        }
+        private void save_Click(object sender, EventArgs e)
+        {
+            saveOptions();
         }
 
         //This is quite possibly the most dogshit method I have ever written
