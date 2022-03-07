@@ -57,7 +57,7 @@ namespace TetraScheduler
                 c.FirstName = i.ToString();
                 c.LastName = i.ToString();
                 c.availability = generateRandomAvailability(rand.Next(10, 30));
-                c.desiredWeeklyHours = rand.Next(3,7);
+                c.desiredWeeklyHours = rand.Next(5,7);
                 // assign them a random set of shifts, majors, school year, etc.
                 consultants.Add(c);
             }
@@ -74,7 +74,7 @@ namespace TetraScheduler
             {
                 Shift s = new Shift();
                 s.day = rand.Next(0, 7);
-                s.startTime = rand.Next(9, 17) * 60;
+                s.startTime = rand.Next(8, 23) * 60;
                 s.endTime = s.startTime + 60;
 
                 bool dupe = false;
