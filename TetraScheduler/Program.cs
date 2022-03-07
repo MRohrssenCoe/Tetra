@@ -65,7 +65,7 @@ namespace TetraScheduler
 
                 
                 File.WriteAllText(scheduleFile, sb.ToString());
-
+                File.SetAttributes(scheduleFile, FileAttributes.Normal);
             }
 
             int[] daysOpen = new int[3];
