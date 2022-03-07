@@ -87,12 +87,12 @@ namespace TetraScheduler
             string names = "";
             foreach (User u in users)
             {
-                names += u.FirstName + "," + u.LastName + ",";
+                names += u.FirstName + " " + u.LastName + "; ";
             }
             return names;
         }
 
-        public string minutesToHr(int mins, bool twelveHrFormat)
+        public static string minutesToHr(int mins, bool twelveHrFormat)
         {
 
             if (twelveHrFormat)
@@ -144,7 +144,7 @@ namespace TetraScheduler
         {
             if(self is null || other is null)
             {
-                if(self == null && other == null) { return true; }
+                if(self is null && other is null) { return true; }
                 return false;
             }
             return self.day == other.day && self.startTime == other.startTime && self.endTime == other.endTime;

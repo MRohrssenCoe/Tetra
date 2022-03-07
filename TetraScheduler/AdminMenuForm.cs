@@ -12,6 +12,7 @@ namespace TetraScheduler
     {
         List<Shift> busyShiftsList = new List<Shift>();
         private string adminInfoFile;
+        AdminOptions storedOptions;
         public AdminMenuForm(String name)
         {
             InitializeComponent();
@@ -35,11 +36,12 @@ namespace TetraScheduler
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
                 adminOptionsStream.Write(info, 0, info.Length);
                 adminOptionsStream.Close();
-            }
-            else
+                storedOptions = adminOptions;
+            } else
             {
                 string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
                 AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
+                storedOptions = ao;
                 addBusyShiftsToView(ao.BusyShifts);
                 mixMajorCheck.Checked = ao.MixMajors;
                 mixSemestersCheck.Checked = ao.MixExperience;
@@ -107,12 +109,20 @@ namespace TetraScheduler
             // uses info from busy schedule list and from checkboxes
             //List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
 
+            // saves admin options
+            this.saveOptions();
+
+            // generate random users - remove later
             Testing testing = new Testing();
             List<UserInfo> users = testing.generateConsultants(50);
             Debug.WriteLine(users);
-            ScheduleMaker sm = new ScheduleMaker(users);
 
-            Debug.WriteLine(sm.generateSchedule());
+            // initialize schedulemaker
+            ScheduleMaker sm = new ScheduleMaker(users, storedOptions);
+
+            Schedule s = sm.generateSchedule();
+            ScheduleMaker.ScheduleToCSV(s);
+            Debug.WriteLine(s);
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)
@@ -149,7 +159,8 @@ namespace TetraScheduler
             remove.Show();
         }
 
-        private void save_Click(object sender, EventArgs e)
+
+        private void saveOptions()
         {
             //I know that this seems backwards, but this is what works. I'm very confused about it too.
             if (openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
@@ -177,6 +188,11 @@ namespace TetraScheduler
             byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(ao));
             adminOptionsStream.Write(info, 0, info.Length);
             adminOptionsStream.Close();
+            this.storedOptions = ao;
+        }
+        private void save_Click(object sender, EventArgs e)
+        {
+            saveOptions();
         }
 
         //This is quite possibly the most dogshit method I have ever written

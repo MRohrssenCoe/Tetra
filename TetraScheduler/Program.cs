@@ -88,14 +88,5 @@ namespace TetraScheduler
             
         }
 
-
-        static void testingAlgo()
-        {
-            // make some users
-            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
-            ScheduleMaker sm = new ScheduleMaker(users);
-            sm.generateSchedule();
-            // uhhhhhh idk how to write tests...
-        }
     }
 }

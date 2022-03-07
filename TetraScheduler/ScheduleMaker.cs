@@ -13,12 +13,22 @@ namespace TetraScheduler
 
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
 
+        public AdminOptions ao { get; set; }
+
         // variable for admin preferences here
 
-        public ScheduleMaker(List<UserInfo> users)
+        public ScheduleMaker(List<UserInfo> users, AdminOptions ao)
         {
             this.users = users; // change this later - for testing
-            this.s = null;
+            this.ao = ao;
+            // generate s from ao
+            //Schedule(int[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
+            int[] daysOpen = ao.daysOpen;
+            int shiftLength = ao.ShiftLengthMinutes;
+            int[] startTimes = { ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime };
+            int[] endTimes = { ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime };
+            s = new Schedule(daysOpen, shiftLength, startTimes, endTimes);
+            // add field for number of consultants in shift class? also flag for busy
         }
         public Schedule generateSchedule()
         {
@@ -43,22 +53,84 @@ namespace TetraScheduler
                 // sort availabilities based on best fit
                 sortAvailableShifts(c, availabilities);
 
-                Debug.WriteLine("User: " + c.FirstName + " " + c.LastName + "\tAvails: " + availabilities.Count);
+                Debug.WriteLine("User: " + c.FirstName + " " + c.LastName + "\tAvails: " + availabilities.Count + "\tRequested: " + c.desiredWeeklyHours);
                 Debug.WriteLine("Sorted shifts: ");
                 Debug.WriteLine(JsonSerializer.Serialize(availabilities));
+                Debug.WriteLine("Current Sched: " + s.ToString());
 
                 int requestedHours = c.desiredWeeklyHours;
                 int requestedMinutes = requestedHours * 60; // maybe useful for comparing to shift times?
 
-                while (requestedMinutes > 0) // assuming doesn't exceed the sum of all of our shifts...
+                while (requestedMinutes >= ao.ShiftLengthMinutes) // assuming doesn't exceed the sum of all of our shifts...
                 {
                     // schedule at best fit shift
                     Shift firstShift = availabilities[0];
+
+                    if (firstShift.UserAssigned(c.FirstName, c.LastName)) // this should only happen when scheduling adjacencies - maybe fixed but scared to remove lol
+                    {
+                        availabilities.Remove(firstShift);
+                        continue;
+                    }
+
                     firstShift.AddUser(c.FirstName, c.LastName);
                     availabilities.Remove(firstShift);
                     // decrement their needed times
                     requestedMinutes -= (firstShift.endTime - firstShift.startTime);
-                    // here we would check for adjacent shifts in their availabilities after checking for that preference
+
+                    /* adjacent shift portion of the code! */
+                    List<Shift> adjacencyQueue = new List<Shift>(); // stores adj shifts - not really a queue but whatever
+                    int maxConseqShifts = ao.DesiredConsecutiveShifts -1;
+
+                    List<Shift> adjOpts = s.getAdjacentShifts(firstShift);
+                    foreach (Shift opt in adjOpts) // only add adjacencies they're free for
+                    {
+                        if (availabilities.Contains(opt)){
+                            adjacencyQueue.Add(opt);
+                        }
+                    }
+
+                    while (maxConseqShifts > 0 && requestedMinutes >= ao.ShiftLengthMinutes && adjacencyQueue.Count > 0)
+                    {
+                        sortAvailableShifts(c, adjacencyQueue);
+                        Shift nextShift = adjacencyQueue[0];
+
+                        if (nextShift.users.Count >= ao.MaxConsultantsPerShift) // don't overschedule if no good adjacencies
+                        {
+                            break;
+                        }
+
+                        if (nextShift.UserAssigned(c.FirstName, c.LastName))  // skip extra added shifts
+                        {
+                            adjacencyQueue.Remove(nextShift);
+                        }
+                        else
+                        {
+                            nextShift.AddUser(c.FirstName, c.LastName);
+                            adjacencyQueue.Remove(nextShift);
+                            requestedMinutes -= (nextShift.endTime - nextShift.startTime);
+                            maxConseqShifts--;
+                            List<Shift> opts = s.getAdjacentShifts(nextShift);
+                            foreach (Shift opt in opts) // only add adjacencies they're free for
+                            {
+                                if (availabilities.Contains(opt))
+                                {
+                                    adjacencyQueue.Add(opt);
+                                }
+                            }
+                        }
+                    }
+
+                    // remove remaining adjacencies from options
+                    if (adjacencyQueue.Count > 0)
+                    {
+                        foreach (Shift shift in adjacencyQueue)
+                        {
+                            if (availabilities.Contains(shift))
+                            {
+                                availabilities.Remove(shift);
+                            }
+                        }
+                    }
                 }
             }
 
@@ -77,7 +149,7 @@ namespace TetraScheduler
         }
         private void sortAvailableShifts(UserInfo c, List<Shift> availabilities)
         {
-            // ignore admin preferences + user major/yr/etc for now - just sort by shifts without many users shift
+            // mix majors/etc in here later
             availabilities.Sort((Shift s1, Shift s2) =>
                 s1.users.Count.CompareTo(s2.users.Count)
             );
@@ -111,6 +183,80 @@ namespace TetraScheduler
                 }
             }
             return indexofNext;
+        }
+
+        //write it to a csv
+        public static int ScheduleToCSV(Schedule s)
+        {
+            List<List<string>> ourCSV = new List<List<string>>();
+
+
+            // get min start time
+
+            int minStart = 24 * 60;
+            int maxClose = 0;
+            foreach(List<Shift> shiftList in s.shifts)
+            {
+                if (shiftList.Count == 0)
+                {
+
+                }
+                else
+                {
+                    if (shiftList[0].startTime < minStart)
+                    {
+                        minStart = shiftList[0].startTime;
+                    }
+                    if (shiftList[shiftList.Count-1].endTime > maxClose)
+                    {
+                        maxClose = shiftList[shiftList.Count - 1].endTime;
+                    }
+                }
+            }
+
+            /*int minStart = 540;
+            int maxClose = 1020;*/
+            int shiftLength = s.shiftLengthMinutes;
+            List<Shift>[] shifts = s.shifts;
+
+            //print first row headers
+            string[] headers = { "Time", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+            ourCSV.Add(new List<string>(headers));
+            // start iterating over 7 shift lists - PROBLEM, no indicating which days are full in the Schedule class
+            
+            for (int i = minStart; i < maxClose; i += shiftLength) // loops numShifts times
+            {
+                List<string> csvRow = new List<string>(); // current row
+                string rowLabel = Shift.minutesToHr(i, true) + "-" + Shift.minutesToHr(i + 60, true);
+                csvRow.Add(rowLabel);
+                foreach (List<Shift> day in shifts)  // loops 7 times
+                {
+                    int j = 0;
+                    bool found = false;
+                    // can optimize this by storing index of last found shift but idk... 
+                    while (j < day.Count && !found) // loops max numShifts times... we love O(n2) runtimes lol
+                    {
+                        if (day[j].startTime == i)
+                        {
+                            found = true;
+                            csvRow.Add(day[j].UsersAsText());
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        csvRow.Add("");
+                    }
+                }
+                ourCSV.Add(csvRow); // add row to full list
+            }
+
+            File.WriteAllLines(Path.Combine(Constants.AppDataFolder,"TestCSV.csv"), ourCSV.Select(x => string.Join(",", x)));
+            return 0;
         }
     }
 }
