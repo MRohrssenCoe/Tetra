@@ -94,7 +94,6 @@ namespace TetraScheduler
 
         public string minutesToHr(int mins, bool twelveHrFormat)
         {
-            TimeSpan t = TimeSpan.FromMinutes(mins);
 
             if (twelveHrFormat)
             {

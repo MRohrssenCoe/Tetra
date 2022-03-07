@@ -22,11 +22,11 @@ namespace TetraScheduler
             InitializeComponent();
             availableShifts = new ListBox.ObjectCollection(availabilityBox);
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-            importUserInfo(username);
+            importUserInfo();
         }
 
 
-        private void importUserInfo(string username){
+        private void importUserInfo(){
             // todo: check for missing info (ex: entire line deleted)
             // open file linked to username
 
@@ -77,8 +77,6 @@ namespace TetraScheduler
 
         private string[] majorsSelected()
         {   // returns string representation of which majors were selected in the listbox
-            int numMajors = majorListbox.CheckedItems.Count;
-
             string[] majors = new string[majorListbox.CheckedItems.Count];
             // get list from checkboxes
             majorListbox.CheckedItems.CopyTo(majors, 0);

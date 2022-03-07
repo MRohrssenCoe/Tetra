@@ -8,11 +8,9 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-
     public partial class AdminMenuForm : Form
     {
         List<Shift> busyShiftsList = new List<Shift>();
-        private ListBox.ObjectCollection busyShiftsCollection;
         private string adminInfoFile;
         public AdminMenuForm(String name)
         {
@@ -20,15 +18,13 @@ namespace TetraScheduler
             // fun little greeting :)
             // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
-            // adds collection object to listbox
-            busyShiftsCollection = new ListBox.ObjectCollection(busyListBox);
-            //TODO check this code when we allow admin to change hours, etc.
             adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, name + ".json");
-            importAdminInfo(name);
+            importAdminInfo();
 
         }
+
         //Same thing as consultant menu. Load info from Json, fill boxes.
-        private void importAdminInfo(string name)
+        private void importAdminInfo()
         {
             //Generate defualt file to avoid crashing lol
             //remembered to actually close the file this time so we don't crash randomly
@@ -39,7 +35,8 @@ namespace TetraScheduler
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
                 adminOptionsStream.Write(info, 0, info.Length);
                 adminOptionsStream.Close();
-            } else
+            }
+            else
             {
                 string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
                 AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
@@ -51,7 +48,7 @@ namespace TetraScheduler
                 consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
-                foreach(int d in ao.daysOpen)
+                foreach (int d in ao.daysOpen)
                 {
                     switch (d)
                     {
@@ -155,24 +152,26 @@ namespace TetraScheduler
         private void save_Click(object sender, EventArgs e)
         {
             //I know that this seems backwards, but this is what works. I'm very confused about it too.
-            if(openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
+            if (openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
             {
-                var Result = MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
+                MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            AdminOptions ao = new AdminOptions();
-            ao.MixYear = mixYearsCheck.Checked;
-            ao.MixMajors = mixMajorCheck.Checked;
-            ao.MixExperience = mixSemestersCheck.Checked;
-            ao.BusyShifts = busyShiftsList;
-            ao.OpenTime = (openTimePicker.Value.Hour * 60) + (openTimePicker.Value.Minute);
-            ao.CloseTime = (closeTimePicker.Value.Hour * 60) + (closeTimePicker.Value.Minute);
-            ao.daysOpen = getDaysOpen();
-            ao.DesiredConsecutiveShifts = (int)consecutiveShiftsUpDn.Value;
-            ao.MaxConsultantsPerShift = (int)consultantsNeededUpDn.Value;
-            ao.MaxConsultantsPerBusyShift = (int)busyConsultantsUpDn.Value;
-            ao.ShiftLengthMinutes = (int)shiftLengthUpDn.Value;
+            AdminOptions ao = new AdminOptions
+            {
+                MixYear = mixYearsCheck.Checked,
+                MixMajors = mixMajorCheck.Checked,
+                MixExperience = mixSemestersCheck.Checked,
+                BusyShifts = busyShiftsList,
+                OpenTime = (openTimePicker.Value.Hour * 60) + (openTimePicker.Value.Minute),
+                CloseTime = (closeTimePicker.Value.Hour * 60) + (closeTimePicker.Value.Minute),
+                daysOpen = getDaysOpen(),
+                DesiredConsecutiveShifts = (int)consecutiveShiftsUpDn.Value,
+                MaxConsultantsPerShift = (int)consultantsNeededUpDn.Value,
+                MaxConsultantsPerBusyShift = (int)busyConsultantsUpDn.Value,
+                ShiftLengthMinutes = (int)shiftLengthUpDn.Value
+            };
             //serialize data
             FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
             byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(ao));
@@ -183,14 +182,16 @@ namespace TetraScheduler
         //This is quite possibly the most dogshit method I have ever written
         private int[] getDaysOpen()
         {
-            List<CheckBox> dayCheckboxList = new List<CheckBox>();
-            dayCheckboxList.Add(sundayCheck);
-            dayCheckboxList.Add(mondayCheck);
-            dayCheckboxList.Add(tuesdayCheck);
-            dayCheckboxList.Add(wednesdayCheck);
-            dayCheckboxList.Add(thursdayCheck);
-            dayCheckboxList.Add(fridayCheck);
-            dayCheckboxList.Add(saturdayCheck);
+            List<CheckBox> dayCheckboxList = new List<CheckBox>
+            {
+                sundayCheck,
+                mondayCheck,
+                tuesdayCheck,
+                wednesdayCheck,
+                thursdayCheck,
+                fridayCheck,
+                saturdayCheck
+            };
             //clone constructor so taht we can remove things from this list
             List<CheckBox> removalCheckboxList = new List<CheckBox>(dayCheckboxList);
             int i = 0;

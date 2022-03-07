@@ -135,14 +135,16 @@ namespace TetraScheduler
             Stream myStream;
 
             // dialog preferences
-            SaveFileDialog sd = new SaveFileDialog();
-            sd.Filter = "CSV (Comma delimited) |*.csv";
-            sd.FilterIndex = 0;
-            sd.AddExtension = true;
-            sd.DefaultExt = "csv";
-            sd.FileName = "Schedule.csv";
+            SaveFileDialog sd = new SaveFileDialog
+            {
+                Filter = "CSV (Comma delimited) |*.csv",
+                FilterIndex = 0,
+                AddExtension = true,
+                DefaultExt = "csv",
+                FileName = "Schedule.csv"
+            };
 
-            
+
             // display and see if it saves properly
             DialogResult result = sd.ShowDialog();
 

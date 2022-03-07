@@ -75,7 +75,7 @@ namespace TetraScheduler
             else
             {
                 //Write it
-                usernameString = usernameString + Writer;
+                usernameString += Writer;
                 File.WriteAllText(pswdFile, usernameString);
                 this.Close();
             }
