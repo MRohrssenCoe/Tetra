@@ -16,12 +16,7 @@ namespace TetraScheduler
 #pragma warning restore CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
 #pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
     {
-        public struct User
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
 
-        }
         public List<UserInfo> users { get; set; }
         public int startTime { get; set; }
         public int endTime { get; set; }
