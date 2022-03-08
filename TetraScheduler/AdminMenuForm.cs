@@ -114,7 +114,7 @@ namespace TetraScheduler
 
             // generate random users - remove later
             Testing testing = new Testing();
-            List<UserInfo> users = testing.generateConsultants(50);
+            List<UserInfo> users = testing.generateConsultants(30);
             Debug.WriteLine(users);
 
             // initialize schedulemaker

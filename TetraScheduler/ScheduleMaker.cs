@@ -255,7 +255,9 @@ namespace TetraScheduler
                 ourCSV.Add(csvRow); // add row to full list
             }
 
-            File.WriteAllLines(Path.Combine(Constants.AppDataFolder,"TestCSV.csv"), ourCSV.Select(x => string.Join(",", x)));
+            string schedFile = Path.Combine(Constants.AppDataFolder, Constants.scheduleFileName);
+            
+            File.WriteAllLines(schedFile, ourCSV.Select(x => string.Join(",", x)));
             return 0;
         }
     }
