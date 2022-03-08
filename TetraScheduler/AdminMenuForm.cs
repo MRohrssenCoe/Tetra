@@ -137,7 +137,11 @@ namespace TetraScheduler
             availForm.ShowDialog();
             //show dialog pauses execution
             List<Shift> temp = new List<Shift>();
-            temp = availForm.AvailableSchedule.GetShiftsForUser("Consultant", "Consultant");
+            //TODO phase this out and have availability form return a list of shifts directly.
+            UserInfo tempUI = new UserInfo();
+            tempUI.FirstName = "Consultant";
+            tempUI.LastName = "Consultant";
+            temp = availForm.AvailableSchedule.GetShiftsForUser(tempUI);
             //code here to display availability in consultant menu
             addBusyShiftsToView(temp);
             availForm.Dispose();

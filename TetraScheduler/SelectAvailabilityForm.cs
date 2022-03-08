@@ -45,7 +45,11 @@ namespace TetraScheduler
                 {
                     currentDayStrings.Add(box.Items[index].ToString());
                     //add selected shifts to available schedule under a dummy username
-                    AvailableSchedule.AssignUser("Consultant", "Consultant", i, index);
+                    UserInfo tempUI = new UserInfo();
+                    //TODO phase this out and return list of available shifts that aren't marked.
+                    tempUI.FirstName = "Consultant";
+                    tempUI.LastName = "Consultant";
+                    AvailableSchedule.AssignUser(tempUI, i, index);
                 }
                 selectedScheduleStrings[i] = currentDayStrings;
                 i++;

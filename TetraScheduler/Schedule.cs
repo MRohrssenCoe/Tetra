@@ -88,38 +88,38 @@ namespace TetraScheduler
 
         //Assign a user to a shift. Day = which index in shifts the desired shift is in. shiftNumber = how many shifts have come before
         //that shift, starting at 0. 
-        public void AssignUser(string fn, string ln, int day, int shiftNumber) // todo: change fn/ln to user objects
+        public void AssignUser(UserInfo ui, int day, int shiftNumber) // todo: change fn/ln to user objects
         {
-            shifts[day][shiftNumber].AddUser(fn, ln);
+            shifts[day][shiftNumber].AddUser(ui);
         }
         //Assign a user to a shift based on the day and starting time of the shift
-        public void AssignUser(string fn, string ln, int day, int hour, int minute)
+        public void AssignUser(UserInfo ui, int day, int hour, int minute)
         {
             int tempStartTime = minute + (hour * 60);
             foreach(Shift s in shifts[day])
             {
                 if(s.startTime == tempStartTime)
                 {
-                    s.AddUser(fn, ln);
+                    s.AddUser(ui);
                 }
             }
 
         }
         //Remove a user to a shift. Day = which index in shifts the desired shift is in. shiftNumber = how many shifts have come before
         //that shift, starting at 0. 
-        public void RemoveUser(string fn, string ln, int day, int shiftNumber)
+        public void RemoveUser(UserInfo ui, int day, int shiftNumber)
         {
-            shifts[day][shiftNumber].RemoveUser(fn, ln);
+            shifts[day][shiftNumber].RemoveUser(ui);
         }
         //Remove a user from a shift starting at a specific time on a specific day.
-        public void RemoveUser(string fn, string ln, int day, int hour, int minute)
+        public void RemoveUser(UserInfo ui, int day, int hour, int minute)
         {
             int tempStartTime = minute + (hour * 60);
             foreach (Shift s in shifts[day])
             {
                 if (s.startTime == tempStartTime)
                 {
-                    s.RemoveUser(fn, ln);
+                    s.RemoveUser(ui);
                 }
             }
 
@@ -158,7 +158,7 @@ namespace TetraScheduler
         }
 
         //Method to get all shifts from a schedule that a User is assigned to.
-        public List<Shift> GetShiftsForUser(string firstName, string lastName)
+        public List<Shift> GetShiftsForUser(UserInfo ui)
         {
             List<Shift> shiftsOut = new List<Shift>();
 
@@ -167,7 +167,7 @@ namespace TetraScheduler
                 List<Shift> day = shifts[j];
                 foreach(Shift s in day)
                 {
-                    if (s.UserAssigned(firstName, lastName))
+                    if (s.UserAssigned(ui))
                     {
                         shiftsOut.Add(s);
                     }

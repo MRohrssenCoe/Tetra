@@ -66,13 +66,13 @@ namespace TetraScheduler
                     // schedule at best fit shift
                     Shift firstShift = availabilities[0];
 
-                    if (firstShift.UserAssigned(c.FirstName, c.LastName)) // this should only happen when scheduling adjacencies - maybe fixed but scared to remove lol
+                    if (firstShift.UserAssigned(c)) // this should only happen when scheduling adjacencies - maybe fixed but scared to remove lol
                     {
                         availabilities.Remove(firstShift);
                         continue;
                     }
 
-                    firstShift.AddUser(c.FirstName, c.LastName);
+                    firstShift.AddUser(c);
                     availabilities.Remove(firstShift);
                     // decrement their needed times
                     requestedMinutes -= (firstShift.endTime - firstShift.startTime);
@@ -99,13 +99,13 @@ namespace TetraScheduler
                             break;
                         }
 
-                        if (nextShift.UserAssigned(c.FirstName, c.LastName))  // skip extra added shifts
+                        if (nextShift.UserAssigned(c))  // skip extra added shifts
                         {
                             adjacencyQueue.Remove(nextShift);
                         }
                         else
                         {
-                            nextShift.AddUser(c.FirstName, c.LastName);
+                            nextShift.AddUser(c);
                             adjacencyQueue.Remove(nextShift);
                             requestedMinutes -= (nextShift.endTime - nextShift.startTime);
                             maxConseqShifts--;

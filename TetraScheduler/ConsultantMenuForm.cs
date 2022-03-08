@@ -125,7 +125,10 @@ namespace TetraScheduler
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             //show dialog pauses execution
             availForm.ShowDialog();
-            consultantAvailability = availForm.AvailableSchedule.GetShiftsForUser("Consultant", "Consultant");
+            UserInfo uInfo = new UserInfo();
+            uInfo.FirstName = "Consultant";
+            uInfo.LastName = "Consultant";
+            consultantAvailability = availForm.AvailableSchedule.GetShiftsForUser(uInfo);
             addAvailabilityToView(consultantAvailability);
             availabilityBox.Hide();
             availabilityBox.Show();
