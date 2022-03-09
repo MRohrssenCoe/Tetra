@@ -42,7 +42,10 @@ namespace TetraScheduler
                 string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
                 AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
                 storedOptions = ao;
-                addBusyShiftsToView(ao.BusyShifts);
+                if (ao.BusyShifts != null)
+                {
+                    addBusyShiftsToView(ao.BusyShifts);
+                }
                 mixMajorCheck.Checked = ao.MixMajors;
                 mixSemestersCheck.Checked = ao.MixExperience;
                 mixYearsCheck.Checked = ao.MixYear;
@@ -50,35 +53,15 @@ namespace TetraScheduler
                 consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
-                foreach (int d in ao.daysOpen)
-                {
-                    switch (d)
-                    {
-                        case 0:
-                            sundayCheck.Checked = true;
-                            break;
-                        case 1:
-                            mondayCheck.Checked = true;
-                            break;
-                        case 2:
-                            tuesdayCheck.Checked = true;
-                            break;
-                        case 3:
-                            wednesdayCheck.Checked = true;
-                            break;
-                        case 4:
-                            thursdayCheck.Checked = true;
-                            break;
-                        case 5:
-                            fridayCheck.Checked = true;
-                            break;
-                        case 6:
-                            saturdayCheck.Checked = true;
-                            break;
-                        default:
-                            break;
-                    }
-                }
+
+                sundayCheck.Checked = ao.daysOpen[0];
+                mondayCheck.Checked = ao.daysOpen[1];
+                tuesdayCheck.Checked = ao.daysOpen[2];
+                wednesdayCheck.Checked = ao.daysOpen[3];
+                thursdayCheck.Checked = ao.daysOpen[4];
+                fridayCheck.Checked = ao.daysOpen[5];
+                saturdayCheck.Checked = ao.daysOpen[6];
+
                 //handle open time after changing to time pickers lol
                 int openHour = (int)(ao.OpenTime - (ao.OpenTime % 60)) / 60;
                 int openMinute = (int)(ao.OpenTime % 60);
@@ -143,7 +126,11 @@ namespace TetraScheduler
             tempUI.LastName = "Consultant";
             temp = availForm.AvailableSchedule.GetShiftsForUser(tempUI);
             //code here to display availability in consultant menu
-            addBusyShiftsToView(temp);
+            Debug.WriteLine(temp != null);
+            if (temp != null)
+            {
+                addBusyShiftsToView(temp);
+            }
             availForm.Dispose();
         }
         private void addBusyShiftsToView(List<Shift> shifts)
@@ -200,7 +187,7 @@ namespace TetraScheduler
         }
 
         //This is quite possibly the most dogshit method I have ever written
-        private int[] getDaysOpen()
+        private bool[] getDaysOpen()
         {
             List<CheckBox> dayCheckboxList = new List<CheckBox>
             {
@@ -215,60 +202,17 @@ namespace TetraScheduler
             //clone constructor so taht we can remove things from this list
             List<CheckBox> removalCheckboxList = new List<CheckBox>(dayCheckboxList);
             int i = 0;
+
+            bool[] days = new bool[7];
             foreach (CheckBox check in dayCheckboxList)
             {
-                if (check.Checked)
-                {
-                    i++;
-                }
-                else
-                {
-                    //remove unchecked items from this list so that we have the correct items and a proper amount of items for the array
-                    removalCheckboxList.Remove(check);
-                }
-            }
-            int[] days = new int[i];
-            i = 0;
-            foreach (CheckBox check in removalCheckboxList)
-            {
-                days[i] = dayFromBox(check);
+                days[i] = check.Checked;
                 i++;
             }
+            
             return days;
         }
 
-        private int dayFromBox(CheckBox check)
-        {
-            if (check == sundayCheck)
-            {
-                return 0;
-            }
-            if (check == mondayCheck)
-            {
-                return 1;
-            }
-            if (check == tuesdayCheck)
-            {
-                return 2;
-            }
-            if (check == wednesdayCheck)
-            {
-                return 3;
-            }
-            if (check == thursdayCheck)
-            {
-                return 4;
-            }
-            if (check == fridayCheck)
-            {
-                return 5;
-            }
-            if (check == saturdayCheck)
-            {
-                return 6;
-            }
-            return -1;
-        }
 
         private void logout_Click(object sender, EventArgs e)
         {
@@ -277,6 +221,11 @@ namespace TetraScheduler
             {
                 this.Close();
             }
+        }
+
+        private void editScheduleButton_Click(object sender, EventArgs e)
+        {
+            new ScheduleEditorForm().ShowDialog();
         }
     }
 }
