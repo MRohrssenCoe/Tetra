@@ -54,6 +54,12 @@ namespace TetraScheduler
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
 
+                if (ao.daysOpen == null)
+                {
+                    ao.daysOpen = new bool[] { true, true, true, true, true, true, true };
+                }
+                
+
                 sundayCheck.Checked = ao.daysOpen[0];
                 mondayCheck.Checked = ao.daysOpen[1];
                 tuesdayCheck.Checked = ao.daysOpen[2];
@@ -90,14 +96,14 @@ namespace TetraScheduler
         {
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
-            //List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
 
             // saves admin options
             this.saveOptions();
 
             // generate random users - remove later
             Testing testing = new Testing();
-            List<UserInfo> users = testing.generateConsultants(30);
+            //List<UserInfo> users = testing.generateConsultants(30);
             Debug.WriteLine(users);
 
             // initialize schedulemaker
