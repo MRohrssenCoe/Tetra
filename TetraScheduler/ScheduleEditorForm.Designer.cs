@@ -54,9 +54,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(1328, 7);
+            this.label7.Location = new System.Drawing.Point(1518, 9);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 21);
+            this.label7.Size = new System.Drawing.Size(96, 28);
             this.label7.TabIndex = 51;
             this.label7.Text = "Saturday";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -65,9 +65,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(264, 7);
+            this.label1.Location = new System.Drawing.Point(302, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 21);
+            this.label1.Size = new System.Drawing.Size(81, 28);
             this.label1.TabIndex = 45;
             this.label1.Text = "Sunday";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -76,9 +76,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(443, 7);
+            this.label2.Location = new System.Drawing.Point(506, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 21);
+            this.label2.Size = new System.Drawing.Size(89, 28);
             this.label2.TabIndex = 46;
             this.label2.Text = "Monday";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -87,9 +87,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(623, 7);
+            this.label3.Location = new System.Drawing.Point(712, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 21);
+            this.label3.Size = new System.Drawing.Size(89, 28);
             this.label3.TabIndex = 47;
             this.label3.Text = "Tuesday";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -98,9 +98,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(782, 7);
+            this.label4.Location = new System.Drawing.Point(894, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 21);
+            this.label4.Size = new System.Drawing.Size(120, 28);
             this.label4.TabIndex = 48;
             this.label4.Text = "Wednesday";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,9 +109,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(965, 7);
+            this.label5.Location = new System.Drawing.Point(1103, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 21);
+            this.label5.Size = new System.Drawing.Size(99, 28);
             this.label5.TabIndex = 49;
             this.label5.Text = "Thursday";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,9 +120,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(1153, 7);
+            this.label6.Location = new System.Drawing.Point(1318, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 21);
+            this.label6.Size = new System.Drawing.Size(70, 28);
             this.label6.TabIndex = 50;
             this.label6.Text = "Friday";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,77 +131,84 @@
             // 
             this.sat_listbox.FormattingEnabled = true;
             this.sat_listbox.HorizontalScrollbar = true;
-            this.sat_listbox.ItemHeight = 15;
-            this.sat_listbox.Location = new System.Drawing.Point(1282, 31);
+            this.sat_listbox.ItemHeight = 20;
+            this.sat_listbox.Location = new System.Drawing.Point(1465, 41);
+            this.sat_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sat_listbox.Name = "sat_listbox";
             this.sat_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.sat_listbox.Size = new System.Drawing.Size(170, 574);
+            this.sat_listbox.Size = new System.Drawing.Size(194, 764);
             this.sat_listbox.TabIndex = 58;
             // 
             // fri_listbox
             // 
             this.fri_listbox.FormattingEnabled = true;
             this.fri_listbox.HorizontalScrollbar = true;
-            this.fri_listbox.ItemHeight = 15;
-            this.fri_listbox.Location = new System.Drawing.Point(1105, 31);
+            this.fri_listbox.ItemHeight = 20;
+            this.fri_listbox.Location = new System.Drawing.Point(1263, 41);
+            this.fri_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fri_listbox.Name = "fri_listbox";
             this.fri_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.fri_listbox.Size = new System.Drawing.Size(170, 574);
+            this.fri_listbox.Size = new System.Drawing.Size(194, 764);
             this.fri_listbox.TabIndex = 57;
             // 
             // wed_listbox
             // 
             this.wed_listbox.FormattingEnabled = true;
             this.wed_listbox.HorizontalScrollbar = true;
-            this.wed_listbox.ItemHeight = 15;
-            this.wed_listbox.Location = new System.Drawing.Point(752, 31);
+            this.wed_listbox.ItemHeight = 20;
+            this.wed_listbox.Location = new System.Drawing.Point(859, 41);
+            this.wed_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.wed_listbox.Name = "wed_listbox";
             this.wed_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.wed_listbox.Size = new System.Drawing.Size(170, 574);
+            this.wed_listbox.Size = new System.Drawing.Size(194, 764);
             this.wed_listbox.TabIndex = 56;
             // 
             // thurs_listbox
             // 
             this.thurs_listbox.FormattingEnabled = true;
             this.thurs_listbox.HorizontalScrollbar = true;
-            this.thurs_listbox.ItemHeight = 15;
-            this.thurs_listbox.Location = new System.Drawing.Point(929, 31);
+            this.thurs_listbox.ItemHeight = 20;
+            this.thurs_listbox.Location = new System.Drawing.Point(1062, 41);
+            this.thurs_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.thurs_listbox.Name = "thurs_listbox";
             this.thurs_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.thurs_listbox.Size = new System.Drawing.Size(170, 574);
+            this.thurs_listbox.Size = new System.Drawing.Size(194, 764);
             this.thurs_listbox.TabIndex = 55;
             // 
             // tues_listbox
             // 
             this.tues_listbox.FormattingEnabled = true;
             this.tues_listbox.HorizontalScrollbar = true;
-            this.tues_listbox.ItemHeight = 15;
-            this.tues_listbox.Location = new System.Drawing.Point(574, 31);
+            this.tues_listbox.ItemHeight = 20;
+            this.tues_listbox.Location = new System.Drawing.Point(656, 41);
+            this.tues_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tues_listbox.Name = "tues_listbox";
             this.tues_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.tues_listbox.Size = new System.Drawing.Size(170, 574);
+            this.tues_listbox.Size = new System.Drawing.Size(194, 764);
             this.tues_listbox.TabIndex = 54;
             // 
             // mon_listbox
             // 
             this.mon_listbox.FormattingEnabled = true;
             this.mon_listbox.HorizontalScrollbar = true;
-            this.mon_listbox.ItemHeight = 15;
-            this.mon_listbox.Location = new System.Drawing.Point(399, 31);
+            this.mon_listbox.ItemHeight = 20;
+            this.mon_listbox.Location = new System.Drawing.Point(456, 41);
+            this.mon_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mon_listbox.Name = "mon_listbox";
             this.mon_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.mon_listbox.Size = new System.Drawing.Size(170, 574);
+            this.mon_listbox.Size = new System.Drawing.Size(194, 764);
             this.mon_listbox.TabIndex = 53;
             // 
             // sun_listbox
             // 
             this.sun_listbox.FormattingEnabled = true;
             this.sun_listbox.HorizontalScrollbar = true;
-            this.sun_listbox.ItemHeight = 15;
-            this.sun_listbox.Location = new System.Drawing.Point(221, 31);
+            this.sun_listbox.ItemHeight = 20;
+            this.sun_listbox.Location = new System.Drawing.Point(253, 41);
+            this.sun_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sun_listbox.Name = "sun_listbox";
             this.sun_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.sun_listbox.Size = new System.Drawing.Size(170, 574);
+            this.sun_listbox.Size = new System.Drawing.Size(194, 764);
             this.sun_listbox.TabIndex = 52;
             // 
             // groupBox1
@@ -209,27 +216,31 @@
             this.groupBox1.Controls.Add(this.removeConsultantButton);
             this.groupBox1.Controls.Add(this.addConsultantButton);
             this.groupBox1.Controls.Add(this.consultantsWorkingShift);
-            this.groupBox1.Location = new System.Drawing.Point(8, 7);
+            this.groupBox1.Location = new System.Drawing.Point(9, 9);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(207, 208);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(237, 277);
             this.groupBox1.TabIndex = 59;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Shift Settings";
             // 
             // removeConsultantButton
             // 
-            this.removeConsultantButton.Location = new System.Drawing.Point(6, 165);
+            this.removeConsultantButton.Location = new System.Drawing.Point(7, 220);
+            this.removeConsultantButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.removeConsultantButton.Name = "removeConsultantButton";
-            this.removeConsultantButton.Size = new System.Drawing.Size(195, 35);
+            this.removeConsultantButton.Size = new System.Drawing.Size(223, 47);
             this.removeConsultantButton.TabIndex = 2;
             this.removeConsultantButton.Text = "Remove Selected Consultant";
             this.removeConsultantButton.UseVisualStyleBackColor = true;
             // 
             // addConsultantButton
             // 
-            this.addConsultantButton.Location = new System.Drawing.Point(6, 124);
+            this.addConsultantButton.Location = new System.Drawing.Point(7, 165);
+            this.addConsultantButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addConsultantButton.Name = "addConsultantButton";
-            this.addConsultantButton.Size = new System.Drawing.Size(195, 35);
+            this.addConsultantButton.Size = new System.Drawing.Size(223, 47);
             this.addConsultantButton.TabIndex = 1;
             this.addConsultantButton.Text = "Add consultant";
             this.addConsultantButton.UseVisualStyleBackColor = true;
@@ -237,26 +248,28 @@
             // consultantsWorkingShift
             // 
             this.consultantsWorkingShift.FormattingEnabled = true;
-            this.consultantsWorkingShift.ItemHeight = 15;
-            this.consultantsWorkingShift.Location = new System.Drawing.Point(9, 24);
+            this.consultantsWorkingShift.ItemHeight = 20;
+            this.consultantsWorkingShift.Location = new System.Drawing.Point(10, 32);
+            this.consultantsWorkingShift.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.consultantsWorkingShift.Name = "consultantsWorkingShift";
-            this.consultantsWorkingShift.Size = new System.Drawing.Size(192, 94);
+            this.consultantsWorkingShift.Size = new System.Drawing.Size(219, 124);
             this.consultantsWorkingShift.TabIndex = 0;
             // 
             // returnToAdminFormButton
             // 
-            this.returnToAdminFormButton.Location = new System.Drawing.Point(14, 570);
+            this.returnToAdminFormButton.Location = new System.Drawing.Point(16, 760);
+            this.returnToAdminFormButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.returnToAdminFormButton.Name = "returnToAdminFormButton";
-            this.returnToAdminFormButton.Size = new System.Drawing.Size(195, 35);
+            this.returnToAdminFormButton.Size = new System.Drawing.Size(223, 47);
             this.returnToAdminFormButton.TabIndex = 3;
             this.returnToAdminFormButton.Text = "Return to Admin Menu";
             this.returnToAdminFormButton.UseVisualStyleBackColor = true;
             // 
             // ScheduleEditorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1460, 617);
+            this.ClientSize = new System.Drawing.Size(1669, 823);
             this.Controls.Add(this.returnToAdminFormButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sat_listbox);
@@ -273,7 +286,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ScheduleEditorForm";
             this.Text = "ScheduleEditorForm";
             this.groupBox1.ResumeLayout(false);

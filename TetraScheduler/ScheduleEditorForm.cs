@@ -6,14 +6,21 @@ namespace TetraScheduler
 {
     public partial class ScheduleEditorForm : Form
     {
+
+        ListBox.ObjectCollection sundayObjectCollection;
+
+
         public ScheduleEditorForm()
         {
             InitializeComponent();
+            sundayObjectCollection = sun_listbox.Items;
+            fillBoxesWithSchedule();
         }
 
         private void fillBoxesWithSchedule()
         {
             //convert csv to schedule
+            csvToSchedule();
             //fill boxes using schedule.
         }
 
@@ -49,10 +56,38 @@ namespace TetraScheduler
                     string Saturday = fields[7];
 
                     //construct shifts from this info?
+                    Shift sundayShift = new Shift();
+                    sundayShift = parseCell(timeSlot, Sunday, 0);
+                    sundayObjectCollection.Add(sundayShift);
+
+
                     //Add shifts to listbox object collections?
 
                 }
             }
+        }
+
+        private Shift parseCell(string timeslot, string consultants, int day)
+        {
+            Shift s = new Shift();
+            s.day = day;
+            string[] tokens = consultants.Split(';');
+            if(tokens != null)
+            {
+                foreach (string tok in tokens)
+                {
+                    string[] nameSplit = tok.Split(' ');
+                    if (nameSplit != null)
+                    {
+                        //add user using first name and lastname
+
+                    }
+                }
+            }
+            //parse time
+            tokens = timeslot.Split('-');
+
+            return s;
         }
     }
 }
