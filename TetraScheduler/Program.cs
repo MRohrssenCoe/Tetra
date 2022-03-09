@@ -67,11 +67,11 @@ namespace TetraScheduler
                 File.WriteAllText(scheduleFile, sb.ToString());
                 File.SetAttributes(scheduleFile, FileAttributes.Normal);
             }
-
-            int[] daysOpen = new int[3];
-            daysOpen[0] = 1;
-            daysOpen[1] = 2;
-            daysOpen[2] = 3;
+            /*
+            bool[] daysOpen = new bool[7];
+            daysOpen[0] = true;
+            daysOpen[1] = true;
+            daysOpen[2] = true;
             int[] startTimes = new int[3];
             startTimes[0] = 540;
             startTimes[1] = 540;
@@ -81,7 +81,7 @@ namespace TetraScheduler
             endTimes[1] = 1020;
             endTimes[2] = 1020;
             Schedule newConstructorTest = new Schedule(daysOpen, 60, startTimes, endTimes);
-
+            */
             // starts at login form
             Application.Run(new LoginForm());
 

@@ -18,7 +18,7 @@ namespace TetraScheduler
         public int OpenTime { get; set; }
         public int CloseTime { get; set; }
         public int ShiftLengthMinutes { get; set; }
-        public int[] daysOpen { get; set; }
+        public bool[] daysOpen { get; set; }
         public bool MixMajors { get; set; }
         public bool MixExperience { get; set; }
         public bool MixYear { get; set; }
