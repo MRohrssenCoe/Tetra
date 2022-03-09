@@ -148,7 +148,6 @@ namespace TetraScheduler
 
             if(lastClickedBox is null)
             {
-                Debug.WriteLine("NULL!");
                 lastClickedBox = (ListBox)sender;
             } else
             {
@@ -157,7 +156,6 @@ namespace TetraScheduler
                     deselectOther(lastClickedBox);
                     lastClickedBox = (ListBox)sender;
                 }
-                
             }
         }
 
