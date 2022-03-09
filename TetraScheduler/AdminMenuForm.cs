@@ -13,6 +13,8 @@ namespace TetraScheduler
         List<Shift> busyShiftsList = new List<Shift>();
         private string adminInfoFile;
         AdminOptions storedOptions;
+
+
         public AdminMenuForm(String name)
         {
             InitializeComponent();
