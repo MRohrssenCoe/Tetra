@@ -68,6 +68,7 @@ namespace TetraScheduler
             this.tuesdayCheck = new System.Windows.Forms.CheckBox();
             this.openTimePicker = new System.Windows.Forms.DateTimePicker();
             this.closeTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.editScheduleButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
@@ -109,7 +110,7 @@ namespace TetraScheduler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(171, 509);
+            this.button3.Location = new System.Drawing.Point(88, 459);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(168, 43);
@@ -190,6 +191,7 @@ namespace TetraScheduler
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.editScheduleButton);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.shiftLengthUpDn);
             this.panel1.Controls.Add(this.busyConsultantsUpDn);
@@ -488,6 +490,15 @@ namespace TetraScheduler
             this.closeTimePicker.TabIndex = 53;
             this.closeTimePicker.Value = new System.DateTime(1969, 1, 1, 17, 0, 0, 0);
             // 
+            // editScheduleButton
+            // 
+            this.editScheduleButton.Location = new System.Drawing.Point(170, 509);
+            this.editScheduleButton.Name = "editScheduleButton";
+            this.editScheduleButton.Size = new System.Drawing.Size(171, 43);
+            this.editScheduleButton.TabIndex = 54;
+            this.editScheduleButton.Text = "Edit Schedule";
+            this.editScheduleButton.UseVisualStyleBackColor = true;
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -568,5 +579,6 @@ namespace TetraScheduler
         private System.Windows.Forms.DateTimePicker closeTimePicker;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown shiftLengthUpDn;
+        private System.Windows.Forms.Button editScheduleButton;
     }
 }
