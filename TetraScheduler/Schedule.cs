@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using System.Diagnostics;
 
 
 //TODO update to add constructer that uses an array of start and end times
@@ -231,7 +232,10 @@ namespace TetraScheduler
                 }
                 // check against our next shift
                 ourIndex++;
+
+                Debug.WriteLine("here");
             }
+
             
             return newArray;
         }

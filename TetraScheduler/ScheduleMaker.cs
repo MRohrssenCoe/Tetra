@@ -61,10 +61,10 @@ namespace TetraScheduler
                 int requestedHours = c.desiredWeeklyHours;
                 int requestedMinutes = requestedHours * 60; // maybe useful for comparing to shift times?
 
-                while (requestedMinutes >= ao.ShiftLengthMinutes) // assuming doesn't exceed the sum of all of our shifts...
+                while (requestedMinutes >= ao.ShiftLengthMinutes && availabilities.Count > 0) // assuming doesn't exceed the sum of all of our shifts...
                 {
                     // schedule at best fit shift
-                    Shift firstShift = availabilities[0];
+                    Shift firstShift = availabilities[0]; // TODO: add a catch here for edge cases (alert to say that user n couldn't get all their hours?)
 
                     if (firstShift.UserAssigned(c)) // this should only happen when scheduling adjacencies - maybe fixed but scared to remove lol
                     {
