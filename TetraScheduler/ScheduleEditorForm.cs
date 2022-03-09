@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -15,6 +16,8 @@ namespace TetraScheduler
         ListBox.ObjectCollection thursdayObjectCollection;
         ListBox.ObjectCollection fridayObjectCollection;
         ListBox.ObjectCollection saturdayObjectCollection;
+
+        ListBox lastClickedBox = null;
 
         public ScheduleEditorForm()
         {
@@ -84,6 +87,8 @@ namespace TetraScheduler
                     fridayShift = parseCell(timeSlot, Friday, 5);
                     saturdayShift = parseCell(timeSlot, Saturday, 6);
                     
+                    
+                    //add shifts to collections
                     sundayObjectCollection.Add(sundayShift);
                     mondayObjectCollection.Add(mondayShift);
                     tuesdayObjectCollection.Add(tuesdayShift);
@@ -91,9 +96,6 @@ namespace TetraScheduler
                     thursdayObjectCollection.Add(thursdayShift);
                     fridayObjectCollection.Add(fridayShift);
                     saturdayObjectCollection.Add(saturdayShift);
-
-                    //Add shifts to listbox object collections?
-
                 }
             }
         }
@@ -110,6 +112,7 @@ namespace TetraScheduler
                     string[] nameSplit = tok.Split(' ');
                     if (nameSplit != null)
                     {
+
                         //TODO add user using first name and lastname
 
                     }
@@ -138,5 +141,31 @@ namespace TetraScheduler
 
             return s;
         }
+
+        //This makes it so that you can only select one item across the 7 list boxes :)
+        private void listbox_ItemChanged(object sender, EventArgs e)
+        {
+
+            if(lastClickedBox is null)
+            {
+                Debug.WriteLine("NULL!");
+                lastClickedBox = (ListBox)sender;
+            } else
+            {
+                if (lastClickedBox != (ListBox)sender)
+                {
+                    deselectOther(lastClickedBox);
+                    lastClickedBox = (ListBox)sender;
+                }
+                
+            }
+        }
+
+        void deselectOther(ListBox lb)
+        {
+            lb.SelectedIndex = -1;
+        }
+
+
     }
 }

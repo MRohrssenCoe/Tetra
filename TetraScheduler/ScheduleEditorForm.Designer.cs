@@ -135,9 +135,9 @@
             this.sat_listbox.Location = new System.Drawing.Point(1465, 41);
             this.sat_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sat_listbox.Name = "sat_listbox";
-            this.sat_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.sat_listbox.Size = new System.Drawing.Size(194, 764);
             this.sat_listbox.TabIndex = 58;
+            this.sat_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // fri_listbox
             // 
@@ -147,9 +147,9 @@
             this.fri_listbox.Location = new System.Drawing.Point(1263, 41);
             this.fri_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fri_listbox.Name = "fri_listbox";
-            this.fri_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.fri_listbox.Size = new System.Drawing.Size(194, 764);
             this.fri_listbox.TabIndex = 57;
+            this.fri_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // wed_listbox
             // 
@@ -159,9 +159,9 @@
             this.wed_listbox.Location = new System.Drawing.Point(859, 41);
             this.wed_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.wed_listbox.Name = "wed_listbox";
-            this.wed_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.wed_listbox.Size = new System.Drawing.Size(194, 764);
             this.wed_listbox.TabIndex = 56;
+            this.wed_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // thurs_listbox
             // 
@@ -171,9 +171,9 @@
             this.thurs_listbox.Location = new System.Drawing.Point(1062, 41);
             this.thurs_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.thurs_listbox.Name = "thurs_listbox";
-            this.thurs_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.thurs_listbox.Size = new System.Drawing.Size(194, 764);
             this.thurs_listbox.TabIndex = 55;
+            this.thurs_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // tues_listbox
             // 
@@ -183,9 +183,9 @@
             this.tues_listbox.Location = new System.Drawing.Point(656, 41);
             this.tues_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tues_listbox.Name = "tues_listbox";
-            this.tues_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.tues_listbox.Size = new System.Drawing.Size(194, 764);
             this.tues_listbox.TabIndex = 54;
+            this.tues_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // mon_listbox
             // 
@@ -195,9 +195,9 @@
             this.mon_listbox.Location = new System.Drawing.Point(456, 41);
             this.mon_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mon_listbox.Name = "mon_listbox";
-            this.mon_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.mon_listbox.Size = new System.Drawing.Size(194, 764);
             this.mon_listbox.TabIndex = 53;
+            this.mon_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // sun_listbox
             // 
@@ -207,9 +207,9 @@
             this.sun_listbox.Location = new System.Drawing.Point(253, 41);
             this.sun_listbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.sun_listbox.Name = "sun_listbox";
-            this.sun_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.sun_listbox.Size = new System.Drawing.Size(194, 764);
             this.sun_listbox.TabIndex = 52;
+            this.sun_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // groupBox1
             // 

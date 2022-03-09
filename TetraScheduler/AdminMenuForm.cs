@@ -13,6 +13,8 @@ namespace TetraScheduler
         List<Shift> busyShiftsList = new List<Shift>();
         private string adminInfoFile;
         AdminOptions storedOptions;
+
+
         public AdminMenuForm(String name)
         {
             InitializeComponent();
@@ -53,15 +55,16 @@ namespace TetraScheduler
                 consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
-
-                sundayCheck.Checked = ao.daysOpen[0];
-                mondayCheck.Checked = ao.daysOpen[1];
-                tuesdayCheck.Checked = ao.daysOpen[2];
-                wednesdayCheck.Checked = ao.daysOpen[3];
-                thursdayCheck.Checked = ao.daysOpen[4];
-                fridayCheck.Checked = ao.daysOpen[5];
-                saturdayCheck.Checked = ao.daysOpen[6];
-
+                if (ao.daysOpen != null)
+                {
+                    sundayCheck.Checked = ao.daysOpen[0];
+                    mondayCheck.Checked = ao.daysOpen[1];
+                    tuesdayCheck.Checked = ao.daysOpen[2];
+                    wednesdayCheck.Checked = ao.daysOpen[3];
+                    thursdayCheck.Checked = ao.daysOpen[4];
+                    fridayCheck.Checked = ao.daysOpen[5];
+                    saturdayCheck.Checked = ao.daysOpen[6];
+                }
                 //handle open time after changing to time pickers lol
                 int openHour = (int)(ao.OpenTime - (ao.OpenTime % 60)) / 60;
                 int openMinute = (int)(ao.OpenTime % 60);
