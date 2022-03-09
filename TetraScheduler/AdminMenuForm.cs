@@ -55,7 +55,8 @@ namespace TetraScheduler
                 consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
-                if (ao.daysOpen != null)
+
+                if (ao.daysOpen.Length == 7)
                 {
                     sundayCheck.Checked = ao.daysOpen[0];
                     mondayCheck.Checked = ao.daysOpen[1];
@@ -65,6 +66,7 @@ namespace TetraScheduler
                     fridayCheck.Checked = ao.daysOpen[5];
                     saturdayCheck.Checked = ao.daysOpen[6];
                 }
+
                 //handle open time after changing to time pickers lol
                 int openHour = (int)(ao.OpenTime - (ao.OpenTime % 60)) / 60;
                 int openMinute = (int)(ao.OpenTime % 60);
