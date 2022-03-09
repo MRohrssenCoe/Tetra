@@ -63,7 +63,10 @@ namespace TetraScheduler
 
                 while (requestedMinutes >= ao.ShiftLengthMinutes) // assuming doesn't exceed the sum of all of our shifts...
                 {
-                    // schedule at best fit shift
+                    // schedule at best fit
+                    if (availabilities.Count() == 0) { //safety net if avails are not in scheduled options
+                        break;
+                    }
                     Shift firstShift = availabilities[0];
 
                     if (firstShift.UserAssigned(c)) // this should only happen when scheduling adjacencies - maybe fixed but scared to remove lol
