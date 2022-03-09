@@ -54,47 +54,5 @@ namespace TetraScheduler
                 }
             }
         }
-        
-
-        private void sun_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void wed_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tues_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void mon_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ScheduleEditorForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sat_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fri_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void thurs_listbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-

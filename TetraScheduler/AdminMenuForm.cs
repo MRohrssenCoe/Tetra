@@ -42,7 +42,10 @@ namespace TetraScheduler
                 string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
                 AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
                 storedOptions = ao;
-                addBusyShiftsToView(ao.BusyShifts);
+                if (ao.BusyShifts != null)
+                {
+                    addBusyShiftsToView(ao.BusyShifts);
+                }
                 mixMajorCheck.Checked = ao.MixMajors;
                 mixSemestersCheck.Checked = ao.MixExperience;
                 mixYearsCheck.Checked = ao.MixYear;
@@ -50,33 +53,36 @@ namespace TetraScheduler
                 consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
-                foreach (int d in ao.daysOpen)
+                if (ao.daysOpen != null)
                 {
-                    switch (d)
+                    foreach (int d in ao.daysOpen)
                     {
-                        case 0:
-                            sundayCheck.Checked = true;
-                            break;
-                        case 1:
-                            mondayCheck.Checked = true;
-                            break;
-                        case 2:
-                            tuesdayCheck.Checked = true;
-                            break;
-                        case 3:
-                            wednesdayCheck.Checked = true;
-                            break;
-                        case 4:
-                            thursdayCheck.Checked = true;
-                            break;
-                        case 5:
-                            fridayCheck.Checked = true;
-                            break;
-                        case 6:
-                            saturdayCheck.Checked = true;
-                            break;
-                        default:
-                            break;
+                        switch (d)
+                        {
+                            case 0:
+                                sundayCheck.Checked = true;
+                                break;
+                            case 1:
+                                mondayCheck.Checked = true;
+                                break;
+                            case 2:
+                                tuesdayCheck.Checked = true;
+                                break;
+                            case 3:
+                                wednesdayCheck.Checked = true;
+                                break;
+                            case 4:
+                                thursdayCheck.Checked = true;
+                                break;
+                            case 5:
+                                fridayCheck.Checked = true;
+                                break;
+                            case 6:
+                                saturdayCheck.Checked = true;
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 //handle open time after changing to time pickers lol
