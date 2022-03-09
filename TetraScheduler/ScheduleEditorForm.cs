@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -15,39 +11,90 @@ namespace TetraScheduler
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void fillBoxesWithSchedule()
+        {
+            //convert csv to schedule
+            //fill boxes using schedule.
+        }
+
+        private void csvToSchedule()
+        {
+            // read in from CSV
+            using (TextFieldParser csvParser = new TextFieldParser(System.IO.Path.Combine(Constants.AppDataFolder, Constants.scheduleFileName)))
+            {
+                // set up options
+                csvParser.CommentTokens = new string[] { "#" };
+                csvParser.SetDelimiters(new string[] { "," });
+                csvParser.HasFieldsEnclosedInQuotes = true; // todo: come back to this. not sure if we are writing to CSVs properly
+
+                // read column name row
+                csvParser.ReadLine();
+
+                // TODO: interpret hours from csv (first and last shift on each day?)
+
+                //iteration through remaining rows
+                while (!csvParser.EndOfData)
+                {
+                    // Read current line fields, pointer moves to the next line.
+                    string[] fields = csvParser.ReadFields();
+
+                    // separate each column within the row
+                    string timeSlot = fields[0];
+                    string Sunday = fields[1];
+                    string Monday = fields[2];
+                    string Tuesday = fields[3];
+                    string Wednesday = fields[4];
+                    string Thursday = fields[5];
+                    string Friday = fields[6];
+                    string Saturday = fields[7];
+
+                    //construct shifts from this info?
+                    //Add shifts to listbox object collections?
+
+                }
+            }
+        }
+        
+
+        private void sun_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void wed_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void tues_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void mon_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void ScheduleEditorForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void sat_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void fri_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void thurs_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
     }
 }
+

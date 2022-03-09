@@ -143,7 +143,11 @@ namespace TetraScheduler
             tempUI.LastName = "Consultant";
             temp = availForm.AvailableSchedule.GetShiftsForUser(tempUI);
             //code here to display availability in consultant menu
-            addBusyShiftsToView(temp);
+            Debug.WriteLine(temp != null);
+            if (temp != null)
+            {
+                addBusyShiftsToView(temp);
+            }
             availForm.Dispose();
         }
         private void addBusyShiftsToView(List<Shift> shifts)
@@ -277,6 +281,11 @@ namespace TetraScheduler
             {
                 this.Close();
             }
+        }
+
+        private void editScheduleButton_Click(object sender, EventArgs e)
+        {
+            new ScheduleEditorForm().ShowDialog();
         }
     }
 }
