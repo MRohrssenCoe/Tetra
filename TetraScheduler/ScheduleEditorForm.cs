@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -8,12 +9,24 @@ namespace TetraScheduler
     {
 
         ListBox.ObjectCollection sundayObjectCollection;
-
+        ListBox.ObjectCollection mondayObjectCollection;
+        ListBox.ObjectCollection tuesdayObjectCollection;
+        ListBox.ObjectCollection wednesdayObjectCollection;
+        ListBox.ObjectCollection thursdayObjectCollection;
+        ListBox.ObjectCollection fridayObjectCollection;
+        ListBox.ObjectCollection saturdayObjectCollection;
 
         public ScheduleEditorForm()
         {
             InitializeComponent();
             sundayObjectCollection = sun_listbox.Items;
+            mondayObjectCollection = mon_listbox.Items;
+            tuesdayObjectCollection = tues_listbox.Items;
+            wednesdayObjectCollection = wed_listbox.Items;
+            thursdayObjectCollection = thurs_listbox.Items;
+            fridayObjectCollection = fri_listbox.Items;
+            saturdayObjectCollection = sat_listbox.Items;
+            
             fillBoxesWithSchedule();
         }
 
@@ -57,9 +70,27 @@ namespace TetraScheduler
 
                     //construct shifts from this info?
                     Shift sundayShift = new Shift();
+                    Shift mondayShift = new Shift();
+                    Shift tuesdayShift = new Shift();
+                    Shift wednesdayShift = new Shift();
+                    Shift thursdayShift = new Shift();
+                    Shift fridayShift = new Shift();
+                    Shift saturdayShift = new Shift();
                     sundayShift = parseCell(timeSlot, Sunday, 0);
+                    mondayShift = parseCell(timeSlot, Monday, 1);
+                    tuesdayShift = parseCell(timeSlot, Tuesday, 2);
+                    wednesdayShift = parseCell(timeSlot, Wednesday, 3);
+                    thursdayShift = parseCell(timeSlot, Thursday, 4);
+                    fridayShift = parseCell(timeSlot, Friday, 5);
+                    saturdayShift = parseCell(timeSlot, Saturday, 6);
+                    
                     sundayObjectCollection.Add(sundayShift);
-
+                    mondayObjectCollection.Add(mondayShift);
+                    tuesdayObjectCollection.Add(tuesdayShift);
+                    wednesdayObjectCollection.Add(wednesdayShift);
+                    thursdayObjectCollection.Add(thursdayShift);
+                    fridayObjectCollection.Add(fridayShift);
+                    saturdayObjectCollection.Add(saturdayShift);
 
                     //Add shifts to listbox object collections?
 
@@ -79,13 +110,31 @@ namespace TetraScheduler
                     string[] nameSplit = tok.Split(' ');
                     if (nameSplit != null)
                     {
-                        //add user using first name and lastname
+                        //TODO add user using first name and lastname
 
                     }
                 }
             }
             //parse time
             tokens = timeslot.Split('-');
+            int starthour = int.Parse(tokens[0].Substring(0, 2));
+            int startminute = int.Parse(tokens[0].Substring(3, 2));
+            string startAMPM = tokens[0].Substring(5, 2);
+            if(startAMPM == "PM" && starthour != 12)
+            {
+                starthour += 12;
+            }
+
+            int endhour = int.Parse(tokens[1].Substring(0, 2));
+            int endminute = int.Parse(tokens[1].Substring (3, 2));
+            string endAMPM = tokens[1].Substring (5, 2);
+
+            if(endAMPM == "PM" && endhour != 12)
+            {
+                endhour += 12;
+            }
+            s.startTime = (starthour * 60) + startminute;
+            s.endTime = (endhour * 60) + endminute;
 
             return s;
         }
