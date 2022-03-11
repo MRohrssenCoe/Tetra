@@ -22,11 +22,11 @@ namespace TetraScheduler
             InitializeComponent();
             availableShifts = new ListBox.ObjectCollection(availabilityBox);
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-            importUserInfo(username);
+            importUserInfo();
         }
 
 
-        private void importUserInfo(string username){
+        private void importUserInfo(){
             // todo: check for missing info (ex: entire line deleted)
             // open file linked to username
 
@@ -47,9 +47,9 @@ namespace TetraScheduler
                 //Fill UI info
                 fnameTextbox.Text = uInfo.FirstName;
                 lnameTextbox.Text = uInfo.LastName;
-                expSemPicker.Value = uInfo.expSemesters;
-                coeYrPicker.Value = uInfo.coeYear;
-                weeklyHrsPicker.Value = uInfo.desiredWeeklyHours;
+                semExpUpDn.Value = uInfo.expSemesters;
+                coeYrUpDn.Value = uInfo.coeYear;
+                desiredWeeklyHrsUpDn.Value = uInfo.desiredWeeklyHours;
                 consultantAvailability = uInfo.availability;
                 addAvailabilityToView(uInfo.availability);
                 //Reusing code to fill majors.
@@ -77,8 +77,6 @@ namespace TetraScheduler
 
         private string[] majorsSelected()
         {   // returns string representation of which majors were selected in the listbox
-            int numMajors = majorListbox.CheckedItems.Count;
-
             string[] majors = new string[majorListbox.CheckedItems.Count];
             // get list from checkboxes
             majorListbox.CheckedItems.CopyTo(majors, 0);
@@ -99,9 +97,9 @@ namespace TetraScheduler
             uInfo.FirstName = fnameTextbox.Text;
             uInfo.LastName = lnameTextbox.Text;
             uInfo.majors = majorsSelected();
-            uInfo.expSemesters = (int)expSemPicker.Value;
-            uInfo.coeYear = (int)coeYrPicker.Value;
-            uInfo.desiredWeeklyHours = (int)weeklyHrsPicker.Value;
+            uInfo.expSemesters = (int)semExpUpDn.Value;
+            uInfo.coeYear = (int)coeYrUpDn.Value;
+            uInfo.desiredWeeklyHours = (int)desiredWeeklyHrsUpDn.Value;
             uInfo.availability = consultantAvailability;
 
             //write UserInfo object to json here
@@ -127,7 +125,10 @@ namespace TetraScheduler
             SelectAvailabilityForm availForm = new SelectAvailabilityForm();
             //show dialog pauses execution
             availForm.ShowDialog();
-            consultantAvailability = availForm.AvailableSchedule.GetShiftsForUser("Consultant", "Consultant");
+            UserInfo uInfo = new UserInfo();
+            uInfo.FirstName = "Consultant";
+            uInfo.LastName = "Consultant";
+            consultantAvailability = availForm.AvailableSchedule.GetShiftsForUser(uInfo);
             addAvailabilityToView(consultantAvailability);
             availabilityBox.Hide();
             availabilityBox.Show();

@@ -10,68 +10,64 @@ using System.Text;
 
 namespace TetraScheduler
 {
+#pragma warning disable CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
+#pragma warning disable CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
     public class Shift
+#pragma warning restore CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
+#pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
     {
-        public struct User
-        {
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
 
-        }
-        public List<User> users { get; set; }
+        public List<UserInfo> users { get; set; }
         public int startTime { get; set; }
         public int endTime { get; set; }
         public int day { get; set; }
         public Shift()
         {
-            users = new List<User>();
+            users = new List<UserInfo>();
         }
-        public bool UserAssigned(string fn, string ln)
+        public bool UserAssigned(UserInfo ui)
         {
-            foreach (User u in users)
+            foreach (UserInfo u in users)
             {
-                if (u.FirstName == fn && u.LastName == ln)
+                if (u.FirstName == ui.FirstName && u.LastName == ui.LastName)
                 {
                     return true;
                 }
             }
             return false;
         }
-        public void AddUser(string fn, string ln)
+        public void AddUser(UserInfo ui)
         {
             int index = -1;
-            foreach (User u in users)
+            foreach (UserInfo u in users)
             {
-                if (u.FirstName == fn && u.LastName == ln)
+                if (u.FirstName == ui.FirstName && u.LastName == ui.LastName)
                 {
                     index = users.IndexOf(u);
                 }
             }
             if (index == -1)
             {
-                User user = new User();
-                user.FirstName = fn;
-                user.LastName = ln;
-                users.Add(user);
+                users.Add(ui);
             }
             else
             {
-                Debug.WriteLine("User already exists in this shift: " + fn + ", " + ln);
+                Debug.WriteLine("User already exists in this shift: " + ui.FirstName + ", " + ui.LastName);
             }
         }
-        public void RemoveUser(string fn, string ln)
+        public void RemoveUser(UserInfo ui)
         {
             int index = -1;
-            foreach (User user in users)
+            foreach (UserInfo user in users)
             {
-                if (user.FirstName == fn && user.LastName == ln)
+                if (user.FirstName == ui.FirstName && user.LastName == ui.LastName)
                 {
                     index = users.IndexOf(user);
                 }
             }
             if (index == -1)
             {
-                Debug.WriteLine("No such shift found: " + fn + " " + ln);
+                Debug.WriteLine("No such user found: " + ui.FirstName + " " + ui.LastName);
             }
             else
             {
@@ -81,16 +77,15 @@ namespace TetraScheduler
         public string UsersAsText()
         {
             string names = "";
-            foreach (User u in users)
+            foreach (UserInfo u in users)
             {
-                names += u.FirstName + "," + u.LastName + ",";
+                names += u.FirstName + " " + u.LastName + "; ";
             }
             return names;
         }
 
-        public string minutesToHr(int mins, bool twelveHrFormat)
+        public static string minutesToHr(int mins, bool twelveHrFormat)
         {
-            TimeSpan t = TimeSpan.FromMinutes(mins);
 
             if (twelveHrFormat)
             {
@@ -136,6 +131,19 @@ namespace TetraScheduler
             int minuteCountOther = (other.day * 1440) + other.startTime;
 
             return minuteCountSelf > minuteCountOther;
+        }
+        public static bool operator ==(Shift self, Shift other)
+        {
+            if(self is null || other is null)
+            {
+                if(self is null && other is null) { return true; }
+                return false;
+            }
+            return self.day == other.day && self.startTime == other.startTime && self.endTime == other.endTime;
+        }
+        public static bool operator !=(Shift self, Shift other)
+        {
+            return !(self == other);
         }
     }
 }

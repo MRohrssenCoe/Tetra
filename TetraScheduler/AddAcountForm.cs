@@ -49,11 +49,11 @@ namespace TetraScheduler
             else
             {
                 if (radioButton4.Checked)
-                    Writer = username + "," + password + ",1,";
+                    Writer = "," + username + "," + password + ",1";
                 else if (radioButton5.Checked)
-                    Writer = username + "," + password + ",0,";
+                    Writer = "," + username + "," + password + ",0";
                 else if (radioButton6.Checked)
-                    Writer = username + "," + password + ",3,";
+                    Writer = "," + username + "," + password + ",3";
             }
             string tetraFolder = Constants.AppDataFolder;
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
@@ -75,7 +75,7 @@ namespace TetraScheduler
             else
             {
                 //Write it
-                usernameString = usernameString + Writer;
+                usernameString += Writer;
                 File.WriteAllText(pswdFile, usernameString);
                 this.Close();
             }

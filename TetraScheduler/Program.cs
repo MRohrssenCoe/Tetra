@@ -30,6 +30,8 @@ namespace TetraScheduler
             //directory to store user info
             Directory.CreateDirectory(Constants.userPreferencesFolder);
 
+            //Set up admin prefs directory
+            Directory.CreateDirectory(Constants.adminPreferencesFolder);
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string scheduleFile = Path.Combine(tetraFolder, Constants.scheduleFileName);
             
@@ -48,28 +50,28 @@ namespace TetraScheduler
             if (!File.Exists(scheduleFile))
             {
                 StringBuilder sb = new StringBuilder();
-                String tempCSV = "Weekday,Start_Time,End_Time,Consultants";
+                String tempCSV = "Shift Time, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday";
                 sb.AppendLine(tempCSV);
 
                 // remove dummy data later
                 // maybe add default shifts for each hour and selectively read them based on open hours
-                sb.AppendLine("Sunday, 2:00, 2:30, 'Bob, Alice, Jane, Katya, Will, Michael, Ashley'"); // todo: figure out how to write multiple
+                /*sb.AppendLine("Sunday, 2:00, 2:30, 'Bob, Alice, Jane, Katya, Will, Michael, Ashley'"); // todo: figure out how to write multiple
                 sb.AppendLine("Monday, 1:00, 2:00, Bob");
                 sb.AppendLine("Tuesday, 3:00, 3:30, Bob");
                 sb.AppendLine("Tuesday, 3:30, 4:30, Bob");
                 sb.AppendLine("Wednesday, 2:00, 2:30, Bob");
                 sb.AppendLine("Thursday, 2:00, 3:00, Bob");
-                sb.AppendLine("Saturday, 2:00, 2:30, Bob");
+                sb.AppendLine("Saturday, 2:00, 2:30, Bob");*/
 
                 
                 File.WriteAllText(scheduleFile, sb.ToString());
-
+                File.SetAttributes(scheduleFile, FileAttributes.Normal);
             }
-
-            int[] daysOpen = new int[3];
-            daysOpen[0] = 1;
-            daysOpen[1] = 2;
-            daysOpen[2] = 3;
+            /*
+            bool[] daysOpen = new bool[7];
+            daysOpen[0] = true;
+            daysOpen[1] = true;
+            daysOpen[2] = true;
             int[] startTimes = new int[3];
             startTimes[0] = 540;
             startTimes[1] = 540;
@@ -79,21 +81,12 @@ namespace TetraScheduler
             endTimes[1] = 1020;
             endTimes[2] = 1020;
             Schedule newConstructorTest = new Schedule(daysOpen, 60, startTimes, endTimes);
-
+            */
             // starts at login form
             Application.Run(new LoginForm());
 
             
         }
 
-
-        static void testingAlgo()
-        {
-            // make some users
-            List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
-            ScheduleMaker sm = new ScheduleMaker(users);
-            sm.generateSchedule();
-            // uhhhhhh idk how to write tests...
-        }
     }
 }

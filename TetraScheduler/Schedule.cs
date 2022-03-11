@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
+using System.Diagnostics;
 
 
 //TODO update to add constructer that uses an array of start and end times
@@ -10,20 +11,19 @@ namespace TetraScheduler
     public class Schedule
     {
         public List<Shift>[] shifts { get; set; }
-        public int numDaysOpen { get; set; } = 7;
         public int shiftLengthMinutes { get; set; } = 60;
-        //Times in minutes!!!
+        //Times are in minutes, starting with 0 at 12 AM. 9 AM = 540, 10 AM = 600, etc.
         public int dayStartTime { get; set; } = 540;
         public int dayEndTime { get; set; } = 1020;
-        public Schedule(int nDO, int sLM, int dST, int dET)
+        public bool[] daysOpen = {true, true, true, true, true, true, true};
+        public Schedule(int sLM, int dST, int dET)
         {
-            numDaysOpen = nDO;
             shiftLengthMinutes = sLM;
             dayStartTime = dST;
             dayEndTime = dET;
-            shifts = new List<Shift>[numDaysOpen];
+            shifts = new List<Shift>[7];
             //initializing schedule with proper number of shifts
-            for (int j = 0; j < numDaysOpen; j++)
+            for (int j = 0; j < 7; j++)
             {
                 shifts[j] = new List<Shift>();
 
@@ -38,7 +38,7 @@ namespace TetraScheduler
             }
         }
         //Constructor that has more flexibility to allow for different starting and ending times, and specific days being open. 
-        public Schedule(int[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
+        public Schedule(bool[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
         {
             //make sure all arrays are the same length. If they aren't, we will have index OOB exceptions galore.
             if(daysOpen.Length != startTimes.Length || daysOpen.Length != endTimes.Length)
@@ -46,15 +46,18 @@ namespace TetraScheduler
                 //throw error
                 throw new ArgumentException("daysOpen[], startTimes[], and endTimes[] must all be equal in length!");
             }
-            numDaysOpen = daysOpen.Length;
             shiftLengthMinutes = shiftLength;
-            shifts = new List<Shift>[numDaysOpen];
+            shifts = new List<Shift>[7];
             //create a list of shifts for each day.
             //count how far into the daysOpen array we are so that we can use the coreesponding starting and ending times
             int counter = 0;
-            foreach(int dayNum in daysOpen)
+            foreach(bool day in daysOpen)
             {
                 shifts[counter] = new List<Shift>();
+                if (!day) {
+                    counter++;
+                    continue;
+                }
                 //set the days start time according to the inputted array
                 int curTimeCount = startTimes[counter];
                 while (curTimeCount < endTimes[counter])
@@ -62,7 +65,7 @@ namespace TetraScheduler
                     Shift s = new Shift();
                     s.startTime = curTimeCount;
                     s.endTime = curTimeCount + shiftLengthMinutes;
-                    s.day = daysOpen[counter];
+                    s.day = counter;
                     shifts[counter].Add(s);
                     curTimeCount += shiftLengthMinutes;
                 }
@@ -71,8 +74,8 @@ namespace TetraScheduler
         }
         public Schedule()
         {
-            shifts = new List<Shift>[numDaysOpen];
-            for (int j = 0; j < numDaysOpen; j++)
+            shifts = new List<Shift>[7];
+            for (int j = 0; j < 7; j++)
             {
                 shifts[j] = new List<Shift>();
                 for (int i = dayStartTime; i < dayEndTime; i += shiftLengthMinutes)
@@ -86,19 +89,54 @@ namespace TetraScheduler
             }
         }
 
-        public void AssignUser(string fn, string ln, int day, int shiftNumber) // todo: change fn/ln to user objects
+        //Assign a user to a shift. Day = which index in shifts the desired shift is in. shiftNumber = how many shifts have come before
+        //that shift, starting at 0. 
+        public void AssignUser(UserInfo ui, int day, int shiftNumber) // todo: change fn/ln to user objects
         {
-            shifts[day][shiftNumber].AddUser(fn, ln);
+            shifts[day][shiftNumber].AddUser(ui);
         }
-        public void RemoveUser(string fn, string ln, int day, int shiftNumber)
+        //Assign a user to a shift based on the day and starting time of the shift
+        public void AssignUser(UserInfo ui, int day, int hour, int minute)
         {
-            shifts[day][shiftNumber].RemoveUser(fn, ln);
+            int tempStartTime = minute + (hour * 60);
+            foreach(Shift s in shifts[day])
+            {
+                if(s.startTime == tempStartTime)
+                {
+                    s.AddUser(ui);
+                }
+            }
+
+        }
+        //Remove a user to a shift. Day = which index in shifts the desired shift is in. shiftNumber = how many shifts have come before
+        //that shift, starting at 0. 
+        public void RemoveUser(UserInfo ui, int day, int shiftNumber)
+        {
+            shifts[day][shiftNumber].RemoveUser(ui);
+        }
+        //Remove a user from a shift starting at a specific time on a specific day.
+        public void RemoveUser(UserInfo ui, int day, int hour, int minute)
+        {
+            int tempStartTime = minute + (hour * 60);
+            foreach (Shift s in shifts[day])
+            {
+                if (s.startTime == tempStartTime)
+                {
+                    s.RemoveUser(ui);
+                }
+            }
+
         }
         override public string ToString()
         {
+            int numDaysOpen = 0;
+            foreach (bool day in daysOpen) { 
+                if(day)
+                    numDaysOpen++;
+            }
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(String.Format("DaysOpen={0}, DayStartTime={1}, DayEndTime={2}", this.numDaysOpen, this.dayStartTime, this.dayEndTime));
-            for (int i=0; i < this.numDaysOpen; i++)
+            sb.AppendLine(String.Format("DaysOpen={0}, DayStartTime={1}, DayEndTime={2}", numDaysOpen, this.dayStartTime, this.dayEndTime));
+            for (int i=0; i < numDaysOpen; i++)
             {
                 foreach (Shift s in shifts[i])
                 {
@@ -112,7 +150,7 @@ namespace TetraScheduler
             // untested
             ArrayList fullShifts = new ArrayList();
             // returns only shifts that have at least one consultant scheduled
-            for (int i = 0; i < this.numDaysOpen; i++)
+            for (int i = 0; i < 7; i++)
             {
                 ArrayList day = new ArrayList();
                 foreach (Shift s in shifts[i]) // can we just include a variable for the day in the shift class????
@@ -128,16 +166,16 @@ namespace TetraScheduler
         }
 
         //Method to get all shifts from a schedule that a User is assigned to.
-        public List<Shift> GetShiftsForUser(string firstName, string lastName)
+        public List<Shift> GetShiftsForUser(UserInfo ui)
         {
             List<Shift> shiftsOut = new List<Shift>();
 
-            for (int j = 0; j < numDaysOpen; j++)
+            for (int j = 0; j < 7; j++)
             {
                 List<Shift> day = shifts[j];
                 foreach(Shift s in day)
                 {
-                    if (s.UserAssigned(firstName, lastName))
+                    if (s.UserAssigned(ui))
                     {
                         shiftsOut.Add(s);
                     }
@@ -201,7 +239,10 @@ namespace TetraScheduler
                 }
                 // check against our next shift
                 ourIndex++;
+
+                Debug.WriteLine("here");
             }
+
             
             return newArray;
         }
