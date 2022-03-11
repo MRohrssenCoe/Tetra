@@ -235,5 +235,15 @@ namespace TetraScheduler
         {
             new ScheduleEditorForm().ShowDialog();
         }
+
+        private void viewAdminButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void viewConsultButton_Click(object sender, EventArgs e)
+        {
+            new Form1().ShowDialog();
+        }
     }
 }
