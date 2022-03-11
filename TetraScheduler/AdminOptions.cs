@@ -22,5 +22,6 @@ namespace TetraScheduler
         public bool MixMajors { get; set; }
         public bool MixExperience { get; set; }
         public bool MixYear { get; set; }
+        public DateTime lastUpdatedTime { get; set; }
     }
 }

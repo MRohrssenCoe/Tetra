@@ -5,6 +5,8 @@ using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
+using System.Globalization;
+
 
 namespace TetraScheduler
 {
@@ -13,6 +15,7 @@ namespace TetraScheduler
         List<Shift> busyShiftsList = new List<Shift>();
         private string adminInfoFile;
         AdminOptions storedOptions;
+        DateTime lastUpdate;
 
 
         public AdminMenuForm(String name)
@@ -56,7 +59,12 @@ namespace TetraScheduler
                 busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
                 shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
 
-                if (ao.daysOpen == null)
+                // last time it was generated
+                this.lastUpdate = ao.lastUpdatedTime;
+                lastGenLabel.Text = "Last generated:\n" + lastUpdate.ToString();
+
+
+                if (ao.daysOpen is null)
                 {
                     ao.daysOpen = new bool[] { true, true, true, true, true, true, true };
                 }
@@ -99,6 +107,9 @@ namespace TetraScheduler
             // runs schedule algorithm and updates our schedule file
             // uses info from busy schedule list and from checkboxes
             List<UserInfo> users = ScheduleMaker.usersFromDir(Constants.userPreferencesFolder);
+
+            this.lastUpdate = DateTime.Now;
+            lastGenLabel.Text = "Last generated:\n" + lastUpdate.ToString();
 
             // saves admin options
             this.saveOptions();
@@ -180,7 +191,8 @@ namespace TetraScheduler
                 DesiredConsecutiveShifts = (int)consecutiveShiftsUpDn.Value,
                 MaxConsultantsPerShift = (int)consultantsNeededUpDn.Value,
                 MaxConsultantsPerBusyShift = (int)busyConsultantsUpDn.Value,
-                ShiftLengthMinutes = (int)shiftLengthUpDn.Value
+                ShiftLengthMinutes = (int)shiftLengthUpDn.Value,
+                lastUpdatedTime = this.lastUpdate
             };
             //serialize data
             FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
