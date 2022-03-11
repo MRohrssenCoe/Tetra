@@ -306,11 +306,12 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(578, 452);
+            this.logoutButton.Location = new System.Drawing.Point(510, 448);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(171, 43);
             this.logoutButton.TabIndex = 44;
-            this.logoutButton.Text = "Logout";
+            this.logoutButton.Text = "Close Menu";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logout_Click);
             // 
