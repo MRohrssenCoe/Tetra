@@ -21,7 +21,6 @@ namespace TetraScheduler
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete these account(s)?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-
                 this.Close();
             }
         }
