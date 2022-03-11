@@ -21,6 +21,28 @@ namespace TetraScheduler
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete these account(s)?", "Confirmation", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                string tetraFolder = Constants.AppDataFolder;
+                string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
+                string usernameString = File.ReadAllText(pswdFile);
+                string[] token;
+                token = usernameString.Split(",");
+                int[] x = new int[token.Length];
+                int y = 0;
+                for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                {
+                    if (checkedListBox1.Items[i].Equals(true))
+                    {
+                        x[y] = i;
+                    }
+                }
+                y = 0;
+                while(y < x.Length)
+                {
+                    token[x[y]] = "";
+                    token[x[y + 1]] = "";
+                    token[x[y + 2]] = "";
+                    y++;
+                }
 
                 this.Close();
             }
