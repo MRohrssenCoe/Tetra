@@ -12,6 +12,7 @@ namespace TetraScheduler
     public partial class Form1 : Form
     {
         private string[] token;
+        private List<string> consultantUsernames;
         public Form1()
         {
             InitializeComponent();
@@ -19,6 +20,7 @@ namespace TetraScheduler
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            consultantUsernames = new List<string>();
             string tetraFolder = Constants.AppDataFolder;
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string usernameString = File.ReadAllText(pswdFile);
@@ -29,10 +31,12 @@ namespace TetraScheduler
                 if (token[x + 2].Equals("0"))
                 {
                     checkedListBox1.Items.Add(token[x] + " Consultant");
+                    consultantUsernames.Add(token[x]);
                 }
                 else if (token[x + 2].Equals("3"))
                 {
                     checkedListBox1.Items.Add(token[x] + " Admin and Consultant");
+                    consultantUsernames.Add(token[x]);
                 }
                 x += 3;
             }
@@ -43,7 +47,10 @@ namespace TetraScheduler
             CheckedListBox.CheckedIndexCollection i = checkedListBox1.CheckedIndices;
             foreach(int x in i)
             {
-                new ConsultantMenuForm(token[x * 3]).Show();
+                // OLD CODE: new ConsultantMenuForm(token[x * 3]).Show(); 
+                // NOTE- this caused a bug where it would create new consultant data files for an admin, because token[] has admins in it - changed it to use a separate list
+                // NEW CODE:
+                new ConsultantMenuForm(consultantUsernames[x]).Show();
             }
             this.Close();
         }

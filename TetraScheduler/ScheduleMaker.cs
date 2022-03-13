@@ -51,7 +51,7 @@ namespace TetraScheduler
                 List<Shift> availabilities = s.matchAvailabilities(sortShiftsConseq(c.availability));
 
                 // sort availabilities based on best fit
-                sortAvailableShifts(c, availabilities);
+                availabilities = sortAvailableShifts(c, availabilities);
 
                 Debug.WriteLine("User: " + c.FirstName + " " + c.LastName + "\tAvails: " + availabilities.Count + "\tRequested: " + c.desiredWeeklyHours);
                 Debug.WriteLine("Sorted shifts: ");
@@ -91,7 +91,7 @@ namespace TetraScheduler
 
                     while (maxConseqShifts > 0 && requestedMinutes >= ao.ShiftLengthMinutes && adjacencyQueue.Count > 0)
                     {
-                        sortAvailableShifts(c, adjacencyQueue);
+                        adjacencyQueue = sortAvailableShifts(c, adjacencyQueue);
                         Shift nextShift = adjacencyQueue[0];
 
                         if (nextShift.users.Count >= ao.MaxConsultantsPerShift) // don't overschedule if no good adjacencies
@@ -147,12 +147,13 @@ namespace TetraScheduler
         {
             return s.OrderBy(x => x.day).ThenBy(x => x.startTime).ToList();
         }
-        private void sortAvailableShifts(UserInfo c, List<Shift> availabilities)
+        private List<Shift> sortAvailableShifts(UserInfo c, List<Shift> availabilities)
         {
             // mix majors/etc in here later
-            availabilities.Sort((Shift s1, Shift s2) =>
+            /*availabilities.Sort((Shift s1, Shift s2) =>
                 s1.users.Count.CompareTo(s2.users.Count)
-            );
+            );*/
+            return availabilities.OrderBy(x => x.users.Count).ThenBy(x => sortWeight(x, this.ao, c)).ToList();
         }
         public static List<UserInfo> usersFromDir(string folderPath)
         {
@@ -183,6 +184,42 @@ namespace TetraScheduler
                 }
             }
             return indexofNext;
+        }
+
+        public int sortWeight(Shift s, AdminOptions ao, UserInfo ui)
+        {
+            int value = 0; // lower value = better fit
+
+
+            if (ao.MixMajors)
+            {
+                // get num matching majors - want to minimize matches
+                string[] userMajors = ui.majors;
+                int numMatching = 0;
+                foreach (string major in userMajors)
+                {
+                    numMatching += s.getNumMajors(major);
+                }
+                value += numMatching;
+            }
+
+            if (ao.MixExperience)
+            {
+                // get max distance from current SOE
+                int userExp = ui.expSemesters;
+                int maxExpDif = s.maxDistanceSemOfExp(userExp);
+                value += (-1 * maxExpDif); // add negative - higher dif = better fit
+            }
+
+            if (ao.MixYear)
+            {
+                // get max distance from school year
+                int yearInSchool = ui.coeYear;
+                int maxYearDif = s.maxDistanceCoeYear(yearInSchool);
+                value += (-1 * maxYearDif); // add negative - higher dif = better fit
+            }
+
+            return value;
         }
 
         //write it to a csv
