@@ -28,7 +28,16 @@ namespace TetraScheduler
             int[] startTimes = { ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime };
             int[] endTimes = { ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime };
             s = new Schedule(daysOpen, shiftLength, startTimes, endTimes);
-            // add field for number of consultants in shift class? also flag for busy
+
+            foreach (Shift shift in s.toLinearArray())
+            {
+                shift.maxUsers = ao.MaxConsultantsPerShift;
+            }
+
+            foreach (Shift shift in s.matchAvailabilities(ao.BusyShifts))
+            {
+                shift.maxUsers = ao.MaxConsultantsPerBusyShift;
+            }
         }
         public Schedule generateSchedule()
         {
@@ -153,7 +162,7 @@ namespace TetraScheduler
             /*availabilities.Sort((Shift s1, Shift s2) =>
                 s1.users.Count.CompareTo(s2.users.Count)
             );*/
-            return availabilities.OrderBy(x => x.users.Count).ThenBy(x => sortWeight(x, this.ao, c)).ToList();
+            return availabilities.OrderBy(x => x.users.Count - x.maxUsers).ThenBy(x => sortWeight(x, this.ao, c)).ToList();
         }
         public static List<UserInfo> usersFromDir(string folderPath)
         {

@@ -21,6 +21,8 @@ namespace TetraScheduler
         public int startTime { get; set; }
         public int endTime { get; set; }
         public int day { get; set; }
+        public int maxUsers { get; set; }
+
         public Shift()
         {
             users = new List<UserInfo>();
