@@ -46,61 +46,58 @@ namespace TetraScheduler
                 adminOptionsStream.Write(info, 0, info.Length);
                 adminOptionsStream.Close();
                 storedOptions = adminOptions;
-            } else
-            {
-                string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
-                AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
-                storedOptions = ao;
-                if (ao.BusyShifts != null)
-                {
-                    addBusyShiftsToView(ao.BusyShifts);
-                }
-                mixMajorCheck.Checked = ao.MixMajors;
-                mixSemestersCheck.Checked = ao.MixExperience;
-                mixYearsCheck.Checked = ao.MixYear;
-                consecutiveShiftsUpDn.Value = ao.DesiredConsecutiveShifts;
-                consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
-                busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
-                shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
-
-                // last time it was generated
-                this.lastUpdate = ao.lastUpdatedTime;
-                lastGenLabel.Text = "Last generated:\n" + lastUpdate.ToString();
-
-
-                // open/close for each day
-                int defaultOpen = 8 * 60;
-                openTimes = ao.OpenTimes is null ? new int[] { defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen } : ao.OpenTimes;
-                int defaultClose = 17 * 60;
-                closeTimes = ao.CloseTimes is null? new int[] { defaultClose, defaultClose, defaultClose, defaultClose, defaultClose, defaultClose, defaultClose } : ao.CloseTimes;
-
-                addDayTimesToView(openTimes, closeTimes);
-                daysbox.SetSelected(0, true);
-                lastSelectedDay = 0;
-                // set time picker to sunday
-                setTimePicker(openTimes[0], closeTimes[0]);
-
-                
-
-
-                // days open
-                if (ao.daysOpen is null)
-                {
-                    ao.daysOpen = new bool[] { true, true, true, true, true, true, true };
-                }
-                
-
-                sundayCheck.Checked = ao.daysOpen[0];
-                mondayCheck.Checked = ao.daysOpen[1];
-                tuesdayCheck.Checked = ao.daysOpen[2];
-                wednesdayCheck.Checked = ao.daysOpen[3];
-                thursdayCheck.Checked = ao.daysOpen[4];
-                fridayCheck.Checked = ao.daysOpen[5];
-                saturdayCheck.Checked = ao.daysOpen[6];
-
-                //handle open time after changing to time pickers lol
-                //setTimePicker(ao.OpenTime, ao.CloseTime);
             }
+                
+            //this all used to be in an else block but it broke some initialization stuff like the daysbox so taking it out for now
+            string adminOptionsJsonString = File.ReadAllText(this.adminInfoFile);
+            AdminOptions ao = JsonSerializer.Deserialize<AdminOptions>(adminOptionsJsonString);
+            storedOptions = ao;
+            if (ao.BusyShifts != null)
+            {
+                addBusyShiftsToView(ao.BusyShifts);
+            }
+            mixMajorCheck.Checked = ao.MixMajors;
+            mixSemestersCheck.Checked = ao.MixExperience;
+            mixYearsCheck.Checked = ao.MixYear;
+            consecutiveShiftsUpDn.Value = ao.DesiredConsecutiveShifts;
+            consultantsNeededUpDn.Value = ao.MaxConsultantsPerShift;
+            busyConsultantsUpDn.Value = ao.MaxConsultantsPerBusyShift;
+            shiftLengthUpDn.Value = ao.ShiftLengthMinutes;
+
+            // last time it was generated
+            this.lastUpdate = ao.lastUpdatedTime;
+            lastGenLabel.Text = "Last generated:\n" + lastUpdate.ToString();
+
+
+            // open/close for each day
+            int defaultOpen = 8 * 60;
+            openTimes = (ao.OpenTimes is null ? new int[] { defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen } : ao.OpenTimes);
+            int defaultClose = 17 * 60;
+            closeTimes = (ao.CloseTimes is null? new int[] { defaultClose, defaultClose, defaultClose, defaultClose, defaultClose, defaultClose, defaultClose } : ao.CloseTimes);
+
+            addDayTimesToView(openTimes, closeTimes);
+            daysbox.SetSelected(0, true);
+            lastSelectedDay = 0;
+            // set time picker to sunday
+            setTimePicker(openTimes[0], closeTimes[0]);
+
+
+            // days open
+            if (ao.daysOpen is null)
+            {
+                ao.daysOpen = new bool[] { true, true, true, true, true, true, true };
+            }
+                
+
+            sundayCheck.Checked = ao.daysOpen[0];
+            mondayCheck.Checked = ao.daysOpen[1];
+            tuesdayCheck.Checked = ao.daysOpen[2];
+            wednesdayCheck.Checked = ao.daysOpen[3];
+            thursdayCheck.Checked = ao.daysOpen[4];
+            fridayCheck.Checked = ao.daysOpen[5];
+            saturdayCheck.Checked = ao.daysOpen[6];
+
+            
         }
 
         private void setTimePicker(int startTime, int endTime)
@@ -234,9 +231,7 @@ namespace TetraScheduler
                 MixMajors = mixMajorCheck.Checked,
                 MixExperience = mixSemestersCheck.Checked,
                 BusyShifts = busyShiftsList,
-                OpenTime = (openTimePicker.Value.Hour * 60) + (openTimePicker.Value.Minute),
                 OpenTimes = this.openTimes,
-                CloseTime = (closeTimePicker.Value.Hour * 60) + (closeTimePicker.Value.Minute),
                 CloseTimes = this.closeTimes,
                 daysOpen = getDaysOpen(),
                 DesiredConsecutiveShifts = (int)consecutiveShiftsUpDn.Value,
