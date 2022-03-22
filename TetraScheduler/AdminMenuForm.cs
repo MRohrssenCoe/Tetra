@@ -16,6 +16,10 @@ namespace TetraScheduler
         private string adminInfoFile;
         AdminOptions storedOptions;
         DateTime lastUpdate;
+        string[] days = new string[] { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+        int[] openTimes;
+        int[] closeTimes;
+        int lastSelectedDay;
 
 
         public AdminMenuForm(String name)
@@ -64,6 +68,22 @@ namespace TetraScheduler
                 lastGenLabel.Text = "Last generated:\n" + lastUpdate.ToString();
 
 
+                // open/close for each day
+                int defaultOpen = 8 * 60;
+                openTimes = ao.OpenTimes is null ? new int[] { defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen, defaultOpen } : ao.OpenTimes;
+                int defaultClose = 17 * 60;
+                closeTimes = ao.CloseTimes is null? new int[] { defaultClose, defaultClose, defaultClose, defaultClose, defaultClose, defaultClose, defaultClose } : ao.CloseTimes;
+
+                addDayTimesToView(openTimes, closeTimes);
+                daysbox.SetSelected(0, true);
+                lastSelectedDay = 0;
+                // set time picker to sunday
+                setTimePicker(openTimes[0], closeTimes[0]);
+
+                
+
+
+                // days open
                 if (ao.daysOpen is null)
                 {
                     ao.daysOpen = new bool[] { true, true, true, true, true, true, true };
@@ -79,15 +99,40 @@ namespace TetraScheduler
                 saturdayCheck.Checked = ao.daysOpen[6];
 
                 //handle open time after changing to time pickers lol
-                int openHour = (int)(ao.OpenTime - (ao.OpenTime % 60)) / 60;
-                int openMinute = (int)(ao.OpenTime % 60);
-                DateTime openDT = new DateTime(1969, 1, 1, openHour, openMinute, 0);
-                openTimePicker.Value = openDT;
-                int closeHour = (int)(ao.CloseTime - (ao.CloseTime % 60)) / 60;
-                int closeMinute = (int)(ao.CloseTime % 60);
-                DateTime closeDT = new DateTime(1969, 1, 1, closeHour, closeMinute, 0);
-                closeTimePicker.Value = closeDT;
+                //setTimePicker(ao.OpenTime, ao.CloseTime);
             }
+        }
+
+        private void setTimePicker(int startTime, int endTime)
+        {
+            int openHour = (int)(startTime - (startTime % 60)) / 60;
+            int openMinute = (int)(startTime % 60);
+            DateTime openDT = new DateTime(1969, 1, 1, openHour, openMinute, 0);
+            openTimePicker.Value = openDT;
+            int closeHour = (int)(endTime - (endTime % 60)) / 60;
+            int closeMinute = (int)(endTime % 60);
+            DateTime closeDT = new DateTime(1969, 1, 1, closeHour%24, closeMinute, 0);
+            closeTimePicker.Value = closeDT;
+        }
+
+        private void addDayTimesToView(int[] openTimes, int[] closeTimes)
+        {
+            ListBox.ObjectCollection schedDays = daysbox.Items;
+            while(schedDays.Count > 0)
+            {
+                schedDays.RemoveAt(0);
+            }
+            for (int day = 0; day < 7; day++)
+            {
+                schedDays.Add(days[day] + ": " + Shift.minutesToHr(openTimes[day], true) + " - " + Shift.minutesToHr(closeTimes[day], true));
+            }
+        }
+
+        private void updateDayTime(int index)
+        {
+            ListBox.ObjectCollection schedDays = daysbox.Items;
+            schedDays[index] = days[index] + ": " + Shift.minutesToHr(openTimes[index], true) + " - " + Shift.minutesToHr(closeTimes[index], true);
+            daysbox.Focus();
         }
 
         private void AdminMenuForm_Load(object sender, EventArgs e)
@@ -173,12 +218,16 @@ namespace TetraScheduler
         private void saveOptions()
         {
             //I know that this seems backwards, but this is what works. I'm very confused about it too.
-            if (openTimePicker.Value.TimeOfDay > closeTimePicker.Value.TimeOfDay)
+            for(int i = 0; i < 7; i++)
             {
-                MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (openTimes[i] > closeTimes[i])
+                {
+                    MessageBox.Show("Close time must be after opening time!", "Open/Close Time Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
+            
             AdminOptions ao = new AdminOptions
             {
                 MixYear = mixYearsCheck.Checked,
@@ -186,13 +235,16 @@ namespace TetraScheduler
                 MixExperience = mixSemestersCheck.Checked,
                 BusyShifts = busyShiftsList,
                 OpenTime = (openTimePicker.Value.Hour * 60) + (openTimePicker.Value.Minute),
+                OpenTimes = this.openTimes,
                 CloseTime = (closeTimePicker.Value.Hour * 60) + (closeTimePicker.Value.Minute),
+                CloseTimes = this.closeTimes,
                 daysOpen = getDaysOpen(),
                 DesiredConsecutiveShifts = (int)consecutiveShiftsUpDn.Value,
                 MaxConsultantsPerShift = (int)consultantsNeededUpDn.Value,
                 MaxConsultantsPerBusyShift = (int)busyConsultantsUpDn.Value,
                 ShiftLengthMinutes = (int)shiftLengthUpDn.Value,
                 lastUpdatedTime = this.lastUpdate
+                // TODO: fix open/closetimes
             };
             //serialize data
             FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
@@ -204,6 +256,40 @@ namespace TetraScheduler
         private void save_Click(object sender, EventArgs e)
         {
             saveOptions();
+        }
+
+        private void handle_DayClick(object sender, EventArgs e)
+        {
+            // get day clicked
+            int indSelected = daysbox.SelectedIndex;
+            if (indSelected > -1 && indSelected != lastSelectedDay)
+            {
+                // update timepicker
+                lastSelectedDay = indSelected;
+                setTimePicker(openTimes[indSelected], closeTimes[indSelected]);
+            }
+            
+        }
+
+        private void handle_TimePickUpdate(object sender, EventArgs e)
+        {
+            // on update val - update vals in listbox
+            DateTimePicker s = (DateTimePicker)sender;
+            if (s.Name == "openTimePicker")
+            {
+                Debug.WriteLine("Open");
+                Debug.WriteLine(s.Value.Hour);
+                openTimes[lastSelectedDay] = s.Value.Hour * 60 + s.Value.Minute;
+
+            }
+            else if (s.Name == "closeTimePicker"){
+                Debug.WriteLine("Close");
+                Debug.WriteLine(s.Value.Hour);
+                closeTimes[lastSelectedDay] = (s.Value.Hour != 0 ? s.Value.Hour : 24) * 60 + s.Value.Minute; // functionality to be open all day
+            }
+
+            updateDayTime(lastSelectedDay);
+            //daysbox.Focus();
         }
 
         //This is quite possibly the most dogshit method I have ever written
