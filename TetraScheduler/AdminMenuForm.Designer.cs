@@ -406,6 +406,7 @@ namespace TetraScheduler
             this.sundayCheck.TabIndex = 45;
             this.sundayCheck.Text = "Sunday";
             this.sundayCheck.UseVisualStyleBackColor = true;
+            this.sundayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // mondayCheck
             // 
@@ -419,6 +420,7 @@ namespace TetraScheduler
             this.mondayCheck.TabIndex = 46;
             this.mondayCheck.Text = "Monday";
             this.mondayCheck.UseVisualStyleBackColor = true;
+            this.mondayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // wednesdayCheck
             // 
@@ -432,6 +434,7 @@ namespace TetraScheduler
             this.wednesdayCheck.TabIndex = 47;
             this.wednesdayCheck.Text = "Wednesday";
             this.wednesdayCheck.UseVisualStyleBackColor = true;
+            this.wednesdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // thursdayCheck
             // 
@@ -445,6 +448,7 @@ namespace TetraScheduler
             this.thursdayCheck.TabIndex = 48;
             this.thursdayCheck.Text = "Thursday";
             this.thursdayCheck.UseVisualStyleBackColor = true;
+            this.thursdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // fridayCheck
             // 
@@ -458,6 +462,7 @@ namespace TetraScheduler
             this.fridayCheck.TabIndex = 49;
             this.fridayCheck.Text = "Friday";
             this.fridayCheck.UseVisualStyleBackColor = true;
+            this.fridayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // saturdayCheck
             // 
@@ -469,6 +474,7 @@ namespace TetraScheduler
             this.saturdayCheck.TabIndex = 50;
             this.saturdayCheck.Text = "Saturday";
             this.saturdayCheck.UseVisualStyleBackColor = true;
+            this.saturdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // tuesdayCheck
             // 
@@ -482,6 +488,7 @@ namespace TetraScheduler
             this.tuesdayCheck.TabIndex = 51;
             this.tuesdayCheck.Text = "Tuesday";
             this.tuesdayCheck.UseVisualStyleBackColor = true;
+            this.tuesdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // openTimePicker
             // 

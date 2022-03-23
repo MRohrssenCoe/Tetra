@@ -115,20 +115,37 @@ namespace TetraScheduler
         private void addDayTimesToView(int[] openTimes, int[] closeTimes)
         {
             ListBox.ObjectCollection schedDays = daysbox.Items;
+            bool[] open = getDaysOpen();
             while(schedDays.Count > 0)
             {
                 schedDays.RemoveAt(0);
             }
             for (int day = 0; day < 7; day++)
             {
-                schedDays.Add(days[day] + ": " + Shift.minutesToHr(openTimes[day], true) + " - " + Shift.minutesToHr(closeTimes[day], true));
+                if (open[day])
+                {
+                    schedDays.Add(days[day] + ": " + Shift.minutesToHr(openTimes[day], true) + " - " + Shift.minutesToHr(closeTimes[day], true));
+                }
+                else
+                {
+                    schedDays.Add(days[day] + ": CLOSED");
+                }
             }
         }
 
         private void updateDayTime(int index)
         {
             ListBox.ObjectCollection schedDays = daysbox.Items;
-            schedDays[index] = days[index] + ": " + Shift.minutesToHr(openTimes[index], true) + " - " + Shift.minutesToHr(closeTimes[index], true);
+            bool[] open = getDaysOpen();
+            if (open[index])
+            {
+                schedDays[index] = days[index] + ": " + Shift.minutesToHr(openTimes[index], true) + " - " + Shift.minutesToHr(closeTimes[index], true);
+            }
+            else
+            {
+                schedDays[index] = days[index] + ": CLOSED";
+            }
+            
             daysbox.Focus();
         }
 
@@ -285,6 +302,15 @@ namespace TetraScheduler
 
             updateDayTime(lastSelectedDay);
             //daysbox.Focus();
+        }
+
+        private void toggleDaysOnOff(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                updateDayTime(i);
+            }
+            
         }
 
         //This is quite possibly the most dogshit method I have ever written
