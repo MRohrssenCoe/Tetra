@@ -9,37 +9,19 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-    public partial class RemoveAccount : Form
+    public partial class UpdateUserForm : Form
     {
-        public RemoveAccount()
+        public UpdateUserForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete these account(s)?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                string tetraFolder = Constants.AppDataFolder;
-                string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
-                string usernameString = File.ReadAllText(pswdFile);
-                string[] token;
-                token = usernameString.Split(",");
 
-                CheckedListBox.CheckedIndexCollection i = checkedListBox1.CheckedIndices;
-                foreach(int x in i)
-                {
-                    token[x] = "";
-                    token[x + 1] = "";
-                    token[x + 2] = "";
-                }
-
-                this.Close();
-            }
         }
 
-        private void RemoveAccount_Load(object sender, EventArgs e)
+        private void UpdateUserForm_Load(object sender, EventArgs e)
         {
             string tetraFolder = Constants.AppDataFolder;
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
