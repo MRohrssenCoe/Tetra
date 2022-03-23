@@ -38,6 +38,7 @@ namespace TetraScheduler
                 y = 0;
                 while(y < x.Length)
                 {
+                    //brokey
                     token[x[y]] = "";
                     token[x[y + 1]] = "";
                     token[x[y + 2]] = "";

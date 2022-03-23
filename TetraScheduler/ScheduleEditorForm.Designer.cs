@@ -232,7 +232,7 @@
             this.removeConsultantButton.Name = "removeConsultantButton";
             this.removeConsultantButton.Size = new System.Drawing.Size(223, 47);
             this.removeConsultantButton.TabIndex = 2;
-            this.removeConsultantButton.Text = "Remove Selected Consultant";
+            this.removeConsultantButton.Text = "Remove Consultant";
             this.removeConsultantButton.UseVisualStyleBackColor = true;
             // 
             // addConsultantButton

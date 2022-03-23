@@ -18,7 +18,7 @@ namespace TetraScheduler
         ListBox.ObjectCollection saturdayObjectCollection;
 
         ListBox lastClickedBox = null;
-
+        Shift selectedShift;
         public ScheduleEditorForm()
         {
             InitializeComponent();
@@ -145,8 +145,8 @@ namespace TetraScheduler
         //This makes it so that you can only select one item across the 7 list boxes :)
         private void listbox_ItemChanged(object sender, EventArgs e)
         {
-
-            if(lastClickedBox is null)
+            // deselect other boxes
+            if (lastClickedBox is null)
             {
                 lastClickedBox = (ListBox)sender;
             } else
@@ -157,6 +157,27 @@ namespace TetraScheduler
                     lastClickedBox = (ListBox)sender;
                 }
             }
+            selectedShift = getCurrentlySelectedShift();
+            Debug.WriteLine(selectedShift);
+        }
+
+        Shift getCurrentlySelectedShift()
+        {
+            List<ListBox> lists = new List<ListBox>();
+            lists.Add(sun_listbox);
+            lists.Add(mon_listbox);
+            lists.Add(tues_listbox);
+            lists.Add(wed_listbox);
+            lists.Add(thurs_listbox);
+            lists.Add(fri_listbox);
+            lists.Add(sat_listbox);
+            foreach(ListBox list in lists){
+                if(list.SelectedIndex != -1)
+                {
+                    return (Shift)list.SelectedItem;
+                }
+            }
+            return new Shift();
         }
 
         void deselectOther(ListBox lb)
