@@ -219,5 +219,10 @@ namespace TetraScheduler
                 textBox2.Focus();
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

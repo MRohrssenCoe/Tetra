@@ -77,6 +77,7 @@ namespace TetraScheduler
                 //Write it
                 usernameString += Writer;
                 File.WriteAllText(pswdFile, usernameString);
+                new ConsultantMenuForm(username).Show();
                 this.Close();
             }
         }
