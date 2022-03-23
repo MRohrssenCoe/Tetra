@@ -155,11 +155,7 @@ namespace TetraScheduler
 
         private void button4_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure you want to log out?", "Log Out Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)

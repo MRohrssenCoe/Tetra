@@ -305,12 +305,12 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(506, 339);
+            this.logoutButton.Location = new System.Drawing.Point(510, 448);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(150, 32);
             this.logoutButton.TabIndex = 44;
-            this.logoutButton.Text = "Logout";
+            this.logoutButton.Text = "Close Menu";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logout_Click);
             // 
@@ -352,6 +352,7 @@ namespace TetraScheduler
             this.viewAdminButton.TabIndex = 5;
             this.viewAdminButton.Text = "View Admin Info";
             this.viewAdminButton.UseVisualStyleBackColor = true;
+            this.viewAdminButton.Click += new System.EventHandler(this.viewAdminButton_Click);
             // 
             // removeAccButton
             // 
@@ -381,6 +382,7 @@ namespace TetraScheduler
             this.viewConsultButton.TabIndex = 2;
             this.viewConsultButton.Text = "View Consultant Info";
             this.viewConsultButton.UseVisualStyleBackColor = true;
+            this.viewConsultButton.Click += new System.EventHandler(this.viewConsultButton_Click);
             // 
             // viewSchedButton
             // 

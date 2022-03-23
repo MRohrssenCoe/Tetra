@@ -21,6 +21,8 @@ namespace TetraScheduler
         public int startTime { get; set; }
         public int endTime { get; set; }
         public int day { get; set; }
+        public int maxUsers { get; set; }
+
         public Shift()
         {
             users = new List<UserInfo>();
@@ -145,5 +147,56 @@ namespace TetraScheduler
         {
             return !(self == other);
         }
+
+
+        public int getNumMajors(string major)
+        {
+            // returns number of users with a given major in this shift
+            int numMajors = 0;
+            foreach(UserInfo user in users)
+            {
+                string[] majors = user.majors;
+                foreach(string m in majors)
+                {
+                    if (m.Equals(major))
+                    {
+                        numMajors++;
+                    }
+                }
+            }
+
+            return numMajors;
+        }
+
+        public int maxDistanceSemOfExp(int sem)
+        {
+            // find a better way to sort by semesters of experience?
+            int max = 0;
+            foreach(UserInfo user in users)
+            {
+                int dif = Math.Abs(user.expSemesters - sem);
+                if (dif > max)
+                {
+                    max = dif;
+                }
+            }
+            return max;
+        }
+
+        public int maxDistanceCoeYear(int yr)
+        {
+            // find a better way to sort by semesters of experience?
+            int max = 0;
+            foreach (UserInfo user in users)
+            {
+                int dif = Math.Abs(user.coeYear - yr);
+                if (dif > max)
+                {
+                    max = dif;
+                }
+            }
+            return max;
+        }
+
     }
 }
