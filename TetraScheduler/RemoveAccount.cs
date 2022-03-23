@@ -40,7 +40,17 @@ namespace TetraScheduler
                         if (token[x].Equals(username))
                         {
                             removal = true;
-                            fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                            if (token[x + 2].Equals("0"))
+                                fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                            else if (token[x + 2].Equals("1"))
+                                fileToDelete = Path.Combine(Constants.adminPreferencesFolder, username + ".json");
+                            else if (token[x + 2].Equals("3"))
+                            {
+                                fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                                File.Delete(fileToDelete);//delete user file
+                                fileToDelete = Path.Combine(Constants.adminPreferencesFolder, username + ".json");
+
+                            }
                             File.Delete(fileToDelete);//delete user file
                         }
                     }

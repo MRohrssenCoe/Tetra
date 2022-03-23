@@ -209,7 +209,7 @@ namespace TetraScheduler
                 {
                     numMatching += s.getNumMajors(major);
                 }
-                value += numMatching;
+                value += numMatching*3;
             }
 
             if (ao.MixExperience)
