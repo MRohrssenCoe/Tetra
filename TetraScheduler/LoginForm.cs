@@ -20,6 +20,9 @@ namespace TetraScheduler
             "TetraScheduler/SchedulerPasswords.txt"
             );
         string[] tokens;
+
+        string defaultUserText = "Username...";
+        string defaultPassText = "Password...";
         struct UsernamePassword
         {
             public string username;
@@ -31,8 +34,8 @@ namespace TetraScheduler
         {
             
             InitializeComponent();
-            textBox1.Text = "Username...";
-            textBox2.Text = "Password...";
+            textBox1.Text = defaultUserText;
+            textBox2.Text = defaultPassText;
             textBox2.PasswordChar = '\0';
             // add our logo
             // button for 'show password'?
@@ -53,9 +56,10 @@ namespace TetraScheduler
             String password = textBox2.Text;
             bool successfulLogin = false;
 
-            if (username.Length == 0 || password.Length == 0)
+            if (username.Equals(defaultUserText) || password.Equals(defaultPassText))
             {
-                MessageBox.Show("Username/Password cannot be empty!");
+                MessageBox.Show("Username/Password cannot be empty!", "Login Info Missing",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 // add more error visuals?
             }
 
@@ -94,7 +98,8 @@ namespace TetraScheduler
                         else
                         {
 
-                            MessageBox.Show("Default password not changed!");
+                            MessageBox.Show("Please change your default password!", "Default Password Not Changed",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -111,8 +116,9 @@ namespace TetraScheduler
 
             if (successfulLogin)
             {
-                textBox1.Text = "";
-                textBox2.Text = "";
+                textBox1.Text = defaultUserText;
+                textBox2.Text = defaultPassText;
+                textBox2.PasswordChar = '\0';
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -164,7 +170,7 @@ namespace TetraScheduler
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Username...")
+            if (textBox1.Text == defaultUserText)
             {
                 textBox1.Text = "";
             }
@@ -174,13 +180,13 @@ namespace TetraScheduler
         {
             if(textBox1.Text == "")
             {
-                textBox1.Text = "Username...";
+                textBox1.Text = defaultUserText;
             }
         }
 
         private void textBox2_Enter(object sender, EventArgs e)
         {
-            if (textBox2.Text == "Password...")
+            if (textBox2.Text == defaultPassText)
             {
                 textBox2.Text = "";
             }
@@ -192,7 +198,7 @@ namespace TetraScheduler
             if (textBox2.Text == "")
             {
                 textBox2.PasswordChar = '\0';
-                textBox2.Text = "Password...";
+                textBox2.Text = defaultPassText;
             }
         }
 
@@ -212,6 +218,11 @@ namespace TetraScheduler
             {
                 textBox2.Focus();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

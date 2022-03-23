@@ -15,13 +15,14 @@ namespace TetraScheduler
         public int DesiredConsecutiveShifts { get; set; }
         public int MaxConsultantsPerShift { get; set; }
         public int MaxConsultantsPerBusyShift { get; set; }
-        public int OpenTime { get; set; }
-        public int CloseTime { get; set; }
+        public int[] OpenTimes { get; set; }
+        public int[] CloseTimes { get; set; }
         public int ShiftLengthMinutes { get; set; }
         public bool[] daysOpen { get; set; }
         public bool MixMajors { get; set; }
         public bool MixExperience { get; set; }
         public bool MixYear { get; set; }
         public DateTime lastUpdatedTime { get; set; }
+
     }
 }

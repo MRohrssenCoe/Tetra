@@ -91,7 +91,7 @@ namespace TetraScheduler
 
             if (twelveHrFormat)
             {
-                String ampm = mins < (12 * 60) ? "AM" : "PM";
+                String ampm = (mins%(24* 60)) < (12 * 60) ? " AM" : " PM";
 
                 // if 1pm or later - subract 12 hrs
                 if (mins >= (13 * 60))

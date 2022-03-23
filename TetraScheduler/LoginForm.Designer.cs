@@ -47,27 +47,29 @@ namespace TetraScheduler
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(276, 69);
+            this.panel1.Location = new System.Drawing.Point(315, 92);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(248, 313);
+            this.panel1.Size = new System.Drawing.Size(283, 417);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(45, 52);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 69);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(156, 40);
+            this.pictureBox1.Size = new System.Drawing.Size(178, 53);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(37, 179);
+            this.textBox2.Location = new System.Drawing.Point(42, 239);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(173, 23);
+            this.textBox2.Size = new System.Drawing.Size(197, 27);
             this.textBox2.TabIndex = 2;
             this.textBox2.Click += new System.EventHandler(this.textBox2_Enter);
             this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
@@ -76,9 +78,10 @@ namespace TetraScheduler
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(37, 127);
+            this.textBox1.Location = new System.Drawing.Point(42, 169);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 23);
+            this.textBox1.Size = new System.Drawing.Size(197, 27);
             this.textBox1.TabIndex = 1;
             this.textBox1.Click += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
@@ -87,9 +90,10 @@ namespace TetraScheduler
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(86, 257);
+            this.button1.Location = new System.Drawing.Point(98, 343);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(86, 31);
             this.button1.TabIndex = 0;
             this.button1.Text = "Log In";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,14 +101,15 @@ namespace TetraScheduler
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(796, 450);
+            this.ClientSize = new System.Drawing.Size(910, 600);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "LoginForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);

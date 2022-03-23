@@ -51,7 +51,8 @@ namespace TetraScheduler
                 coeYrUpDn.Value = uInfo.coeYear;
                 desiredWeeklyHrsUpDn.Value = uInfo.desiredWeeklyHours;
                 consultantAvailability = uInfo.availability;
-                addAvailabilityToView(uInfo.availability);
+                if (!(consultantAvailability is null))
+                    addAvailabilityToView(uInfo.availability);
                 //Reusing code to fill majors.
                 //null check
                 if (uInfo.majors != null)
