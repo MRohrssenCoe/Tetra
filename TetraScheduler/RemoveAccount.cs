@@ -33,13 +33,15 @@ namespace TetraScheduler
                 string newString = "";
                 int x = 0;
                 bool removal = false;
+                string fileToDelete = Constants.userPreferencesFolder;
                 while (x < token.Length)
                 {
                     foreach (string username in deletedUsers) {
                         if (token[x].Equals(username))
                         {
                             removal = true;
-                            //delete user file info pls add here
+                            fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                            File.Delete(fileToDelete);//delete user file
                         }
                     }
                     if (!removal) //remove log in info by not including it
