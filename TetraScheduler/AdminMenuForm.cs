@@ -353,12 +353,18 @@ namespace TetraScheduler
 
         private void viewAdminButton_Click(object sender, EventArgs e)
         {
-
+            new UpdateUserForm().ShowDialog();
         }
 
         private void viewConsultButton_Click(object sender, EventArgs e)
         {
             new Form1().ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            Process.Start("explorer", "\"" + filename + "\"");
         }
     }
 }

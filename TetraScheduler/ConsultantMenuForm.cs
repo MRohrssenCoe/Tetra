@@ -158,9 +158,10 @@ namespace TetraScheduler
             this.Close();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            Process.Start("explorer", "\"" + filename + "\"");
         }
     }
 }
