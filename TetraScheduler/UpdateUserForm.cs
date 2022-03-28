@@ -90,7 +90,7 @@ namespace TetraScheduler
             CheckedListBox.CheckedIndexCollection i = checkedListBox1.CheckedIndices;
             foreach (int x in i)
             {
-                jsonPath = token[x * 3] + ".json";
+                //jsonPath = token[x * 3] + ".json";
                 token[(3 * x) + 2] = "3";
             }
             String tokenStr = "";
