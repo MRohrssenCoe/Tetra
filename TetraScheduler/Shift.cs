@@ -69,7 +69,14 @@ namespace TetraScheduler
             }
             if (index == -1)
             {
-                Debug.WriteLine("No such user found: " + ui.FirstName + " " + ui.LastName);
+                if (ui is null)
+                {
+                    Debug.WriteLine("ui was null");
+                }
+                else
+                {
+                    Debug.WriteLine("No such user found: " + ui.FirstName + " " + ui.LastName);
+                }
             }
             else
             {

@@ -234,6 +234,7 @@
             this.removeConsultantButton.TabIndex = 2;
             this.removeConsultantButton.Text = "Remove Consultant";
             this.removeConsultantButton.UseVisualStyleBackColor = true;
+            this.removeConsultantButton.Click += new System.EventHandler(this.removeUserFromSelected);
             // 
             // addConsultantButton
             // 
@@ -244,6 +245,7 @@
             this.addConsultantButton.TabIndex = 1;
             this.addConsultantButton.Text = "Add consultant";
             this.addConsultantButton.UseVisualStyleBackColor = true;
+            this.addConsultantButton.Click += new System.EventHandler(this.addUserToSelected);
             // 
             // consultantsWorkingShift
             // 

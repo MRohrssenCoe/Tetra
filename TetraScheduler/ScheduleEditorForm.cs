@@ -191,14 +191,9 @@ namespace TetraScheduler
         void updateEditingUI()
         {
             Debug.WriteLine(selectedShift.UsersAsText());
-            //consultantsWorkingShift.DataBindings.Clear();
             if(!(selectedShift.users is null))
             {
                 consultantsWorkingShift.DataSource = selectedShift.users;
-                //foreach(UserInfo u in selectedShift.users)
-                //{
-
-                //}
             }
             
         }
@@ -208,6 +203,18 @@ namespace TetraScheduler
             lb.SelectedIndex = -1;
         }
 
+        void removeUserFromSelected(object sender, EventArgs e)
+        {
+            UserInfo selectedUser = consultantsWorkingShift.SelectedItem as UserInfo;
+            selectedShift.RemoveUser(selectedUser);
+            consultantsWorkingShift.DataSource = null;
+            consultantsWorkingShift.DataSource = selectedShift.users;
 
+        }
+
+        void addUserToSelected(object sender, EventArgs e)
+        {
+
+        }
     }
 }
