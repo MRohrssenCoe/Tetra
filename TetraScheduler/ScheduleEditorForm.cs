@@ -8,7 +8,6 @@ namespace TetraScheduler
 {
     public partial class ScheduleEditorForm : Form
     {
-        //The issue here is that storing the data in the UI is messy and hard to work with.
         ListBox.ObjectCollection sundayObjectCollection;
         ListBox.ObjectCollection mondayObjectCollection;
         ListBox.ObjectCollection tuesdayObjectCollection;
@@ -17,15 +16,7 @@ namespace TetraScheduler
         ListBox.ObjectCollection fridayObjectCollection;
         ListBox.ObjectCollection saturdayObjectCollection;
         ListBox.ObjectCollection usersInShift;
-        //To remedy that, we will be adding lists for all of the objects that can be used in code, then the relevant
-        //values can be copied out to the UI
-        List<Shift> sundayShifts = new List<Shift>();
-        List<Shift> mondayShifts = new List<Shift>();
-        List<Shift> tuesdayShifts = new List<Shift>();
-        List<Shift> wednesdayShifts = new List<Shift>();
-        List <Shift> thursdayShifts = new List<Shift>();
-        List<Shift> fridayShifts = new List<Shift>();
-        List<Shift> saturdayShifts = new List<Shift>();
+
 
         ListBox lastClickedBox = null;
         Shift selectedShift;
@@ -105,14 +96,6 @@ namespace TetraScheduler
                     thursdayObjectCollection.Add(thursdayShift);
                     fridayObjectCollection.Add(fridayShift);
                     saturdayObjectCollection.Add(saturdayShift);
-
-                    sundayShifts.Add(sundayShift);
-                    mondayShifts.Add(mondayShift);
-                    tuesdayShifts.Add(tuesdayShift);
-                    wednesdayShifts.Add(wednesdayShift);
-                    thursdayShifts.Add(thursdayShift);
-                    fridayShifts.Add(fridayShift);
-                    saturdayShifts.Add(saturdayShift);
                 }
             }
         }
@@ -131,7 +114,14 @@ namespace TetraScheduler
                     {
 
                         //TODO add user using first name and lastname
-
+                        if (nameSplit[0] != "")
+                        {
+                            UserInfo temp = new UserInfo();
+                            temp.FirstName = nameSplit[0];
+                            temp.LastName = nameSplit[1];
+                            s.AddUser(temp);
+                            Debug.WriteLine(nameSplit[0] + " " + nameSplit[1] + '\n');
+                        }
                     }
                 }
             }
@@ -200,15 +190,17 @@ namespace TetraScheduler
 
         void updateEditingUI()
         {
-            usersInShift = consultantsWorkingShift.Items;
-            usersInShift.Clear();
-            if (selectedShift != null)
+            Debug.WriteLine(selectedShift.UsersAsText());
+            //consultantsWorkingShift.DataBindings.Clear();
+            if(!(selectedShift.users is null))
             {
-                foreach(UserInfo user in selectedShift.users)
-                {
-                    usersInShift.Add(user);
-                }
+                consultantsWorkingShift.DataSource = selectedShift.users;
+                //foreach(UserInfo u in selectedShift.users)
+                //{
+
+                //}
             }
+            
         }
 
         void deselectOther(ListBox lb)

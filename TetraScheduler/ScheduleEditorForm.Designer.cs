@@ -137,7 +137,7 @@
             this.sat_listbox.Name = "sat_listbox";
             this.sat_listbox.Size = new System.Drawing.Size(194, 764);
             this.sat_listbox.TabIndex = 58;
-            this.sat_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.sat_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // fri_listbox
             // 
@@ -149,7 +149,7 @@
             this.fri_listbox.Name = "fri_listbox";
             this.fri_listbox.Size = new System.Drawing.Size(194, 764);
             this.fri_listbox.TabIndex = 57;
-            this.fri_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.fri_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // wed_listbox
             // 
@@ -161,7 +161,7 @@
             this.wed_listbox.Name = "wed_listbox";
             this.wed_listbox.Size = new System.Drawing.Size(194, 764);
             this.wed_listbox.TabIndex = 56;
-            this.wed_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.wed_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // thurs_listbox
             // 
@@ -173,7 +173,7 @@
             this.thurs_listbox.Name = "thurs_listbox";
             this.thurs_listbox.Size = new System.Drawing.Size(194, 764);
             this.thurs_listbox.TabIndex = 55;
-            this.thurs_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.thurs_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // tues_listbox
             // 
@@ -185,7 +185,7 @@
             this.tues_listbox.Name = "tues_listbox";
             this.tues_listbox.Size = new System.Drawing.Size(194, 764);
             this.tues_listbox.TabIndex = 54;
-            this.tues_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.tues_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // mon_listbox
             // 
@@ -197,7 +197,7 @@
             this.mon_listbox.Name = "mon_listbox";
             this.mon_listbox.Size = new System.Drawing.Size(194, 764);
             this.mon_listbox.TabIndex = 53;
-            this.mon_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.mon_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // sun_listbox
             // 
@@ -209,7 +209,7 @@
             this.sun_listbox.Name = "sun_listbox";
             this.sun_listbox.Size = new System.Drawing.Size(194, 764);
             this.sun_listbox.TabIndex = 52;
-            this.sun_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.sun_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // groupBox1
             // 
