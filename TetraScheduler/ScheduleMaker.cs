@@ -25,8 +25,8 @@ namespace TetraScheduler
             //Schedule(int[] daysOpen, int shiftLength, int[] startTimes, int[] endTimes)
             bool[] daysOpen = ao.daysOpen;
             int shiftLength = ao.ShiftLengthMinutes;
-            int[] startTimes = { ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime, ao.OpenTime };
-            int[] endTimes = { ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime, ao.CloseTime };
+            int[] startTimes = ao.OpenTimes;
+            int[] endTimes = ao.CloseTimes;
             s = new Schedule(daysOpen, shiftLength, startTimes, endTimes);
 
             foreach (Shift shift in s.toLinearArray())
