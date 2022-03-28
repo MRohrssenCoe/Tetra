@@ -47,6 +47,7 @@
             this.addConsultantButton = new System.Windows.Forms.Button();
             this.consultantsWorkingShift = new System.Windows.Forms.ListBox();
             this.returnToAdminFormButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -267,11 +268,21 @@
             this.returnToAdminFormButton.Text = "Return to Admin Menu";
             this.returnToAdminFormButton.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 293);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(223, 47);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "Save Schedule";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ScheduleEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 823);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.returnToAdminFormButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sat_listbox);
@@ -317,5 +328,6 @@
         private System.Windows.Forms.Button addConsultantButton;
         private System.Windows.Forms.ListBox consultantsWorkingShift;
         private System.Windows.Forms.Button returnToAdminFormButton;
+        private System.Windows.Forms.Button button1;
     }
 }
