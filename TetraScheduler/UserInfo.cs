@@ -40,7 +40,7 @@ namespace TetraScheduler
 
         public override string ToString()
         {
-            return "FirstName= " + FirstName + " LastName= " + LastName; // expand on this later
+            return FirstName + " " + LastName; // expand on this later
         }
     }
 }

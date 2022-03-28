@@ -47,6 +47,7 @@
             this.addConsultantButton = new System.Windows.Forms.Button();
             this.consultantsWorkingShift = new System.Windows.Forms.ListBox();
             this.returnToAdminFormButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,7 +138,7 @@
             this.sat_listbox.Name = "sat_listbox";
             this.sat_listbox.Size = new System.Drawing.Size(194, 764);
             this.sat_listbox.TabIndex = 58;
-            this.sat_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.sat_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // fri_listbox
             // 
@@ -149,7 +150,7 @@
             this.fri_listbox.Name = "fri_listbox";
             this.fri_listbox.Size = new System.Drawing.Size(194, 764);
             this.fri_listbox.TabIndex = 57;
-            this.fri_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.fri_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // wed_listbox
             // 
@@ -161,7 +162,7 @@
             this.wed_listbox.Name = "wed_listbox";
             this.wed_listbox.Size = new System.Drawing.Size(194, 764);
             this.wed_listbox.TabIndex = 56;
-            this.wed_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.wed_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // thurs_listbox
             // 
@@ -173,7 +174,7 @@
             this.thurs_listbox.Name = "thurs_listbox";
             this.thurs_listbox.Size = new System.Drawing.Size(194, 764);
             this.thurs_listbox.TabIndex = 55;
-            this.thurs_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.thurs_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // tues_listbox
             // 
@@ -185,7 +186,7 @@
             this.tues_listbox.Name = "tues_listbox";
             this.tues_listbox.Size = new System.Drawing.Size(194, 764);
             this.tues_listbox.TabIndex = 54;
-            this.tues_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.tues_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // mon_listbox
             // 
@@ -197,7 +198,7 @@
             this.mon_listbox.Name = "mon_listbox";
             this.mon_listbox.Size = new System.Drawing.Size(194, 764);
             this.mon_listbox.TabIndex = 53;
-            this.mon_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.mon_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // sun_listbox
             // 
@@ -209,7 +210,7 @@
             this.sun_listbox.Name = "sun_listbox";
             this.sun_listbox.Size = new System.Drawing.Size(194, 764);
             this.sun_listbox.TabIndex = 52;
-            this.sun_listbox.SelectedIndexChanged += new System.EventHandler(this.listbox_ItemChanged);
+            this.sun_listbox.Click += new System.EventHandler(this.listbox_ItemChanged);
             // 
             // groupBox1
             // 
@@ -232,8 +233,9 @@
             this.removeConsultantButton.Name = "removeConsultantButton";
             this.removeConsultantButton.Size = new System.Drawing.Size(223, 47);
             this.removeConsultantButton.TabIndex = 2;
-            this.removeConsultantButton.Text = "Remove Selected Consultant";
+            this.removeConsultantButton.Text = "Remove Consultant";
             this.removeConsultantButton.UseVisualStyleBackColor = true;
+            this.removeConsultantButton.Click += new System.EventHandler(this.removeUserFromSelected);
             // 
             // addConsultantButton
             // 
@@ -244,6 +246,7 @@
             this.addConsultantButton.TabIndex = 1;
             this.addConsultantButton.Text = "Add consultant";
             this.addConsultantButton.UseVisualStyleBackColor = true;
+            this.addConsultantButton.Click += new System.EventHandler(this.addUserToSelected);
             // 
             // consultantsWorkingShift
             // 
@@ -265,11 +268,21 @@
             this.returnToAdminFormButton.Text = "Return to Admin Menu";
             this.returnToAdminFormButton.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 293);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(223, 47);
+            this.button1.TabIndex = 60;
+            this.button1.Text = "Save Schedule";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ScheduleEditorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1669, 823);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.returnToAdminFormButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.sat_listbox);
@@ -315,5 +328,6 @@
         private System.Windows.Forms.Button addConsultantButton;
         private System.Windows.Forms.ListBox consultantsWorkingShift;
         private System.Windows.Forms.Button returnToAdminFormButton;
+        private System.Windows.Forms.Button button1;
     }
 }

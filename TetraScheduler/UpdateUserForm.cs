@@ -27,6 +27,7 @@ namespace TetraScheduler
             string tetraFolder = Constants.AppDataFolder;
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string usernameString = File.ReadAllText(pswdFile);
+            string[] token;
             token = usernameString.Split(",");
             int x = 0;
             while (x < token.Length)
