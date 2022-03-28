@@ -8,7 +8,7 @@ namespace TetraScheduler
 {
     public partial class ScheduleEditorForm : Form
     {
-
+        //The issue here is that storing the data in the UI is messy and hard to work with.
         ListBox.ObjectCollection sundayObjectCollection;
         ListBox.ObjectCollection mondayObjectCollection;
         ListBox.ObjectCollection tuesdayObjectCollection;
@@ -16,6 +16,16 @@ namespace TetraScheduler
         ListBox.ObjectCollection thursdayObjectCollection;
         ListBox.ObjectCollection fridayObjectCollection;
         ListBox.ObjectCollection saturdayObjectCollection;
+        ListBox.ObjectCollection usersInShift;
+        //To remedy that, we will be adding lists for all of the objects that can be used in code, then the relevant
+        //values can be copied out to the UI
+        List<Shift> sundayShifts = new List<Shift>();
+        List<Shift> mondayShifts = new List<Shift>();
+        List<Shift> tuesdayShifts = new List<Shift>();
+        List<Shift> wednesdayShifts = new List<Shift>();
+        List <Shift> thursdayShifts = new List<Shift>();
+        List<Shift> fridayShifts = new List<Shift>();
+        List<Shift> saturdayShifts = new List<Shift>();
 
         ListBox lastClickedBox = null;
         Shift selectedShift;
@@ -29,7 +39,7 @@ namespace TetraScheduler
             thursdayObjectCollection = thurs_listbox.Items;
             fridayObjectCollection = fri_listbox.Items;
             saturdayObjectCollection = sat_listbox.Items;
-            
+            usersInShift = consultantsWorkingShift.Items;
             fillBoxesWithSchedule();
         }
 
@@ -37,7 +47,6 @@ namespace TetraScheduler
         {
             //convert csv to schedule
             csvToSchedule();
-            //fill boxes using schedule.
         }
 
         private void csvToSchedule()
@@ -96,6 +105,14 @@ namespace TetraScheduler
                     thursdayObjectCollection.Add(thursdayShift);
                     fridayObjectCollection.Add(fridayShift);
                     saturdayObjectCollection.Add(saturdayShift);
+
+                    sundayShifts.Add(sundayShift);
+                    mondayShifts.Add(mondayShift);
+                    tuesdayShifts.Add(tuesdayShift);
+                    wednesdayShifts.Add(wednesdayShift);
+                    thursdayShifts.Add(thursdayShift);
+                    fridayShifts.Add(fridayShift);
+                    saturdayShifts.Add(saturdayShift);
                 }
             }
         }
@@ -159,6 +176,7 @@ namespace TetraScheduler
             }
             selectedShift = getCurrentlySelectedShift();
             Debug.WriteLine(selectedShift);
+            updateEditingUI();
         }
 
         Shift getCurrentlySelectedShift()
@@ -178,6 +196,19 @@ namespace TetraScheduler
                 }
             }
             return new Shift();
+        }
+
+        void updateEditingUI()
+        {
+            usersInShift = consultantsWorkingShift.Items;
+            usersInShift.Clear();
+            if (selectedShift != null)
+            {
+                foreach(UserInfo user in selectedShift.users)
+                {
+                    usersInShift.Add(user);
+                }
+            }
         }
 
         void deselectOther(ListBox lb)
