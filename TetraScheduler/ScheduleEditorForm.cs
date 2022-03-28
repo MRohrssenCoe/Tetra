@@ -15,7 +15,6 @@ namespace TetraScheduler
         ListBox.ObjectCollection thursdayObjectCollection;
         ListBox.ObjectCollection fridayObjectCollection;
         ListBox.ObjectCollection saturdayObjectCollection;
-        ListBox.ObjectCollection usersInShift;
 
 
         ListBox lastClickedBox = null;
@@ -30,7 +29,6 @@ namespace TetraScheduler
             thursdayObjectCollection = thurs_listbox.Items;
             fridayObjectCollection = fri_listbox.Items;
             saturdayObjectCollection = sat_listbox.Items;
-            usersInShift = consultantsWorkingShift.Items;
             fillBoxesWithSchedule();
         }
 
@@ -214,7 +212,11 @@ namespace TetraScheduler
 
         void addUserToSelected(object sender, EventArgs e)
         {
-
+            SelectUserForm userSelectForm = new SelectUserForm();
+            userSelectForm.ShowDialog();
+            selectedShift.AddUser(userSelectForm.selectedUserInfo);
+            consultantsWorkingShift.DataSource = null;
+            consultantsWorkingShift.DataSource = selectedShift.users;
         }
     }
 }
