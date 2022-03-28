@@ -57,7 +57,7 @@ namespace TetraScheduler
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(586, 552);
+            this.button1.Location = new System.Drawing.Point(753, 744);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 32);
             this.button1.TabIndex = 0;
@@ -76,7 +76,7 @@ namespace TetraScheduler
             this.panel1.Controls.Add(this.sun_listbox);
             this.panel1.Location = new System.Drawing.Point(12, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1257, 461);
+            this.panel1.Size = new System.Drawing.Size(1425, 641);
             this.panel1.TabIndex = 1;
             // 
             // sat_listbox
@@ -84,9 +84,9 @@ namespace TetraScheduler
             this.sat_listbox.FormattingEnabled = true;
             this.sat_listbox.HorizontalScrollbar = true;
             this.sat_listbox.ItemHeight = 15;
-            this.sat_listbox.Location = new System.Drawing.Point(1074, 3);
+            this.sat_listbox.Location = new System.Drawing.Point(1223, 3);
             this.sat_listbox.Name = "sat_listbox";
-            this.sat_listbox.Size = new System.Drawing.Size(170, 454);
+            this.sat_listbox.Size = new System.Drawing.Size(188, 619);
             this.sat_listbox.TabIndex = 6;
             // 
             // fri_listbox
@@ -94,9 +94,9 @@ namespace TetraScheduler
             this.fri_listbox.FormattingEnabled = true;
             this.fri_listbox.HorizontalScrollbar = true;
             this.fri_listbox.ItemHeight = 15;
-            this.fri_listbox.Location = new System.Drawing.Point(897, 3);
+            this.fri_listbox.Location = new System.Drawing.Point(1021, 3);
             this.fri_listbox.Name = "fri_listbox";
-            this.fri_listbox.Size = new System.Drawing.Size(170, 454);
+            this.fri_listbox.Size = new System.Drawing.Size(188, 619);
             this.fri_listbox.TabIndex = 5;
             // 
             // wed_listbox
@@ -104,9 +104,9 @@ namespace TetraScheduler
             this.wed_listbox.FormattingEnabled = true;
             this.wed_listbox.HorizontalScrollbar = true;
             this.wed_listbox.ItemHeight = 15;
-            this.wed_listbox.Location = new System.Drawing.Point(543, 3);
+            this.wed_listbox.Location = new System.Drawing.Point(617, 3);
             this.wed_listbox.Name = "wed_listbox";
-            this.wed_listbox.Size = new System.Drawing.Size(170, 454);
+            this.wed_listbox.Size = new System.Drawing.Size(188, 619);
             this.wed_listbox.TabIndex = 4;
             // 
             // thurs_listbox
@@ -114,9 +114,9 @@ namespace TetraScheduler
             this.thurs_listbox.FormattingEnabled = true;
             this.thurs_listbox.HorizontalScrollbar = true;
             this.thurs_listbox.ItemHeight = 15;
-            this.thurs_listbox.Location = new System.Drawing.Point(720, 3);
+            this.thurs_listbox.Location = new System.Drawing.Point(819, 3);
             this.thurs_listbox.Name = "thurs_listbox";
-            this.thurs_listbox.Size = new System.Drawing.Size(170, 454);
+            this.thurs_listbox.Size = new System.Drawing.Size(188, 619);
             this.thurs_listbox.TabIndex = 3;
             // 
             // tues_listbox
@@ -124,9 +124,9 @@ namespace TetraScheduler
             this.tues_listbox.FormattingEnabled = true;
             this.tues_listbox.HorizontalScrollbar = true;
             this.tues_listbox.ItemHeight = 15;
-            this.tues_listbox.Location = new System.Drawing.Point(366, 3);
+            this.tues_listbox.Location = new System.Drawing.Point(415, 3);
             this.tues_listbox.Name = "tues_listbox";
-            this.tues_listbox.Size = new System.Drawing.Size(170, 454);
+            this.tues_listbox.Size = new System.Drawing.Size(188, 619);
             this.tues_listbox.TabIndex = 2;
             // 
             // mon_listbox
@@ -134,9 +134,9 @@ namespace TetraScheduler
             this.mon_listbox.FormattingEnabled = true;
             this.mon_listbox.HorizontalScrollbar = true;
             this.mon_listbox.ItemHeight = 15;
-            this.mon_listbox.Location = new System.Drawing.Point(189, 3);
+            this.mon_listbox.Location = new System.Drawing.Point(213, 3);
             this.mon_listbox.Name = "mon_listbox";
-            this.mon_listbox.Size = new System.Drawing.Size(170, 454);
+            this.mon_listbox.Size = new System.Drawing.Size(188, 619);
             this.mon_listbox.TabIndex = 1;
             // 
             // sun_listbox
@@ -146,17 +146,17 @@ namespace TetraScheduler
             this.sun_listbox.HorizontalExtent = 20;
             this.sun_listbox.HorizontalScrollbar = true;
             this.sun_listbox.ItemHeight = 15;
-            this.sun_listbox.Location = new System.Drawing.Point(12, 3);
+            this.sun_listbox.Location = new System.Drawing.Point(11, 3);
             this.sun_listbox.MultiColumn = true;
             this.sun_listbox.Name = "sun_listbox";
-            this.sun_listbox.Size = new System.Drawing.Size(170, 454);
+            this.sun_listbox.Size = new System.Drawing.Size(188, 619);
             this.sun_listbox.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(69, 22);
+            this.label1.Location = new System.Drawing.Point(76, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 21);
             this.label1.TabIndex = 21;
@@ -167,7 +167,7 @@ namespace TetraScheduler
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(247, 22);
+            this.label2.Location = new System.Drawing.Point(280, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 21);
             this.label2.TabIndex = 22;
@@ -178,7 +178,7 @@ namespace TetraScheduler
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(427, 22);
+            this.label3.Location = new System.Drawing.Point(479, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 21);
             this.label3.TabIndex = 23;
@@ -189,7 +189,7 @@ namespace TetraScheduler
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(585, 22);
+            this.label4.Location = new System.Drawing.Point(673, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 21);
             this.label4.TabIndex = 24;
@@ -200,7 +200,7 @@ namespace TetraScheduler
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(768, 22);
+            this.label5.Location = new System.Drawing.Point(877, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 21);
             this.label5.TabIndex = 25;
@@ -211,7 +211,7 @@ namespace TetraScheduler
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(954, 22);
+            this.label6.Location = new System.Drawing.Point(1095, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 21);
             this.label6.TabIndex = 26;
@@ -222,7 +222,7 @@ namespace TetraScheduler
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(1119, 22);
+            this.label7.Location = new System.Drawing.Point(1288, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 21);
             this.label7.TabIndex = 27;
@@ -232,7 +232,7 @@ namespace TetraScheduler
             // sun_hour_label
             // 
             this.sun_hour_label.AutoSize = true;
-            this.sun_hour_label.Location = new System.Drawing.Point(60, 53);
+            this.sun_hour_label.Location = new System.Drawing.Point(67, 53);
             this.sun_hour_label.Name = "sun_hour_label";
             this.sun_hour_label.Size = new System.Drawing.Size(84, 15);
             this.sun_hour_label.TabIndex = 28;
@@ -241,7 +241,7 @@ namespace TetraScheduler
             // mon_hour_label
             // 
             this.mon_hour_label.AutoSize = true;
-            this.mon_hour_label.Location = new System.Drawing.Point(241, 53);
+            this.mon_hour_label.Location = new System.Drawing.Point(274, 53);
             this.mon_hour_label.Name = "mon_hour_label";
             this.mon_hour_label.Size = new System.Drawing.Size(84, 15);
             this.mon_hour_label.TabIndex = 29;
@@ -250,7 +250,7 @@ namespace TetraScheduler
             // tues_hour_label
             // 
             this.tues_hour_label.AutoSize = true;
-            this.tues_hour_label.Location = new System.Drawing.Point(421, 53);
+            this.tues_hour_label.Location = new System.Drawing.Point(473, 53);
             this.tues_hour_label.Name = "tues_hour_label";
             this.tues_hour_label.Size = new System.Drawing.Size(84, 15);
             this.tues_hour_label.TabIndex = 30;
@@ -259,7 +259,7 @@ namespace TetraScheduler
             // thurs_hour_label
             // 
             this.thurs_hour_label.AutoSize = true;
-            this.thurs_hour_label.Location = new System.Drawing.Point(766, 53);
+            this.thurs_hour_label.Location = new System.Drawing.Point(875, 53);
             this.thurs_hour_label.Name = "thurs_hour_label";
             this.thurs_hour_label.Size = new System.Drawing.Size(84, 15);
             this.thurs_hour_label.TabIndex = 32;
@@ -268,7 +268,7 @@ namespace TetraScheduler
             // fri_hour_label
             // 
             this.fri_hour_label.AutoSize = true;
-            this.fri_hour_label.Location = new System.Drawing.Point(940, 53);
+            this.fri_hour_label.Location = new System.Drawing.Point(1081, 53);
             this.fri_hour_label.Name = "fri_hour_label";
             this.fri_hour_label.Size = new System.Drawing.Size(84, 15);
             this.fri_hour_label.TabIndex = 33;
@@ -277,7 +277,7 @@ namespace TetraScheduler
             // sat_hour_label
             // 
             this.sat_hour_label.AutoSize = true;
-            this.sat_hour_label.Location = new System.Drawing.Point(1116, 53);
+            this.sat_hour_label.Location = new System.Drawing.Point(1285, 53);
             this.sat_hour_label.Name = "sat_hour_label";
             this.sat_hour_label.Size = new System.Drawing.Size(84, 15);
             this.sat_hour_label.TabIndex = 34;
@@ -286,7 +286,7 @@ namespace TetraScheduler
             // wed_hour_label
             // 
             this.wed_hour_label.AutoSize = true;
-            this.wed_hour_label.Location = new System.Drawing.Point(592, 53);
+            this.wed_hour_label.Location = new System.Drawing.Point(680, 53);
             this.wed_hour_label.Name = "wed_hour_label";
             this.wed_hour_label.Size = new System.Drawing.Size(84, 15);
             this.wed_hour_label.TabIndex = 31;
@@ -296,7 +296,7 @@ namespace TetraScheduler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1269, 651);
+            this.ClientSize = new System.Drawing.Size(1449, 788);
             this.Controls.Add(this.sat_hour_label);
             this.Controls.Add(this.fri_hour_label);
             this.Controls.Add(this.thurs_hour_label);

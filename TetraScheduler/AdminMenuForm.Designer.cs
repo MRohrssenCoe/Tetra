@@ -41,20 +41,23 @@ namespace TetraScheduler
             this.mixSemestersCheck = new System.Windows.Forms.CheckBox();
             this.consecutiveShiftsUpDn = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.editScheduleButton = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.shiftLengthUpDn = new System.Windows.Forms.NumericUpDown();
+            this.consultantsNeededUpDn = new System.Windows.Forms.NumericUpDown();
             this.busyConsultantsUpDn = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.consultantsNeededUpDn = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.editScheduleButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.logoutButton = new System.Windows.Forms.Button();
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.viewAdminButton = new System.Windows.Forms.Button();
             this.removeAccButton = new System.Windows.Forms.Button();
             this.addAccButton = new System.Windows.Forms.Button();
@@ -69,12 +72,18 @@ namespace TetraScheduler
             this.tuesdayCheck = new System.Windows.Forms.CheckBox();
             this.openTimePicker = new System.Windows.Forms.DateTimePicker();
             this.closeTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.daysbox = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsUpDn)).BeginInit();
+            this.panel3.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -82,15 +91,15 @@ namespace TetraScheduler
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(119, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 15);
+            this.label3.Size = new System.Drawing.Size(119, 15);
             this.label3.TabIndex = 15;
-            this.label3.Text = "Schedule Tools";
+            this.label3.Text = "Schedule Preferences";
             // 
             // welcomeLabel
             // 
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.welcomeLabel.Location = new System.Drawing.Point(150, 9);
+            this.welcomeLabel.Location = new System.Drawing.Point(323, 7);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(192, 30);
             this.welcomeLabel.TabIndex = 0;
@@ -109,7 +118,7 @@ namespace TetraScheduler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(77, 344);
+            this.button3.Location = new System.Drawing.Point(156, 382);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(147, 32);
             this.button3.TabIndex = 14;
@@ -120,7 +129,7 @@ namespace TetraScheduler
             // busyLabel
             // 
             this.busyLabel.AutoSize = true;
-            this.busyLabel.Location = new System.Drawing.Point(115, 8);
+            this.busyLabel.Location = new System.Drawing.Point(83, 5);
             this.busyLabel.Name = "busyLabel";
             this.busyLabel.Size = new System.Drawing.Size(64, 15);
             this.busyLabel.TabIndex = 19;
@@ -130,14 +139,14 @@ namespace TetraScheduler
             // 
             this.busyListBox.FormattingEnabled = true;
             this.busyListBox.ItemHeight = 15;
-            this.busyListBox.Location = new System.Drawing.Point(26, 26);
+            this.busyListBox.Location = new System.Drawing.Point(2, 23);
             this.busyListBox.Name = "busyListBox";
             this.busyListBox.Size = new System.Drawing.Size(242, 109);
             this.busyListBox.TabIndex = 18;
             // 
             // selectBusyShiftsButton
             // 
-            this.selectBusyShiftsButton.Location = new System.Drawing.Point(80, 140);
+            this.selectBusyShiftsButton.Location = new System.Drawing.Point(57, 137);
             this.selectBusyShiftsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectBusyShiftsButton.Name = "selectBusyShiftsButton";
             this.selectBusyShiftsButton.Size = new System.Drawing.Size(128, 22);
@@ -149,7 +158,7 @@ namespace TetraScheduler
             // mixYearsCheck
             // 
             this.mixYearsCheck.AutoSize = true;
-            this.mixYearsCheck.Location = new System.Drawing.Point(26, 194);
+            this.mixYearsCheck.Location = new System.Drawing.Point(3, 24);
             this.mixYearsCheck.Name = "mixYearsCheck";
             this.mixYearsCheck.Size = new System.Drawing.Size(128, 19);
             this.mixYearsCheck.TabIndex = 22;
@@ -159,7 +168,7 @@ namespace TetraScheduler
             // mixMajorCheck
             // 
             this.mixMajorCheck.AutoSize = true;
-            this.mixMajorCheck.Location = new System.Drawing.Point(26, 173);
+            this.mixMajorCheck.Location = new System.Drawing.Point(3, 3);
             this.mixMajorCheck.Name = "mixMajorCheck";
             this.mixMajorCheck.Size = new System.Drawing.Size(99, 19);
             this.mixMajorCheck.TabIndex = 21;
@@ -169,7 +178,7 @@ namespace TetraScheduler
             // mixSemestersCheck
             // 
             this.mixSemestersCheck.AutoSize = true;
-            this.mixSemestersCheck.Location = new System.Drawing.Point(26, 214);
+            this.mixSemestersCheck.Location = new System.Drawing.Point(3, 44);
             this.mixSemestersCheck.Name = "mixSemestersCheck";
             this.mixSemestersCheck.Size = new System.Drawing.Size(189, 19);
             this.mixSemestersCheck.TabIndex = 23;
@@ -178,7 +187,7 @@ namespace TetraScheduler
             // 
             // consecutiveShiftsUpDn
             // 
-            this.consecutiveShiftsUpDn.Location = new System.Drawing.Point(241, 233);
+            this.consecutiveShiftsUpDn.Location = new System.Drawing.Point(207, 76);
             this.consecutiveShiftsUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.consecutiveShiftsUpDn.Name = "consecutiveShiftsUpDn";
             this.consecutiveShiftsUpDn.Size = new System.Drawing.Size(37, 23);
@@ -187,43 +196,37 @@ namespace TetraScheduler
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.editScheduleButton);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.shiftLengthUpDn);
-            this.panel1.Controls.Add(this.busyConsultantsUpDn);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.consecutiveShiftsUpDn);
-            this.panel1.Controls.Add(this.consultantsNeededUpDn);
-            this.panel1.Controls.Add(this.mixSemestersCheck);
-            this.panel1.Controls.Add(this.mixMajorCheck);
-            this.panel1.Controls.Add(this.mixYearsCheck);
-            this.panel1.Controls.Add(this.selectBusyShiftsButton);
-            this.panel1.Controls.Add(this.busyListBox);
-            this.panel1.Controls.Add(this.busyLabel);
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.genScheduleButton);
             this.panel1.Location = new System.Drawing.Point(12, 65);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(303, 419);
+            this.panel1.Size = new System.Drawing.Size(310, 427);
             this.panel1.TabIndex = 12;
             // 
-            // editScheduleButton
+            // panel4
             // 
-            this.editScheduleButton.Location = new System.Drawing.Point(149, 382);
-            this.editScheduleButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.editScheduleButton.Name = "editScheduleButton";
-            this.editScheduleButton.Size = new System.Drawing.Size(150, 32);
-            this.editScheduleButton.TabIndex = 54;
-            this.editScheduleButton.Text = "Edit Schedule";
-            this.editScheduleButton.UseVisualStyleBackColor = true;
-            this.editScheduleButton.Click += new System.EventHandler(this.editScheduleButton_Click);
+            this.panel4.Controls.Add(this.mixYearsCheck);
+            this.panel4.Controls.Add(this.mixMajorCheck);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.mixSemestersCheck);
+            this.panel4.Controls.Add(this.shiftLengthUpDn);
+            this.panel4.Controls.Add(this.consultantsNeededUpDn);
+            this.panel4.Controls.Add(this.busyConsultantsUpDn);
+            this.panel4.Controls.Add(this.consecutiveShiftsUpDn);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Location = new System.Drawing.Point(32, 174);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(246, 185);
+            this.panel4.TabIndex = 57;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(26, 311);
+            this.label8.Location = new System.Drawing.Point(3, 152);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(127, 15);
             this.label8.TabIndex = 57;
@@ -231,7 +234,7 @@ namespace TetraScheduler
             // 
             // shiftLengthUpDn
             // 
-            this.shiftLengthUpDn.Location = new System.Drawing.Point(241, 310);
+            this.shiftLengthUpDn.Location = new System.Drawing.Point(207, 153);
             this.shiftLengthUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.shiftLengthUpDn.Name = "shiftLengthUpDn";
             this.shiftLengthUpDn.Size = new System.Drawing.Size(37, 23);
@@ -242,9 +245,17 @@ namespace TetraScheduler
             0,
             0});
             // 
+            // consultantsNeededUpDn
+            // 
+            this.consultantsNeededUpDn.Location = new System.Drawing.Point(207, 101);
+            this.consultantsNeededUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.consultantsNeededUpDn.Name = "consultantsNeededUpDn";
+            this.consultantsNeededUpDn.Size = new System.Drawing.Size(37, 23);
+            this.consultantsNeededUpDn.TabIndex = 52;
+            // 
             // busyConsultantsUpDn
             // 
-            this.busyConsultantsUpDn.Location = new System.Drawing.Point(241, 285);
+            this.busyConsultantsUpDn.Location = new System.Drawing.Point(207, 128);
             this.busyConsultantsUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.busyConsultantsUpDn.Name = "busyConsultantsUpDn";
             this.busyConsultantsUpDn.Size = new System.Drawing.Size(37, 23);
@@ -253,42 +264,55 @@ namespace TetraScheduler
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 286);
+            this.label5.Location = new System.Drawing.Point(1, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(144, 15);
             this.label5.TabIndex = 55;
             this.label5.Text = "Consultants per busy shift";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 260);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 15);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Consultants per shift";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 235);
+            this.label1.Location = new System.Drawing.Point(3, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 15);
             this.label1.TabIndex = 25;
             this.label1.Text = "Schedule for consecutive shifts?";
             // 
-            // consultantsNeededUpDn
+            // label2
             // 
-            this.consultantsNeededUpDn.Location = new System.Drawing.Point(241, 258);
-            this.consultantsNeededUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.consultantsNeededUpDn.Name = "consultantsNeededUpDn";
-            this.consultantsNeededUpDn.Size = new System.Drawing.Size(37, 23);
-            this.consultantsNeededUpDn.TabIndex = 52;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 15);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Consultants per shift";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.busyListBox);
+            this.panel3.Controls.Add(this.busyLabel);
+            this.panel3.Controls.Add(this.selectBusyShiftsButton);
+            this.panel3.Location = new System.Drawing.Point(32, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(246, 162);
+            this.panel3.TabIndex = 57;
+            // 
+            // editScheduleButton
+            // 
+            this.editScheduleButton.Location = new System.Drawing.Point(665, 305);
+            this.editScheduleButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.editScheduleButton.Name = "editScheduleButton";
+            this.editScheduleButton.Size = new System.Drawing.Size(150, 32);
+            this.editScheduleButton.TabIndex = 54;
+            this.editScheduleButton.Text = "Edit Schedule";
+            this.editScheduleButton.UseVisualStyleBackColor = true;
+            this.editScheduleButton.Click += new System.EventHandler(this.editScheduleButton_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(332, 224);
+            this.label6.Location = new System.Drawing.Point(12, 122);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 15);
             this.label6.TabIndex = 36;
@@ -297,7 +321,7 @@ namespace TetraScheduler
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(332, 267);
+            this.label7.Location = new System.Drawing.Point(121, 122);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 15);
             this.label7.TabIndex = 37;
@@ -305,7 +329,7 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(510, 448);
+            this.logoutButton.Location = new System.Drawing.Point(665, 458);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(150, 32);
@@ -317,7 +341,7 @@ namespace TetraScheduler
             // lastGenLabel
             // 
             this.lastGenLabel.AutoSize = true;
-            this.lastGenLabel.Location = new System.Drawing.Point(522, 311);
+            this.lastGenLabel.Location = new System.Drawing.Point(682, 380);
             this.lastGenLabel.Name = "lastGenLabel";
             this.lastGenLabel.Size = new System.Drawing.Size(112, 15);
             this.lastGenLabel.TabIndex = 41;
@@ -326,7 +350,7 @@ namespace TetraScheduler
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(537, 47);
+            this.label4.Location = new System.Drawing.Point(705, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 15);
             this.label4.TabIndex = 43;
@@ -335,14 +359,27 @@ namespace TetraScheduler
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.button1);
             this.panel10.Controls.Add(this.viewAdminButton);
             this.panel10.Controls.Add(this.removeAccButton);
             this.panel10.Controls.Add(this.addAccButton);
             this.panel10.Controls.Add(this.viewConsultButton);
-            this.panel10.Location = new System.Drawing.Point(499, 65);
+            this.panel10.Location = new System.Drawing.Point(662, 65);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(161, 174);
+            this.panel10.Size = new System.Drawing.Size(161, 214);
             this.panel10.TabIndex = 42;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 174);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 33);
+            this.button1.TabIndex = 54;
+            this.button1.Text = "Help";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // viewAdminButton
             // 
@@ -350,7 +387,7 @@ namespace TetraScheduler
             this.viewAdminButton.Name = "viewAdminButton";
             this.viewAdminButton.Size = new System.Drawing.Size(153, 37);
             this.viewAdminButton.TabIndex = 5;
-            this.viewAdminButton.Text = "View Admin Info";
+            this.viewAdminButton.Text = "Update User Info";
             this.viewAdminButton.UseVisualStyleBackColor = true;
             this.viewAdminButton.Click += new System.EventHandler(this.viewAdminButton_Click);
             // 
@@ -376,7 +413,7 @@ namespace TetraScheduler
             // 
             // viewConsultButton
             // 
-            this.viewConsultButton.Location = new System.Drawing.Point(3, 3);
+            this.viewConsultButton.Location = new System.Drawing.Point(4, 3);
             this.viewConsultButton.Name = "viewConsultButton";
             this.viewConsultButton.Size = new System.Drawing.Size(153, 37);
             this.viewConsultButton.TabIndex = 2;
@@ -386,9 +423,10 @@ namespace TetraScheduler
             // 
             // viewSchedButton
             // 
-            this.viewSchedButton.Location = new System.Drawing.Point(506, 270);
+            this.viewSchedButton.Location = new System.Drawing.Point(665, 341);
+            this.viewSchedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewSchedButton.Name = "viewSchedButton";
-            this.viewSchedButton.Size = new System.Drawing.Size(147, 32);
+            this.viewSchedButton.Size = new System.Drawing.Size(150, 32);
             this.viewSchedButton.TabIndex = 40;
             this.viewSchedButton.Text = "View Current Schedule";
             this.viewSchedButton.UseVisualStyleBackColor = true;
@@ -397,148 +435,195 @@ namespace TetraScheduler
             // sundayCheck
             // 
             this.sundayCheck.AutoSize = true;
-            this.sundayCheck.Location = new System.Drawing.Point(330, 65);
+            this.sundayCheck.Location = new System.Drawing.Point(209, 8);
             this.sundayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sundayCheck.Name = "sundayCheck";
             this.sundayCheck.Size = new System.Drawing.Size(65, 19);
             this.sundayCheck.TabIndex = 45;
             this.sundayCheck.Text = "Sunday";
             this.sundayCheck.UseVisualStyleBackColor = true;
+            this.sundayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // mondayCheck
             // 
             this.mondayCheck.AutoSize = true;
             this.mondayCheck.Checked = true;
             this.mondayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mondayCheck.Location = new System.Drawing.Point(330, 88);
+            this.mondayCheck.Location = new System.Drawing.Point(209, 25);
             this.mondayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mondayCheck.Name = "mondayCheck";
             this.mondayCheck.Size = new System.Drawing.Size(70, 19);
             this.mondayCheck.TabIndex = 46;
             this.mondayCheck.Text = "Monday";
             this.mondayCheck.UseVisualStyleBackColor = true;
+            this.mondayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // wednesdayCheck
             // 
             this.wednesdayCheck.AutoSize = true;
             this.wednesdayCheck.Checked = true;
             this.wednesdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.wednesdayCheck.Location = new System.Drawing.Point(330, 133);
+            this.wednesdayCheck.Location = new System.Drawing.Point(209, 59);
             this.wednesdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.wednesdayCheck.Name = "wednesdayCheck";
             this.wednesdayCheck.Size = new System.Drawing.Size(87, 19);
             this.wednesdayCheck.TabIndex = 47;
             this.wednesdayCheck.Text = "Wednesday";
             this.wednesdayCheck.UseVisualStyleBackColor = true;
+            this.wednesdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // thursdayCheck
             // 
             this.thursdayCheck.AutoSize = true;
             this.thursdayCheck.Checked = true;
             this.thursdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.thursdayCheck.Location = new System.Drawing.Point(330, 155);
+            this.thursdayCheck.Location = new System.Drawing.Point(209, 76);
             this.thursdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.thursdayCheck.Name = "thursdayCheck";
             this.thursdayCheck.Size = new System.Drawing.Size(74, 19);
             this.thursdayCheck.TabIndex = 48;
             this.thursdayCheck.Text = "Thursday";
             this.thursdayCheck.UseVisualStyleBackColor = true;
+            this.thursdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // fridayCheck
             // 
             this.fridayCheck.AutoSize = true;
             this.fridayCheck.Checked = true;
             this.fridayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.fridayCheck.Location = new System.Drawing.Point(330, 178);
+            this.fridayCheck.Location = new System.Drawing.Point(209, 93);
             this.fridayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fridayCheck.Name = "fridayCheck";
             this.fridayCheck.Size = new System.Drawing.Size(58, 19);
             this.fridayCheck.TabIndex = 49;
             this.fridayCheck.Text = "Friday";
             this.fridayCheck.UseVisualStyleBackColor = true;
+            this.fridayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // saturdayCheck
             // 
             this.saturdayCheck.AutoSize = true;
-            this.saturdayCheck.Location = new System.Drawing.Point(330, 200);
+            this.saturdayCheck.Location = new System.Drawing.Point(209, 112);
             this.saturdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saturdayCheck.Name = "saturdayCheck";
             this.saturdayCheck.Size = new System.Drawing.Size(72, 19);
             this.saturdayCheck.TabIndex = 50;
             this.saturdayCheck.Text = "Saturday";
             this.saturdayCheck.UseVisualStyleBackColor = true;
+            this.saturdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // tuesdayCheck
             // 
             this.tuesdayCheck.AutoSize = true;
             this.tuesdayCheck.Checked = true;
             this.tuesdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tuesdayCheck.Location = new System.Drawing.Point(330, 110);
+            this.tuesdayCheck.Location = new System.Drawing.Point(209, 42);
             this.tuesdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tuesdayCheck.Name = "tuesdayCheck";
             this.tuesdayCheck.Size = new System.Drawing.Size(69, 19);
             this.tuesdayCheck.TabIndex = 51;
             this.tuesdayCheck.Text = "Tuesday";
             this.tuesdayCheck.UseVisualStyleBackColor = true;
+            this.tuesdayCheck.CheckedChanged += new System.EventHandler(this.toggleDaysOnOff);
             // 
             // openTimePicker
             // 
-            this.openTimePicker.CustomFormat = "HH:mm";
+            this.openTimePicker.CustomFormat = "hh:mm tt";
             this.openTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.openTimePicker.Location = new System.Drawing.Point(332, 244);
+            this.openTimePicker.Location = new System.Drawing.Point(12, 139);
             this.openTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.openTimePicker.Name = "openTimePicker";
             this.openTimePicker.ShowUpDown = true;
             this.openTimePicker.Size = new System.Drawing.Size(92, 23);
             this.openTimePicker.TabIndex = 52;
             this.openTimePicker.Value = new System.DateTime(1969, 1, 2, 9, 0, 0, 0);
+            this.openTimePicker.ValueChanged += new System.EventHandler(this.handle_TimePickUpdate);
             // 
             // closeTimePicker
             // 
-            this.closeTimePicker.CustomFormat = "HH:mm";
+            this.closeTimePicker.CustomFormat = "hh:mm tt";
             this.closeTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.closeTimePicker.Location = new System.Drawing.Point(332, 284);
+            this.closeTimePicker.Location = new System.Drawing.Point(121, 139);
             this.closeTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeTimePicker.Name = "closeTimePicker";
             this.closeTimePicker.ShowUpDown = true;
             this.closeTimePicker.Size = new System.Drawing.Size(92, 23);
             this.closeTimePicker.TabIndex = 53;
             this.closeTimePicker.Value = new System.DateTime(1969, 1, 1, 17, 0, 0, 0);
+            this.closeTimePicker.ValueChanged += new System.EventHandler(this.handle_TimePickUpdate);
+            // 
+            // daysbox
+            // 
+            this.daysbox.FormattingEnabled = true;
+            this.daysbox.ItemHeight = 15;
+            this.daysbox.Location = new System.Drawing.Point(12, 8);
+            this.daysbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.daysbox.Name = "daysbox";
+            this.daysbox.Size = new System.Drawing.Size(191, 109);
+            this.daysbox.TabIndex = 54;
+            this.daysbox.SelectedIndexChanged += new System.EventHandler(this.handle_DayClick);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(436, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 15);
+            this.label9.TabIndex = 55;
+            this.label9.Text = "Open Times";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.daysbox);
+            this.panel2.Controls.Add(this.thursdayCheck);
+            this.panel2.Controls.Add(this.fridayCheck);
+            this.panel2.Controls.Add(this.sundayCheck);
+            this.panel2.Controls.Add(this.wednesdayCheck);
+            this.panel2.Controls.Add(this.closeTimePicker);
+            this.panel2.Controls.Add(this.saturdayCheck);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.mondayCheck);
+            this.panel2.Controls.Add(this.tuesdayCheck);
+            this.panel2.Controls.Add(this.openTimePicker);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Location = new System.Drawing.Point(340, 65);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(301, 170);
+            this.panel2.TabIndex = 56;
             // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 494);
-            this.Controls.Add(this.closeTimePicker);
-            this.Controls.Add(this.openTimePicker);
-            this.Controls.Add(this.tuesdayCheck);
-            this.Controls.Add(this.saturdayCheck);
-            this.Controls.Add(this.fridayCheck);
-            this.Controls.Add(this.thursdayCheck);
-            this.Controls.Add(this.wednesdayCheck);
-            this.Controls.Add(this.mondayCheck);
-            this.Controls.Add(this.sundayCheck);
+            this.ClientSize = new System.Drawing.Size(834, 500);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.editScheduleButton);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.lastGenLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.viewSchedButton);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminMenuForm";
             this.Text = "Admin Menu";
             this.Load += new System.EventHandler(this.AdminMenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsUpDn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.busyConsultantsUpDn)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel10.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -548,6 +633,7 @@ namespace TetraScheduler
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Button genScheduleButton;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label busyLabel;
         private System.Windows.Forms.ListBox busyListBox;
@@ -585,5 +671,10 @@ namespace TetraScheduler
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown shiftLengthUpDn;
         private System.Windows.Forms.Button editScheduleButton;
+        private System.Windows.Forms.ListBox daysbox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
     }
 }
