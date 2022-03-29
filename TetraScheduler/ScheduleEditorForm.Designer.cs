@@ -276,6 +276,7 @@
             this.button1.TabIndex = 60;
             this.button1.Text = "Save Schedule";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ScheduleEditorForm
             // 

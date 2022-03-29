@@ -127,7 +127,7 @@ namespace TetraScheduler
             tokens = timeslot.Split('-');
             int starthour = int.Parse(tokens[0].Substring(0, 2));
             int startminute = int.Parse(tokens[0].Substring(3, 2));
-            string startAMPM = tokens[0].Substring(5, 2);
+            string startAMPM = tokens[0].Substring(6, 2);
             if(startAMPM == "PM" && starthour != 12)
             {
                 starthour += 12;
@@ -135,7 +135,7 @@ namespace TetraScheduler
 
             int endhour = int.Parse(tokens[1].Substring(0, 2));
             int endminute = int.Parse(tokens[1].Substring (3, 2));
-            string endAMPM = tokens[1].Substring (5, 2);
+            string endAMPM = tokens[1].Substring (6, 2);
 
             if(endAMPM == "PM" && endhour != 12)
             {
@@ -217,6 +217,38 @@ namespace TetraScheduler
             selectedShift.AddUser(userSelectForm.selectedUserInfo);
             consultantsWorkingShift.DataSource = null;
             consultantsWorkingShift.DataSource = selectedShift.users;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Schedule outputSchedule = new Schedule();
+            //outputSchedule.shifts = new List<Shift>[7];
+            List<Shift> tempShiftList = new List<Shift>();
+            List<ListBox.ObjectCollection> tempCollections = new List<ListBox.ObjectCollection>();
+            tempCollections.Add(sundayObjectCollection);
+            tempCollections.Add(mondayObjectCollection);
+            tempCollections.Add(tuesdayObjectCollection);
+            tempCollections.Add(wednesdayObjectCollection);
+            tempCollections.Add(thursdayObjectCollection);
+            tempCollections.Add(fridayObjectCollection);
+            tempCollections.Add(saturdayObjectCollection);
+
+            //converting to schedule because my code was trash in the first place xD
+            for (int i = 0; i < 7; i++)
+            {
+                //outputSchedule.shifts[i] = new List<Shift>();
+                foreach(Object obj in tempCollections[i])
+                {
+                    Debug.WriteLine((Shift)obj);
+                    tempShiftList.Add((Shift)obj);
+                }
+
+                outputSchedule.shifts[i] = tempShiftList;
+                tempShiftList = new List<Shift>();
+            }
+            //TODO make this work
+            //Make outputSchedule have a proper shift length instead of defaults
+            ScheduleMaker.ScheduleToCSV(outputSchedule);
         }
     }
 }

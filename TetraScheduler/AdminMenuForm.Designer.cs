@@ -75,6 +75,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -118,10 +119,10 @@ namespace TetraScheduler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(135, 341);
+            this.button3.Location = new System.Drawing.Point(142, 341);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(147, 32);
+            this.button3.Size = new System.Drawing.Size(140, 32);
             this.button3.TabIndex = 14;
             this.button3.Text = "Save Admin Info";
             this.button3.UseVisualStyleBackColor = true;
@@ -197,10 +198,16 @@ namespace TetraScheduler
             this.consecutiveShiftsUpDn.Name = "consecutiveShiftsUpDn";
             this.consecutiveShiftsUpDn.Size = new System.Drawing.Size(37, 23);
             this.consecutiveShiftsUpDn.TabIndex = 24;
+            this.consecutiveShiftsUpDn.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.button3);
@@ -258,6 +265,11 @@ namespace TetraScheduler
             this.consultantsNeededUpDn.Name = "consultantsNeededUpDn";
             this.consultantsNeededUpDn.Size = new System.Drawing.Size(37, 23);
             this.consultantsNeededUpDn.TabIndex = 52;
+            this.consultantsNeededUpDn.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // busyConsultantsUpDn
             // 
@@ -266,6 +278,11 @@ namespace TetraScheduler
             this.busyConsultantsUpDn.Name = "busyConsultantsUpDn";
             this.busyConsultantsUpDn.Size = new System.Drawing.Size(37, 23);
             this.busyConsultantsUpDn.TabIndex = 53;
+            this.busyConsultantsUpDn.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -600,6 +617,17 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(295, 198);
             this.panel2.TabIndex = 56;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 341);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 32);
+            this.button2.TabIndex = 58;
+            this.button2.Text = "Generate Schedule";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.genScheduleButton_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -685,5 +713,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button2;
     }
 }
