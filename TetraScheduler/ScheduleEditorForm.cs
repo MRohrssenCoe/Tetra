@@ -244,7 +244,7 @@ namespace TetraScheduler
                 }
 
                 outputSchedule.shifts[i] = tempShiftList;
-                tempShiftList.Clear();
+                tempShiftList = new List<Shift>();
             }
             //TODO make this work
             ScheduleMaker.ScheduleToCSV(outputSchedule);
