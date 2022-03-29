@@ -89,7 +89,7 @@ namespace TetraScheduler
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(119, 47);
+            this.label3.Location = new System.Drawing.Point(91, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 15);
             this.label3.TabIndex = 15;
@@ -99,7 +99,7 @@ namespace TetraScheduler
             // 
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.welcomeLabel.Location = new System.Drawing.Point(323, 7);
+            this.welcomeLabel.Location = new System.Drawing.Point(283, 5);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(192, 30);
             this.welcomeLabel.TabIndex = 0;
@@ -118,7 +118,8 @@ namespace TetraScheduler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(156, 382);
+            this.button3.Location = new System.Drawing.Point(135, 341);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(147, 32);
             this.button3.TabIndex = 14;
@@ -129,7 +130,7 @@ namespace TetraScheduler
             // busyLabel
             // 
             this.busyLabel.AutoSize = true;
-            this.busyLabel.Location = new System.Drawing.Point(83, 5);
+            this.busyLabel.Location = new System.Drawing.Point(83, 4);
             this.busyLabel.Name = "busyLabel";
             this.busyLabel.Size = new System.Drawing.Size(64, 15);
             this.busyLabel.TabIndex = 19;
@@ -139,14 +140,15 @@ namespace TetraScheduler
             // 
             this.busyListBox.FormattingEnabled = true;
             this.busyListBox.ItemHeight = 15;
-            this.busyListBox.Location = new System.Drawing.Point(2, 23);
+            this.busyListBox.Location = new System.Drawing.Point(16, 21);
+            this.busyListBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.busyListBox.Name = "busyListBox";
-            this.busyListBox.Size = new System.Drawing.Size(242, 109);
+            this.busyListBox.Size = new System.Drawing.Size(218, 94);
             this.busyListBox.TabIndex = 18;
             // 
             // selectBusyShiftsButton
             // 
-            this.selectBusyShiftsButton.Location = new System.Drawing.Point(57, 137);
+            this.selectBusyShiftsButton.Location = new System.Drawing.Point(64, 126);
             this.selectBusyShiftsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.selectBusyShiftsButton.Name = "selectBusyShiftsButton";
             this.selectBusyShiftsButton.Size = new System.Drawing.Size(128, 22);
@@ -158,7 +160,8 @@ namespace TetraScheduler
             // mixYearsCheck
             // 
             this.mixYearsCheck.AutoSize = true;
-            this.mixYearsCheck.Location = new System.Drawing.Point(3, 24);
+            this.mixYearsCheck.Location = new System.Drawing.Point(3, 18);
+            this.mixYearsCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mixYearsCheck.Name = "mixYearsCheck";
             this.mixYearsCheck.Size = new System.Drawing.Size(128, 19);
             this.mixYearsCheck.TabIndex = 22;
@@ -168,7 +171,8 @@ namespace TetraScheduler
             // mixMajorCheck
             // 
             this.mixMajorCheck.AutoSize = true;
-            this.mixMajorCheck.Location = new System.Drawing.Point(3, 3);
+            this.mixMajorCheck.Location = new System.Drawing.Point(3, 2);
+            this.mixMajorCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mixMajorCheck.Name = "mixMajorCheck";
             this.mixMajorCheck.Size = new System.Drawing.Size(99, 19);
             this.mixMajorCheck.TabIndex = 21;
@@ -178,7 +182,8 @@ namespace TetraScheduler
             // mixSemestersCheck
             // 
             this.mixSemestersCheck.AutoSize = true;
-            this.mixSemestersCheck.Location = new System.Drawing.Point(3, 44);
+            this.mixSemestersCheck.Location = new System.Drawing.Point(3, 36);
+            this.mixSemestersCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mixSemestersCheck.Name = "mixSemestersCheck";
             this.mixSemestersCheck.Size = new System.Drawing.Size(189, 19);
             this.mixSemestersCheck.TabIndex = 23;
@@ -187,7 +192,7 @@ namespace TetraScheduler
             // 
             // consecutiveShiftsUpDn
             // 
-            this.consecutiveShiftsUpDn.Location = new System.Drawing.Point(207, 76);
+            this.consecutiveShiftsUpDn.Location = new System.Drawing.Point(181, 66);
             this.consecutiveShiftsUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.consecutiveShiftsUpDn.Name = "consecutiveShiftsUpDn";
             this.consecutiveShiftsUpDn.Size = new System.Drawing.Size(37, 23);
@@ -202,7 +207,7 @@ namespace TetraScheduler
             this.panel1.Controls.Add(this.genScheduleButton);
             this.panel1.Location = new System.Drawing.Point(12, 65);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(310, 427);
+            this.panel1.Size = new System.Drawing.Size(287, 377);
             this.panel1.TabIndex = 12;
             // 
             // panel4
@@ -218,15 +223,16 @@ namespace TetraScheduler
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(32, 174);
+            this.panel4.Location = new System.Drawing.Point(30, 161);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(246, 185);
+            this.panel4.Size = new System.Drawing.Size(223, 176);
             this.panel4.TabIndex = 57;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 152);
+            this.label8.Location = new System.Drawing.Point(4, 149);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(127, 15);
             this.label8.TabIndex = 57;
@@ -234,7 +240,7 @@ namespace TetraScheduler
             // 
             // shiftLengthUpDn
             // 
-            this.shiftLengthUpDn.Location = new System.Drawing.Point(207, 153);
+            this.shiftLengthUpDn.Location = new System.Drawing.Point(181, 147);
             this.shiftLengthUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.shiftLengthUpDn.Name = "shiftLengthUpDn";
             this.shiftLengthUpDn.Size = new System.Drawing.Size(37, 23);
@@ -247,7 +253,7 @@ namespace TetraScheduler
             // 
             // consultantsNeededUpDn
             // 
-            this.consultantsNeededUpDn.Location = new System.Drawing.Point(207, 101);
+            this.consultantsNeededUpDn.Location = new System.Drawing.Point(181, 93);
             this.consultantsNeededUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.consultantsNeededUpDn.Name = "consultantsNeededUpDn";
             this.consultantsNeededUpDn.Size = new System.Drawing.Size(37, 23);
@@ -255,7 +261,7 @@ namespace TetraScheduler
             // 
             // busyConsultantsUpDn
             // 
-            this.busyConsultantsUpDn.Location = new System.Drawing.Point(207, 128);
+            this.busyConsultantsUpDn.Location = new System.Drawing.Point(181, 120);
             this.busyConsultantsUpDn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.busyConsultantsUpDn.Name = "busyConsultantsUpDn";
             this.busyConsultantsUpDn.Size = new System.Drawing.Size(37, 23);
@@ -264,7 +270,7 @@ namespace TetraScheduler
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 127);
+            this.label5.Location = new System.Drawing.Point(3, 122);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(144, 15);
             this.label5.TabIndex = 55;
@@ -273,7 +279,7 @@ namespace TetraScheduler
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 76);
+            this.label1.Location = new System.Drawing.Point(4, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 15);
             this.label1.TabIndex = 25;
@@ -282,7 +288,7 @@ namespace TetraScheduler
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 101);
+            this.label2.Location = new System.Drawing.Point(4, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 15);
             this.label2.TabIndex = 54;
@@ -293,17 +299,18 @@ namespace TetraScheduler
             this.panel3.Controls.Add(this.busyListBox);
             this.panel3.Controls.Add(this.busyLabel);
             this.panel3.Controls.Add(this.selectBusyShiftsButton);
-            this.panel3.Location = new System.Drawing.Point(32, 5);
+            this.panel3.Location = new System.Drawing.Point(14, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(246, 162);
+            this.panel3.Size = new System.Drawing.Size(249, 155);
             this.panel3.TabIndex = 57;
             // 
             // editScheduleButton
             // 
-            this.editScheduleButton.Location = new System.Drawing.Point(665, 305);
+            this.editScheduleButton.Location = new System.Drawing.Point(654, 263);
             this.editScheduleButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editScheduleButton.Name = "editScheduleButton";
-            this.editScheduleButton.Size = new System.Drawing.Size(150, 32);
+            this.editScheduleButton.Size = new System.Drawing.Size(153, 30);
             this.editScheduleButton.TabIndex = 54;
             this.editScheduleButton.Text = "Edit Schedule";
             this.editScheduleButton.UseVisualStyleBackColor = true;
@@ -312,7 +319,7 @@ namespace TetraScheduler
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 122);
+            this.label6.Location = new System.Drawing.Point(20, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 15);
             this.label6.TabIndex = 36;
@@ -321,7 +328,7 @@ namespace TetraScheduler
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(121, 122);
+            this.label7.Location = new System.Drawing.Point(113, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 15);
             this.label7.TabIndex = 37;
@@ -329,7 +336,7 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(665, 458);
+            this.logoutButton.Location = new System.Drawing.Point(651, 407);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(150, 32);
@@ -341,7 +348,7 @@ namespace TetraScheduler
             // lastGenLabel
             // 
             this.lastGenLabel.AutoSize = true;
-            this.lastGenLabel.Location = new System.Drawing.Point(682, 380);
+            this.lastGenLabel.Location = new System.Drawing.Point(671, 333);
             this.lastGenLabel.Name = "lastGenLabel";
             this.lastGenLabel.Size = new System.Drawing.Size(112, 15);
             this.lastGenLabel.TabIndex = 41;
@@ -350,7 +357,7 @@ namespace TetraScheduler
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(705, 47);
+            this.label4.Location = new System.Drawing.Point(688, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 15);
             this.label4.TabIndex = 43;
@@ -359,23 +366,22 @@ namespace TetraScheduler
             // panel10
             // 
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.button1);
             this.panel10.Controls.Add(this.viewAdminButton);
-            this.panel10.Controls.Add(this.removeAccButton);
             this.panel10.Controls.Add(this.addAccButton);
             this.panel10.Controls.Add(this.viewConsultButton);
-            this.panel10.Location = new System.Drawing.Point(662, 65);
+            this.panel10.Controls.Add(this.removeAccButton);
+            this.panel10.Location = new System.Drawing.Point(647, 64);
             this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(161, 214);
+            this.panel10.Size = new System.Drawing.Size(165, 181);
             this.panel10.TabIndex = 42;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 174);
+            this.button1.Location = new System.Drawing.Point(755, 8);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 33);
+            this.button1.Size = new System.Drawing.Size(57, 33);
             this.button1.TabIndex = 54;
             this.button1.Text = "Help";
             this.button1.UseVisualStyleBackColor = true;
@@ -413,7 +419,8 @@ namespace TetraScheduler
             // 
             // viewConsultButton
             // 
-            this.viewConsultButton.Location = new System.Drawing.Point(4, 3);
+            this.viewConsultButton.Location = new System.Drawing.Point(3, 4);
+            this.viewConsultButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewConsultButton.Name = "viewConsultButton";
             this.viewConsultButton.Size = new System.Drawing.Size(153, 37);
             this.viewConsultButton.TabIndex = 2;
@@ -423,10 +430,10 @@ namespace TetraScheduler
             // 
             // viewSchedButton
             // 
-            this.viewSchedButton.Location = new System.Drawing.Point(665, 341);
+            this.viewSchedButton.Location = new System.Drawing.Point(654, 299);
             this.viewSchedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewSchedButton.Name = "viewSchedButton";
-            this.viewSchedButton.Size = new System.Drawing.Size(150, 32);
+            this.viewSchedButton.Size = new System.Drawing.Size(153, 32);
             this.viewSchedButton.TabIndex = 40;
             this.viewSchedButton.Text = "View Current Schedule";
             this.viewSchedButton.UseVisualStyleBackColor = true;
@@ -435,7 +442,7 @@ namespace TetraScheduler
             // sundayCheck
             // 
             this.sundayCheck.AutoSize = true;
-            this.sundayCheck.Location = new System.Drawing.Point(209, 8);
+            this.sundayCheck.Location = new System.Drawing.Point(204, 7);
             this.sundayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sundayCheck.Name = "sundayCheck";
             this.sundayCheck.Size = new System.Drawing.Size(65, 19);
@@ -449,7 +456,7 @@ namespace TetraScheduler
             this.mondayCheck.AutoSize = true;
             this.mondayCheck.Checked = true;
             this.mondayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mondayCheck.Location = new System.Drawing.Point(209, 25);
+            this.mondayCheck.Location = new System.Drawing.Point(204, 27);
             this.mondayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mondayCheck.Name = "mondayCheck";
             this.mondayCheck.Size = new System.Drawing.Size(70, 19);
@@ -463,7 +470,7 @@ namespace TetraScheduler
             this.wednesdayCheck.AutoSize = true;
             this.wednesdayCheck.Checked = true;
             this.wednesdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.wednesdayCheck.Location = new System.Drawing.Point(209, 59);
+            this.wednesdayCheck.Location = new System.Drawing.Point(204, 67);
             this.wednesdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.wednesdayCheck.Name = "wednesdayCheck";
             this.wednesdayCheck.Size = new System.Drawing.Size(87, 19);
@@ -477,7 +484,7 @@ namespace TetraScheduler
             this.thursdayCheck.AutoSize = true;
             this.thursdayCheck.Checked = true;
             this.thursdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.thursdayCheck.Location = new System.Drawing.Point(209, 76);
+            this.thursdayCheck.Location = new System.Drawing.Point(204, 87);
             this.thursdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.thursdayCheck.Name = "thursdayCheck";
             this.thursdayCheck.Size = new System.Drawing.Size(74, 19);
@@ -491,7 +498,7 @@ namespace TetraScheduler
             this.fridayCheck.AutoSize = true;
             this.fridayCheck.Checked = true;
             this.fridayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.fridayCheck.Location = new System.Drawing.Point(209, 93);
+            this.fridayCheck.Location = new System.Drawing.Point(204, 107);
             this.fridayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fridayCheck.Name = "fridayCheck";
             this.fridayCheck.Size = new System.Drawing.Size(58, 19);
@@ -503,7 +510,7 @@ namespace TetraScheduler
             // saturdayCheck
             // 
             this.saturdayCheck.AutoSize = true;
-            this.saturdayCheck.Location = new System.Drawing.Point(209, 112);
+            this.saturdayCheck.Location = new System.Drawing.Point(204, 127);
             this.saturdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saturdayCheck.Name = "saturdayCheck";
             this.saturdayCheck.Size = new System.Drawing.Size(72, 19);
@@ -517,7 +524,7 @@ namespace TetraScheduler
             this.tuesdayCheck.AutoSize = true;
             this.tuesdayCheck.Checked = true;
             this.tuesdayCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.tuesdayCheck.Location = new System.Drawing.Point(209, 42);
+            this.tuesdayCheck.Location = new System.Drawing.Point(204, 47);
             this.tuesdayCheck.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tuesdayCheck.Name = "tuesdayCheck";
             this.tuesdayCheck.Size = new System.Drawing.Size(69, 19);
@@ -530,7 +537,7 @@ namespace TetraScheduler
             // 
             this.openTimePicker.CustomFormat = "hh:mm tt";
             this.openTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.openTimePicker.Location = new System.Drawing.Point(12, 139);
+            this.openTimePicker.Location = new System.Drawing.Point(8, 123);
             this.openTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.openTimePicker.Name = "openTimePicker";
             this.openTimePicker.ShowUpDown = true;
@@ -543,7 +550,7 @@ namespace TetraScheduler
             // 
             this.closeTimePicker.CustomFormat = "hh:mm tt";
             this.closeTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.closeTimePicker.Location = new System.Drawing.Point(121, 139);
+            this.closeTimePicker.Location = new System.Drawing.Point(106, 123);
             this.closeTimePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeTimePicker.Name = "closeTimePicker";
             this.closeTimePicker.ShowUpDown = true;
@@ -556,17 +563,17 @@ namespace TetraScheduler
             // 
             this.daysbox.FormattingEnabled = true;
             this.daysbox.ItemHeight = 15;
-            this.daysbox.Location = new System.Drawing.Point(12, 8);
+            this.daysbox.Location = new System.Drawing.Point(10, 6);
             this.daysbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.daysbox.Name = "daysbox";
-            this.daysbox.Size = new System.Drawing.Size(191, 109);
+            this.daysbox.Size = new System.Drawing.Size(188, 94);
             this.daysbox.TabIndex = 54;
             this.daysbox.SelectedIndexChanged += new System.EventHandler(this.handle_DayClick);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(436, 47);
+            this.label9.Location = new System.Drawing.Point(428, 47);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 15);
             this.label9.TabIndex = 55;
@@ -587,16 +594,18 @@ namespace TetraScheduler
             this.panel2.Controls.Add(this.tuesdayCheck);
             this.panel2.Controls.Add(this.openTimePicker);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(340, 65);
+            this.panel2.Location = new System.Drawing.Point(321, 66);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(301, 170);
+            this.panel2.Size = new System.Drawing.Size(295, 159);
             this.panel2.TabIndex = 56;
             // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 500);
+            this.ClientSize = new System.Drawing.Size(818, 452);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.editScheduleButton);
