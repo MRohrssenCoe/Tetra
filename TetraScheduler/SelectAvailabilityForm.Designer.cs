@@ -143,15 +143,6 @@
             this.sat_listbox.FormattingEnabled = true;
             this.sat_listbox.HorizontalScrollbar = true;
             this.sat_listbox.ItemHeight = 15;
-            this.sat_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.sat_listbox.Location = new System.Drawing.Point(1074, 3);
             this.sat_listbox.Name = "sat_listbox";
             this.sat_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -163,15 +154,6 @@
             this.fri_listbox.FormattingEnabled = true;
             this.fri_listbox.HorizontalScrollbar = true;
             this.fri_listbox.ItemHeight = 15;
-            this.fri_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.fri_listbox.Location = new System.Drawing.Point(897, 3);
             this.fri_listbox.Name = "fri_listbox";
             this.fri_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -183,15 +165,6 @@
             this.wed_listbox.FormattingEnabled = true;
             this.wed_listbox.HorizontalScrollbar = true;
             this.wed_listbox.ItemHeight = 15;
-            this.wed_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.wed_listbox.Location = new System.Drawing.Point(543, 3);
             this.wed_listbox.Name = "wed_listbox";
             this.wed_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -203,15 +176,6 @@
             this.thurs_listbox.FormattingEnabled = true;
             this.thurs_listbox.HorizontalScrollbar = true;
             this.thurs_listbox.ItemHeight = 15;
-            this.thurs_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.thurs_listbox.Location = new System.Drawing.Point(720, 3);
             this.thurs_listbox.Name = "thurs_listbox";
             this.thurs_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -223,15 +187,6 @@
             this.tues_listbox.FormattingEnabled = true;
             this.tues_listbox.HorizontalScrollbar = true;
             this.tues_listbox.ItemHeight = 15;
-            this.tues_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.tues_listbox.Location = new System.Drawing.Point(366, 3);
             this.tues_listbox.Name = "tues_listbox";
             this.tues_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -243,15 +198,6 @@
             this.mon_listbox.FormattingEnabled = true;
             this.mon_listbox.HorizontalScrollbar = true;
             this.mon_listbox.ItemHeight = 15;
-            this.mon_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.mon_listbox.Location = new System.Drawing.Point(191, 3);
             this.mon_listbox.Name = "mon_listbox";
             this.mon_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -263,15 +209,6 @@
             this.sun_listbox.FormattingEnabled = true;
             this.sun_listbox.HorizontalScrollbar = true;
             this.sun_listbox.ItemHeight = 15;
-            this.sun_listbox.Items.AddRange(new object[] {
-            "9AM-10AM",
-            "10AM-11AM",
-            "11AM-12PM",
-            "12PM-1PM",
-            "1PM-2PM",
-            "2PM-3PM",
-            "3PM-4PM",
-            "4PM-5PM"});
             this.sun_listbox.Location = new System.Drawing.Point(12, 3);
             this.sun_listbox.Name = "sun_listbox";
             this.sun_listbox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -326,7 +263,7 @@
         private System.Windows.Forms.ListBox thurs_listbox;
         private System.Windows.Forms.ListBox tues_listbox;
         private System.Windows.Forms.ListBox mon_listbox;
-        private System.Windows.Forms.ListBox sun_listbox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox sun_listbox;
     }
 }
