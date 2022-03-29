@@ -57,11 +57,11 @@ namespace TetraScheduler
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.viewAdminButton = new System.Windows.Forms.Button();
-            this.removeAccButton = new System.Windows.Forms.Button();
             this.addAccButton = new System.Windows.Forms.Button();
             this.viewConsultButton = new System.Windows.Forms.Button();
+            this.removeAccButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.viewSchedButton = new System.Windows.Forms.Button();
             this.sundayCheck = new System.Windows.Forms.CheckBox();
             this.mondayCheck = new System.Windows.Forms.CheckBox();
@@ -75,6 +75,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -118,10 +119,10 @@ namespace TetraScheduler
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(135, 341);
+            this.button3.Location = new System.Drawing.Point(142, 341);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(147, 32);
+            this.button3.Size = new System.Drawing.Size(140, 32);
             this.button3.TabIndex = 14;
             this.button3.Text = "Save Admin Info";
             this.button3.UseVisualStyleBackColor = true;
@@ -201,6 +202,7 @@ namespace TetraScheduler
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.button3);
@@ -376,17 +378,6 @@ namespace TetraScheduler
             this.panel10.Size = new System.Drawing.Size(165, 181);
             this.panel10.TabIndex = 42;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(755, 8);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(57, 33);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Help";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // viewAdminButton
             // 
             this.viewAdminButton.Location = new System.Drawing.Point(3, 46);
@@ -396,16 +387,6 @@ namespace TetraScheduler
             this.viewAdminButton.Text = "Update User Info";
             this.viewAdminButton.UseVisualStyleBackColor = true;
             this.viewAdminButton.Click += new System.EventHandler(this.viewAdminButton_Click);
-            // 
-            // removeAccButton
-            // 
-            this.removeAccButton.Location = new System.Drawing.Point(3, 132);
-            this.removeAccButton.Name = "removeAccButton";
-            this.removeAccButton.Size = new System.Drawing.Size(153, 37);
-            this.removeAccButton.TabIndex = 4;
-            this.removeAccButton.Text = "Remove Account";
-            this.removeAccButton.UseVisualStyleBackColor = true;
-            this.removeAccButton.Click += new System.EventHandler(this.removeAccButton_Click);
             // 
             // addAccButton
             // 
@@ -427,6 +408,27 @@ namespace TetraScheduler
             this.viewConsultButton.Text = "View Consultant Info";
             this.viewConsultButton.UseVisualStyleBackColor = true;
             this.viewConsultButton.Click += new System.EventHandler(this.viewConsultButton_Click);
+            // 
+            // removeAccButton
+            // 
+            this.removeAccButton.Location = new System.Drawing.Point(3, 132);
+            this.removeAccButton.Name = "removeAccButton";
+            this.removeAccButton.Size = new System.Drawing.Size(153, 37);
+            this.removeAccButton.TabIndex = 4;
+            this.removeAccButton.Text = "Remove Account";
+            this.removeAccButton.UseVisualStyleBackColor = true;
+            this.removeAccButton.Click += new System.EventHandler(this.removeAccButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(755, 8);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(57, 33);
+            this.button1.TabIndex = 54;
+            this.button1.Text = "Help";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // viewSchedButton
             // 
@@ -600,6 +602,17 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(295, 159);
             this.panel2.TabIndex = 56;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 341);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 32);
+            this.button2.TabIndex = 58;
+            this.button2.Text = "Generate Schedule";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.genScheduleButton_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -685,5 +698,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button2;
     }
 }
