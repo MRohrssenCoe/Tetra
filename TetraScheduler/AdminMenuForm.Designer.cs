@@ -198,6 +198,11 @@ namespace TetraScheduler
             this.consecutiveShiftsUpDn.Name = "consecutiveShiftsUpDn";
             this.consecutiveShiftsUpDn.Size = new System.Drawing.Size(37, 23);
             this.consecutiveShiftsUpDn.TabIndex = 24;
+            this.consecutiveShiftsUpDn.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // panel1
             // 
@@ -260,6 +265,11 @@ namespace TetraScheduler
             this.consultantsNeededUpDn.Name = "consultantsNeededUpDn";
             this.consultantsNeededUpDn.Size = new System.Drawing.Size(37, 23);
             this.consultantsNeededUpDn.TabIndex = 52;
+            this.consultantsNeededUpDn.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // busyConsultantsUpDn
             // 
@@ -268,6 +278,11 @@ namespace TetraScheduler
             this.busyConsultantsUpDn.Name = "busyConsultantsUpDn";
             this.busyConsultantsUpDn.Size = new System.Drawing.Size(37, 23);
             this.busyConsultantsUpDn.TabIndex = 53;
+            this.busyConsultantsUpDn.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
