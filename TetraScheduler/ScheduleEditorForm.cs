@@ -241,10 +241,10 @@ namespace TetraScheduler
                     Debug.WriteLine((Shift)obj);
                     tempShiftList.Add((Shift)obj);
                 }
-                if(!(tempShiftList[0] is null))
-                {
-                    outputSchedule.shiftLengthMinutes = tempShiftList[0].endTime - tempShiftList[0].startTime;
-                }
+                //if(!(tempShiftList[0] is null))
+                //{
+                //    outputSchedule.shiftLengthMinutes = tempShiftList[0].endTime - tempShiftList[0].startTime;
+                //}
                 outputSchedule.shifts[i] = tempShiftList;
                 tempShiftList = new List<Shift>();
             }

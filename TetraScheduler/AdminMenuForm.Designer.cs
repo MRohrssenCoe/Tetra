@@ -31,7 +31,6 @@ namespace TetraScheduler
         {
             this.label3 = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
-            this.genScheduleButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.busyLabel = new System.Windows.Forms.Label();
             this.busyListBox = new System.Windows.Forms.ListBox();
@@ -106,16 +105,7 @@ namespace TetraScheduler
             this.welcomeLabel.TabIndex = 0;
             this.welcomeLabel.Text = "Welcome, [name]!";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // genScheduleButton
-            // 
-            this.genScheduleButton.Location = new System.Drawing.Point(3, 382);
-            this.genScheduleButton.Name = "genScheduleButton";
-            this.genScheduleButton.Size = new System.Drawing.Size(147, 32);
-            this.genScheduleButton.TabIndex = 1;
-            this.genScheduleButton.Text = "Generate Schedule";
-            this.genScheduleButton.UseVisualStyleBackColor = true;
-            this.genScheduleButton.Click += new System.EventHandler(this.genScheduleButton_Click);
+
             // 
             // button3
             // 
@@ -211,7 +201,6 @@ namespace TetraScheduler
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.genScheduleButton);
             this.panel1.Location = new System.Drawing.Point(12, 65);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(287, 377);
@@ -669,7 +658,6 @@ namespace TetraScheduler
         #endregion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label welcomeLabel;
-        private System.Windows.Forms.Button genScheduleButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label busyLabel;
