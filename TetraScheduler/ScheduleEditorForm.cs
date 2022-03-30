@@ -232,7 +232,6 @@ namespace TetraScheduler
             tempCollections.Add(thursdayObjectCollection);
             tempCollections.Add(fridayObjectCollection);
             tempCollections.Add(saturdayObjectCollection);
-
             //converting to schedule because my code was trash in the first place xD
             for (int i = 0; i < 7; i++)
             {
@@ -242,12 +241,13 @@ namespace TetraScheduler
                     Debug.WriteLine((Shift)obj);
                     tempShiftList.Add((Shift)obj);
                 }
-
+                if(!(tempShiftList[0] is null))
+                {
+                    outputSchedule.shiftLengthMinutes = tempShiftList[0].endTime - tempShiftList[0].startTime;
+                }
                 outputSchedule.shifts[i] = tempShiftList;
                 tempShiftList = new List<Shift>();
             }
-            //TODO make this work
-            //Make outputSchedule have a proper shift length instead of defaults
             ScheduleMaker.ScheduleToCSV(outputSchedule);
         }
     }
