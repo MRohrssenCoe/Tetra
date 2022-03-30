@@ -107,7 +107,8 @@ namespace TetraScheduler
             {
                 foreach (string tok in tokens)
                 {
-                    string[] nameSplit = tok.Split(' ');
+                    string trimtok = tok.Trim();
+                    string[] nameSplit = trimtok.Split(' ');
                     if (nameSplit != null)
                     {
 

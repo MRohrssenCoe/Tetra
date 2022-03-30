@@ -45,8 +45,8 @@ namespace TetraScheduler
                 adminOptions.MaxConsultantsPerShift = 2;
                 adminOptions.MaxConsultantsPerBusyShift = 4;
                 adminOptions.DesiredConsecutiveShifts = 3;
-
                 adminOptions.daysOpen =  new bool[] { false, true, true, true, true, true, false };
+
                 //write default settings
                 FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));

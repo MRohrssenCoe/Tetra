@@ -235,10 +235,8 @@ namespace TetraScheduler
         public static int ScheduleToCSV(Schedule s)
         {
             List<List<string>> ourCSV = new List<List<string>>();
-
-
+            
             // get min start time
-
             int minStart = 24 * 60;
             int maxClose = 0;
             foreach(List<Shift> shiftList in s.shifts)
