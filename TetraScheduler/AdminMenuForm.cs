@@ -39,6 +39,15 @@ namespace TetraScheduler
             if (!File.Exists(this.adminInfoFile))
             { //TODO change to autogenerate with some better defaults.
                 AdminOptions adminOptions = new AdminOptions();
+
+                //default settings
+                adminOptions.ShiftLengthMinutes = 60;
+                adminOptions.MaxConsultantsPerShift = 2;
+                adminOptions.MaxConsultantsPerBusyShift = 4;
+                adminOptions.DesiredConsecutiveShifts = 3;
+
+                adminOptions.daysOpen =  new bool[] { false, true, true, true, true, true, false };
+                //write default settings
                 FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
                 adminOptionsStream.Write(info, 0, info.Length);
@@ -95,7 +104,6 @@ namespace TetraScheduler
             fridayCheck.Checked = ao.daysOpen[5];
             saturdayCheck.Checked = ao.daysOpen[6];
 
-            
         }
 
         private void setTimePicker(int startTime, int endTime)
@@ -365,9 +373,5 @@ namespace TetraScheduler
             Process.Start("explorer", "\"" + filename + "\"");
         }
 
-        private void welcomeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

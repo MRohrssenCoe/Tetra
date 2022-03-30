@@ -43,7 +43,7 @@
             this.tues_listbox = new System.Windows.Forms.ListBox();
             this.mon_listbox = new System.Windows.Forms.ListBox();
             this.sun_listbox = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.selectShiftsButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,15 +215,15 @@
             this.sun_listbox.Size = new System.Drawing.Size(170, 454);
             this.sun_listbox.TabIndex = 0;
             // 
-            // button1
+            // selectShiftsButton
             // 
-            this.button1.Location = new System.Drawing.Point(580, 574);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 39);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Set Availability";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.selectShiftsButton.Location = new System.Drawing.Point(580, 574);
+            this.selectShiftsButton.Name = "selectShiftsButton";
+            this.selectShiftsButton.Size = new System.Drawing.Size(97, 39);
+            this.selectShiftsButton.TabIndex = 35;
+            this.selectShiftsButton.Text = "Select Shifts";
+            this.selectShiftsButton.UseVisualStyleBackColor = true;
+            this.selectShiftsButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // SelectAvailabilityForm
             // 
@@ -238,9 +238,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.selectShiftsButton);
             this.Name = "SelectAvailabilityForm";
-            this.Text = "SelectAvailabilityForm";
+            this.Text = "Select Shifts";
             this.Load += new System.EventHandler(this.SelectAvailabilityForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -263,7 +263,7 @@
         private System.Windows.Forms.ListBox thurs_listbox;
         private System.Windows.Forms.ListBox tues_listbox;
         private System.Windows.Forms.ListBox mon_listbox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button selectShiftsButton;
         private System.Windows.Forms.ListBox sun_listbox;
     }
 }
