@@ -145,22 +145,20 @@ namespace TetraScheduler
             }
             return sb.ToString();
         }
-        public ArrayList getFilledShifts()
+        public List<Shift> getFilledShifts()
         {
             // untested
-            ArrayList fullShifts = new ArrayList();
+            List<Shift> fullShifts = new List<Shift>();
             // returns only shifts that have at least one consultant scheduled
             for (int i = 0; i < 7; i++)
             {
-                ArrayList day = new ArrayList();
                 foreach (Shift s in shifts[i]) // can we just include a variable for the day in the shift class????
                 {
                     if (s.UsersAsText() != "")
                     {
-                        day.Add(s);
+                        fullShifts.Add(s);
                     }
                 }
-                fullShifts.Add(day);
             }
             return fullShifts;
         }

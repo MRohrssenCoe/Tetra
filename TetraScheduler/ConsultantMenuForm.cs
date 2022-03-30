@@ -123,7 +123,7 @@ namespace TetraScheduler
         private void SelectAvailabilityButtonClick(object sender, EventArgs e)
         {
             // availability selection button
-            SelectAvailabilityForm availForm = new SelectAvailabilityForm();
+            SelectAvailabilityForm availForm = new SelectAvailabilityForm(consultantAvailability);
             //show dialog pauses execution
             availForm.ShowDialog();
             UserInfo uInfo = new UserInfo();

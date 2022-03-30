@@ -11,6 +11,7 @@ namespace TetraScheduler
 {
     public partial class UpdateUserForm : Form
     {
+        private string[] token;
         public UpdateUserForm()
         {
             InitializeComponent();
@@ -26,8 +27,7 @@ namespace TetraScheduler
             string tetraFolder = Constants.AppDataFolder;
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string usernameString = File.ReadAllText(pswdFile);
-            string[] token;
-            token = usernameString.Split(",");
+            this.token = usernameString.Split(",");
             int x = 0;
             while (x < token.Length)
             {
@@ -45,6 +45,67 @@ namespace TetraScheduler
                 }
                 x += 3;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CheckedListBox.CheckedIndexCollection i = checkedListBox1.CheckedIndices;
+            foreach(int x in i)
+            {
+                token[(3 * x) + 2] = "0";
+            }
+            String tokenStr = "";
+            for(int y = 0; y < token.Length - 1; y++)
+            {
+                tokenStr = tokenStr + token[y] + ",";
+            }
+            string tetraFolder = Constants.AppDataFolder;
+            string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
+            tokenStr = tokenStr + token[token.Length - 1];
+            File.WriteAllText(pswdFile, tokenStr);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CheckedListBox.CheckedIndexCollection i = checkedListBox1.CheckedIndices;
+            foreach (int x in i)
+            {
+                token[(3 * x) + 2] = "3";
+            }
+            String tokenStr = "";
+            for (int y = 0; y < token.Length - 1; y++)
+            {
+                tokenStr = tokenStr + token[y] + ",";
+            }
+            string tetraFolder = Constants.AppDataFolder;
+            string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
+            tokenStr = tokenStr + token[token.Length - 1];
+            File.WriteAllText(pswdFile, tokenStr);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CheckedListBox.CheckedIndexCollection i = checkedListBox1.CheckedIndices;
+            foreach (int x in i)
+            {
+                String jsonName = token[x * 3] + ".json";
+                String Pathhalf = Constants.userPreferencesFolder;
+                String jsonPath = Path.Combine(Pathhalf, jsonName);
+                File.Delete(jsonPath);
+            }
+            foreach (int x in i)
+            {
+                token[(3 * x) + 2] = "1";
+            }
+            String tokenStr = "";
+            for (int y = 0; y < token.Length - 1; y++)
+            {
+                tokenStr = tokenStr + token[y] + ",";
+            }
+            string tetraFolder = Constants.AppDataFolder;
+            string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
+            tokenStr = tokenStr + token[token.Length - 1];
+            File.WriteAllText(pswdFile, tokenStr);
         }
     }
 }

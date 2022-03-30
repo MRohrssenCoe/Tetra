@@ -69,7 +69,14 @@ namespace TetraScheduler
             }
             if (index == -1)
             {
-                Debug.WriteLine("No such user found: " + ui.FirstName + " " + ui.LastName);
+                if (ui is null)
+                {
+                    Debug.WriteLine("ui was null");
+                }
+                else
+                {
+                    Debug.WriteLine("No such user found: " + ui.FirstName + " " + ui.LastName);
+                }
             }
             else
             {
@@ -116,6 +123,14 @@ namespace TetraScheduler
             String startTime = minutesToHr(this.startTime, true); // 12 hr format
             String endTime = minutesToHr(this.endTime, true); // 12 hr format
             return String.Format("{0}: {1} - {2}", day, startTime, endTime);
+        }
+
+        // same as above but no day and no override
+        public string TimeString()
+        {
+            String startTime = minutesToHr(this.startTime, true); // 12 hr format
+            String endTime = minutesToHr(this.endTime, true); // 12 hr format
+            return String.Format("{0} - {1}", startTime, endTime);
         }
 
         //This overload only compares the time that the shifts start at, because that's the only thing that makes sense to compare

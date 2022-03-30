@@ -37,7 +37,7 @@ namespace TetraScheduler
             //Generate defualt file to avoid crashing lol
             //remembered to actually close the file this time so we don't crash randomly
             if (!File.Exists(this.adminInfoFile))
-            {
+            { //TODO change to autogenerate with some better defaults.
                 AdminOptions adminOptions = new AdminOptions();
                 FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
@@ -192,7 +192,7 @@ namespace TetraScheduler
 
         private void selectBusyShiftsClick(object sender, EventArgs e)
         {
-            SelectAvailabilityForm availForm = new SelectAvailabilityForm();
+            SelectAvailabilityForm availForm = new SelectAvailabilityForm(busyShiftsList);
             availForm.ShowDialog();
             //show dialog pauses execution
             List<Shift> temp = new List<Shift>();
