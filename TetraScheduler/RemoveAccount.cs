@@ -40,8 +40,11 @@ namespace TetraScheduler
                         if (token[x].Equals(username))
                         {
                             removal = true;
-                            fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-                            File.Delete(fileToDelete);//delete user file
+                            if (token[x + 2].Equals("0") || token[x+2].Equals("3"))
+                            {
+                                fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                                File.Delete(fileToDelete);//delete user file
+                            }
                         }
                     }
                     if (!removal) //remove log in info by not including it
@@ -50,6 +53,8 @@ namespace TetraScheduler
                     x += 3;
                 }
                 newString = newString.TrimEnd(',');
+                if (newString.Equals(""))
+                    newString = "admin,password,2";
                 File.WriteAllText(pswdFile, newString);
                 this.Close();
             }

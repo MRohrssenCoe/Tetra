@@ -25,12 +25,10 @@ namespace TetraScheduler
         public AdminMenuForm(String name)
         {
             InitializeComponent();
-            // fun little greeting :)
-            // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
-            adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, name + ".json");
+            adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, "admin" + ".json");
             importAdminInfo();
-
+            
         }
 
         //Same thing as consultant menu. Load info from Json, fill boxes.
@@ -365,6 +363,11 @@ namespace TetraScheduler
         {
             string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
             Process.Start("explorer", "\"" + filename + "\"");
+        }
+
+        private void welcomeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

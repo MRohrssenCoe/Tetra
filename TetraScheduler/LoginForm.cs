@@ -27,7 +27,7 @@ namespace TetraScheduler
         {
             public string username;
             public string password;
-            //0 for consultant, 1 for admin, 2 for default admin
+            //0 for consultant, 1 for admin, 2 for default admin, 3 for both
             public string accountType;
         }
         public LoginForm()
