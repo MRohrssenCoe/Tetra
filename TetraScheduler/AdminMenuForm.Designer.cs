@@ -41,6 +41,7 @@ namespace TetraScheduler
             this.mixSemestersCheck = new System.Windows.Forms.CheckBox();
             this.consecutiveShiftsUpDn = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.shiftLengthUpDn = new System.Windows.Forms.NumericUpDown();
@@ -75,7 +76,6 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.consecutiveShiftsUpDn)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -217,6 +217,17 @@ namespace TetraScheduler
             this.panel1.Size = new System.Drawing.Size(287, 377);
             this.panel1.TabIndex = 12;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(3, 341);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(140, 32);
+            this.button2.TabIndex = 58;
+            this.button2.Text = "Generate Schedule";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.genScheduleButton_Click);
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.mixYearsCheck);
@@ -298,9 +309,9 @@ namespace TetraScheduler
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 15);
+            this.label1.Size = new System.Drawing.Size(172, 15);
             this.label1.TabIndex = 25;
-            this.label1.Text = "Schedule for consecutive shifts?";
+            this.label1.Text = "Max num. of consecutive shifts";
             // 
             // label2
             // 
@@ -399,7 +410,7 @@ namespace TetraScheduler
             this.viewAdminButton.Name = "viewAdminButton";
             this.viewAdminButton.Size = new System.Drawing.Size(153, 37);
             this.viewAdminButton.TabIndex = 5;
-            this.viewAdminButton.Text = "Update User Info";
+            this.viewAdminButton.Text = "Change User Access Level";
             this.viewAdminButton.UseVisualStyleBackColor = true;
             this.viewAdminButton.Click += new System.EventHandler(this.viewAdminButton_Click);
             // 
@@ -616,17 +627,6 @@ namespace TetraScheduler
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(295, 198);
             this.panel2.TabIndex = 56;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(3, 341);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 32);
-            this.button2.TabIndex = 58;
-            this.button2.Text = "Generate Schedule";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.genScheduleButton_Click);
             // 
             // AdminMenuForm
             // 

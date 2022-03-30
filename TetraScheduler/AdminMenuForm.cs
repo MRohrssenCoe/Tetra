@@ -194,7 +194,7 @@ namespace TetraScheduler
 
         private void selectBusyShiftsClick(object sender, EventArgs e)
         {
-            SelectAvailabilityForm availForm = new SelectAvailabilityForm();
+            SelectAvailabilityForm availForm = new SelectAvailabilityForm(busyShiftsList);
             availForm.ShowDialog();
             //show dialog pauses execution
             List<Shift> temp = new List<Shift>();

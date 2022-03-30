@@ -110,12 +110,16 @@ namespace TetraScheduler
             //loop through every box and all of the selected shifts
             foreach (ListBox box in boxes)
             {
-                ListBox.SelectedObjectCollection selections = box.SelectedItems;
-                foreach (Shift item in selections)
+                for (int i = 0; i < box.Items.Count; i++)
                 {
                     //add dummy UI
+                    Shift item = (Shift) box.Items[i];
                     //TODO phase this out and return list of available shifts that aren't marked.
-                    if (!(item.UserAssigned(tempUI))){
+                    if (item.UserAssigned(tempUI) && !box.GetSelected(i))
+                    {
+                        item.RemoveUser(tempUI);
+                    }
+                    else if (!(item.UserAssigned(tempUI)) && box.GetSelected(i)){
                         item.AddUser(tempUI);
                     }
                     
