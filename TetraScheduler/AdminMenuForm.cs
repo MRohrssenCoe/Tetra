@@ -184,6 +184,7 @@ namespace TetraScheduler
             Schedule s = sm.generateSchedule();
             ScheduleMaker.ScheduleToCSV(s);
             Debug.WriteLine(s);
+            MessageBox.Show("New Schedule Generated!");
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)

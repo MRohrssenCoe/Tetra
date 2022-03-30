@@ -236,7 +236,7 @@ namespace TetraScheduler
             for (int i = 0; i < 7; i++)
             {
                 //outputSchedule.shifts[i] = new List<Shift>();
-                foreach(Object obj in tempCollections[i])
+                foreach (Object obj in tempCollections[i])
                 {
                     Debug.WriteLine((Shift)obj);
                     tempShiftList.Add((Shift)obj);
@@ -249,6 +249,11 @@ namespace TetraScheduler
                 tempShiftList = new List<Shift>();
             }
             ScheduleMaker.ScheduleToCSV(outputSchedule);
+        }
+
+        private void ScheduleEditorForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

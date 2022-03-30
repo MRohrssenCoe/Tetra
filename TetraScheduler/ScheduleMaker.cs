@@ -10,10 +10,11 @@ namespace TetraScheduler
     {
         public List<UserInfo> users { get; set; }
         public int maxConseqShifts { get; set; }
-
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
 
         public AdminOptions ao { get; set; }
+
+        private List<UserInfo> unfilled_hours { get; set; }
 
         // variable for admin preferences here
 
@@ -38,6 +39,8 @@ namespace TetraScheduler
             {
                 shift.maxUsers = ao.MaxConsultantsPerBusyShift;
             }
+
+            this.unfilled_hours = new List<UserInfo>();
         }
         public Schedule generateSchedule()
         {
@@ -140,6 +143,13 @@ namespace TetraScheduler
                             }
                         }
                     }
+                }
+
+                // FLAG UNFILLED HOURS
+                if (requestedMinutes > 0)
+                {
+                    unfilled_hours.Add(c);
+                    // add # of unfilled?
                 }
             }
 
@@ -268,12 +278,11 @@ namespace TetraScheduler
             //print first row headers
             string[] headers = { "Time", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
             ourCSV.Add(new List<string>(headers));
-            // start iterating over 7 shift lists - PROBLEM, no indicating which days are full in the Schedule class
             
             for (int i = minStart; i < maxClose; i += shiftLength) // loops numShifts times
             {
                 List<string> csvRow = new List<string>(); // current row
-                string rowLabel = Shift.minutesToHr(i, true) + "-" + Shift.minutesToHr(i + 60, true);
+                string rowLabel = Shift.minutesToHr(i, true) + "-" + Shift.minutesToHr(i + s.shiftLengthMinutes, true); // change to +60?
                 csvRow.Add(rowLabel);
                 foreach (List<Shift> day in shifts)  // loops 7 times
                 {
@@ -302,7 +311,6 @@ namespace TetraScheduler
             }
 
             string schedFile = Path.Combine(Constants.AppDataFolder, Constants.scheduleFileName);
-            
             File.WriteAllLines(schedFile, ourCSV.Select(x => string.Join(",", x)));
             return 0;
         }
