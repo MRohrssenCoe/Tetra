@@ -107,7 +107,8 @@ namespace TetraScheduler
             {
                 foreach (string tok in tokens)
                 {
-                    string[] nameSplit = tok.Split(' ');
+                    string trimtok = tok.Trim();
+                    string[] nameSplit = trimtok.Split(' ');
                     if (nameSplit != null)
                     {
 
@@ -241,19 +242,19 @@ namespace TetraScheduler
                     Debug.WriteLine((Shift)obj);
                     tempShiftList.Add((Shift)obj);
                 }
-                if(!(tempShiftList[0] is null))
-                {
-                    outputSchedule.shiftLengthMinutes = tempShiftList[0].endTime - tempShiftList[0].startTime;
-                }
+                //if(!(tempShiftList[0] is null))
+                //{
+                //    outputSchedule.shiftLengthMinutes = tempShiftList[0].endTime - tempShiftList[0].startTime;
+                //}
                 outputSchedule.shifts[i] = tempShiftList;
                 tempShiftList = new List<Shift>();
             }
             ScheduleMaker.ScheduleToCSV(outputSchedule);
         }
 
-        private void ScheduleEditorForm_Load(object sender, EventArgs e)
+        private void returnToAdminFormButton_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

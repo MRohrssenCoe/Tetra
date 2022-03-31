@@ -25,12 +25,10 @@ namespace TetraScheduler
         public AdminMenuForm(String name)
         {
             InitializeComponent();
-            // fun little greeting :)
-            // change to get their name from the accounts file later
             welcomeLabel.Text = "Welcome, " + name + "!";
-            adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, name + ".json");
+            adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, "admin" + ".json");
             importAdminInfo();
-
+            
         }
 
         //Same thing as consultant menu. Load info from Json, fill boxes.
@@ -41,6 +39,15 @@ namespace TetraScheduler
             if (!File.Exists(this.adminInfoFile))
             { //TODO change to autogenerate with some better defaults.
                 AdminOptions adminOptions = new AdminOptions();
+
+                //default settings
+                adminOptions.ShiftLengthMinutes = 60;
+                adminOptions.MaxConsultantsPerShift = 2;
+                adminOptions.MaxConsultantsPerBusyShift = 4;
+                adminOptions.DesiredConsecutiveShifts = 3;
+                adminOptions.daysOpen =  new bool[] { false, true, true, true, true, true, false };
+
+                //write default settings
                 FileStream adminOptionsStream = File.Open(this.adminInfoFile, FileMode.Create);
                 byte[] info = new UTF8Encoding(true).GetBytes(JsonSerializer.Serialize(adminOptions));
                 adminOptionsStream.Write(info, 0, info.Length);
@@ -97,7 +104,6 @@ namespace TetraScheduler
             fridayCheck.Checked = ao.daysOpen[5];
             saturdayCheck.Checked = ao.daysOpen[6];
 
-            
         }
 
         private void setTimePicker(int startTime, int endTime)
@@ -367,5 +373,6 @@ namespace TetraScheduler
             string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
             Process.Start("explorer", "\"" + filename + "\"");
         }
+
     }
 }

@@ -254,6 +254,7 @@
             this.returnToAdminFormButton.TabIndex = 3;
             this.returnToAdminFormButton.Text = "Return to Admin Menu";
             this.returnToAdminFormButton.UseVisualStyleBackColor = true;
+            this.returnToAdminFormButton.Click += new System.EventHandler(this.returnToAdminFormButton_Click);
             // 
             // button1
             // 
