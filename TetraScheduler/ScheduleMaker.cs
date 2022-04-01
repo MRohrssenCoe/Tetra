@@ -13,8 +13,7 @@ namespace TetraScheduler
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
 
         public AdminOptions ao { get; set; }
-
-        private List<UserInfo> unfilled_hours { get; set; }
+        public Dictionary<UserInfo, int> unfilled_users { get; }
 
         // variable for admin preferences here
 
@@ -40,7 +39,7 @@ namespace TetraScheduler
                 shift.maxUsers = ao.MaxConsultantsPerBusyShift;
             }
 
-            this.unfilled_hours = new List<UserInfo>();
+            this.unfilled_users = new Dictionary<UserInfo, int>();
         }
         public Schedule generateSchedule()
         {
@@ -148,7 +147,7 @@ namespace TetraScheduler
                 // FLAG UNFILLED HOURS
                 if (requestedMinutes > 0)
                 {
-                    unfilled_hours.Add(c);
+                    unfilled_users.Add(c, requestedMinutes);
                     // add # of unfilled?
                 }
             }
