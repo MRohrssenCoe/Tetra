@@ -107,7 +107,8 @@ namespace TetraScheduler
             {
                 foreach (string tok in tokens)
                 {
-                    string[] nameSplit = tok.Split(' ');
+                    string trimtok = tok.Trim();
+                    string[] nameSplit = trimtok.Split(' ');
                     if (nameSplit != null)
                     {
 
@@ -127,7 +128,7 @@ namespace TetraScheduler
             tokens = timeslot.Split('-');
             int starthour = int.Parse(tokens[0].Substring(0, 2));
             int startminute = int.Parse(tokens[0].Substring(3, 2));
-            string startAMPM = tokens[0].Substring(5, 2);
+            string startAMPM = tokens[0].Substring(6, 2);
             if(startAMPM == "PM" && starthour != 12)
             {
                 starthour += 12;
@@ -135,7 +136,7 @@ namespace TetraScheduler
 
             int endhour = int.Parse(tokens[1].Substring(0, 2));
             int endminute = int.Parse(tokens[1].Substring (3, 2));
-            string endAMPM = tokens[1].Substring (5, 2);
+            string endAMPM = tokens[1].Substring (6, 2);
 
             if(endAMPM == "PM" && endhour != 12)
             {
@@ -217,6 +218,43 @@ namespace TetraScheduler
             selectedShift.AddUser(userSelectForm.selectedUserInfo);
             consultantsWorkingShift.DataSource = null;
             consultantsWorkingShift.DataSource = selectedShift.users;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Schedule outputSchedule = new Schedule();
+            //outputSchedule.shifts = new List<Shift>[7];
+            List<Shift> tempShiftList = new List<Shift>();
+            List<ListBox.ObjectCollection> tempCollections = new List<ListBox.ObjectCollection>();
+            tempCollections.Add(sundayObjectCollection);
+            tempCollections.Add(mondayObjectCollection);
+            tempCollections.Add(tuesdayObjectCollection);
+            tempCollections.Add(wednesdayObjectCollection);
+            tempCollections.Add(thursdayObjectCollection);
+            tempCollections.Add(fridayObjectCollection);
+            tempCollections.Add(saturdayObjectCollection);
+            //converting to schedule because my code was trash in the first place xD
+            for (int i = 0; i < 7; i++)
+            {
+                //outputSchedule.shifts[i] = new List<Shift>();
+                foreach (Object obj in tempCollections[i])
+                {
+                    Debug.WriteLine((Shift)obj);
+                    tempShiftList.Add((Shift)obj);
+                }
+                //if(!(tempShiftList[0] is null))
+                //{
+                //    outputSchedule.shiftLengthMinutes = tempShiftList[0].endTime - tempShiftList[0].startTime;
+                //}
+                outputSchedule.shifts[i] = tempShiftList;
+                tempShiftList = new List<Shift>();
+            }
+            ScheduleMaker.ScheduleToCSV(outputSchedule);
+        }
+
+        private void returnToAdminFormButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

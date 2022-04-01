@@ -54,6 +54,18 @@ namespace TetraScheduler
 
         }
 
+        private void AdminPasswordBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // checks for enter pressed in the password box to submit login
+            if (e.KeyChar == (char)13)
+            {
+
+                this.UsernameReturn = AdminUsernameBox.Text;
+                this.PasswordReturn = AdminPasswordBox.Text;
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+
         private void AdminPasswordBox_Leave(object sender, EventArgs e)
         {
             if (AdminPasswordBox.Text == "")
@@ -64,6 +76,11 @@ namespace TetraScheduler
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AdminPasswordBox_TextChanged(object sender, EventArgs e)
         {
 
         }
