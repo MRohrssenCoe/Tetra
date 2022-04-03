@@ -365,6 +365,7 @@ namespace TetraScheduler
             this.removeAccountButton.TabIndex = 6;
             this.removeAccountButton.Text = "Remove Account";
             this.removeAccountButton.UseVisualStyleBackColor = true;
+            this.removeAccountButton.Click += new System.EventHandler(this.removeAccButton_Click);
             // 
             // viewAdminButton
             // 

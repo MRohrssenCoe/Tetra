@@ -232,7 +232,7 @@ namespace TetraScheduler
             if (ao.MixYear)
             {
                 // get max distance from school year
-                int yearInSchool = ui.coeYear;
+                int yearInSchool = ui.schoolYear;
                 int maxYearDif = s.maxDistanceCoeYear(yearInSchool);
                 value += (-1 * maxYearDif); // add negative - higher dif = better fit
             }
