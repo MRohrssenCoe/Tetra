@@ -204,7 +204,7 @@ namespace TetraScheduler
             int max = 0;
             foreach (UserInfo user in users)
             {
-                int dif = Math.Abs(user.coeYear - yr);
+                int dif = Math.Abs(user.schoolYear - yr);
                 if (dif > max)
                 {
                     max = dif;

@@ -12,7 +12,7 @@ namespace TetraScheduler
         public string LastName { get; set; }
         public string[] majors { get; set; }
         public int expSemesters { get; set; }
-        public int coeYear { get; set; }
+        public int schoolYear { get; set; }
         public int desiredWeeklyHours { get; set; }
         public List<Shift> availability { get; set; }
 
@@ -23,7 +23,7 @@ namespace TetraScheduler
             LastName = lastName;
             this.majors = majors;
             this.expSemesters = expSemesters;
-            this.coeYear = coeYear;
+            this.schoolYear = coeYear;
             this.desiredWeeklyHours = desiredWeeklyHours;
             this.availability = availability;
         }
@@ -33,7 +33,7 @@ namespace TetraScheduler
             LastName = "";
             //TODO: fix null issue with empty majors array
             this.expSemesters = 0;
-            this.coeYear = 0;
+            this.schoolYear = 0;
             desiredWeeklyHours = 0;
             availability = new List<Shift>();
         }
