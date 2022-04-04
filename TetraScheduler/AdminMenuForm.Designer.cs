@@ -29,6 +29,7 @@ namespace TetraScheduler
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMenuForm));
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -85,6 +86,7 @@ namespace TetraScheduler
             // welcomeLabel
             // 
             this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.welcomeLabel.Location = new System.Drawing.Point(14, 12);
             this.welcomeLabel.Name = "welcomeLabel";
@@ -106,6 +108,7 @@ namespace TetraScheduler
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.mixYearsCheck);
             this.panel1.Controls.Add(this.mixMajorCheck);
@@ -324,6 +327,7 @@ namespace TetraScheduler
             // lastGenLabel
             // 
             this.lastGenLabel.AutoSize = true;
+            this.lastGenLabel.BackColor = System.Drawing.Color.Transparent;
             this.lastGenLabel.Location = new System.Drawing.Point(567, 533);
             this.lastGenLabel.Name = "lastGenLabel";
             this.lastGenLabel.Size = new System.Drawing.Size(141, 20);
@@ -333,6 +337,7 @@ namespace TetraScheduler
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(806, 32);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 20);
@@ -341,6 +346,7 @@ namespace TetraScheduler
             // 
             // panel10
             // 
+            this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.removeAccountButton);
             this.panel10.Controls.Add(this.viewAdminButton);
@@ -550,6 +556,7 @@ namespace TetraScheduler
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Location = new System.Drawing.Point(403, 32);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 20);
@@ -558,6 +565,7 @@ namespace TetraScheduler
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.daysbox);
             this.panel2.Controls.Add(this.thursdayCheck);
@@ -581,7 +589,9 @@ namespace TetraScheduler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(953, 667);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(971, 647);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.editScheduleButton);
