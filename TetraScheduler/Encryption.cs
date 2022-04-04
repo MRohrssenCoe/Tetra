@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TetraScheduler
 {
-    
+    /*
     public class Encrypt
     {
         string tetraFolder = Constants.AppDataFolder;
@@ -13,4 +13,5 @@ namespace TetraScheduler
         string usernameString = File.ReadAllText(pswdFile);
         string[] token = usernameString.Split(",");
     }
+    */
 }
