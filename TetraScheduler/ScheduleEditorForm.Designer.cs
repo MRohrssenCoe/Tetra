@@ -292,7 +292,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ScheduleEditorForm";
             this.Text = "ScheduleEditorForm";
-            this.Load += new System.EventHandler(this.ScheduleEditorForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
