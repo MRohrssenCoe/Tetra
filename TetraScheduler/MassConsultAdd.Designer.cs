@@ -74,6 +74,7 @@ namespace TetraScheduler
             this.Controls.Add(this.selectCSV);
             this.Name = "MassConsultAdd";
             this.Text = "Add Consultants From Google Form";
+            this.Load += new System.EventHandler(this.MassConsultAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
