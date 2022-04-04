@@ -163,5 +163,10 @@ namespace TetraScheduler
             string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
             Process.Start("explorer", "\"" + filename + "\"");
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
