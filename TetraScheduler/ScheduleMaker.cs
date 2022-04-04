@@ -15,6 +15,7 @@ namespace TetraScheduler
         public AdminOptions ao { get; set; }
         public Dictionary<UserInfo, int> unfilled_users { get; }
 
+
         // variable for admin preferences here
 
         public ScheduleMaker(List<UserInfo> users, AdminOptions ao)
