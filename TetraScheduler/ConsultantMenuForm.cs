@@ -48,7 +48,7 @@ namespace TetraScheduler
                 fnameTextbox.Text = uInfo.FirstName;
                 lnameTextbox.Text = uInfo.LastName;
                 semExpUpDn.Value = uInfo.expSemesters;
-                coeYrUpDn.Value = uInfo.coeYear;
+                coeYrUpDn.Value = uInfo.schoolYear;
                 desiredWeeklyHrsUpDn.Value = uInfo.desiredWeeklyHours;
                 consultantAvailability = uInfo.availability;
                 if (!(consultantAvailability is null))
@@ -99,7 +99,7 @@ namespace TetraScheduler
             uInfo.LastName = lnameTextbox.Text;
             uInfo.majors = majorsSelected();
             uInfo.expSemesters = (int)semExpUpDn.Value;
-            uInfo.coeYear = (int)coeYrUpDn.Value;
+            uInfo.schoolYear = (int)coeYrUpDn.Value;
             uInfo.desiredWeeklyHours = (int)desiredWeeklyHrsUpDn.Value;
             uInfo.availability = consultantAvailability;
 

@@ -374,5 +374,9 @@ namespace TetraScheduler
             Process.Start("explorer", "\"" + filename + "\"");
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            new MassConsultAdd().Show();
+        }
     }
 }

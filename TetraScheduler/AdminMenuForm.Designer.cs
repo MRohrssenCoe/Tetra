@@ -74,6 +74,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -366,6 +367,7 @@ namespace TetraScheduler
             this.removeAccountButton.TabIndex = 6;
             this.removeAccountButton.Text = "Remove Account";
             this.removeAccountButton.UseVisualStyleBackColor = true;
+            this.removeAccountButton.Click += new System.EventHandler(this.removeAccButton_Click);
             // 
             // viewAdminButton
             // 
@@ -585,12 +587,22 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(344, 253);
             this.panel2.TabIndex = 56;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(679, 259);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(143, 58);
+            this.button4.TabIndex = 57;
+            this.button4.Text = "Temp button here for testing Add from CSV";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(953, 667);
+            this.ClientSize = new System.Drawing.Size(834, 500);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.editScheduleButton);
@@ -663,5 +675,6 @@ namespace TetraScheduler
         private System.Windows.Forms.ListBox busyListBox;
         private System.Windows.Forms.Label busyLabel;
         private System.Windows.Forms.Button selectBusyShiftsButton;
+        private System.Windows.Forms.Button button4;
     }
 }
