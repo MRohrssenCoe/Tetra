@@ -11,9 +11,10 @@ namespace TetraScheduler
         public List<UserInfo> users { get; set; }
         public int maxConseqShifts { get; set; }
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
-
         public AdminOptions ao { get; set; }
-        public Dictionary<UserInfo, int> unfilled_users { get; }
+        public List<(UserInfo, int)> unfilled_users { get; }
+        public List<(Shift, int)> imbalanced_shifts { get; set;  }
+
 
         // variable for admin preferences here
 
@@ -39,7 +40,8 @@ namespace TetraScheduler
                 shift.maxUsers = ao.MaxConsultantsPerBusyShift;
             }
 
-            this.unfilled_users = new Dictionary<UserInfo, int>();
+            this.unfilled_users = new List<(UserInfo, int)>();
+
         }
         public Schedule generateSchedule()
         {
@@ -147,14 +149,34 @@ namespace TetraScheduler
                 // FLAG UNFILLED HOURS
                 if (requestedMinutes > 0)
                 {
-                    unfilled_users.Add(c, requestedMinutes);
+                    unfilled_users.Add((c, requestedMinutes));
                     // add # of unfilled?
                 }
             }
 
             Debug.WriteLine("Final Schedule: ");
             Debug.WriteLine(JsonSerializer.Serialize(s));
+
+            setExtraOrUnfilledShifts(s);
+            new WarningForm(unfilled_users, imbalanced_shifts).Show();
             return s;
+        }
+
+        public void setExtraOrUnfilledShifts(Schedule s)
+        {
+            List<(Shift, int)> weirdShifts = new List<(Shift, int)>();
+            foreach (List<Shift> day in s.shifts)
+            {
+                foreach(Shift shift in day)
+                {
+                    int difference = shift.users.Count - shift.maxUsers;
+                    if (difference != 0)
+                    {
+                        weirdShifts.Add((shift, difference));
+                    }
+                }
+            }
+            this.imbalanced_shifts = weirdShifts;
         }
         private void sortUsers()
         {

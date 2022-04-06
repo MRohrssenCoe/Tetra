@@ -378,5 +378,10 @@ namespace TetraScheduler
         {
             new MassConsultAdd().Show();
         }
+
+        private void removeAccountButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
