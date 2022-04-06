@@ -46,9 +46,9 @@ namespace TetraScheduler
 
         private string userWarningString((UserInfo, int) userTuple)
         {
+            string spaces = "    ";
             string hourString = (userTuple.Item2 / 60).ToString();
-
-            return userTuple.Item1.ToString() + '\t' + hourString;
+            return userTuple.Item1.ToString() + spaces + hourString;
         }
 
         private void consultantWarningsList_SelectedIndexChanged(object sender, EventArgs e)
