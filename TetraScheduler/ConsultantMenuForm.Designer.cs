@@ -218,11 +218,13 @@
             // 
             // lnameTextbox
             // 
+            this.lnameTextbox.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.lnameTextbox.Location = new System.Drawing.Point(249, 29);
             this.lnameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lnameTextbox.Name = "lnameTextbox";
             this.lnameTextbox.Size = new System.Drawing.Size(203, 27);
             this.lnameTextbox.TabIndex = 12;
+            this.lnameTextbox.Text = "Last Name";
             // 
             // semExpUpDn
             // 
@@ -234,11 +236,13 @@
             // 
             // fnameTextbox
             // 
+            this.fnameTextbox.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.fnameTextbox.Location = new System.Drawing.Point(7, 29);
             this.fnameTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fnameTextbox.Name = "fnameTextbox";
             this.fnameTextbox.Size = new System.Drawing.Size(235, 27);
             this.fnameTextbox.TabIndex = 11;
+            this.fnameTextbox.Text = "First Name";
             // 
             // label4
             // 
