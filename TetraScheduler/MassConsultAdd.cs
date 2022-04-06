@@ -182,6 +182,9 @@ namespace TetraScheduler
             // alert admin that it's done here, possibly email users their account information?
         }
 
+        private void MassConsultAdd_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
