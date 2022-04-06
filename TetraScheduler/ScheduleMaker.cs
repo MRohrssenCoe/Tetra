@@ -158,7 +158,7 @@ namespace TetraScheduler
             Debug.WriteLine(JsonSerializer.Serialize(s));
 
             setExtraOrUnfilledShifts(s);
-
+            new WarningForm(unfilled_users, imbalanced_shifts).Show();
             return s;
         }
 
