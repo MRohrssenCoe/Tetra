@@ -13,7 +13,7 @@ namespace TetraScheduler
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
         public AdminOptions ao { get; set; }
         public List<(UserInfo, int)> unfilled_users { get; }
-        public List<(Shift, int)> imbalanced_shifts { get; set;  }
+        public List<(Shift, int)> imbalanced_shifts { get; set; }
 
         // variable for admin preferences here
 
