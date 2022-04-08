@@ -275,6 +275,7 @@ namespace TetraScheduler
             this.selectBusyShiftsButton.TabIndex = 61;
             this.selectBusyShiftsButton.Text = "Select Busy Shifts";
             this.selectBusyShiftsButton.UseVisualStyleBackColor = true;
+            this.selectBusyShiftsButton.Click += new System.EventHandler(this.selectBusyShiftsClick);
             // 
             // button2
             // 
@@ -591,7 +592,6 @@ namespace TetraScheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(971, 647);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.editScheduleButton);
