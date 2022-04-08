@@ -20,11 +20,14 @@ namespace TetraScheduler
         private List<string> emailList;
         private List<string> usernameList;
         private List<string> passwordList;
-        private string[] years; //todo: add more
+        private string[] years;
 
         public MassConsultAdd()
         {
             years = new string[]{ "First-Year", "Sophomore", "Junior", "Senior" };
+            emailList = new List<string>();
+            usernameList = new List<string>();
+            passwordList = new List<string>();
             InitializeComponent();
         }
 
