@@ -122,8 +122,8 @@ namespace TetraScheduler
                     string[] fields = csvParser.ReadFields();
 
                     // separate out relevant fields
-                    //0:timestamp, 1:email, 2:fname, 3:lname, 4:yr, 5:majors, 6:workHrs(10s), 7:workHrs(1s),
-                    //8:sunAvails, 9:monAvails, 10:tuesAvails, 11:wedAvails, 12:thursAvails, 13:friAvails, 14:satAvails
+                    //0:timestamp, 1:email, 2:fname, 3:lname, 4:yr, 5:semExp, 6:majors, 7:workHrs(10s), 8:workHrs(1s),
+                    //9:sunAvails, 10:monAvails, 11:tuesAvails, 12:wedAvails, 13:thursAvails, 14:friAvails, 15:satAvails
                     string email = fields[1];
 
                     // store username, password here to write to file later - todo: check for no overlapping usernames
@@ -135,16 +135,17 @@ namespace TetraScheduler
                     uInfo.FirstName = fields[2];
                     uInfo.LastName = fields[3];
                     uInfo.schoolYear = Array.IndexOf(this.years, fields[4]) + 1;
-                    uInfo.majors = fields[5].Split(", ");
-                    uInfo.desiredWeeklyHours = int.Parse(fields[6]) * 10 + int.Parse(fields[7]);
+                    uInfo.expSemesters = int.Parse(fields[5]);
+                    uInfo.majors = fields[6].Split(", ");
+                    uInfo.desiredWeeklyHours = int.Parse(fields[7]) * 10 + int.Parse(fields[8]);
 
                     // oh fuck we need uhhhh semesters of experience somewhere. come back to that.
                     uInfo.expSemesters = 0;
 
                     // generate availabilities
                     List<Shift> availabilities = new List<Shift>();
-                    int sunAvails = 8;
-                    int satAvails = 14;
+                    int sunAvails = 9;
+                    int satAvails = 15;
                     for (int i = sunAvails; i < satAvails+1; i++)
                     {
                         int day = i - sunAvails;
