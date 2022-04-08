@@ -5,6 +5,8 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Net.Mail;
+using System.Net;
 
 namespace TetraScheduler
 {

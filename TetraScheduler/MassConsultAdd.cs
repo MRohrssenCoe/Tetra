@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Net.Mail;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
@@ -180,6 +181,7 @@ namespace TetraScheduler
             // write password file here
 
             // alert admin that it's done here, possibly email users their account information?
+            
         }
 
         private void MassConsultAdd_Load(object sender, EventArgs e)
