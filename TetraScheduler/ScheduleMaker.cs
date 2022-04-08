@@ -18,6 +18,7 @@ namespace TetraScheduler
         public static int FAILED_WRITE = -1;
         public static int SUCCESSFUL_WRITE = 0;
 
+
         // variable for admin preferences here
 
         public ScheduleMaker(List<UserInfo> users, AdminOptions ao)
@@ -160,7 +161,7 @@ namespace TetraScheduler
             Debug.WriteLine(JsonSerializer.Serialize(s));
 
             setExtraOrUnfilledShifts(s);
-
+            new WarningForm(unfilled_users, imbalanced_shifts).Show();
             return s;
         }
 
