@@ -13,7 +13,10 @@ namespace TetraScheduler
         public Schedule s { get; set; } // final schedule - can be set before generateSchedule()
         public AdminOptions ao { get; set; }
         public List<(UserInfo, int)> unfilled_users { get; }
-        public List<(Shift, int)> imbalanced_shifts { get; set;  }
+        public List<(Shift, int)> imbalanced_shifts { get; set; }
+
+        public static int FAILED_WRITE = -1;
+        public static int SUCCESSFUL_WRITE = 0;
 
 
         // variable for admin preferences here
@@ -330,7 +333,14 @@ namespace TetraScheduler
             }
 
             string schedFile = Path.Combine(Constants.AppDataFolder, Constants.scheduleFileName);
-            File.WriteAllLines(schedFile, ourCSV.Select(x => string.Join(",", x)));
+            try
+            {
+                File.WriteAllLines(schedFile, ourCSV.Select(x => string.Join(",", x)));
+            }
+            catch (System.IO.IOException)
+            {
+                return -1; // handle this in admin menu
+            }
             return 0;
         }
     }
