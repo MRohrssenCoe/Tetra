@@ -38,16 +38,37 @@ namespace TetraScheduler
             String password = textBox2.Text;
             String Writer = "\n";
 
+            Boolean addonCheck = true;
+
+            foreach(char c in password)
+            {
+                if (Char.IsLetterOrDigit(c))
+                    continue;
+                else
+                    addonCheck = false;
+            }
+
             if (username.Length == 0)
             {
                 MessageBox.Show("Username cannot be empty!");
+                addonCheck = false;
             }
-            else if (password.Length == 0)
+            if (password.Length == 0)
             {
                 MessageBox.Show("Password cannot be empty!");
+                addonCheck = false;
             }
-            else
+            if (password.Length < 8)
             {
+                MessageBox.Show("Password must be at least 8 characters.");
+                addonCheck = false;
+            }
+            if(addonCheck)
+            {
+                foreach (char c in password)
+                {
+                    password = password + (c + 3);
+                }
                 if (radioButton4.Checked)
                     Writer = "," + username + "," + password + ",1";
                 else if (radioButton5.Checked)

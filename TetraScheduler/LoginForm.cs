@@ -53,7 +53,11 @@ namespace TetraScheduler
 
 
             String username = textBox1.Text;
-            String password = textBox2.Text;
+            String password = "";
+            foreach(char c in textBox2.Text)
+            {
+                password = password + (c + 3);
+            }
             bool successfulLogin = false;
 
             if (username.Equals(defaultUserText) || password.Equals(defaultPassText))
