@@ -74,6 +74,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -275,6 +276,7 @@ namespace TetraScheduler
             this.selectBusyShiftsButton.TabIndex = 61;
             this.selectBusyShiftsButton.Text = "Select Busy Shifts";
             this.selectBusyShiftsButton.UseVisualStyleBackColor = true;
+            this.selectBusyShiftsButton.Click += new System.EventHandler(this.selectBusyShiftsClick);
             // 
             // button2
             // 
@@ -348,18 +350,19 @@ namespace TetraScheduler
             // 
             this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.button5);
             this.panel10.Controls.Add(this.removeAccountButton);
             this.panel10.Controls.Add(this.viewAdminButton);
             this.panel10.Controls.Add(this.addAccButton);
             this.panel10.Controls.Add(this.viewConsultButton);
             this.panel10.Location = new System.Drawing.Point(760, 63);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(184, 253);
+            this.panel10.Size = new System.Drawing.Size(184, 284);
             this.panel10.TabIndex = 42;
             // 
             // removeAccountButton
             // 
-            this.removeAccountButton.Location = new System.Drawing.Point(5, 179);
+            this.removeAccountButton.Location = new System.Drawing.Point(5, 173);
             this.removeAccountButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.removeAccountButton.Name = "removeAccountButton";
             this.removeAccountButton.Size = new System.Drawing.Size(175, 49);
@@ -585,13 +588,23 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(344, 253);
             this.panel2.TabIndex = 56;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(5, 227);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(175, 49);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Mass Add Consultants";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button4_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(971, 647);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.editScheduleButton);
@@ -665,5 +678,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Label busyLabel;
         private System.Windows.Forms.Button selectBusyShiftsButton;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
