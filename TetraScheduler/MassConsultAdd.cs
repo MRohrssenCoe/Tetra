@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using System.Text.Json;
+using System.Net;
 
 namespace TetraScheduler
 {
@@ -16,6 +17,9 @@ namespace TetraScheduler
     {
 
         private string fileName {get; set; }
+        private List<string> emailList;
+        private List<string> usernameList;
+        private List<string> passwordList;
         private string[] years; //todo: add more
 
         public MassConsultAdd()
@@ -126,10 +130,12 @@ namespace TetraScheduler
                     //0:timestamp, 1:email, 2:fname, 3:lname, 4:yr, 5:semExp, 6:majors, 7:workHrs(10s), 8:workHrs(1s),
                     //9:sunAvails, 10:monAvails, 11:tuesAvails, 12:wedAvails, 13:thursAvails, 14:friAvails, 15:satAvails
                     string email = fields[1];
-
+                    emailList.Add(email);
                     // store username, password here to write to file later - todo: check for no overlapping usernames
                     string username = email.Substring(0,email.IndexOf("@"));
+                    usernameList.Add(username);
                     string password = username; // change this later
+                    passwordList.Add(password);
                     UserInfo uInfo = new UserInfo();
 
                     // put stuff in uinfo here 
@@ -182,7 +188,21 @@ namespace TetraScheduler
             // write password file here
 
             // alert admin that it's done here, possibly email users their account information?
-            
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("tetrascheduler@gmail.com", "tetrapassword"),
+                EnableSsl = true,
+            };
+            int lol = 0;
+            foreach (string email in emailList)
+            {
+                
+
+                smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
+                    "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
+                lol++;
+            }
         }
 
         private void MassConsultAdd_Load(object sender, EventArgs e)
