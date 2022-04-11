@@ -55,6 +55,7 @@ namespace TetraScheduler
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.removeAccountButton = new System.Windows.Forms.Button();
             this.viewAdminButton = new System.Windows.Forms.Button();
             this.addAccButton = new System.Windows.Forms.Button();
@@ -74,7 +75,6 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -360,6 +360,17 @@ namespace TetraScheduler
             this.panel10.Size = new System.Drawing.Size(184, 284);
             this.panel10.TabIndex = 42;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(5, 227);
+            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(175, 49);
+            this.button5.TabIndex = 7;
+            this.button5.Text = "Mass Add Consultants";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button4_Click);
+            // 
             // removeAccountButton
             // 
             this.removeAccountButton.Location = new System.Drawing.Point(5, 173);
@@ -587,17 +598,6 @@ namespace TetraScheduler
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(344, 253);
             this.panel2.TabIndex = 56;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(5, 227);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(175, 49);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Mass Add Consultants";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button4_Click);
             // 
             // AdminMenuForm
             // 
