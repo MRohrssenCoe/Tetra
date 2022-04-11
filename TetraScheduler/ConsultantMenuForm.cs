@@ -63,7 +63,10 @@ namespace TetraScheduler
                         if (major.Length > 0)
                         {
                             int index = majorListbox.Items.IndexOf(major);
-                            majorListbox.SetItemChecked(index, true);
+                            if (index != -1)
+                            {
+                                majorListbox.SetItemChecked(index, true);
+                            }
                         }
                     }
                 }

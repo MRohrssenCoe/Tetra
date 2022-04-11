@@ -87,6 +87,10 @@ namespace TetraScheduler
             string[] hourSpans = s.Split(", ");
             foreach(string hr in hourSpans)
             {
+                if (hr.Length == 0)
+                {
+                    continue;
+                }
                 string start = hr.Substring(0, hr.IndexOf("->"));
                 int startMins = timeStringToMins(start);
                 // todo: check if i have to assign dummy account
@@ -193,7 +197,8 @@ namespace TetraScheduler
             // write password file here
 
             // alert admin that it's done here, possibly email users their account information?
-            var smtpClient = new SmtpClient("smtp.gmail.com")
+            // commented out for testing purposes
+            /*var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
                 Credentials = new NetworkCredential("tetrascheduler@gmail.com", "tetrapassword"),
@@ -207,7 +212,7 @@ namespace TetraScheduler
                 smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
                     "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
                 lol++;
-            }
+            }*/
         }
 
         private string CreatePassword(int length)
