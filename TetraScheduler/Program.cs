@@ -44,7 +44,9 @@ namespace TetraScheduler
             {
                 FileStream fs = File.Open(pswdFile, FileMode.Create);
                 //username, password, default admin flag
-                String tempText = "admin,password,2";
+                string orig = "password";
+                string password = LoginForm.encrypt_Password(orig);
+                String tempText = "admin," + password + ",2";
                 fs.Write(System.Text.Encoding.ASCII.GetBytes(tempText), 0, tempText.Length);
                 fs.Close();
 

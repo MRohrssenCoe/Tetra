@@ -54,10 +54,7 @@ namespace TetraScheduler
 
             String username = textBox1.Text;
             String password = "";
-            foreach(char c in textBox2.Text)
-            {
-                password = password + (c + 3);
-            }
+            password = encrypt_Password(textBox2.Text);
             bool successfulLogin = false;
 
             if (username.Equals(defaultUserText) || password.Equals(defaultPassText))
@@ -93,7 +90,7 @@ namespace TetraScheduler
                             //overwrites entire file!!!
                             string pswdFile = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
                             FileStream fs = File.Open(pswdFile, FileMode.Truncate);
-                            string tempText = changePswdBox.UsernameReturn + "," + changePswdBox.PasswordReturn + "," + "1";
+                            string tempText = changePswdBox.UsernameReturn + "," + LoginForm.encrypt_Password(changePswdBox.PasswordReturn) + "," + "1";
                             fs.Write(Encoding.ASCII.GetBytes(tempText), 0, tempText.Length);
                             fs.Close();
                             passwordIsDefault = false;
@@ -165,10 +162,15 @@ namespace TetraScheduler
             return -1;
         }
 
-        private string encrypt_Password(string password)
+        public static string encrypt_Password(string password)
         {
-            // password encryption - if we have time
-            return password;
+            // password encryption - if we have
+            string encrypted = "";
+            foreach (char c in password)
+            {
+                encrypted = encrypted + (char)(c + 3);
+            }
+            return encrypted;
         }
 
         private void textBox1_Enter(object sender, EventArgs e)

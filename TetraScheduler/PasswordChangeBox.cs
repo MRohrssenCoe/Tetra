@@ -84,5 +84,10 @@ namespace TetraScheduler
         {
 
         }
+
+        private void PasswordChangeBox_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

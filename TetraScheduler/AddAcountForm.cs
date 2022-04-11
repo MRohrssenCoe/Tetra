@@ -65,10 +65,7 @@ namespace TetraScheduler
             }
             if(addonCheck)
             {
-                foreach (char c in password)
-                {
-                    password = password + (c + 3);
-                }
+                password = LoginForm.encrypt_Password(textBox2.Text);
                 if (radioButton4.Checked)
                     Writer = "," + username + "," + password + ",1";
                 else if (radioButton5.Checked)

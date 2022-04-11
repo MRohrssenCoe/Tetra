@@ -138,7 +138,7 @@ namespace TetraScheduler
                     string username = email.Substring(0,email.IndexOf("@"));
                     usernameList.Add(username);
                     string password = username; // change this later
-                    passwordList.Add(password);
+                    passwordList.Add(password); //todo: why is this here
                     UserInfo uInfo = new UserInfo();
 
                     // put stuff in uinfo here 
@@ -179,7 +179,9 @@ namespace TetraScheduler
                     {
                         username += numAdd.ToString();
                     }
-                    File.WriteAllText(passwordFile, String.Join(",", loginInfo) + "," + username + "," + username + ",0");
+
+                    password = LoginForm.encrypt_Password(password); // todo: figure out if i should do this here or later
+                    File.WriteAllText(passwordFile, String.Join(",", loginInfo) + "," + username + "," + password + ",0");
                     // write to json
                     string toWrite = JsonSerializer.Serialize(uInfo);
                     string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
