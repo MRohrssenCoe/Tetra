@@ -137,8 +137,8 @@ namespace TetraScheduler
                     // store username, password here to write to file later - todo: check for no overlapping usernames
                     string username = email.Substring(0,email.IndexOf("@"));
                     usernameList.Add(username);
-                    string password = username; // change this later
-                    passwordList.Add(password); //todo: why is this here
+                    string password = CreatePassword(8); // change this later
+                    passwordList.Add(password);
                     UserInfo uInfo = new UserInfo();
 
                     // put stuff in uinfo here 
@@ -210,6 +210,17 @@ namespace TetraScheduler
             }
         }
 
+        private string CreatePassword(int length)
+        {
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < length--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
+        }
         private void MassConsultAdd_Load(object sender, EventArgs e)
         {
 
