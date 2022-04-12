@@ -41,9 +41,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(82, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 15);
+            this.label1.Size = new System.Drawing.Size(339, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "The following consultants have not all of their hours filled: ";
+            this.label1.Text = "The following consultants have not had all of their hours filled: ";
             // 
             // label2
             // 
@@ -76,11 +76,12 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(64, 64);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
             // WarningForm
             // 
