@@ -13,6 +13,7 @@ namespace TetraScheduler
         public WarningForm()
         {
             InitializeComponent();
+            pictureBox1.Image = SystemIcons.Warning.ToBitmap();
         }
         public WarningForm(List<(UserInfo, int)> userTuple, List<(Shift, int)> shiftsTuple)
         {

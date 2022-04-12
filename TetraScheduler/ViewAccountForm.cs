@@ -9,11 +9,11 @@ using System.Windows.Forms;
 
 namespace TetraScheduler
 {
-    public partial class Form1 : Form
+    public partial class ViewAccountForm : Form
     {
         private string[] token;
         private List<string> consultantUsernames;
-        public Form1()
+        public ViewAccountForm()
         {
             InitializeComponent();
         }

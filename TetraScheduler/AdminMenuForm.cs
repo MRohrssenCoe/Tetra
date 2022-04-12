@@ -190,7 +190,21 @@ namespace TetraScheduler
             Schedule s = sm.generateSchedule();
             ScheduleMaker.ScheduleToCSV(s);
             Debug.WriteLine(s);
-            MessageBox.Show("New Schedule Generated!");
+            // show either warning form or success message.
+            FormCollection fc = Application.OpenForms;
+            bool found = false;
+            foreach(Form f in fc)
+            {
+                if(f.Name == "WarningForm")
+                {
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                MessageBox.Show("New Schedule Generated!");
+            }
         }
 
         private void addAccountButton_Click(object sender, EventArgs e)
@@ -365,7 +379,7 @@ namespace TetraScheduler
 
         private void viewConsultButton_Click(object sender, EventArgs e)
         {
-            new Form1().ShowDialog();
+            new ViewAccountForm().ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
