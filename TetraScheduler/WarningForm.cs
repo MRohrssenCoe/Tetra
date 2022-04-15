@@ -16,7 +16,7 @@ namespace TetraScheduler
         }
         void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            //jank solution but nothing else is working for me.
+            // jank solution but nothing else is working for me.
             Icon ico = new Icon(SystemIcons.Warning, new Size(64, 64));
 
             e.Graphics.DrawIcon(ico, 0, 0);
