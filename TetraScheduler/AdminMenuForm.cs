@@ -397,5 +397,10 @@ namespace TetraScheduler
         {
 
         }
+
+        private void AddMajorButton_Click(object sender, EventArgs e)
+        {
+            new MajorAdder().Show();
+        }
     }
 }

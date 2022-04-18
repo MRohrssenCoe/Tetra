@@ -75,6 +75,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.AddMajorButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -318,7 +319,7 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(773, 573);
+            this.logoutButton.Location = new System.Drawing.Point(770, 573);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(171, 43);
             this.logoutButton.TabIndex = 44;
@@ -350,6 +351,7 @@ namespace TetraScheduler
             // 
             this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.AddMajorButton);
             this.panel10.Controls.Add(this.button5);
             this.panel10.Controls.Add(this.removeAccountButton);
             this.panel10.Controls.Add(this.viewAdminButton);
@@ -357,7 +359,7 @@ namespace TetraScheduler
             this.panel10.Controls.Add(this.viewConsultButton);
             this.panel10.Location = new System.Drawing.Point(760, 63);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(184, 284);
+            this.panel10.Size = new System.Drawing.Size(184, 345);
             this.panel10.TabIndex = 42;
             // 
             // button5
@@ -599,6 +601,17 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(344, 253);
             this.panel2.TabIndex = 56;
             // 
+            // AddMajorButton
+            // 
+            this.AddMajorButton.Location = new System.Drawing.Point(5, 284);
+            this.AddMajorButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AddMajorButton.Name = "AddMajorButton";
+            this.AddMajorButton.Size = new System.Drawing.Size(175, 49);
+            this.AddMajorButton.TabIndex = 8;
+            this.AddMajorButton.Text = "Change Available Majors";
+            this.AddMajorButton.UseVisualStyleBackColor = true;
+            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -677,7 +690,7 @@ namespace TetraScheduler
         private System.Windows.Forms.ListBox busyListBox;
         private System.Windows.Forms.Label busyLabel;
         private System.Windows.Forms.Button selectBusyShiftsButton;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button AddMajorButton;
         private System.Windows.Forms.Button button5;
     }
 }

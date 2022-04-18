@@ -20,7 +20,23 @@ namespace TetraScheduler
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
-            availableShifts = new ListBox.ObjectCollection(availabilityBox);
+            using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    var majorText = sr.ReadToEnd();
+                    var tokens = majorText.Split(',');
+                    foreach (var tk in tokens)
+                    {
+                        var m = tk.Trim();
+                        if (m != "")
+                        {
+                            majorListbox.Items.Add(m);
+                        }
+                    }
+                }
+            }
+                availableShifts = new ListBox.ObjectCollection(availabilityBox);
             this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
             importUserInfo();
         }
