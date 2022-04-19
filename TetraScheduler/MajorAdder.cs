@@ -17,17 +17,13 @@ namespace TetraScheduler
         public MajorAdder()
         {
             InitializeComponent();
-            if (!File.Exists(path))
-            {
-                File.Create(path);
-            }
             LoadMajors();
         }
 
         private void LoadMajors()
         {
             String MajorText = "";
-            using (var fs = File.Open(path, FileMode.Open))
+            using (var fs = File.Open(path, FileMode.OpenOrCreate))
             {
                 using (var sr = new StreamReader(fs))
                 {
