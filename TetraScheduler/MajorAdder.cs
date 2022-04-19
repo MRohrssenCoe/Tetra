@@ -69,6 +69,8 @@ namespace TetraScheduler
             {
                 data = data + item + ",";
             }
+            // overwrite
+            File.CreateText(path);
             File.WriteAllText(path, data);
         }
     }
