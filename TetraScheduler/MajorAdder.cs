@@ -12,7 +12,7 @@ namespace TetraScheduler
 
     public partial class MajorAdder : Form
     {
-        private static string path = Path.Combine(Constants.AppDataFolder, Constants.MajorsFile);
+        private string path = Path.Combine(Constants.AppDataFolder, Constants.MajorsFile);
 
         public MajorAdder()
         {
@@ -66,8 +66,13 @@ namespace TetraScheduler
                 data = data + item + ",";
             }
             // overwrite
-            File.CreateText(path);
-            File.WriteAllText(path, data);
+            using (var fs = File.Create(path))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine(data); 
+                }
+            }
         }
     }
 }

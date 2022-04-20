@@ -36,7 +36,32 @@ namespace TetraScheduler
             Directory.CreateDirectory(Constants.adminPreferencesFolder);
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string scheduleFile = Path.Combine(tetraFolder, Constants.scheduleFileName);
-            
+
+            string path = Path.Combine(Constants.AppDataFolder, Constants.MajorsFile);
+
+
+            // fill majors file with default majors
+            if (!File.Exists(path))
+            {
+                using (var fs = File.Open(path, FileMode.OpenOrCreate))
+                {
+                    using (var sw = new StreamWriter(fs))
+                    {
+                        var majors = "Accounting,Aeronautics,Agricultural Science,Anthropology,Applied math, Applied mathematical sciences,Aquatic and fishery sciences," +
+                            "Architectural design,Art,Art History,Astronomy,Astronautics,Atmospheric sciences,Biochemistry,Biology,Bioresource science and engineering," +
+                            "Bioengineering,Botany,Business Administration,Chemistry,Chemical Engineering,Cinematography,Civil engineering,City planning,Comparative Literature," +
+                            "Construction management,Criminal science and forensics,Creative writing,Computer engineering,Classics,Communication,Criminology,Computer science," +
+                            "Drama,Digital arts,Dance,Design,Ecology,Earth and space science,Environmental engineering,Entomology,Environmental studies,Ethnic and gender studies," +
+                            "Education,Earth and space sciences,English,Environmental studies and policy,Environmental science,Electrical engineering,Economics,Entrepreneurship," +
+                            "Film studies,Finance,Foreign language and literature,Genetics,Geography,Geology,History,Health informatics,Industrial engineering,Informational systems," +
+                            "International studies,Informatics,International business,Kinesiology,Library science,Linguistics,Music,Materials science and engineering,Mechanical engineering," +
+                            "Mathematics,Medical technology,Marine biology,Management,Marketing,Neuroscience,Nursing,Oceanography,Physics,Philosophy,Physiology,Poltical Science," +
+                            "Psychology,Resource management,Relgious studies,Rhetoric,Secondary Ed,Statistics,Social justice,Social welfare,Sociology,Technical Communication,";
+
+                        sw.WriteLine(majors);
+                    }
+                }
+            }
 
             // on first run - creates data files
             //TODO if someone deletes the passwords file it will regenerate the default password file, which just lets anyone become the admin.
