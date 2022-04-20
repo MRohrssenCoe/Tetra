@@ -38,17 +38,19 @@
             // MajorList
             // 
             this.MajorList.FormattingEnabled = true;
-            this.MajorList.ItemHeight = 20;
-            this.MajorList.Location = new System.Drawing.Point(12, 12);
+            this.MajorList.ItemHeight = 15;
+            this.MajorList.Location = new System.Drawing.Point(10, 9);
+            this.MajorList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MajorList.Name = "MajorList";
-            this.MajorList.Size = new System.Drawing.Size(150, 364);
+            this.MajorList.Size = new System.Drawing.Size(132, 274);
             this.MajorList.TabIndex = 0;
             // 
             // RemoveButton
             // 
-            this.RemoveButton.Location = new System.Drawing.Point(12, 409);
+            this.RemoveButton.Location = new System.Drawing.Point(10, 307);
+            this.RemoveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RemoveButton.Name = "RemoveButton";
-            this.RemoveButton.Size = new System.Drawing.Size(150, 29);
+            this.RemoveButton.Size = new System.Drawing.Size(131, 22);
             this.RemoveButton.TabIndex = 1;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
@@ -56,26 +58,29 @@
             // 
             // MajorTextBox
             // 
-            this.MajorTextBox.Location = new System.Drawing.Point(188, 349);
+            this.MajorTextBox.Location = new System.Drawing.Point(164, 262);
+            this.MajorTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MajorTextBox.Name = "MajorTextBox";
-            this.MajorTextBox.Size = new System.Drawing.Size(150, 27);
+            this.MajorTextBox.Size = new System.Drawing.Size(132, 23);
             this.MajorTextBox.TabIndex = 2;
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(188, 409);
+            this.AddButton.Location = new System.Drawing.Point(164, 307);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(150, 29);
+            this.AddButton.Size = new System.Drawing.Size(131, 22);
             this.AddButton.TabIndex = 3;
-            this.AddButton.Text = "AddButton";
+            this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
             this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(367, 409);
+            this.SaveButton.Location = new System.Drawing.Point(321, 307);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(150, 29);
+            this.SaveButton.Size = new System.Drawing.Size(131, 22);
             this.SaveButton.TabIndex = 4;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -83,14 +88,15 @@
             // 
             // MajorAdder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 450);
+            this.ClientSize = new System.Drawing.Size(477, 338);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.MajorTextBox);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.MajorList);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MajorAdder";
             this.Text = "MajorAdder";
             this.ResumeLayout(false);
