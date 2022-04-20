@@ -224,6 +224,7 @@ namespace TetraScheduler
             {
                 res.Append(valid[rnd.Next(valid.Length)]);
             }
+            res.Append('@');
             return res.ToString();
         }
         private void MassConsultAdd_Load(object sender, EventArgs e)
