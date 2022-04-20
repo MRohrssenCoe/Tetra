@@ -14,6 +14,7 @@ namespace TetraScheduler
         private static string SpecificFolder = "TetraScheduler";
         public static string AppDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), SpecificFolder);
         public static string passwordFileName = "SchedulerPasswords.txt";
+        public static string MajorsFile = "Majors.txt";
         public static string scheduleFileName = "TetraSchedule.csv";
         public static string userPreferencesFolder = Path.Combine(AppDataFolder,"Users");
         public static string adminPreferencesFolder = Path.Combine(AppDataFolder, "Admins");
