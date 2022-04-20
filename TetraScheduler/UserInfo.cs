@@ -17,7 +17,7 @@ namespace TetraScheduler
         public List<Shift> availability { get; set; }
 
         public UserInfo(string firstName, string lastName, string[] majors,
-            int expSemesters, int coeYear, int desiredWeeklyHours, List<Shift> availability)
+        int expSemesters, int coeYear, int desiredWeeklyHours, List<Shift> availability)
         {
             FirstName = firstName;
             LastName = lastName;

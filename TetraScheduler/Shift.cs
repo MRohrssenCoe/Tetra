@@ -41,20 +41,26 @@ namespace TetraScheduler
         public void AddUser(UserInfo ui)
         {
             int index = -1;
-            foreach (UserInfo u in users)
+            if (!(ui is null))
             {
-                if (u.FirstName == ui.FirstName && u.LastName == ui.LastName)
+                foreach (UserInfo u in users)
                 {
-                    index = users.IndexOf(u);
+                    if (u.FirstName == ui.FirstName && u.LastName == ui.LastName)
+                    {
+                        index = users.IndexOf(u);
+                    }
                 }
-            }
-            if (index == -1)
+                if (index == -1)
+                {
+                    users.Add(ui);
+                }
+                else
+                {
+                    Debug.WriteLine("User already exists in this shift: " + ui.FirstName + ", " + ui.LastName);
+                }
+            } else
             {
-                users.Add(ui);
-            }
-            else
-            {
-                Debug.WriteLine("User already exists in this shift: " + ui.FirstName + ", " + ui.LastName);
+                Debug.WriteLine("UserInfo is null!");
             }
         }
         public void RemoveUser(UserInfo ui)
