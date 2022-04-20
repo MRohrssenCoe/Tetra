@@ -32,6 +32,7 @@ namespace TetraScheduler
             this.selectCSV = new System.Windows.Forms.Button();
             this.massAddButton = new System.Windows.Forms.Button();
             this.fileSelectedLabel = new System.Windows.Forms.Label();
+            this.instructLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // selectCSV
@@ -64,11 +65,22 @@ namespace TetraScheduler
             this.fileSelectedLabel.TabIndex = 2;
             this.fileSelectedLabel.Text = "(No File Select)";
             // 
+            // instructLabel
+            // 
+            this.instructLabel.AutoSize = true;
+            this.instructLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.instructLabel.Location = new System.Drawing.Point(82, 107);
+            this.instructLabel.Name = "instructLabel";
+            this.instructLabel.Size = new System.Drawing.Size(52, 21);
+            this.instructLabel.TabIndex = 3;
+            this.instructLabel.Text = "label1";
+            // 
             // MassConsultAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.instructLabel);
             this.Controls.Add(this.fileSelectedLabel);
             this.Controls.Add(this.massAddButton);
             this.Controls.Add(this.selectCSV);
@@ -85,5 +97,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Button selectCSV;
         private System.Windows.Forms.Button massAddButton;
         private System.Windows.Forms.Label fileSelectedLabel;
+        private System.Windows.Forms.Label instructLabel;
     }
 }

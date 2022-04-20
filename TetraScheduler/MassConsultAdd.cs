@@ -10,6 +10,7 @@ using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using System.Text.Json;
 using System.Net;
+using System.Diagnostics;
 
 namespace TetraScheduler
 {
@@ -28,7 +29,14 @@ namespace TetraScheduler
             emailList = new List<string>();
             usernameList = new List<string>();
             passwordList = new List<string>();
+            
             InitializeComponent();
+            instructLabel.Text = "1. Make a copy of our Google Form (found here) to your Google Drive\n" +
+                "2. Send a link to your copy of the form to your consultants\n" +
+                "3. Save the output of the form to .CSV file\n" +
+                "4. Upload the CSV file with the button below to add new accounts" +
+                "\n(consultants will be emailed with their new account"+
+                " information if you are connected to the internet)";
         }
 
         private void selectCSV_Click(object sender, EventArgs e)
@@ -134,8 +142,8 @@ namespace TetraScheduler
                     string[] fields = csvParser.ReadFields();
 
                     // separate out relevant fields
-                    //0:timestamp, 1:email, 2:fname, 3:lname, 4:yr, 5:semExp, 6:majors, 7:workHrs(10s), 8:workHrs(1s),
-                    //9:sunAvails, 10:monAvails, 11:tuesAvails, 12:wedAvails, 13:thursAvails, 14:friAvails, 15:satAvails
+                    //0:timestamp, 1:email, 2:fname, 3:lname, 4:yr, 5:semExp, 6:majors, 7:workHrs,
+                    //8:sunAvails, 9:monAvails, 10:tuesAvails, 11:wedAvails, 12:thursAvails, 13:friAvails, 14:satAvails
                     string email = fields[1];
                     emailList.Add(email);
                     // store username, password here to write to file later - todo: check for no overlapping usernames
@@ -145,21 +153,23 @@ namespace TetraScheduler
                     passwordList.Add(password);
                     UserInfo uInfo = new UserInfo();
 
+                    foreach (string o in fields)
+                    {
+                        Debug.WriteLine(o + ";");
+                    }
                     // put stuff in uinfo here 
                     uInfo.FirstName = fields[2];
                     uInfo.LastName = fields[3];
                     uInfo.schoolYear = Array.IndexOf(this.years, fields[4]) + 1;
                     uInfo.expSemesters = int.Parse(fields[5]);
                     uInfo.majors = fields[6].Split(", ");
-                    uInfo.desiredWeeklyHours = int.Parse(fields[7]) * 10 + int.Parse(fields[8]);
+                    uInfo.desiredWeeklyHours = int.Parse(fields[7]);
 
-                    // oh fuck we need uhhhh semesters of experience somewhere. come back to that.
-                    uInfo.expSemesters = 0;
 
                     // generate availabilities
                     List<Shift> availabilities = new List<Shift>();
-                    int sunAvails = 9;
-                    int satAvails = 15;
+                    int sunAvails = 8;
+                    int satAvails = 14;
                     for (int i = sunAvails; i < satAvails+1; i++)
                     {
                         int day = i - sunAvails;
