@@ -22,6 +22,7 @@ namespace TetraScheduler
         private List<string> usernameList;
         private List<string> passwordList;
         private string[] years;
+        private List<string> inUseUsernames;
 
         public MassConsultAdd()
         {
@@ -29,6 +30,7 @@ namespace TetraScheduler
             emailList = new List<string>();
             usernameList = new List<string>();
             passwordList = new List<string>();
+            inUseUsernames = new List<string>();
             
             InitializeComponent();
             instructLabel.Text = "1. Make a copy of our Google Form (found here) to your Google Drive\n" +
@@ -145,12 +147,11 @@ namespace TetraScheduler
                     //0:timestamp, 1:email, 2:fname, 3:lname, 4:yr, 5:semExp, 6:majors, 7:workHrs,
                     //8:sunAvails, 9:monAvails, 10:tuesAvails, 11:wedAvails, 12:thursAvails, 13:friAvails, 14:satAvails
                     string email = fields[1];
-                    emailList.Add(email);
                     // store username, password here to write to file later - todo: check for no overlapping usernames
                     string username = email.Substring(0,email.IndexOf("@"));
-                    usernameList.Add(username);
+                    
                     string password = CreatePassword(8); // change this later
-                    passwordList.Add(password);
+                    
                     UserInfo uInfo = new UserInfo();
 
                     foreach (string o in fields)
@@ -180,26 +181,30 @@ namespace TetraScheduler
                     // add username and password to file - assuming no repeats bc we're using emails but checking jic
                     string passwordFile = Path.Combine(Constants.AppDataFolder,Constants.passwordFileName);
                     string[] loginInfo = File.ReadAllText(passwordFile).Split(",");
-                    //check for no repeating usernames + add a number to it if there are repeats
-                    int numAdd = 0;
+                    //check for no repeating usernames
+                    bool repeatUsername = false;
                     for (int i = 0; i < loginInfo.Length; i += 3)
                     {
-                        if (loginInfo[i].Equals(username + (numAdd > 0? numAdd.ToString() : "")))
+                        if (loginInfo[i].Equals(username))
                         {
-                            numAdd += 1;
+                            inUseUsernames.Add(username);
+                            repeatUsername = true;
                         }
                     }
-                    if (numAdd > 0)
-                    {
-                        username += numAdd.ToString();
-                    }
 
-                    password = LoginForm.encrypt_Password(password); // todo: figure out if i should do this here or later
-                    File.WriteAllText(passwordFile, String.Join(",", loginInfo) + "," + username + "," + password + ",0");
-                    // write to json
-                    string toWrite = JsonSerializer.Serialize(uInfo);
-                    string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-                    File.WriteAllText(uInfoFile, toWrite);
+                    if (!repeatUsername)
+                    {
+                        emailList.Add(email);
+                        usernameList.Add(username);
+                        passwordList.Add(password);
+
+                        password = LoginForm.encrypt_Password(password); // todo: figure out if i should do this here or later
+                        File.WriteAllText(passwordFile, String.Join(",", loginInfo) + "," + username + "," + password + ",0");
+                        // write to json
+                        string toWrite = JsonSerializer.Serialize(uInfo);
+                        string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                        File.WriteAllText(uInfoFile, toWrite);
+                    }
                 }
             }
 
@@ -225,6 +230,7 @@ namespace TetraScheduler
             }*/
 
             //notify of completion + alert to pre-existing usernames
+            MessageBox.Show("User accounts not added (usernames already registered to an account):\n" + String.Join(',', inUseUsernames));
             MessageBox.Show("Successfully added new accounts!");
         }
 
