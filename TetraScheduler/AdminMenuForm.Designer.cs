@@ -76,6 +76,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.updateUP = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -620,12 +621,23 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(301, 190);
             this.panel2.TabIndex = 56;
             // 
+            // updateUP
+            // 
+            this.updateUP.Location = new System.Drawing.Point(669, 315);
+            this.updateUP.Name = "updateUP";
+            this.updateUP.Size = new System.Drawing.Size(152, 51);
+            this.updateUP.TabIndex = 57;
+            this.updateUP.Text = "Update Username/Password";
+            this.updateUP.UseVisualStyleBackColor = true;
+            this.updateUP.Click += new System.EventHandler(this.updateUP_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(850, 485);
+            this.Controls.Add(this.updateUP);
             this.Controls.Add(this.AddMajorButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
@@ -702,5 +714,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Button selectBusyShiftsButton;
         private System.Windows.Forms.Button AddMajorButton;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button updateUP;
     }
 }
