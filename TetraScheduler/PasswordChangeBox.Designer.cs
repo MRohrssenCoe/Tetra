@@ -64,7 +64,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 38);
-            this.button1.TabIndex = 2;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Update Login Info";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -72,11 +72,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 27);
+            this.label1.Location = new System.Drawing.Point(74, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(351, 15);
+            this.label1.Size = new System.Drawing.Size(212, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Enter new username and password for the administrator account:";
+            this.label1.Text = "Enter updated username and password";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -87,7 +87,7 @@
             this.confirmPassBox.Name = "confirmPassBox";
             this.confirmPassBox.PasswordChar = '*';
             this.confirmPassBox.Size = new System.Drawing.Size(110, 23);
-            this.confirmPassBox.TabIndex = 4;
+            this.confirmPassBox.TabIndex = 2;
             this.confirmPassBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.hitEnterOnLastTab);
             // 
             // uLabel
