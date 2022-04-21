@@ -55,12 +55,12 @@ namespace TetraScheduler
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.AddMajorButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.removeAccountButton = new System.Windows.Forms.Button();
             this.viewAdminButton = new System.Windows.Forms.Button();
             this.addAccButton = new System.Windows.Forms.Button();
             this.viewConsultButton = new System.Windows.Forms.Button();
+            this.AddMajorButton = new System.Windows.Forms.Button();
             this.removeAccButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.viewSchedButton = new System.Windows.Forms.Button();
@@ -366,16 +366,6 @@ namespace TetraScheduler
             this.panel10.Size = new System.Drawing.Size(162, 211);
             this.panel10.TabIndex = 42;
             // 
-            // AddMajorButton
-            // 
-            this.AddMajorButton.Location = new System.Drawing.Point(669, 263);
-            this.AddMajorButton.Name = "AddMajorButton";
-            this.AddMajorButton.Size = new System.Drawing.Size(153, 37);
-            this.AddMajorButton.TabIndex = 8;
-            this.AddMajorButton.Text = "Change Available Majors";
-            this.AddMajorButton.UseVisualStyleBackColor = true;
-            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(4, 169);
@@ -424,6 +414,16 @@ namespace TetraScheduler
             this.viewConsultButton.Text = "View Consultant Info";
             this.viewConsultButton.UseVisualStyleBackColor = true;
             this.viewConsultButton.Click += new System.EventHandler(this.viewConsultButton_Click);
+            // 
+            // AddMajorButton
+            // 
+            this.AddMajorButton.Location = new System.Drawing.Point(669, 263);
+            this.AddMajorButton.Name = "AddMajorButton";
+            this.AddMajorButton.Size = new System.Drawing.Size(153, 37);
+            this.AddMajorButton.TabIndex = 8;
+            this.AddMajorButton.Text = "Change Available Majors";
+            this.AddMajorButton.UseVisualStyleBackColor = true;
+            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
             // 
             // removeAccButton
             // 

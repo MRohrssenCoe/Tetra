@@ -82,7 +82,7 @@ namespace TetraScheduler
                     bool passwordIsDefault = true;
                     while (passwordIsDefault)
                     {
-                        PasswordChangeBox changePswdBox = new PasswordChangeBox();
+                        PasswordChangeBox changePswdBox = new PasswordChangeBox("administrator", "admin");
                         changePswdBox.ShowDialog();
                         if (changePswdBox.DialogResult == DialogResult.OK)
                         {

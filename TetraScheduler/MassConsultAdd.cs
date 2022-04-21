@@ -223,6 +223,9 @@ namespace TetraScheduler
                     "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
                 lol++;
             }*/
+
+            //notify of completion + alert to pre-existing usernames
+            MessageBox.Show("Successfully added new accounts!");
         }
 
         private string CreatePassword(int length)
