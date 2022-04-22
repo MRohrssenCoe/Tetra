@@ -38,7 +38,8 @@ namespace TetraScheduler
                 "3. Save the output of the form to .CSV file\n" +
                 "4. Upload the CSV file with the button below to add new accounts" +
                 "\n(consultants will be emailed with their new account"+
-                " information if you are connected to the internet)";
+                " information if you are connected to the internet)" +
+                "(Replace this with telling them to read the manual)";
         }
 
         private void selectCSV_Click(object sender, EventArgs e)
@@ -200,11 +201,12 @@ namespace TetraScheduler
 
                         password = LoginForm.encrypt_Password(password); // todo: figure out if i should do this here or later
                         File.WriteAllText(passwordFile, String.Join(",", loginInfo) + "," + username + "," + password + ",0");
-                        // write to json
-                        string toWrite = JsonSerializer.Serialize(uInfo);
-                        string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-                        File.WriteAllText(uInfoFile, toWrite);
                     }
+                    // write to json
+                    string toWrite = JsonSerializer.Serialize(uInfo);
+                    string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                    File.WriteAllText(uInfoFile, toWrite);
+                    
                 }
             }
 
@@ -230,8 +232,8 @@ namespace TetraScheduler
             }*/
 
             //notify of completion + alert to pre-existing usernames
-            MessageBox.Show("User accounts not added (usernames already registered to an account):\n" + String.Join(',', inUseUsernames));
-            MessageBox.Show("Successfully added new accounts!");
+            MessageBox.Show("User accounts updated (usernames already registered to an account):\n" + (inUseUsernames.Count > 0 ? String.Join(',', inUseUsernames) : "[None]") + 
+                "\nNew accounts created:\n" + (usernameList.Count > 0 ? String.Join(",",usernameList) : "[None]"), "Successfully added from Google Form!");
         }
 
         private string CreatePassword(int length)
