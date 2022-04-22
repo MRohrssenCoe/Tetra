@@ -21,11 +21,12 @@ namespace TetraScheduler
         int[] closeTimes;
         int lastSelectedDay;
         private string username;
+        Form previous;
 
-
-        public AdminMenuForm(String name)
+        public AdminMenuForm(String name, Form prev)
         {
             InitializeComponent();
+            previous = prev;
             this.username = name;
             welcomeLabel.Text = "Welcome, " + name + "!";
             adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, "admin" + ".json");
@@ -366,6 +367,7 @@ namespace TetraScheduler
 
         private void logout_Click(object sender, EventArgs e)
         {
+            previous.Show();
             this.Close();
         }
 
@@ -434,6 +436,12 @@ namespace TetraScheduler
                     }
                 }
             }
+        }
+
+
+        private void AdminMenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            previous.Show();
         }
     }
 }

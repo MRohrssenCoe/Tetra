@@ -69,12 +69,14 @@ namespace TetraScheduler
                 int validationCode = validate_Credentials(username, password);
                 if (validationCode == 0)
                 {
-                    new ConsultantMenuForm(username).Show();
+                    this.Hide();
+                    new ConsultantMenuForm(username, this).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == 1)
                 {
-                    new AdminMenuForm(username).Show();
+                    this.Hide();
+                    new AdminMenuForm(username, this).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == 2)
@@ -105,7 +107,8 @@ namespace TetraScheduler
                 }
                 if (validationCode == 3)
                 {
-                    new MenuPickerForm(username).Show();
+                    this.Hide();
+                    new MenuPickerForm(username, this).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == -1)
