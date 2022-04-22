@@ -208,7 +208,7 @@ namespace TetraScheduler
 
             // alert admin that it's done here, possibly email users their account information?
             // commented out for testing purposes
-            /*var smtpClient = new SmtpClient("smtp.gmail.com")
+            var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
                 Credentials = new NetworkCredential("tetrascheduler@gmail.com", "tetrapassword"),
@@ -222,7 +222,7 @@ namespace TetraScheduler
                 smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
                     "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
                 lol++;
-            }*/
+            }
         }
 
         private string CreatePassword(int length)
