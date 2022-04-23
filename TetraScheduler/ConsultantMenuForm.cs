@@ -18,9 +18,36 @@ namespace TetraScheduler
         ListBox.ObjectCollection availableShifts;
         private string uInfoFile;
         private string username;
+        Form previous;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
+            this.username = username;
+            using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    var majorText = sr.ReadToEnd();
+                    var tokens = majorText.Split(',');
+                    foreach (var tk in tokens)
+                    {
+                        var m = tk.Trim();
+                        if (m != "")
+                        {
+                            majorListbox.Items.Add(m);
+                        }
+                    }
+                }
+            }
+            availableShifts = new ListBox.ObjectCollection(availabilityBox);
+            this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+            importUserInfo();
+        }
+
+        public ConsultantMenuForm(string username, Form prev)
+        {
+            InitializeComponent();
+            previous = prev;
             this.username = username;
             using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
             {
@@ -223,6 +250,14 @@ namespace TetraScheduler
                         File.WriteAllText(pFilePath, String.Join(',', sections));
                     }
                 }
+            }
+        }
+
+        private void ConsultantMenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(!(previous is null))
+            {
+                previous.Show(); 
             }
         }
     }
