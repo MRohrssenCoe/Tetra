@@ -11,6 +11,8 @@ namespace TetraScheduler
 {
     public partial class AddAcountForm : Form
     {
+
+        string[] acctInfo;
         public AddAcountForm()
         {
             InitializeComponent();
@@ -29,6 +31,25 @@ namespace TetraScheduler
             }
             return false;
         }
+
+        private void readAcctInfo()
+        {
+            string info = File.ReadAllText(Path.Combine(Constants.AppDataFolder, Constants.passwordFileName));
+            this.acctInfo = info.Split(",");
+        }
+
+        private bool usernameExists(string username)
+        {
+            for (int i = 0; i < acctInfo.Length; i += 3)
+            {
+                if (acctInfo[i].Equals(username))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             // login button functionality

@@ -34,6 +34,7 @@ namespace TetraScheduler
                 int x = 0;
                 bool removal = false;
                 string fileToDelete = Constants.userPreferencesFolder;
+                int numAdminsNotDeleted = 0;
                 while (x < token.Length)
                 {
                     foreach (string username in deletedUsers) {
@@ -45,16 +46,30 @@ namespace TetraScheduler
                                 fileToDelete = Path.Combine(Constants.userPreferencesFolder, username + ".json");
                                 File.Delete(fileToDelete);//delete user file
                             }
+                            break;
                         }
                     }
-                    if (!removal) //remove log in info by not including it
+                    if (!removal)//remove log in info by not including it
+                    {
+                        if (token[x + 2].Equals("1"))
+                        {
+                            numAdminsNotDeleted++;
+                        }
                         newString += token[x] + "," + token[x + 1] + "," + token[x + 2] + ",";
+                    }
+                        
                     removal = false; //reset for next entry
                     x += 3;
                 }
                 newString = newString.TrimEnd(',');
-                if (newString.Equals(""))
-                    newString = "admin,password,2";
+                if (numAdminsNotDeleted == 0)
+                {
+                    if (newString.Length != 0)
+                    {
+                        newString += ",";
+                    }
+                    newString += "admin," + LoginForm.encrypt_Password("password") + ",2";
+                }
                 File.WriteAllText(pswdFile, newString);
                 this.Close();
             }
