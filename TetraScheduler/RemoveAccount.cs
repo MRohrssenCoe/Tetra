@@ -51,7 +51,7 @@ namespace TetraScheduler
                     }
                     if (!removal)//remove log in info by not including it
                     {
-                        if (token[x + 2].Equals("1"))
+                        if (token[x + 2].Equals("1") || token[x+2].Equals("3"))
                         {
                             numAdminsNotDeleted++;
                         }
