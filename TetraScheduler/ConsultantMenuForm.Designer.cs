@@ -48,6 +48,7 @@
             this.selectAvailabilityButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.desiredWeeklyHrsUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coeYrUpDn)).BeginInit();
@@ -57,7 +58,7 @@
             // 
             // viewSchedButton
             // 
-            this.viewSchedButton.Location = new System.Drawing.Point(95, 410);
+            this.viewSchedButton.Location = new System.Drawing.Point(95, 428);
             this.viewSchedButton.Name = "viewSchedButton";
             this.viewSchedButton.Size = new System.Drawing.Size(97, 40);
             this.viewSchedButton.TabIndex = 0;
@@ -67,7 +68,7 @@
             // 
             // saveInfoButton
             // 
-            this.saveInfoButton.Location = new System.Drawing.Point(12, 410);
+            this.saveInfoButton.Location = new System.Drawing.Point(12, 428);
             this.saveInfoButton.Name = "saveInfoButton";
             this.saveInfoButton.Size = new System.Drawing.Size(77, 40);
             this.saveInfoButton.TabIndex = 17;
@@ -88,7 +89,7 @@
             this.groupBox3.Controls.Add(this.semExpUpDn);
             this.groupBox3.Controls.Add(this.fnameTextbox);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 25);
+            this.groupBox3.Location = new System.Drawing.Point(12, 43);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(402, 199);
             this.groupBox3.TabIndex = 19;
@@ -184,7 +185,7 @@
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.availabilityBox);
             this.groupBox2.Controls.Add(this.selectAvailabilityButton);
-            this.groupBox2.Location = new System.Drawing.Point(12, 230);
+            this.groupBox2.Location = new System.Drawing.Point(12, 248);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(402, 174);
             this.groupBox2.TabIndex = 20;
@@ -193,7 +194,7 @@
             // 
             // changeLoginInfo
             // 
-            this.changeLoginInfo.Location = new System.Drawing.Point(198, 410);
+            this.changeLoginInfo.Location = new System.Drawing.Point(198, 428);
             this.changeLoginInfo.Name = "changeLoginInfo";
             this.changeLoginInfo.Size = new System.Drawing.Size(125, 40);
             this.changeLoginInfo.TabIndex = 23;
@@ -222,7 +223,7 @@
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(329, 409);
+            this.logoutButton.Location = new System.Drawing.Point(329, 427);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(80, 40);
@@ -233,7 +234,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(366, 11);
+            this.button1.Location = new System.Drawing.Point(365, 7);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(42, 30);
@@ -242,13 +243,25 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 7);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(227, 30);
+            this.welcomeLabel.TabIndex = 23;
+            this.welcomeLabel.Text = "Welcome, consultant!";
+            // 
             // ConsultantMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(424, 462);
+            this.ClientSize = new System.Drawing.Size(424, 480);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.changeLoginInfo);
             this.Controls.Add(this.logoutButton);
@@ -267,6 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.semExpUpDn)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -299,5 +313,6 @@
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button changeLoginInfo;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

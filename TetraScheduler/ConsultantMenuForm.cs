@@ -22,6 +22,7 @@ namespace TetraScheduler
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
+            welcomeLabel.Text = welcomeLabel.Text.Replace("consultant", username);
             this.username = username;
             using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
             {
