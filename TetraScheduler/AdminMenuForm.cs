@@ -185,14 +185,14 @@ namespace TetraScheduler
             // generate random users - remove later
             Testing testing = new Testing();
             //List<UserInfo> users = testing.generateConsultants(30);
-            Debug.WriteLine(users);
+            //Debug.WriteLine(users);
 
             // initialize schedulemaker
             ScheduleMaker sm = new ScheduleMaker(users, storedOptions);
 
             Schedule s = sm.generateSchedule();
             ScheduleMaker.ScheduleToCSV(s);
-            Debug.WriteLine(s);
+            //Debug.WriteLine(s);
             // show either warning form or success message.
             FormCollection fc = Application.OpenForms;
             bool found = false;
@@ -228,7 +228,7 @@ namespace TetraScheduler
             tempUI.LastName = "Consultant";
             temp = availForm.AvailableSchedule.GetShiftsForUser(tempUI);
             //code here to display availability in consultant menu
-            Debug.WriteLine(temp != null);
+            //Debug.WriteLine(temp != null);
             if (temp != null)
             {
                 addBusyShiftsToView(temp);
@@ -313,14 +313,14 @@ namespace TetraScheduler
             DateTimePicker s = (DateTimePicker)sender;
             if (s.Name == "openTimePicker")
             {
-                Debug.WriteLine("Open");
-                Debug.WriteLine(s.Value.Hour);
+                //Debug.WriteLine("Open");
+                //Debug.WriteLine(s.Value.Hour);
                 openTimes[lastSelectedDay] = s.Value.Hour * 60 + s.Value.Minute;
 
             }
             else if (s.Name == "closeTimePicker"){
-                Debug.WriteLine("Close");
-                Debug.WriteLine(s.Value.Hour);
+                //Debug.WriteLine("Close");
+                //Debug.WriteLine(s.Value.Hour);
                 closeTimes[lastSelectedDay] = (s.Value.Hour != 0 ? s.Value.Hour : 24) * 60 + s.Value.Minute; // functionality to be open all day
             }
 

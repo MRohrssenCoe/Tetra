@@ -33,13 +33,13 @@ namespace TetraScheduler
             inUseUsernames = new List<string>();
             
             InitializeComponent();
-            instructLabel.Text = "1. Make a copy of our Google Form (found here) to your Google Drive\n" +
+            instructLabel.Text = "1. Make a copy of our Google Form to your Google Drive\n" +
                 "2. Send a link to your copy of the form to your consultants\n" +
                 "3. Save the output of the form to .CSV file\n" +
                 "4. Upload the CSV file with the button below to add new accounts" +
                 "\n(consultants will be emailed with their new account"+
-                " information if you are connected to the internet)" +
-                "(Replace this with telling them to read the manual)";
+                " information if you are connected to the internet)\n\n" +
+                "Please read the user manual for more detailed instructions";
         }
 
         private void selectCSV_Click(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace TetraScheduler
 
                     foreach (string o in fields)
                     {
-                        Debug.WriteLine(o + ";");
+                        //Debug.WriteLine(o + ";");
                     }
                     // put stuff in uinfo here 
                     uInfo.FirstName = fields[2];

@@ -88,7 +88,7 @@ namespace TetraScheduler
             {
                 //Deserialize from Json file
                 string uInfoJsonString = File.ReadAllText(this.uInfoFile);
-                Debug.WriteLine(uInfoJsonString);
+                //Debug.WriteLine(uInfoJsonString);
                 UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
                 //Fill UI info
                 fnameTextbox.Text = uInfo.FirstName;
@@ -155,7 +155,7 @@ namespace TetraScheduler
             //write UserInfo object to json here
             try
             {
-                Debug.WriteLine(fillUserInfoFile(uInfo));
+                //Debug.WriteLine(fillUserInfoFile(uInfo));
                 File.WriteAllText(this.uInfoFile, fillUserInfoFile(uInfo));
                 MessageBox.Show("User info was saved!");
             }

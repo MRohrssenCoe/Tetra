@@ -133,7 +133,7 @@ namespace TetraScheduler
         private int validate_Credentials(String username, String password)
         {
             String usersPasswords = File.ReadAllText(passwordFileString);
-            Debug.WriteLine(usersPasswords);
+            //Debug.WriteLine(usersPasswords);
             tokens = usersPasswords.Split(',');
             for (int i = 0; i < tokens.Length; i += 3)
             {
