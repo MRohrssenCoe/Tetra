@@ -43,9 +43,9 @@
             this.fnameTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.changeLoginInfo = new System.Windows.Forms.Button();
             this.availabilityBox = new System.Windows.Forms.ListBox();
             this.selectAvailabilityButton = new System.Windows.Forms.Button();
+            this.changeLoginInfo = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.welcomeLabel = new System.Windows.Forms.Label();
@@ -134,7 +134,7 @@
             this.majorListbox.FormattingEnabled = true;
             this.majorListbox.Location = new System.Drawing.Point(6, 75);
             this.majorListbox.Name = "majorListbox";
-            this.majorListbox.Size = new System.Drawing.Size(206, 76);
+            this.majorListbox.Size = new System.Drawing.Size(206, 112);
             this.majorListbox.TabIndex = 18;
             // 
             // label1
@@ -192,16 +192,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Availability";
             // 
-            // changeLoginInfo
-            // 
-            this.changeLoginInfo.Location = new System.Drawing.Point(198, 428);
-            this.changeLoginInfo.Name = "changeLoginInfo";
-            this.changeLoginInfo.Size = new System.Drawing.Size(125, 40);
-            this.changeLoginInfo.TabIndex = 23;
-            this.changeLoginInfo.Text = "Update Username/Password";
-            this.changeLoginInfo.UseVisualStyleBackColor = true;
-            this.changeLoginInfo.Click += new System.EventHandler(this.changeLoginInfo_Click);
-            // 
             // availabilityBox
             // 
             this.availabilityBox.FormattingEnabled = true;
@@ -220,6 +210,16 @@
             this.selectAvailabilityButton.Text = "Select Availability";
             this.selectAvailabilityButton.UseVisualStyleBackColor = true;
             this.selectAvailabilityButton.Click += new System.EventHandler(this.SelectAvailabilityButtonClick);
+            // 
+            // changeLoginInfo
+            // 
+            this.changeLoginInfo.Location = new System.Drawing.Point(198, 428);
+            this.changeLoginInfo.Name = "changeLoginInfo";
+            this.changeLoginInfo.Size = new System.Drawing.Size(125, 40);
+            this.changeLoginInfo.TabIndex = 23;
+            this.changeLoginInfo.Text = "Update Username/Password";
+            this.changeLoginInfo.UseVisualStyleBackColor = true;
+            this.changeLoginInfo.Click += new System.EventHandler(this.changeLoginInfo_Click);
             // 
             // logoutButton
             // 
