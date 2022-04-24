@@ -214,8 +214,7 @@ namespace TetraScheduler
             // write password file here
 
             // alert admin that it's done here, possibly email users their account information?
-            // commented out for testing purposes
-            /*var smtpClient = new SmtpClient("smtp.gmail.com")
+            var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
                 Credentials = new NetworkCredential("tetrascheduler@gmail.com", "tetrapassword"),
@@ -224,12 +223,19 @@ namespace TetraScheduler
             int lol = 0;
             foreach (string email in emailList)
             {
-                
 
-                smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
+                try
+                {
+                    smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
                     "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
+                } catch (Exception E)
+                {
+                    // do nothing?
+                    Debug.WriteLine("Couldn't email "+ email);
+                }
+                
                 lol++;
-            }*/
+            }
 
             //notify of completion + alert to pre-existing usernames
             MessageBox.Show("User accounts updated (usernames already registered to an account):\n" + (inUseUsernames.Count > 0 ? String.Join(',', inUseUsernames) : "[None]") + 
