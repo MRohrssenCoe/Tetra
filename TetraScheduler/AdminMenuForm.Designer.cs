@@ -296,7 +296,7 @@ namespace TetraScheduler
             // 
             // editScheduleButton
             // 
-            this.editScheduleButton.Location = new System.Drawing.Point(340, 461);
+            this.editScheduleButton.Location = new System.Drawing.Point(336, 447);
             this.editScheduleButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editScheduleButton.Name = "editScheduleButton";
             this.editScheduleButton.Size = new System.Drawing.Size(150, 32);
@@ -325,7 +325,7 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(723, 461);
+            this.logoutButton.Location = new System.Drawing.Point(717, 447);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(92, 32);
@@ -338,7 +338,7 @@ namespace TetraScheduler
             // 
             this.lastGenLabel.AutoSize = true;
             this.lastGenLabel.BackColor = System.Drawing.Color.Transparent;
-            this.lastGenLabel.Location = new System.Drawing.Point(496, 431);
+            this.lastGenLabel.Location = new System.Drawing.Point(508, 411);
             this.lastGenLabel.Name = "lastGenLabel";
             this.lastGenLabel.Size = new System.Drawing.Size(112, 15);
             this.lastGenLabel.TabIndex = 41;
@@ -465,7 +465,7 @@ namespace TetraScheduler
             // 
             // viewSchedButton
             // 
-            this.viewSchedButton.Location = new System.Drawing.Point(496, 461);
+            this.viewSchedButton.Location = new System.Drawing.Point(492, 447);
             this.viewSchedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewSchedButton.Name = "viewSchedButton";
             this.viewSchedButton.Size = new System.Drawing.Size(150, 32);
