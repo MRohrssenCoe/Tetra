@@ -17,9 +17,11 @@ namespace TetraScheduler
         List<Shift> consultantAvailability;
         ListBox.ObjectCollection availableShifts;
         private string uInfoFile;
+        private string username;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
+            this.username = username;
             using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
             {
                 using (StreamReader sr = new StreamReader(fs))
@@ -186,6 +188,42 @@ namespace TetraScheduler
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void changeLoginInfo_Click(object sender, EventArgs e)
+        {
+            PasswordChangeBox pcb = new PasswordChangeBox("consultant", this.username);
+            pcb.ShowDialog();
+            string newUsername = pcb.UsernameReturn;
+            string newPassword = pcb.PasswordReturn;
+            if (pcb.DialogResult == DialogResult.OK)
+            {
+                string pFilePath = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
+                string info = File.ReadAllText(pFilePath);
+                string[] sections = info.Split(",");
+                for (int i = 0; i < sections.Length; i += 3)
+                {
+                    if (sections[i].Equals(this.username))
+                    {
+                        if (!newUsername.Equals(this.username))
+                        {
+                            // update username in sections
+                            sections[i] = newUsername;
+                            // rename uInfoFile
+                            string oldJson = File.ReadAllText(Path.Combine(Constants.userPreferencesFolder, this.uInfoFile));
+                            File.WriteAllText(Path.Combine(Constants.userPreferencesFolder, newUsername + ".json"), oldJson);
+                            File.Delete(Path.Combine(Constants.userPreferencesFolder, this.uInfoFile));
+                            this.uInfoFile = newUsername + ".json";
+                            this.username = newUsername;
+                        }
+                        // update password in sections
+                        sections[i + 1] = LoginForm.encrypt_Password(newPassword);
+
+                        // write all to file
+                        File.WriteAllText(pFilePath, String.Join(',', sections));
+                    }
+                }
+            }
         }
     }
 }

@@ -55,12 +55,12 @@ namespace TetraScheduler
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.AddMajorButton = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.removeAccountButton = new System.Windows.Forms.Button();
             this.viewAdminButton = new System.Windows.Forms.Button();
             this.addAccButton = new System.Windows.Forms.Button();
             this.viewConsultButton = new System.Windows.Forms.Button();
+            this.AddMajorButton = new System.Windows.Forms.Button();
             this.removeAccButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.viewSchedButton = new System.Windows.Forms.Button();
@@ -76,6 +76,7 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.updateUP = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -366,16 +367,6 @@ namespace TetraScheduler
             this.panel10.Size = new System.Drawing.Size(162, 211);
             this.panel10.TabIndex = 42;
             // 
-            // AddMajorButton
-            // 
-            this.AddMajorButton.Location = new System.Drawing.Point(669, 263);
-            this.AddMajorButton.Name = "AddMajorButton";
-            this.AddMajorButton.Size = new System.Drawing.Size(153, 37);
-            this.AddMajorButton.TabIndex = 8;
-            this.AddMajorButton.Text = "Change Available Majors";
-            this.AddMajorButton.UseVisualStyleBackColor = true;
-            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(4, 169);
@@ -424,6 +415,16 @@ namespace TetraScheduler
             this.viewConsultButton.Text = "View Consultant Info";
             this.viewConsultButton.UseVisualStyleBackColor = true;
             this.viewConsultButton.Click += new System.EventHandler(this.viewConsultButton_Click);
+            // 
+            // AddMajorButton
+            // 
+            this.AddMajorButton.Location = new System.Drawing.Point(669, 263);
+            this.AddMajorButton.Name = "AddMajorButton";
+            this.AddMajorButton.Size = new System.Drawing.Size(153, 37);
+            this.AddMajorButton.TabIndex = 8;
+            this.AddMajorButton.Text = "Change Available Majors";
+            this.AddMajorButton.UseVisualStyleBackColor = true;
+            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
             // 
             // removeAccButton
             // 
@@ -620,12 +621,23 @@ namespace TetraScheduler
             this.panel2.Size = new System.Drawing.Size(301, 190);
             this.panel2.TabIndex = 56;
             // 
+            // updateUP
+            // 
+            this.updateUP.Location = new System.Drawing.Point(669, 315);
+            this.updateUP.Name = "updateUP";
+            this.updateUP.Size = new System.Drawing.Size(152, 51);
+            this.updateUP.TabIndex = 57;
+            this.updateUP.Text = "Update Username/Password";
+            this.updateUP.UseVisualStyleBackColor = true;
+            this.updateUP.Click += new System.EventHandler(this.updateUP_Click);
+            // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(850, 485);
+            this.Controls.Add(this.updateUP);
             this.Controls.Add(this.AddMajorButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
@@ -702,5 +714,6 @@ namespace TetraScheduler
         private System.Windows.Forms.Button selectBusyShiftsButton;
         private System.Windows.Forms.Button AddMajorButton;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button updateUP;
     }
 }

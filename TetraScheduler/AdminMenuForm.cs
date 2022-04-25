@@ -20,11 +20,13 @@ namespace TetraScheduler
         int[] openTimes;
         int[] closeTimes;
         int lastSelectedDay;
+        private string username;
 
 
         public AdminMenuForm(String name)
         {
             InitializeComponent();
+            this.username = name;
             welcomeLabel.Text = "Welcome, " + name + "!";
             adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, "admin" + ".json");
             importAdminInfo();
@@ -401,6 +403,37 @@ namespace TetraScheduler
         private void AddMajorButton_Click(object sender, EventArgs e)
         {
             new MajorAdder().Show();
+        }
+
+        private void updateUP_Click(object sender, EventArgs e)
+        {
+            PasswordChangeBox pcb = new PasswordChangeBox("administrator", this.username);
+            pcb.ShowDialog();
+            string newUsername = pcb.UsernameReturn;
+            string newPassword = pcb.PasswordReturn;
+            if (pcb.DialogResult == DialogResult.OK)
+            {
+                string pFilePath = Path.Combine(Constants.AppDataFolder, Constants.passwordFileName);
+                string info = File.ReadAllText(pFilePath);
+                string[] sections = info.Split(",");
+                for (int i = 0; i < sections.Length; i += 3)
+                {
+                    if (sections[i].Equals(this.username))
+                    {
+                        if (!newUsername.Equals(this.username))
+                        {
+                            // update username in sections
+                            sections[i] = newUsername;
+                            this.username = newUsername;
+                        }
+                        // update password in sections
+                        sections[i + 1] = LoginForm.encrypt_Password(newPassword);
+
+                        // write all to file
+                        File.WriteAllText(pFilePath, String.Join(',', sections));
+                    }
+                }
+            }
         }
     }
 }
