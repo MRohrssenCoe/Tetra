@@ -628,9 +628,9 @@ namespace TetraScheduler
             // 
             // helpButton
             // 
-            this.helpButton.Location = new System.Drawing.Point(765, 16);
+            this.helpButton.Location = new System.Drawing.Point(802, 504);
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(45, 23);
+            this.helpButton.Size = new System.Drawing.Size(92, 34);
             this.helpButton.TabIndex = 57;
             this.helpButton.Text = "Help";
             this.helpButton.UseVisualStyleBackColor = true;
