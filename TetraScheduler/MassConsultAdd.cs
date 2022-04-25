@@ -227,7 +227,7 @@ namespace TetraScheduler
                 smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
                     "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
                 lol++;
-            }*/
+            }
 
             //notify of completion + alert to pre-existing usernames
             MessageBox.Show("User accounts not added (usernames already registered to an account):\n" + String.Join(',', inUseUsernames));
