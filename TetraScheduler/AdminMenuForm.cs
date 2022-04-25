@@ -388,7 +388,8 @@ namespace TetraScheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            //string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            string filename = Path.GetFullPath("tetra manual.pdf");
             Process.Start("explorer", "\"" + filename + "\"");
         }
 
