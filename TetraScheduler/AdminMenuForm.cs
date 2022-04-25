@@ -21,11 +21,12 @@ namespace TetraScheduler
         int[] closeTimes;
         int lastSelectedDay;
         private string username;
+        Form previous;
 
-
-        public AdminMenuForm(String name)
+        public AdminMenuForm(String name, Form prev)
         {
             InitializeComponent();
+            previous = prev;
             this.username = name;
             welcomeLabel.Text = "Welcome, " + name + "!";
             adminInfoFile = Path.Combine(Constants.adminPreferencesFolder, "admin" + ".json");
@@ -184,14 +185,14 @@ namespace TetraScheduler
             // generate random users - remove later
             Testing testing = new Testing();
             //List<UserInfo> users = testing.generateConsultants(30);
-            Debug.WriteLine(users);
+            //Debug.WriteLine(users);
 
             // initialize schedulemaker
             ScheduleMaker sm = new ScheduleMaker(users, storedOptions);
 
             Schedule s = sm.generateSchedule();
             ScheduleMaker.ScheduleToCSV(s);
-            Debug.WriteLine(s);
+            //Debug.WriteLine(s);
             // show either warning form or success message.
             FormCollection fc = Application.OpenForms;
             bool found = false;
@@ -227,7 +228,7 @@ namespace TetraScheduler
             tempUI.LastName = "Consultant";
             temp = availForm.AvailableSchedule.GetShiftsForUser(tempUI);
             //code here to display availability in consultant menu
-            Debug.WriteLine(temp != null);
+            //Debug.WriteLine(temp != null);
             if (temp != null)
             {
                 addBusyShiftsToView(temp);
@@ -312,14 +313,14 @@ namespace TetraScheduler
             DateTimePicker s = (DateTimePicker)sender;
             if (s.Name == "openTimePicker")
             {
-                Debug.WriteLine("Open");
-                Debug.WriteLine(s.Value.Hour);
+                //Debug.WriteLine("Open");
+                //Debug.WriteLine(s.Value.Hour);
                 openTimes[lastSelectedDay] = s.Value.Hour * 60 + s.Value.Minute;
 
             }
             else if (s.Name == "closeTimePicker"){
-                Debug.WriteLine("Close");
-                Debug.WriteLine(s.Value.Hour);
+                //Debug.WriteLine("Close");
+                //Debug.WriteLine(s.Value.Hour);
                 closeTimes[lastSelectedDay] = (s.Value.Hour != 0 ? s.Value.Hour : 24) * 60 + s.Value.Minute; // functionality to be open all day
             }
 
@@ -366,6 +367,7 @@ namespace TetraScheduler
 
         private void logout_Click(object sender, EventArgs e)
         {
+            previous.Show();
             this.Close();
         }
 
@@ -386,7 +388,8 @@ namespace TetraScheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            //string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            string filename = Path.GetFullPath("tetra manual.pdf");
             Process.Start("explorer", "\"" + filename + "\"");
         }
 
@@ -434,6 +437,12 @@ namespace TetraScheduler
                     }
                 }
             }
+        }
+
+
+        private void AdminMenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            previous.Show();
         }
 
         private void button4_Click_1(object sender, EventArgs e)

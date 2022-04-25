@@ -11,6 +11,8 @@ namespace TetraScheduler
 {
     public partial class AddAcountForm : Form
     {
+
+        string[] acctInfo;
         public AddAcountForm()
         {
             InitializeComponent();
@@ -29,6 +31,35 @@ namespace TetraScheduler
             }
             return false;
         }
+
+        private void readAcctInfo()
+        {
+            string info = File.ReadAllText(Path.Combine(Constants.AppDataFolder, Constants.passwordFileName));
+            this.acctInfo = info.Split(",");
+        }
+
+        private bool usernameExists(string username)
+        {
+            for (int i = 0; i < acctInfo.Length; i += 3)
+            {
+                if (acctInfo[i].Equals(username))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool isValidString(string s)
+        {
+            foreach (char c in s)
+            {
+                if (!Char.IsLetterOrDigit(c))
+                    return false;
+            }
+            return true;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             // login button functionality
@@ -38,41 +69,42 @@ namespace TetraScheduler
             String password = textBox2.Text;
             String Writer = "\n";
 
-            Boolean addonCheck = true;
-
-            foreach(char c in password)
-            {
-                if (Char.IsLetterOrDigit(c))
-                    continue;
-                else
-                    addonCheck = false;
-            }
-
-            if (username.Length == 0)
+            if (username.Length == 0 || username.Equals("Username..."))
             {
                 MessageBox.Show("Username cannot be empty!");
-                addonCheck = false;
+                return;
             }
-            if (password.Length == 0)
+            if (password.Length == 0 || password.Equals("Password..."))
             {
                 MessageBox.Show("Password cannot be empty!");
-                addonCheck = false;
+                return;
             }
+
+            if (!isValidString(username) || !isValidString(password))
+            {
+                MessageBox.Show("Usernames and passwords must only contain letters or numbers!");
+                return;
+            }
+
             if (password.Length < 8)
             {
                 MessageBox.Show("Password must be at least 8 characters.");
-                addonCheck = false;
+                return;
             }
-            if(addonCheck)
+            
+            password = LoginForm.encrypt_Password(textBox2.Text);
+            if (radioButton4.Checked)
+                Writer = "," + username + "," + password + ",1";
+            else if (radioButton5.Checked)
+                Writer = "," + username + "," + password + ",0";
+            else if (radioButton6.Checked)
+                Writer = "," + username + "," + password + ",3";
+            else
             {
-                password = LoginForm.encrypt_Password(textBox2.Text);
-                if (radioButton4.Checked)
-                    Writer = "," + username + "," + password + ",1";
-                else if (radioButton5.Checked)
-                    Writer = "," + username + "," + password + ",0";
-                else if (radioButton6.Checked)
-                    Writer = "," + username + "," + password + ",3";
+                MessageBox.Show("Please click one of the account option buttons!");
+                return;
             }
+            
             string tetraFolder = Constants.AppDataFolder;
             string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
             string usernameString = File.ReadAllText(pswdFile);

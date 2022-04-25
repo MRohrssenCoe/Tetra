@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace TetraScheduler
@@ -48,6 +49,8 @@ namespace TetraScheduler
                 else if (token[x + 2].Equals("3"))
                 {
                     checkedListBox1.Items.Add(token[x] + " Admin and Consultant");
+                    admins[y] = x / 3;
+                    y++;
                 }
                 x += 3;
             }
@@ -79,30 +82,33 @@ namespace TetraScheduler
                 {
                     MessageBox.Show("ERROR \nYou are attempting to delete all Admin accounts.\nProcess cannot be executed.");
                     this.Close();
+                    return;
                 }
                 else if (c > 0)
                 {
                     DialogResult dialogResult1 = MessageBox.Show("Warning.\nYou are attempting to delete Admin accounts. \nAre you truly sure?", "Confirmation", MessageBoxButtons.YesNo);
                     if (dialogResult1 == DialogResult.No)
+                    {
                         this.Close();
+                        return;
+                    }
                 }
-                else
+
+                foreach (int x in i)
                 {
-                    foreach (int x in i)
-                    {
-                        token[(3 * x) + 2] = "0";
-                    }
-                    String tokenStr = "";
-                    for (int y = 0; y < token.Length - 1; y++)
-                    {
-                        tokenStr = tokenStr + token[y] + ",";
-                    }
-                    string tetraFolder = Constants.AppDataFolder;
-                    string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
-                    tokenStr = tokenStr + token[token.Length - 1];
-                    File.WriteAllText(pswdFile, tokenStr);
-                    this.Close();
+                    token[(3 * x) + 2] = "0";
+                    Debug.WriteLine("here");
                 }
+                String tokenStr = "";
+                for (int y = 0; y < token.Length - 1; y++)
+                {
+                    tokenStr = tokenStr + token[y] + ",";
+                }
+                string tetraFolder = Constants.AppDataFolder;
+                string pswdFile = Path.Combine(tetraFolder, Constants.passwordFileName);
+                tokenStr = tokenStr + token[token.Length - 1];
+                File.WriteAllText(pswdFile, tokenStr);
+                this.Close();
             }
 
         }

@@ -43,11 +43,12 @@
             this.fnameTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.changeLoginInfo = new System.Windows.Forms.Button();
             this.availabilityBox = new System.Windows.Forms.ListBox();
             this.selectAvailabilityButton = new System.Windows.Forms.Button();
+            this.changeLoginInfo = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.desiredWeeklyHrsUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coeYrUpDn)).BeginInit();
@@ -57,7 +58,7 @@
             // 
             // viewSchedButton
             // 
-            this.viewSchedButton.Location = new System.Drawing.Point(115, 397);
+            this.viewSchedButton.Location = new System.Drawing.Point(95, 428);
             this.viewSchedButton.Name = "viewSchedButton";
             this.viewSchedButton.Size = new System.Drawing.Size(97, 40);
             this.viewSchedButton.TabIndex = 0;
@@ -67,9 +68,9 @@
             // 
             // saveInfoButton
             // 
-            this.saveInfoButton.Location = new System.Drawing.Point(12, 397);
+            this.saveInfoButton.Location = new System.Drawing.Point(12, 428);
             this.saveInfoButton.Name = "saveInfoButton";
-            this.saveInfoButton.Size = new System.Drawing.Size(97, 40);
+            this.saveInfoButton.Size = new System.Drawing.Size(77, 40);
             this.saveInfoButton.TabIndex = 17;
             this.saveInfoButton.Text = "Save Info";
             this.saveInfoButton.UseVisualStyleBackColor = true;
@@ -88,7 +89,7 @@
             this.groupBox3.Controls.Add(this.semExpUpDn);
             this.groupBox3.Controls.Add(this.fnameTextbox);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(12, 43);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(402, 199);
             this.groupBox3.TabIndex = 19;
@@ -133,7 +134,7 @@
             this.majorListbox.FormattingEnabled = true;
             this.majorListbox.Location = new System.Drawing.Point(6, 75);
             this.majorListbox.Name = "majorListbox";
-            this.majorListbox.Size = new System.Drawing.Size(206, 94);
+            this.majorListbox.Size = new System.Drawing.Size(206, 112);
             this.majorListbox.TabIndex = 18;
             // 
             // label1
@@ -182,25 +183,14 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.changeLoginInfo);
             this.groupBox2.Controls.Add(this.availabilityBox);
             this.groupBox2.Controls.Add(this.selectAvailabilityButton);
-            this.groupBox2.Location = new System.Drawing.Point(12, 217);
+            this.groupBox2.Location = new System.Drawing.Point(12, 248);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(402, 174);
             this.groupBox2.TabIndex = 20;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Availability";
-            // 
-            // changeLoginInfo
-            // 
-            this.changeLoginInfo.Location = new System.Drawing.Point(273, 139);
-            this.changeLoginInfo.Name = "changeLoginInfo";
-            this.changeLoginInfo.Size = new System.Drawing.Size(111, 23);
-            this.changeLoginInfo.TabIndex = 23;
-            this.changeLoginInfo.Text = "change u/p";
-            this.changeLoginInfo.UseVisualStyleBackColor = true;
-            this.changeLoginInfo.Click += new System.EventHandler(this.changeLoginInfo_Click);
             // 
             // availabilityBox
             // 
@@ -221,12 +211,22 @@
             this.selectAvailabilityButton.UseVisualStyleBackColor = true;
             this.selectAvailabilityButton.Click += new System.EventHandler(this.SelectAvailabilityButtonClick);
             // 
+            // changeLoginInfo
+            // 
+            this.changeLoginInfo.Location = new System.Drawing.Point(198, 428);
+            this.changeLoginInfo.Name = "changeLoginInfo";
+            this.changeLoginInfo.Size = new System.Drawing.Size(125, 40);
+            this.changeLoginInfo.TabIndex = 23;
+            this.changeLoginInfo.Text = "Update Username/Password";
+            this.changeLoginInfo.UseVisualStyleBackColor = true;
+            this.changeLoginInfo.Click += new System.EventHandler(this.changeLoginInfo_Click);
+            // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(304, 397);
+            this.logoutButton.Location = new System.Drawing.Point(329, 427);
             this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(105, 40);
+            this.logoutButton.Size = new System.Drawing.Size(80, 40);
             this.logoutButton.TabIndex = 21;
             this.logoutButton.Text = "Close Menu";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -234,14 +234,25 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(217, 397);
+            this.button1.Location = new System.Drawing.Point(365, 7);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 40);
+            this.button1.Size = new System.Drawing.Size(42, 30);
             this.button1.TabIndex = 22;
             this.button1.Text = "Help";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 7);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(227, 30);
+            this.welcomeLabel.TabIndex = 23;
+            this.welcomeLabel.Text = "Welcome, consultant!";
             // 
             // ConsultantMenuForm
             // 
@@ -249,8 +260,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(424, 450);
+            this.ClientSize = new System.Drawing.Size(424, 480);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.changeLoginInfo);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -258,6 +271,7 @@
             this.Controls.Add(this.saveInfoButton);
             this.Name = "ConsultantMenuForm";
             this.Text = "Consultant Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ConsultantMenuForm_FormClosed);
             this.Load += new System.EventHandler(this.ConsultantMenuForm_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -266,6 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.semExpUpDn)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -298,5 +313,6 @@
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button changeLoginInfo;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

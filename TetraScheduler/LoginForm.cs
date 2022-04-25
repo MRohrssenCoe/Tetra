@@ -69,12 +69,14 @@ namespace TetraScheduler
                 int validationCode = validate_Credentials(username, password);
                 if (validationCode == 0)
                 {
-                    new ConsultantMenuForm(username).Show();
+                    this.Hide();
+                    new ConsultantMenuForm(username, this).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == 1)
                 {
-                    new AdminMenuForm(username).Show();
+                    this.Hide();
+                    new AdminMenuForm(username, this).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == 2)
@@ -105,7 +107,8 @@ namespace TetraScheduler
                 }
                 if (validationCode == 3)
                 {
-                    new MenuPickerForm(username).Show();
+                    this.Hide();
+                    new MenuPickerForm(username, this).Show();
                     successfulLogin = true;
                 }
                 if (validationCode == -1)
@@ -130,7 +133,7 @@ namespace TetraScheduler
         private int validate_Credentials(String username, String password)
         {
             String usersPasswords = File.ReadAllText(passwordFileString);
-            Debug.WriteLine(usersPasswords);
+            //Debug.WriteLine(usersPasswords);
             tokens = usersPasswords.Split(',');
             for (int i = 0; i < tokens.Length; i += 3)
             {

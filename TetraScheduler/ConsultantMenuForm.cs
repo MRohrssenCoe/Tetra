@@ -18,9 +18,37 @@ namespace TetraScheduler
         ListBox.ObjectCollection availableShifts;
         private string uInfoFile;
         private string username;
+        Form previous;
         public ConsultantMenuForm(string username)
         {
             InitializeComponent();
+            welcomeLabel.Text = welcomeLabel.Text.Replace("consultant", username);
+            this.username = username;
+            using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fs))
+                {
+                    var majorText = sr.ReadToEnd();
+                    var tokens = majorText.Split(',');
+                    foreach (var tk in tokens)
+                    {
+                        var m = tk.Trim();
+                        if (m != "")
+                        {
+                            majorListbox.Items.Add(m);
+                        }
+                    }
+                }
+            }
+            availableShifts = new ListBox.ObjectCollection(availabilityBox);
+            this.uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+            importUserInfo();
+        }
+
+        public ConsultantMenuForm(string username, Form prev)
+        {
+            InitializeComponent();
+            previous = prev;
             this.username = username;
             using (FileStream fs = File.Open(Path.Combine(Constants.AppDataFolder, Constants.MajorsFile), FileMode.Open))
             {
@@ -60,7 +88,7 @@ namespace TetraScheduler
             {
                 //Deserialize from Json file
                 string uInfoJsonString = File.ReadAllText(this.uInfoFile);
-                Debug.WriteLine(uInfoJsonString);
+                //Debug.WriteLine(uInfoJsonString);
                 UserInfo uInfo = JsonSerializer.Deserialize<UserInfo>(uInfoJsonString);
                 //Fill UI info
                 fnameTextbox.Text = uInfo.FirstName;
@@ -127,7 +155,7 @@ namespace TetraScheduler
             //write UserInfo object to json here
             try
             {
-                Debug.WriteLine(fillUserInfoFile(uInfo));
+                //Debug.WriteLine(fillUserInfoFile(uInfo));
                 File.WriteAllText(this.uInfoFile, fillUserInfoFile(uInfo));
                 MessageBox.Show("User info was saved!");
             }
@@ -181,7 +209,7 @@ namespace TetraScheduler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string filename = Path.Combine(Constants.AppDataFolder, "Hey.pdf");
+            string filename = Path.GetFullPath("tetra manual.pdf");
             Process.Start("explorer", "\"" + filename + "\"");
         }
 
@@ -223,6 +251,14 @@ namespace TetraScheduler
                         File.WriteAllText(pFilePath, String.Join(',', sections));
                     }
                 }
+            }
+        }
+
+        private void ConsultantMenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(!(previous is null))
+            {
+                previous.Show(); 
             }
         }
     }

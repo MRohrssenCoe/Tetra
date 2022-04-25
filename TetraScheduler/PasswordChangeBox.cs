@@ -108,6 +108,10 @@ namespace TetraScheduler
             {
                 MessageBox.Show("Usernames and passwords must only contain letters and/or numbers");
             }
+            else if (AdminPasswordBox.Text.Length < 8)
+            {
+                MessageBox.Show("Password must be at least 8 characters long");
+            }
             else if (AdminPasswordBox.Text.Length == 0 || AdminUsernameBox.Text.Length == 0 || confirmPassBox.Text.Length == 0)
             {
                 MessageBox.Show("Please do not leave input fields empty!");

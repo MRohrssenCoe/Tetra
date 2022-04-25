@@ -33,12 +33,13 @@ namespace TetraScheduler
             inUseUsernames = new List<string>();
             
             InitializeComponent();
-            instructLabel.Text = "1. Make a copy of our Google Form (found here) to your Google Drive\n" +
+            instructLabel.Text = "1. Make a copy of our Google Form to your Google Drive\n" +
                 "2. Send a link to your copy of the form to your consultants\n" +
                 "3. Save the output of the form to .CSV file\n" +
                 "4. Upload the CSV file with the button below to add new accounts" +
                 "\n(consultants will be emailed with their new account"+
-                " information if you are connected to the internet)";
+                " information if you are connected to the internet)\n\n" +
+                "Please read the user manual for more detailed instructions";
         }
 
         private void selectCSV_Click(object sender, EventArgs e)
@@ -156,7 +157,7 @@ namespace TetraScheduler
 
                     foreach (string o in fields)
                     {
-                        Debug.WriteLine(o + ";");
+                        //Debug.WriteLine(o + ";");
                     }
                     // put stuff in uinfo here 
                     uInfo.FirstName = fields[2];
@@ -200,11 +201,12 @@ namespace TetraScheduler
 
                         password = LoginForm.encrypt_Password(password); // todo: figure out if i should do this here or later
                         File.WriteAllText(passwordFile, String.Join(",", loginInfo) + "," + username + "," + password + ",0");
-                        // write to json
-                        string toWrite = JsonSerializer.Serialize(uInfo);
-                        string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
-                        File.WriteAllText(uInfoFile, toWrite);
                     }
+                    // write to json
+                    string toWrite = JsonSerializer.Serialize(uInfo);
+                    string uInfoFile = Path.Combine(Constants.userPreferencesFolder, username + ".json");
+                    File.WriteAllText(uInfoFile, toWrite);
+                    
                 }
             }
 
@@ -212,7 +214,6 @@ namespace TetraScheduler
             // write password file here
 
             // alert admin that it's done here, possibly email users their account information?
-            // commented out for testing purposes
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
@@ -222,16 +223,23 @@ namespace TetraScheduler
             int lol = 0;
             foreach (string email in emailList)
             {
-                
 
-                smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
+                try
+                {
+                    smtpClient.Send("tetrascheduler@gmail.com", email, "Writing center scheduling program credentials",
                     "Username: " + usernameList[lol] + '\n' + "Password: " + passwordList[lol] + '\n');
+                } catch (Exception E)
+                {
+                    // do nothing?
+                    Debug.WriteLine("Couldn't email "+ email);
+                }
+                
                 lol++;
             }
 
             //notify of completion + alert to pre-existing usernames
-            MessageBox.Show("User accounts not added (usernames already registered to an account):\n" + String.Join(',', inUseUsernames));
-            MessageBox.Show("Successfully added new accounts!");
+            MessageBox.Show("User accounts updated (usernames already registered to an account):\n" + (inUseUsernames.Count > 0 ? String.Join(',', inUseUsernames) : "[None]") + 
+                "\nNew accounts created:\n" + (usernameList.Count > 0 ? String.Join(",",usernameList) : "[None]"), "Successfully added from Google Form!");
         }
 
         private string CreatePassword(int length)

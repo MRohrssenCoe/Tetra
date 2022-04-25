@@ -55,12 +55,13 @@ namespace TetraScheduler
             this.lastGenLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.updateUP = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.AddMajorButton = new System.Windows.Forms.Button();
             this.removeAccountButton = new System.Windows.Forms.Button();
             this.viewAdminButton = new System.Windows.Forms.Button();
             this.addAccButton = new System.Windows.Forms.Button();
             this.viewConsultButton = new System.Windows.Forms.Button();
-            this.AddMajorButton = new System.Windows.Forms.Button();
             this.removeAccButton = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.viewSchedButton = new System.Windows.Forms.Button();
@@ -76,7 +77,8 @@ namespace TetraScheduler
             this.daysbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
+            this.helpButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shiftLengthUpDn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.consultantsNeededUpDn)).BeginInit();
@@ -91,7 +93,7 @@ namespace TetraScheduler
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
             this.welcomeLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.welcomeLabel.Location = new System.Drawing.Point(14, 12);
+            this.welcomeLabel.Location = new System.Drawing.Point(29, 9);
             this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(248, 38);
             this.welcomeLabel.TabIndex = 0;
@@ -129,7 +131,8 @@ namespace TetraScheduler
             this.panel1.Controls.Add(this.selectBusyShiftsButton);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Location = new System.Drawing.Point(11, 63);
+            this.panel1.Location = new System.Drawing.Point(12, 64);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(354, 571);
             this.panel1.TabIndex = 12;
@@ -292,7 +295,8 @@ namespace TetraScheduler
             // 
             // editScheduleButton
             // 
-            this.editScheduleButton.Location = new System.Drawing.Point(389, 573);
+            this.editScheduleButton.Location = new System.Drawing.Point(336, 447);
+            this.editScheduleButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.editScheduleButton.Name = "editScheduleButton";
             this.editScheduleButton.Size = new System.Drawing.Size(171, 43);
             this.editScheduleButton.TabIndex = 54;
@@ -320,9 +324,10 @@ namespace TetraScheduler
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(770, 573);
+            this.logoutButton.Location = new System.Drawing.Point(717, 447);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(171, 43);
+            this.logoutButton.Size = new System.Drawing.Size(92, 32);
             this.logoutButton.TabIndex = 44;
             this.logoutButton.Text = "Close Menu";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -332,7 +337,7 @@ namespace TetraScheduler
             // 
             this.lastGenLabel.AutoSize = true;
             this.lastGenLabel.BackColor = System.Drawing.Color.Transparent;
-            this.lastGenLabel.Location = new System.Drawing.Point(567, 533);
+            this.lastGenLabel.Location = new System.Drawing.Point(508, 411);
             this.lastGenLabel.Name = "lastGenLabel";
             this.lastGenLabel.Size = new System.Drawing.Size(141, 20);
             this.lastGenLabel.TabIndex = 41;
@@ -342,7 +347,7 @@ namespace TetraScheduler
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(806, 32);
+            this.label4.Location = new System.Drawing.Point(692, 46);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 20);
             this.label4.TabIndex = 43;
@@ -352,22 +357,32 @@ namespace TetraScheduler
             // 
             this.panel10.BackColor = System.Drawing.Color.Transparent;
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel10.Controls.Add(this.button4);
+            this.panel10.Controls.Add(this.updateUP);
             this.panel10.Controls.Add(this.button5);
             this.panel10.Controls.Add(this.AddMajorButton);
             this.panel10.Controls.Add(this.removeAccountButton);
             this.panel10.Controls.Add(this.viewAdminButton);
             this.panel10.Controls.Add(this.addAccButton);
             this.panel10.Controls.Add(this.viewConsultButton);
-            this.panel10.Location = new System.Drawing.Point(759, 63);
+            this.panel10.Location = new System.Drawing.Point(652, 64);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(185, 387);
+            this.panel10.Size = new System.Drawing.Size(162, 310);
             this.panel10.TabIndex = 42;
+            // 
+            // updateUP
+            // 
+            this.updateUP.Location = new System.Drawing.Point(5, 254);
+            this.updateUP.Name = "updateUP";
+            this.updateUP.Size = new System.Drawing.Size(152, 51);
+            this.updateUP.TabIndex = 57;
+            this.updateUP.Text = "Update Username/Password";
+            this.updateUP.UseVisualStyleBackColor = true;
+            this.updateUP.Click += new System.EventHandler(this.updateUP_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(5, 225);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button5.Location = new System.Drawing.Point(4, 170);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(175, 49);
             this.button5.TabIndex = 7;
@@ -375,20 +390,29 @@ namespace TetraScheduler
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button4_Click);
             // 
+            // AddMajorButton
+            // 
+            this.AddMajorButton.Location = new System.Drawing.Point(3, 212);
+            this.AddMajorButton.Name = "AddMajorButton";
+            this.AddMajorButton.Size = new System.Drawing.Size(153, 37);
+            this.AddMajorButton.TabIndex = 8;
+            this.AddMajorButton.Text = "Change Available Majors";
+            this.AddMajorButton.UseVisualStyleBackColor = true;
+            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
+            // 
             // removeAccountButton
             // 
-            this.removeAccountButton.Location = new System.Drawing.Point(5, 172);
-            this.removeAccountButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.removeAccountButton.Location = new System.Drawing.Point(4, 128);
             this.removeAccountButton.Name = "removeAccountButton";
             this.removeAccountButton.Size = new System.Drawing.Size(175, 49);
             this.removeAccountButton.TabIndex = 6;
             this.removeAccountButton.Text = "Remove Account";
             this.removeAccountButton.UseVisualStyleBackColor = true;
+            this.removeAccountButton.Click += new System.EventHandler(this.removeAccButton_Click);
             // 
             // viewAdminButton
             // 
-            this.viewAdminButton.Location = new System.Drawing.Point(3, 60);
-            this.viewAdminButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.viewAdminButton.Location = new System.Drawing.Point(3, 44);
             this.viewAdminButton.Name = "viewAdminButton";
             this.viewAdminButton.Size = new System.Drawing.Size(175, 49);
             this.viewAdminButton.TabIndex = 5;
@@ -398,8 +422,7 @@ namespace TetraScheduler
             // 
             // addAccButton
             // 
-            this.addAccButton.Location = new System.Drawing.Point(3, 117);
-            this.addAccButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addAccButton.Location = new System.Drawing.Point(3, 86);
             this.addAccButton.Name = "addAccButton";
             this.addAccButton.Size = new System.Drawing.Size(175, 49);
             this.addAccButton.TabIndex = 3;
@@ -417,17 +440,6 @@ namespace TetraScheduler
             this.viewConsultButton.Text = "View Consultant Info";
             this.viewConsultButton.UseVisualStyleBackColor = true;
             this.viewConsultButton.Click += new System.EventHandler(this.viewConsultButton_Click);
-            // 
-            // AddMajorButton
-            // 
-            this.AddMajorButton.Location = new System.Drawing.Point(5, 281);
-            this.AddMajorButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AddMajorButton.Name = "AddMajorButton";
-            this.AddMajorButton.Size = new System.Drawing.Size(175, 49);
-            this.AddMajorButton.TabIndex = 8;
-            this.AddMajorButton.Text = "Change Available Majors";
-            this.AddMajorButton.UseVisualStyleBackColor = true;
-            this.AddMajorButton.Click += new System.EventHandler(this.AddMajorButton_Click);
             // 
             // removeAccButton
             // 
@@ -453,7 +465,8 @@ namespace TetraScheduler
             // 
             // viewSchedButton
             // 
-            this.viewSchedButton.Location = new System.Drawing.Point(567, 573);
+            this.viewSchedButton.Location = new System.Drawing.Point(492, 447);
+            this.viewSchedButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.viewSchedButton.Name = "viewSchedButton";
             this.viewSchedButton.Size = new System.Drawing.Size(171, 43);
             this.viewSchedButton.TabIndex = 40;
@@ -586,7 +599,7 @@ namespace TetraScheduler
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(403, 32);
+            this.label9.Location = new System.Drawing.Point(451, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 20);
             this.label9.TabIndex = 55;
@@ -608,28 +621,39 @@ namespace TetraScheduler
             this.panel2.Controls.Add(this.tuesdayCheck);
             this.panel2.Controls.Add(this.openTimePicker);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(389, 63);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Location = new System.Drawing.Point(336, 64);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(344, 253);
             this.panel2.TabIndex = 56;
             // 
-            // button4
+            // helpButton
             // 
-            this.button4.Location = new System.Drawing.Point(5, 337);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(175, 40);
-            this.button4.TabIndex = 57;
-            this.button4.Text = "Help";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            this.helpButton.Location = new System.Drawing.Point(765, 16);
+            this.helpButton.Name = "helpButton";
+            this.helpButton.Size = new System.Drawing.Size(45, 23);
+            this.helpButton.TabIndex = 57;
+            this.helpButton.Text = "Help";
+            this.helpButton.UseVisualStyleBackColor = true;
+            this.helpButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(112, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 15);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "Scheduling Options";
             // 
             // AdminMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(971, 647);
+            this.ClientSize = new System.Drawing.Size(827, 504);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.helpButton);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.editScheduleButton);
@@ -642,6 +666,7 @@ namespace TetraScheduler
             this.Controls.Add(this.panel1);
             this.Name = "AdminMenuForm";
             this.Text = "Tetra Admin Menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminMenuForm_FormClosed);
             this.Load += new System.EventHandler(this.AdminMenuForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -705,6 +730,7 @@ namespace TetraScheduler
         private System.Windows.Forms.Button AddMajorButton;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button updateUP;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button helpButton;
+        private System.Windows.Forms.Label label3;
     }
 }
